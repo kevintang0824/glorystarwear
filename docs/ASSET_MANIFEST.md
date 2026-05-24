@@ -18,6 +18,7 @@ This document explains what the project assets are for, so the website can be mo
 - `assets/images/teamwear-custom-showroom.jpg`: teamwear showroom image.
 - `assets/images/private-label-trims-customization.jpg`: customization trims, labels, and packaging image.
 - `assets/images/custom-sportswear-consultation.jpg`: FAQ/contact consultation image.
+- `assets/images/faq-buyer-consultation-desk.jpg`: FAQ quote-input scene with samples, swatches, labels, and packaging references.
 
 ## Main Product Category Images
 
@@ -42,6 +43,7 @@ This document explains what the project assets are for, so the website can be mo
 ## Training and Athleisure Images
 
 - `assets/images/athleisure-training-capsule-detail.jpg`
+- `assets/images/athleisure-retail-drop-flatlay.jpg`
 - `assets/images/training-tops-detail.jpg`
 - `assets/images/training-shorts-pants-detail.jpg`
 - `assets/images/training-sets-detail.jpg`
@@ -77,6 +79,7 @@ This document explains what the project assets are for, so the website can be mo
 - `assets/images/accessories-caps-bags-detail.jpg`
 - `assets/images/accessories-retail-packaging-detail.jpg`
 - `assets/images/accessories-packaging-system.jpg`
+- `assets/images/accessories-brand-packaging-flatlay.jpg`
 - `assets/images/accessories-packaging.jpg`
 - `assets/images/global-packaging-shipment.jpg`
 - `assets/images/packing-shipment.jpg`
@@ -85,6 +88,7 @@ This document explains what the project assets are for, so the website can be mo
 
 - `assets/images/custom-design-studio.jpg`
 - `assets/images/odm-design-development.jpg`
+- `assets/images/production-process-sample-room.jpg`
 - `assets/images/fabric-lab.jpg`
 - `assets/images/performance-fabric-trims.jpg`
 - `assets/images/quality-control.jpg`

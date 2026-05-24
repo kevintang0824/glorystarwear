@@ -150,7 +150,11 @@
       <image:loc>https://www.glorystarwears.com/assets/images/athleisure-hoodie-jogger-system.jpg</image:loc>
       <image:title>Private label athleisure collection</image:title>
     </image:image>
-    <lastmod>2026-05-22</lastmod>
+    <image:image>
+      <image:loc>https://www.glorystarwears.com/assets/images/athleisure-retail-drop-flatlay.jpg</image:loc>
+      <image:title>Private label athleisure retail drop planning</image:title>
+    </image:image>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -190,7 +194,11 @@
       <image:loc>https://www.glorystarwears.com/assets/images/sports-accessories-packaging-range.jpg</image:loc>
       <image:title>Custom sports accessories and packaging</image:title>
     </image:image>
-    <lastmod>2026-05-22</lastmod>
+    <image:image>
+      <image:loc>https://www.glorystarwears.com/assets/images/accessories-brand-packaging-flatlay.jpg</image:loc>
+      <image:title>Custom sports accessories brand packaging system</image:title>
+    </image:image>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -296,7 +304,11 @@
       <image:loc>https://www.glorystarwears.com/assets/images/quality-inspection-workflow.jpg</image:loc>
       <image:title>Custom sportswear production process and quality checks</image:title>
     </image:image>
-    <lastmod>2026-05-22</lastmod>
+    <image:image>
+      <image:loc>https://www.glorystarwears.com/assets/images/production-process-sample-room.jpg</image:loc>
+      <image:title>Custom sportswear production sample room workflow</image:title>
+    </image:image>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -306,7 +318,11 @@
       <image:loc>https://www.glorystarwears.com/assets/images/custom-sportswear-consultation.jpg</image:loc>
       <image:title>Custom sportswear buyer consultation and FAQ</image:title>
     </image:image>
-    <lastmod>2026-05-22</lastmod>
+    <image:image>
+      <image:loc>https://www.glorystarwears.com/assets/images/faq-buyer-consultation-desk.jpg</image:loc>
+      <image:title>Custom sportswear FAQ quote input checklist</image:title>
+    </image:image>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
