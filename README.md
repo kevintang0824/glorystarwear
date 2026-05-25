@@ -59,7 +59,7 @@ Keep these files and folders together in the GitHub repository:
 Current public-facing settings used across the site:
 
 - Brand name: `GloryStarWear`
-- Website domain: `https://www.glorystarwears.com/`
+- Website domain: `https://glorystarwears.com/`
 - GitHub Pages custom domain file: `CNAME`
 - Email: `kevin@glorystarwears.com`
 - Phone / WhatsApp: `+86 18020755949`
@@ -114,7 +114,7 @@ The site already includes:
 - `robots.txt`.
 - `sitemap.xml` with image sitemap entries.
 
-Before going live, verify that `https://www.glorystarwears.com/` is the final domain. If not, replace it everywhere.
+Before going live, verify that `https://glorystarwears.com/` is the final domain. If not, replace it everywhere.
 
 ## Maintenance Notes
 
@@ -128,3 +128,4 @@ See also:
 
 - `docs/GITHUB_UPLOAD_CHECKLIST.md`
 - `docs/ASSET_MANIFEST.md`
+- `docs/SEO_AEO_REVIEW.md`

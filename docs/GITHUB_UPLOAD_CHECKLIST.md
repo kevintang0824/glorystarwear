@@ -34,7 +34,7 @@ Do not include:
 Current production domain used inside SEO tags:
 
 ```text
-https://www.glorystarwears.com/
+https://glorystarwears.com/
 ```
 
 Before publishing, confirm this is the final domain. If the final domain is different, update:
