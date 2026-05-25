@@ -27,6 +27,8 @@ Primary business keywords now emphasized across the homepage, product catalog, a
 - `sitemap.xml` and `robots.txt` are present.
 - Product images use descriptive alt text for product and manufacturing intent.
 - FAQ and direct-answer sections support AEO and AI-answer extraction.
+- Homepage, product catalog, accessories, and more-sports meta descriptions have been shortened to keep search snippets cleaner.
+- Accessories and more-sports pages now include dedicated keyword sections for supplier, manufacturer, OEM, ODM, private label packaging, running wear, golf apparel, swimwear, and combat sports search intent.
 
 ## Recommended Next Additions
 
@@ -35,3 +37,4 @@ Primary business keywords now emphasized across the homepage, product catalog, a
 - Add downloadable quote checklist or inquiry form later if the site moves from static HTML to a form backend.
 - Add case-study pages after real orders are available, such as yoga brand launch, basketball team order, or football academy kit project.
 - Add Google Search Console and submit `https://glorystarwears.com/sitemap.xml` after GitHub Pages and HTTPS are fully active.
+- Add real customer proof later: factory videos, sample room images, size measurement photos, carton loading photos, fabric test photos, and case studies. These will improve buyer trust more than adding more repeated keywords.
