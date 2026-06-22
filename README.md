@@ -1,6 +1,6 @@
 # GloryStarWear Website
 
-Static multi-page website for GloryStarWear, a custom sportswear OEM/ODM supplier covering yoga wear, athleisure, training wear, basketball uniforms, football kits, accessories, packaging, and expanded sports categories.
+Static multi-page website for GloryStarWear, a custom sportswear OEM/ODM supplier covering yoga wear, athleisure, training wear, basketball uniforms, football kits, racket sports apparel, rugby teamwear, youth sportswear, dancewear, accessories, packaging, and expanded sports categories.
 
 ## Project Type
 
@@ -44,7 +44,7 @@ Keep these files and folders together in the GitHub repository:
 - `products/basketball-wear.html`: basketball uniforms, shorts, warm-up, fan products.
 - `products/football-kits.html`: football match kits, goalkeeper kits, training gear.
 - `products/accessories.html`: socks, caps, bags, packaging, labels, carton systems.
-- `products/more-sports.html`: running, tennis, cycling, volleyball, compression, outdoor, golf, baseball, swimwear, combat sports.
+- `products/more-sports.html`: running, tennis, pickleball, padel, cycling, volleyball, compression, outdoor, golf, baseball, rugby, field hockey, youth sportswear, dancewear, cheer apparel, swimwear, combat sports.
 - `customization.html`: OEM, ODM, logo, labels, trims, and packaging options.
 - `fabrics.html`: performance fabric and decoration information.
 - `one-stop-service.html`: packaging, labels, retail preparation, shipment.

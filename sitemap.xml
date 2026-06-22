@@ -126,7 +126,23 @@
       <image:loc>https://glorystarwears.com/assets/images/combat-sports-training-range.jpg</image:loc>
       <image:title>Custom combat sports apparel manufacturer</image:title>
     </image:image>
-    <lastmod>2026-05-22</lastmod>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/racket-sports-apparel-range.jpg</image:loc>
+      <image:title>Custom padel tennis and pickleball apparel manufacturer</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/rugby-hockey-teamwear-range.jpg</image:loc>
+      <image:title>Custom rugby and field hockey teamwear manufacturer</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/youth-sportswear-teamwear-range.jpg</image:loc>
+      <image:title>Custom kids and youth sportswear manufacturer</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/dance-cheer-training-apparel-range.jpg</image:loc>
+      <image:title>Custom dancewear and cheer apparel manufacturer</image:title>
+    </image:image>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -248,7 +264,23 @@
       <image:loc>https://glorystarwears.com/assets/images/combat-sports-training-range.jpg</image:loc>
       <image:title>Custom combat sports rash guards fight shorts and training apparel</image:title>
     </image:image>
-    <lastmod>2026-05-22</lastmod>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/racket-sports-apparel-range.jpg</image:loc>
+      <image:title>Custom padel tennis and pickleball apparel product range</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/rugby-hockey-teamwear-range.jpg</image:loc>
+      <image:title>Custom rugby and field hockey teamwear product range</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/youth-sportswear-teamwear-range.jpg</image:loc>
+      <image:title>Custom kids and youth sportswear teamwear product range</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/dance-cheer-training-apparel-range.jpg</image:loc>
+      <image:title>Custom dancewear and cheer apparel product range</image:title>
+    </image:image>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

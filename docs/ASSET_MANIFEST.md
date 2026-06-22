@@ -63,15 +63,19 @@ This document explains what the project assets are for, so the website can be mo
 - `assets/images/football-kits-collection.jpg`
 - `assets/images/baseball-softball-teamwear-range.jpg`
 - `assets/images/volleyball-teamwear-product-range.jpg`
+- `assets/images/rugby-hockey-teamwear-range.jpg`: rugby and field hockey teamwear category image.
+- `assets/images/youth-sportswear-teamwear-range.jpg`: kids, youth, school, and junior teamwear category image.
 
 ## More Sports Images
 
 - `assets/images/running-wear-product-range.jpg`
 - `assets/images/tennis-pickleball-apparel-range.jpg`
+- `assets/images/racket-sports-apparel-range.jpg`: padel, tennis, and pickleball apparel product range.
 - `assets/images/cycling-wear-product-range.jpg`
 - `assets/images/golf-apparel-product-range.jpg`
 - `assets/images/swimwear-water-sports-range.jpg`
 - `assets/images/combat-sports-training-range.jpg`
+- `assets/images/dance-cheer-training-apparel-range.jpg`: dancewear and cheer apparel product range.
 
 ## Accessories and Packaging Images
 

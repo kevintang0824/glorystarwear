@@ -1,6 +1,6 @@
 # GloryStarWear SEO and AEO Review
 
-Last updated: 2026-05-25
+Last updated: 2026-06-23
 
 ## Core Keyword Layout
 
@@ -16,6 +16,8 @@ Primary business keywords now emphasized across the homepage, product catalog, a
 - custom football kit manufacturer
 - custom teamwear supplier
 - custom running wear, golf apparel, swimwear, combat sports apparel
+- custom racket sports apparel, padel apparel, rugby teamwear, field hockey teamwear
+- kids and youth sportswear, school teamwear, dancewear, cheer apparel
 - sports accessories and private label packaging
 - one-stop sportswear production
 
@@ -28,7 +30,8 @@ Primary business keywords now emphasized across the homepage, product catalog, a
 - Product images use descriptive alt text for product and manufacturing intent.
 - FAQ and direct-answer sections support AEO and AI-answer extraction.
 - Homepage, product catalog, accessories, and more-sports meta descriptions have been shortened to keep search snippets cleaner.
-- Accessories and more-sports pages now include dedicated keyword sections for supplier, manufacturer, OEM, ODM, private label packaging, running wear, golf apparel, swimwear, and combat sports search intent.
+- Accessories and more-sports pages now include dedicated keyword sections for supplier, manufacturer, OEM, ODM, private label packaging, running wear, racket sports, golf apparel, rugby teamwear, youth sportswear, dancewear, swimwear, and combat sports search intent.
+- New product images for racket sports, rugby/field hockey, youth sportswear, and dance/cheer apparel are stored in `assets/images/` and listed in the image sitemap.
 
 ## Recommended Next Additions
 
