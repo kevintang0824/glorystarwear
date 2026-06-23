@@ -76,6 +76,10 @@ This document explains what the project assets are for, so the website can be mo
 - `assets/images/swimwear-water-sports-range.jpg`
 - `assets/images/combat-sports-training-range.jpg`
 - `assets/images/dance-cheer-training-apparel-range.jpg`: dancewear and cheer apparel product range.
+- `assets/images/trail-hiking-outdoor-apparel-range.jpg`: trail running, hiking, and outdoor apparel product range.
+- `assets/images/winter-sports-ski-apparel-range.jpg`: winter sports, ski, snowboard, and cold-weather training apparel product range.
+- `assets/images/triathlon-endurance-apparel-range.jpg`: triathlon, endurance, race, and compression apparel product range.
+- `assets/images/club-fan-merchandise-apparel-range.jpg`: club fan merchandise and sports lifestyle apparel product range.
 
 ## Accessories and Packaging Images
 
