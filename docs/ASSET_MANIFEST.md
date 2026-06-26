@@ -22,6 +22,13 @@ This document explains what the project assets are for, so the website can be mo
 
 ## Main Product Category Images
 
+- `assets/images/yoga-private-label-activewear-card.jpg`: refreshed homepage and catalog card for yoga wear.
+- `assets/images/athleisure-retail-drop-card.jpg`: refreshed homepage and catalog card for athleisure.
+- `assets/images/training-wear-performance-card.jpg`: refreshed homepage and catalog card for training wear.
+- `assets/images/basketball-teamwear-card.jpg`: refreshed homepage and catalog card for basketball teamwear.
+- `assets/images/football-kit-club-package-card.jpg`: refreshed homepage and catalog card for football kits.
+- `assets/images/accessories-packaging-system-card.jpg`: refreshed homepage and catalog card for accessories and packaging.
+- `assets/images/more-sports-apparel-range-card.jpg`: refreshed homepage card for expanded sports categories.
 - `assets/images/yoga-leggings-sports-bra-range.jpg`: yoga wear category.
 - `assets/images/athleisure-hoodie-jogger-system.jpg`: athleisure category.
 - `assets/images/training-wear-product-range.jpg`: training wear category.
