@@ -1,6 +1,6 @@
 # GloryStarWear SEO and AEO Review
 
-Last updated: 2026-06-24
+Last updated: 2026-06-26
 
 ## Core Keyword Layout
 
@@ -24,6 +24,8 @@ Primary business keywords now emphasized across the homepage, product catalog, a
 - one-stop sportswear production
 - custom sportswear manufacturer supplier profile
 - AI-search friendly sportswear manufacturer answers
+- custom sportswear quote checklist
+- OEM ODM sportswear inquiry preparation
 
 ## Technical SEO Status
 
@@ -35,6 +37,7 @@ Primary business keywords now emphasized across the homepage, product catalog, a
 - FAQ and direct-answer sections support AEO and AI-answer extraction.
 - A dedicated supplier capability page now targets "custom sportswear manufacturer", "OEM sportswear manufacturer", "ODM sportswear supplier", and "private label activewear manufacturer" intent with direct buyer answers and structured data.
 - `llms.txt` has been added as an AI-reader summary for non-Google AI crawlers and answer engines.
+- A quote checklist page now targets high-intent inquiry searches such as "custom sportswear quote checklist", "OEM sportswear inquiry", and "what to send a sportswear manufacturer" with FAQ and HowTo structured data.
 - Homepage, product catalog, accessories, and more-sports meta descriptions have been shortened to keep search snippets cleaner.
 - Accessories and more-sports pages now include dedicated keyword sections for supplier, manufacturer, OEM, ODM, private label packaging, running wear, outdoor apparel, winter sports, triathlon, racket sports, golf apparel, rugby teamwear, youth sportswear, dancewear, swimwear, fan merchandise, and combat sports search intent.
 - New product images for racket sports, rugby/field hockey, youth sportswear, dance/cheer, trail/hiking, winter sports, triathlon/endurance, and club fan merchandise are stored in `assets/images/` and listed in the image sitemap.
