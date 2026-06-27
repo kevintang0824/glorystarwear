@@ -51,9 +51,12 @@ This document explains what the project assets are for, so the website can be mo
 
 - `assets/images/athleisure-training-capsule-detail.jpg`
 - `assets/images/athleisure-retail-drop-flatlay.jpg`
+- `assets/images/athleisure-tees-jackets-detail.jpg`: athleisure tees, windbreakers, light jackets, trims, and retail packaging.
 - `assets/images/training-tops-detail.jpg`
 - `assets/images/training-shorts-pants-detail.jpg`
 - `assets/images/training-sets-detail.jpg`
+- `assets/images/training-compression-layers-detail.jpg`: training compression tops, tights, sleeves, mesh panels, and logo placement.
+- `assets/images/training-warmup-layers-detail.jpg`: training warm-up jackets, quarter zips, windbreakers, track pants, trims, and hangtags.
 - `assets/images/compression-base-layer-range.jpg`
 - `assets/images/outdoor-training-outerwear-range.jpg`
 - `assets/images/athleisure-collection.jpg`
@@ -64,9 +67,13 @@ This document explains what the project assets are for, so the website can be mo
 
 - `assets/images/basketball-teamwear-detail-range.jpg`
 - `assets/images/basketball-shorts-sets-detail.jpg`
+- `assets/images/basketball-warmup-apparel-detail.jpg`: basketball shooting shirts, warm-up jackets, reversible vests, socks, trims, and team packing.
+- `assets/images/basketball-practice-fan-gear-detail.jpg`: basketball practice vests, fan hoodies, socks, caps, patches, and club merchandise.
 - `assets/images/basketball-uniforms.jpg`
 - `assets/images/football-club-kit-system-detail.jpg`
+- `assets/images/football-shorts-socks-detail.jpg`: football shorts, socks, compression undershorts, waistbands, mesh panels, and team packing.
 - `assets/images/football-training-apparel-detail.jpg`
+- `assets/images/football-goalkeeper-club-addons-detail.jpg`: football goalkeeper kits, training bibs, fan merchandise, academy add-ons, patches, and packaging.
 - `assets/images/football-kits-collection.jpg`
 - `assets/images/baseball-softball-teamwear-range.jpg`
 - `assets/images/volleyball-teamwear-product-range.jpg`
@@ -93,6 +100,8 @@ This document explains what the project assets are for, so the website can be mo
 - `assets/images/accessories-socks-soft-goods-detail.jpg`
 - `assets/images/accessories-caps-bags-detail.jpg`
 - `assets/images/accessories-retail-packaging-detail.jpg`
+- `assets/images/accessories-bundles-detail.jpg`: sports accessory bundles with socks, caps, bags, towels, sleeves, wristbands, labels, and team packing.
+- `assets/images/wholesale-packing-sku-sorting-detail.jpg`: wholesale packing station, folded apparel, polybags, size stickers, SKU sorting, labels, cartons, and boxes.
 - `assets/images/accessories-packaging-system.jpg`
 - `assets/images/accessories-brand-packaging-flatlay.jpg`
 - `assets/images/accessories-packaging.jpg`

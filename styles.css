@@ -1246,6 +1246,12 @@ h3 {
   gap: 18px;
 }
 
+@supports selector(:has(*)) {
+  .sku-grid:has(> .sku-card:nth-child(4):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .sku-card {
   overflow: hidden;
   scroll-margin-top: 96px;
@@ -1253,13 +1259,29 @@ h3 {
   border-radius: 8px;
   background: var(--white);
   box-shadow: 0 14px 44px rgba(18, 53, 47, 0.08);
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    border-color 160ms ease;
+}
+
+.sku-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(31, 138, 112, 0.32);
+  box-shadow: 0 24px 62px rgba(18, 53, 47, 0.14);
 }
 
 .sku-card img {
   width: 100%;
-  height: clamp(220px, 24vw, 300px);
-  aspect-ratio: 4 / 3;
+  height: auto;
+  aspect-ratio: 16 / 10;
   object-fit: cover;
+  object-position: center;
+  transition: transform 220ms ease;
+}
+
+.sku-card:hover img {
+  transform: scale(1.025);
 }
 
 .sku-card div {
@@ -1455,6 +1477,12 @@ h3 {
   .lookbook,
   .faq-list {
     grid-template-columns: 1fr;
+  }
+
+  @supports selector(:has(*)) {
+    .sku-grid:has(> .sku-card:nth-child(4):last-child) {
+      grid-template-columns: 1fr;
+    }
   }
 
   .stats-band div {
