@@ -2,6 +2,8 @@
 
 This document explains what the project assets are for, so the website can be moved to GitHub without losing context.
 
+Responsive derivatives with `-900.jpg` and `-1200.jpg` suffixes are performance assets generated from the matching original JPG. They are used by `srcset` so mobile and card layouts can load smaller images while desktop hero areas can keep the full-size originals.
+
 ## Logo Assets
 
 - `assets/logo-mark.svg`: compact GS logo mark used in the header and favicon.

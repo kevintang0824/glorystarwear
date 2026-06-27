@@ -63,8 +63,12 @@ form?.addEventListener("submit", (event) => {
   window.location.href = `mailto:kevin@glorystarwears.com?subject=${subject}&body=${body}`;
 });
 
-window.addEventListener("load", () => {
-  if (window.lucide) {
-    window.lucide.createIcons();
-  }
-});
+const renderIcons = () => {
+  window.lucide?.createIcons();
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", renderIcons, { once: true });
+} else {
+  renderIcons();
+}
