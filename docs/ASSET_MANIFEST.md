@@ -24,6 +24,16 @@ Responsive derivatives with `-900.jpg` and `-1200.jpg` suffixes are performance 
 
 ## Main Product Category Images
 
+- `assets/images/new-yoga-activewear-capsule.jpg`: new private label yoga and activewear capsule with leggings, sports bras, biker shorts, trims, labels, and hangtags.
+- `assets/images/new-training-wear-capsule.jpg`: new gym and training wear capsule with tees, tanks, shorts, joggers, quarter zips, fabric swatches, and trims.
+- `assets/images/new-teamwear-development-capsule.jpg`: new basketball and football teamwear development capsule with jerseys, shorts, socks, patches, and packing references.
+- `assets/images/new-accessories-packaging-capsule.jpg`: new sports accessories and packaging capsule with socks, caps, bags, towels, boxes, polybags, labels, and hangtags.
+- `assets/images/product-board-yoga-seamless-activewear.jpg`: private label yoga wear product board with leggings, sports bras, rib tops, biker shorts, fabric swatches, labels, and hangtags.
+- `assets/images/product-board-training-performance-wear.jpg`: gym and training wear product board with tees, tanks, compression tops, shorts, joggers, quarter zips, mesh panels, and trims.
+- `assets/images/product-board-basketball-uniforms.jpg`: basketball uniform product board with jerseys, shorts, reversible practice vest, shooting shirt, socks, number patches, roster cards, and packing references.
+- `assets/images/product-board-football-kits.jpg`: football kit product board with match jerseys, shorts, socks, goalkeeper top, training jacket, patches, number sheets, and team packing.
+- `assets/images/product-board-multi-sport-apparel.jpg`: multi-sport apparel product board for running, racket sports, golf, cycling, outdoor training, caps, socks, trims, and fabric swatches.
+- `assets/images/product-board-accessories-packaging.jpg`: sports accessories and packaging product board with socks, caps, gym bag, sleeves, towel, labels, hangtags, size stickers, polybags, boxes, and carton planning.
 - `assets/images/yoga-private-label-activewear-card.jpg`: refreshed homepage and catalog card for yoga wear.
 - `assets/images/athleisure-retail-drop-card.jpg`: refreshed homepage and catalog card for athleisure.
 - `assets/images/training-wear-performance-card.jpg`: refreshed homepage and catalog card for training wear.
