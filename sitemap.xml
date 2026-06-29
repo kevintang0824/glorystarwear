@@ -189,6 +189,86 @@
     <priority>0.88</priority>
   </url>
   <url>
+    <loc>https://glorystarwears.com/about-factory.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/production-process-sample-room.jpg</image:loc>
+      <image:title>Sportswear factory profile and sample room verification</image:title>
+    </image:image>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.87</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/certificates.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/performance-fabric-swatch-lab.jpg</image:loc>
+      <image:title>Sportswear certificates compliance and fabric document checklist</image:title>
+    </image:image>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.84</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/case-studies.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/teamwear-custom-showroom.jpg</image:loc>
+      <image:title>Custom sportswear project examples and buyer case studies</image:title>
+    </image:image>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.84</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/factory-video.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/quality-inspection-workflow.jpg</image:loc>
+      <image:title>Sportswear factory video and media verification checklist</image:title>
+    </image:image>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.82</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/resources/</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/faq-buyer-consultation-desk.jpg</image:loc>
+      <image:title>Custom sportswear buyer resources and guides</image:title>
+    </image:image>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.82</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/resources/oem-vs-odm-sportswear.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/custom-design-studio.jpg</image:loc>
+      <image:title>OEM vs ODM sportswear manufacturing guide</image:title>
+    </image:image>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/resources/private-label-activewear-moq.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/product-board-yoga-seamless-activewear.jpg</image:loc>
+      <image:title>Private label activewear MOQ guide</image:title>
+    </image:image>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/resources/custom-sportswear-tech-pack.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/custom-sportswear-consultation.jpg</image:loc>
+      <image:title>Custom sportswear tech pack checklist</image:title>
+    </image:image>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
     <loc>https://glorystarwears.com/quote-checklist.html</loc>
     <image:image>
       <image:loc>https://glorystarwears.com/assets/images/custom-sportswear-consultation.jpg</image:loc>
@@ -209,12 +289,6 @@
     <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://glorystarwears.com/#products</loc>
-    <lastmod>2026-06-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://glorystarwears.com/products/</loc>
@@ -649,12 +723,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://glorystarwears.com/#custom</loc>
-    <lastmod>2026-05-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://glorystarwears.com/customization.html</loc>
     <image:image>
       <image:loc>https://glorystarwears.com/assets/images/private-label-trims-customization.jpg</image:loc>
@@ -731,23 +799,5 @@
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://glorystarwears.com/#fabrics</loc>
-    <lastmod>2026-05-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://glorystarwears.com/#quality</loc>
-    <lastmod>2026-05-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://glorystarwears.com/#faq</loc>
-    <lastmod>2026-05-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
   </url>
 </urlset>

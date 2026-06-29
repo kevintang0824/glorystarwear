@@ -1222,7 +1222,7 @@ h3 {
   align-items: center;
   justify-content: flex-end;
   gap: 20px;
-  max-width: 780px;
+  max-width: 960px;
   color: var(--white);
   font-weight: 800;
 }
@@ -1669,7 +1669,22 @@ h3 {
   }
 
   .floating-contact {
-    right: 12px;
-    bottom: 12px;
+    right: 10px;
+    bottom: 10px;
+    gap: 8px;
+  }
+
+  .floating-contact a {
+    width: 44px;
+    height: 44px;
+  }
+
+  .floating-contact svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .site-footer {
+    padding-bottom: 96px;
   }
 }
