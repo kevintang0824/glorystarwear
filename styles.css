@@ -794,6 +794,23 @@ h3 {
   line-height: 1.58;
 }
 
+.resource-grid a {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 14px;
+  color: var(--forest);
+  font-weight: 900;
+  line-height: 1.35;
+  text-decoration: underline;
+  text-decoration-color: rgba(36, 146, 118, 0.32);
+  text-underline-offset: 4px;
+}
+
+.resource-grid a:hover {
+  color: var(--green);
+  text-decoration-color: currentColor;
+}
+
 .quality-section {
   display: grid;
   grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
@@ -1050,6 +1067,10 @@ h3 {
   gap: 18px;
 }
 
+.resource-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .answer-grid article {
   padding: 26px;
   border-top: 4px solid var(--green);
@@ -1197,8 +1218,11 @@ h3 {
 
 .footer-links {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: flex-end;
   gap: 20px;
+  max-width: 780px;
   color: var(--white);
   font-weight: 800;
 }

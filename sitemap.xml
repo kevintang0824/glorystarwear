@@ -126,7 +126,7 @@
       <image:loc>https://glorystarwears.com/assets/images/combat-sports-training-range.jpg</image:loc>
       <image:title>Custom combat sports and martial arts apparel range</image:title>
     </image:image>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-06-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -148,9 +148,45 @@
       <image:loc>https://glorystarwears.com/assets/images/retail-packaging-shipment.jpg</image:loc>
       <image:title>Private label sportswear packaging and shipment support</image:title>
     </image:image>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-06-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/private-label-activewear-manufacturer.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/product-board-yoga-seamless-activewear.jpg</image:loc>
+      <image:title>Private label activewear manufacturer product board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/product-board-training-performance-wear.jpg</image:loc>
+      <image:title>Custom gym wear and training wear manufacturer product board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/athleisure-retail-drop-card.jpg</image:loc>
+      <image:title>Private label athleisure manufacturer retail drop</image:title>
+    </image:image>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.88</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/custom-teamwear-uniforms.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/product-board-football-kits.jpg</image:loc>
+      <image:title>Custom football kit manufacturer product board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/product-board-basketball-uniforms.jpg</image:loc>
+      <image:title>Custom basketball uniform manufacturer product board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/rugby-hockey-teamwear-range.jpg</image:loc>
+      <image:title>Custom rugby and field hockey teamwear manufacturer range</image:title>
+    </image:image>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.88</priority>
   </url>
   <url>
     <loc>https://glorystarwears.com/quote-checklist.html</loc>
