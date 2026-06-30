@@ -361,12 +361,28 @@
       <image:title>Custom running wear manufacturer</image:title>
     </image:image>
     <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/running-wear-oem-detail.jpg</image:loc>
+      <image:title>Custom running wear OEM product detail board</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://glorystarwears.com/assets/images/tennis-pickleball-apparel-range.jpg</image:loc>
       <image:title>Custom tennis and pickleball apparel manufacturer</image:title>
     </image:image>
     <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/cycling-wear-oem-detail.jpg</image:loc>
+      <image:title>Custom cycling jerseys bib shorts and club kit product detail board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/volleyball-teamwear-oem-detail.jpg</image:loc>
+      <image:title>Custom volleyball uniforms and school teamwear product detail board</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://glorystarwears.com/assets/images/golf-apparel-product-range.jpg</image:loc>
       <image:title>Custom golf apparel manufacturer</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/golf-apparel-oem-detail.jpg</image:loc>
+      <image:title>Custom golf apparel OEM product detail board</image:title>
     </image:image>
     <image:image>
       <image:loc>https://glorystarwears.com/assets/images/baseball-softball-teamwear-range.jpg</image:loc>
@@ -377,8 +393,16 @@
       <image:title>Custom swimwear and water sports apparel manufacturer</image:title>
     </image:image>
     <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/swimwear-water-sports-oem-detail.jpg</image:loc>
+      <image:title>Custom swimwear and water sports OEM product detail board</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://glorystarwears.com/assets/images/combat-sports-training-range.jpg</image:loc>
       <image:title>Custom combat sports apparel manufacturer</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/combat-sports-oem-detail.jpg</image:loc>
+      <image:title>Custom combat sports apparel OEM product detail board</image:title>
     </image:image>
     <image:image>
       <image:loc>https://glorystarwears.com/assets/images/racket-sports-apparel-range.jpg</image:loc>
@@ -412,7 +436,7 @@
       <image:loc>https://glorystarwears.com/assets/images/club-fan-merchandise-apparel-range.jpg</image:loc>
       <image:title>Custom club fan merchandise apparel supplier</image:title>
     </image:image>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -651,6 +675,10 @@
       <image:title>Custom running wear OEM ODM product range</image:title>
     </image:image>
     <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/running-wear-oem-detail.jpg</image:loc>
+      <image:title>Custom running wear race singlets shorts tights and packaging detail</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://glorystarwears.com/assets/images/tennis-pickleball-apparel-range.jpg</image:loc>
       <image:title>Custom tennis and pickleball apparel</image:title>
     </image:image>
@@ -659,8 +687,16 @@
       <image:title>Custom cycling jerseys bib shorts and wind vests</image:title>
     </image:image>
     <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/cycling-wear-oem-detail.jpg</image:loc>
+      <image:title>Custom cycling wear jerseys bib shorts sleeves chamois and gripper detail</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://glorystarwears.com/assets/images/volleyball-teamwear-product-range.jpg</image:loc>
       <image:title>Custom volleyball uniforms and teamwear</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/volleyball-teamwear-oem-detail.jpg</image:loc>
+      <image:title>Custom volleyball uniforms libero kits spandex shorts knee pads and team packing detail</image:title>
     </image:image>
     <image:image>
       <image:loc>https://glorystarwears.com/assets/images/compression-base-layer-range.jpg</image:loc>
@@ -675,6 +711,10 @@
       <image:title>Custom golf apparel polos skorts and quarter zips</image:title>
     </image:image>
     <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/golf-apparel-oem-detail.jpg</image:loc>
+      <image:title>Custom golf apparel polos skorts shorts visors gloves and packaging detail</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://glorystarwears.com/assets/images/baseball-softball-teamwear-range.jpg</image:loc>
       <image:title>Custom baseball and softball uniforms</image:title>
     </image:image>
@@ -683,8 +723,16 @@
       <image:title>Custom swimwear rash guards and water sports apparel</image:title>
     </image:image>
     <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/swimwear-water-sports-oem-detail.jpg</image:loc>
+      <image:title>Custom swimwear rash guards trunks bikinis towels and pouch packaging detail</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://glorystarwears.com/assets/images/combat-sports-training-range.jpg</image:loc>
       <image:title>Custom combat sports rash guards fight shorts and training apparel</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/combat-sports-oem-detail.jpg</image:loc>
+      <image:title>Custom combat sports rash guards fight shorts compression and gym color detail</image:title>
     </image:image>
     <image:image>
       <image:loc>https://glorystarwears.com/assets/images/racket-sports-apparel-range.jpg</image:loc>
@@ -718,9 +766,117 @@
       <image:loc>https://glorystarwears.com/assets/images/club-fan-merchandise-apparel-range.jpg</image:loc>
       <image:title>Custom club fan merchandise and sports lifestyle apparel product range</image:title>
     </image:image>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/running-wear.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/running-wear-oem-detail.jpg</image:loc>
+      <image:title>Custom running wear OEM product detail board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/running-wear-product-range.jpg</image:loc>
+      <image:title>Custom running wear race singlets tees shorts tights and jackets</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/compression-base-layer-range.jpg</image:loc>
+      <image:title>Compression base layers for running clubs and race apparel</image:title>
+    </image:image>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/cycling-wear.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/cycling-wear-oem-detail.jpg</image:loc>
+      <image:title>Custom cycling wear OEM product detail board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/cycling-wear-product-range.jpg</image:loc>
+      <image:title>Custom cycling jerseys bib shorts wind vests sleeves and club kits</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/performance-fabric-swatch-lab.jpg</image:loc>
+      <image:title>Performance mesh and stretch fabrics for cycling apparel</image:title>
+    </image:image>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/volleyball-teamwear.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/volleyball-teamwear-oem-detail.jpg</image:loc>
+      <image:title>Custom volleyball uniforms OEM product detail board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/volleyball-teamwear-product-range.jpg</image:loc>
+      <image:title>Volleyball jerseys spandex shorts knee pads warmups and roster packs</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/teamwear-custom-showroom.jpg</image:loc>
+      <image:title>Custom teamwear showroom for volleyball clubs schools and leagues</image:title>
+    </image:image>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/golf-apparel.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/golf-apparel-oem-detail.jpg</image:loc>
+      <image:title>Custom golf apparel OEM product detail board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/golf-apparel-product-range.jpg</image:loc>
+      <image:title>Golf polos skorts shorts quarter zips visors gloves and resort retail packaging</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/performance-fabric-swatch-lab.jpg</image:loc>
+      <image:title>Stretch pique cooling jersey and UV fabrics for golf apparel</image:title>
+    </image:image>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/swimwear-water-sports.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/swimwear-water-sports-oem-detail.jpg</image:loc>
+      <image:title>Custom swimwear and water sports OEM product detail board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/swimwear-water-sports-range.jpg</image:loc>
+      <image:title>Swimsuits rash guards swim trunks board shorts towels and pouches</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/accessories-retail-packaging-detail.jpg</image:loc>
+      <image:title>Retail packaging labels hangtags and pouches for swimwear</image:title>
+    </image:image>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/combat-sports-apparel.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/combat-sports-oem-detail.jpg</image:loc>
+      <image:title>Custom combat sports apparel OEM product detail board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/combat-sports-training-range.jpg</image:loc>
+      <image:title>Combat sports rash guards fight shorts compression shorts and MMA apparel</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/compression-base-layer-range.jpg</image:loc>
+      <image:title>Compression base layers for combat sports gyms and training programs</image:title>
+    </image:image>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
   </url>
   <url>
     <loc>https://glorystarwears.com/products/racket-sports-apparel.html</loc>
