@@ -412,7 +412,7 @@
       <image:loc>https://glorystarwears.com/assets/images/club-fan-merchandise-apparel-range.jpg</image:loc>
       <image:title>Custom club fan merchandise apparel supplier</image:title>
     </image:image>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-06-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -718,9 +718,81 @@
       <image:loc>https://glorystarwears.com/assets/images/club-fan-merchandise-apparel-range.jpg</image:loc>
       <image:title>Custom club fan merchandise and sports lifestyle apparel product range</image:title>
     </image:image>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-06-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/racket-sports-apparel.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/racket-sports-apparel-range.jpg</image:loc>
+      <image:title>Custom padel tennis and pickleball apparel product board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/tennis-pickleball-apparel-range.jpg</image:loc>
+      <image:title>Custom tennis pickleball polos skorts dresses and visors</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/performance-fabric-swatch-lab.jpg</image:loc>
+      <image:title>Cooling UV stretch fabrics for racket sports apparel</image:title>
+    </image:image>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/rugby-hockey-teamwear.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/rugby-hockey-teamwear-range.jpg</image:loc>
+      <image:title>Custom rugby and field hockey teamwear product board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/football-training-apparel-detail.jpg</image:loc>
+      <image:title>Club training wear warm-up jackets and team apparel</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/teamwear-custom-showroom.jpg</image:loc>
+      <image:title>Custom teamwear showroom with uniforms and club color systems</image:title>
+    </image:image>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/youth-sportswear.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/youth-sportswear-teamwear-range.jpg</image:loc>
+      <image:title>Custom kids and youth sportswear product board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/product-board-basketball-uniforms.jpg</image:loc>
+      <image:title>Youth basketball jerseys shorts warm-up apparel and team packing</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/product-board-football-kits.jpg</image:loc>
+      <image:title>Youth football kits jerseys shorts socks and club labels</image:title>
+    </image:image>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/dancewear-cheer.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/dance-cheer-training-apparel-range.jpg</image:loc>
+      <image:title>Custom dancewear and cheer apparel product board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/yoga-sports-bras-detail.jpg</image:loc>
+      <image:title>Custom crop tops sports bras and support pieces for dance training</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/athleisure-training-capsule-detail.jpg</image:loc>
+      <image:title>Warm-up jackets joggers and studio merchandise for dance apparel</image:title>
+    </image:image>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
   </url>
   <url>
     <loc>https://glorystarwears.com/customization.html</loc>
