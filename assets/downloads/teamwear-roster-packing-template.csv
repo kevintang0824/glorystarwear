@@ -1,0 +1,2 @@
+record_id,team,squad,player_id,display_name,player_number,role,style_code,garment,size,colorway,quantity,artwork_version,proof_status,pack_id,pack_group,carton_group,destination,row_status,change_note
+DELETE-EXAMPLE,Example Club,First Team,P001,SAMPLE NAME,00,Player,JERSEY-01,Match Jersey,M,Home,1,ART-V1,Pending,PACK-P001,Player Pack,TEAM-A,Main Club,Working,Delete this example row before use

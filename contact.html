@@ -16,19 +16,52 @@
     <link rel="icon" type="image/svg+xml" href="./assets/logo-mark.svg" />
 
     <title>Contact GloryStarWear | Custom Sportswear Quote</title>
-    <link rel="stylesheet" href="./styles.css?v=20260629-3" />
-    <script src="./assets/vendor/lucide.min.js?v=20260627-2" defer></script>
-    <script src="./script.js?v=20260627-2" defer></script>
+    <link rel="stylesheet" href="./styles.css?v=20260714-4" />
+    <script src="./assets/vendor/lucide.min.js?v=20260714-4" defer></script>
+    <script src="./script.js?v=20260714-4" defer></script>
   </head>
   <body class="product-page">
     <header class="site-header" data-header><a class="brand" href="./index.html#top"><span class="brand-mark">GS</span><span>GloryStarWear</span></a><nav class="desktop-nav"><div class="nav-dropdown"><a class="nav-trigger" href="./products/index.html">Products <i data-lucide="chevron-down"></i></a><div class="nav-menu"><a href="./products/index.html">All Products</a><a href="./products/new-products.html">New Products</a><a href="./products/lookbook.html">Product Gallery</a><a href="./products/yoga-wear.html">Yoga Wear</a><a href="./products/athleisure.html">Athleisure</a><a href="./products/training-wear.html">Training Wear</a><a href="./products/basketball-wear.html">Basketball Wear</a><a href="./products/football-kits.html">Football Kits</a><a href="./products/accessories.html">Accessories & Packaging</a>
-            <a href="./products/more-sports.html">More Sports</a></div></div><a href="./customization.html">Customization</a><a href="./fabrics.html">Fabrics</a><a href="./one-stop-service.html">One-Stop Service</a><a href="./quality.html">Quality</a><a href="./process.html">Process</a><a href="./contact.html">Contact</a></nav><a class="header-cta" href="mailto:kevin@glorystarwears.com"><i data-lucide="mail"></i>Get Quote</a><button class="menu-toggle" type="button" aria-label="Open menu" data-menu-toggle><i data-lucide="menu"></i></button></header>
+            <a href="./products/more-sports.html">More Sports</a></div></div><a href="./customization.html">Customization</a><a href="./fabrics.html">Fabrics</a><a href="./one-stop-service.html">One-Stop Service</a><a href="./quality.html">Quality</a><a href="./process.html">Process</a><a href="./contact.html">Contact</a></nav><a class="header-cta" href="#quote-form"><i data-lucide="mail"></i>Get Quote</a><button class="menu-toggle" type="button" aria-label="Open menu" data-menu-toggle><i data-lucide="menu"></i></button></header>
     <nav class="mobile-nav" data-mobile-nav><a href="./products/index.html">Products</a><a href="./products/new-products.html">New Products</a><a href="./products/lookbook.html">Product Gallery</a><a href="./customization.html">Customization</a><a href="./fabrics.html">Fabrics</a><a href="./one-stop-service.html">One-Stop Service</a><a href="./quality.html">Quality</a><a href="./process.html">Process</a><a href="./faq.html">FAQ</a><a href="./contact.html">Contact</a></nav>
     <main>
       <section class="product-hero"><img src="./assets/images/custom-sportswear-consultation.jpg" srcset="./assets/images/custom-sportswear-consultation-900.jpg 900w, ./assets/images/custom-sportswear-consultation-1200.jpg 1200w, ./assets/images/custom-sportswear-consultation.jpg 1672w" sizes="100vw" alt="Contact GloryStarWear for custom sportswear consultation and quote" width="1672" height="941" fetchpriority="high" decoding="async"><div class="product-hero-content"><div class="breadcrumb"><a href="./index.html">Home</a><span>/</span><span>Contact</span></div><p class="eyebrow">Start a project</p><h1>Contact GloryStarWear</h1><p>Send your product idea, reference styles, logo files, quantity, target market, fabric direction, and packaging needs.</p></div></section>
       <section class="contact-section">
         <div class="contact-copy"><p class="eyebrow">Sales contact</p><h2>Tell us what you want to make</h2><p>We will help you choose the right route for flexible custom, full private-label production, or one-stop product-to-packaging service.</p><div class="contact-methods"><a href="tel:18020755949"><i data-lucide="phone"></i>18020755949</a><a href="https://wa.me/8618020755949" target="_blank" rel="noreferrer"><i data-lucide="message-circle"></i>WhatsApp: +86 18020755949</a><a href="mailto:kevin@glorystarwears.com"><i data-lucide="mail"></i>kevin@glorystarwears.com</a></div></div>
-        <form class="quote-form" data-quote-form><label>Name<input name="name" type="text" placeholder="Your name" required /></label><label>Email<input name="email" type="email" placeholder="you@brand.com" required /></label><label>WhatsApp or Phone<input name="phone" type="text" placeholder="+1 555 000 0000" /></label><label>Product Interest<select name="product" required><option value="">Select a category</option><option>Yoga wear</option><option>Athleisure</option><option>Training wear</option><option>Basketball wear</option><option>Football kits</option><option>Running wear</option><option>Tennis and pickleball apparel</option><option>Golf apparel</option><option>Baseball and softball teamwear</option><option>Swimwear and water sports</option><option>Combat sports apparel</option><option>Accessories</option><option>Packaging and one-stop service</option><option>Other custom sportswear</option></select></label><label>Estimated Quantity<input name="quantity" type="text" placeholder="Example: 100 pcs, 500 sets, sample first" /></label><label>Target Market<input name="market" type="text" placeholder="Example: USA gym brand, EU football club" /></label><label>Expected Timeline<input name="timeline" type="text" placeholder="Example: sample this month, bulk in 45 days" /></label><label>Project Details<textarea name="message" rows="5" placeholder="Quantity, logo, fabric, style references, packaging needs..." required></textarea></label><button class="button primary full" type="submit"><i data-lucide="mail-plus"></i>Email Inquiry</button><p class="form-note">Submitting opens your email app with the inquiry details.</p></form>
+        <form class="quote-form" id="quote-form" data-quote-form>
+          <div class="quote-form-heading"><span>Project brief</span><strong>Start with four essentials</strong></div>
+          <div class="inquiry-context" data-inquiry-context hidden>
+            <i data-lucide="corner-down-right" aria-hidden="true"></i>
+            <div>
+              <span>Continuing from</span>
+              <strong data-inquiry-context-title></strong>
+            </div>
+            <button type="button" aria-label="Remove inquiry context" title="Remove inquiry context" data-inquiry-context-clear>
+              <i data-lucide="x" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="quote-form-grid">
+            <label>Name<input name="name" type="text" placeholder="Your name" autocomplete="name" required /></label>
+            <label>Work Email<input name="email" type="email" placeholder="you@brand.com" autocomplete="email" inputmode="email" required /></label>
+          </div>
+          <label>Product Interest<select name="product" required><option value="">Select a category</option><option>Yoga wear</option><option>Athleisure</option><option>Training wear</option><option>Basketball wear</option><option>Football kits</option><option>Running wear</option><option>Tennis and pickleball apparel</option><option>Golf apparel</option><option>Baseball and softball teamwear</option><option>Swimwear and water sports</option><option>Combat sports apparel</option><option>Accessories</option><option>Packaging and one-stop service</option><option>Other custom sportswear</option></select></label>
+          <label>Project Details<textarea name="message" rows="5" placeholder="Quantity, logo, fabric, style references, packaging needs..." required></textarea></label>
+          <details class="quote-form-more">
+            <summary><span><i data-lucide="list-plus"></i>Add order details</span><small>Quantity, market, timing, and WhatsApp</small></summary>
+            <div class="quote-form-grid">
+              <label>WhatsApp or Phone<input name="phone" type="tel" placeholder="+1 555 000 0000" autocomplete="tel" inputmode="tel" /></label>
+              <label>Estimated Quantity<input name="quantity" type="text" placeholder="100 pcs, 500 sets, sample first" /></label>
+              <label>Target Market<input name="market" type="text" placeholder="USA gym brand, EU football club" /></label>
+              <label>Expected Timeline<input name="timeline" type="text" placeholder="Sample this month, bulk in 45 days" /></label>
+            </div>
+          </details>
+          <div class="quote-form-actions">
+            <button class="button primary" type="submit"><i data-lucide="mail-plus"></i>Email Inquiry</button>
+            <button class="button whatsapp" type="button" data-whatsapp-inquiry><i data-lucide="message-circle"></i>Send on WhatsApp</button>
+            <button class="button secondary" type="button" data-copy-inquiry><i data-lucide="copy"></i>Copy Project Brief</button>
+          </div>
+          <p class="form-note" data-form-note role="status" aria-live="polite">Choose email, WhatsApp, or copy the brief for another messaging app.</p>
+        </form>
       </section>
       <section class="section visual-proof-section">
         <div class="section-heading">

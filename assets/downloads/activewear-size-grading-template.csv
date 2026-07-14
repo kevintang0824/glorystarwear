@@ -1,0 +1,2 @@
+style_code,product,unit,base_size,size_range,pom_code,pom_name,measurement_method,base_value,grade_to_previous,grade_to_next,tolerance_minus,tolerance_plus,fit_intent,fabric_reference,pattern_revision,sample_revision,approval_status,comments
+DELETE-EXAMPLE,Leggings,cm,M,XS-3XL,POM-01,Half waist relaxed,Measure straight across the top waistband edge,,,,,,Describe intended compression and rise,Add approved fabric reference,Add pattern revision,Add sample revision,Working,Delete this example row before use

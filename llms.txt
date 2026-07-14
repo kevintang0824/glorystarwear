@@ -1,73 +1,59 @@
 # GloryStarWear
 
-> GloryStarWear is an OEM and ODM custom sportswear manufacturer for private label activewear, yoga wear, training wear, teamwear, sports accessories, branded packaging, and one-stop sportswear production.
+> GloryStarWear is a B2B custom sportswear supplier supporting OEM, ODM, private label activewear, teamwear, accessories, branded packaging, sampling, quality control, and shipment preparation.
 
-Website: https://glorystarwears.com/
-Primary contact: kevin@glorystarwears.com
+Canonical site: https://glorystarwears.com/
+Contact: kevin@glorystarwears.com
 Phone and WhatsApp: +86 18020755949
 
-## Core Pages
+## Primary Company Pages
 
-- Homepage: https://glorystarwears.com/
-- Supplier capabilities: https://glorystarwears.com/sportswear-manufacturer.html
-- Private label activewear manufacturer: https://glorystarwears.com/private-label-activewear-manufacturer.html
-- Custom teamwear uniform manufacturer: https://glorystarwears.com/custom-teamwear-uniforms.html
-- Factory profile: https://glorystarwears.com/about-factory.html
-- Certificates and compliance checklist: https://glorystarwears.com/certificates.html
+- Company and supplier capabilities: https://glorystarwears.com/sportswear-manufacturer.html
+- Factory profile and buyer verification: https://glorystarwears.com/about-factory.html
+- Certificates and document review: https://glorystarwears.com/certificates.html
 - Custom sportswear case studies: https://glorystarwears.com/case-studies.html
-- Factory video and media checklist: https://glorystarwears.com/factory-video.html
-- Buyer resources: https://glorystarwears.com/resources/
-- OEM vs ODM sportswear guide: https://glorystarwears.com/resources/oem-vs-odm-sportswear.html
-- Private label activewear MOQ guide: https://glorystarwears.com/resources/private-label-activewear-moq.html
-- Custom sportswear tech pack checklist: https://glorystarwears.com/resources/custom-sportswear-tech-pack.html
-- Quote checklist: https://glorystarwears.com/quote-checklist.html
-- Product catalog: https://glorystarwears.com/products/
-- New custom sportswear ideas: https://glorystarwears.com/products/new-products.html
-- Product gallery and lookbook: https://glorystarwears.com/products/lookbook.html
-- Custom running wear: https://glorystarwears.com/products/running-wear.html
-- Custom cycling wear: https://glorystarwears.com/products/cycling-wear.html
-- Custom volleyball uniforms: https://glorystarwears.com/products/volleyball-teamwear.html
-- Custom golf apparel: https://glorystarwears.com/products/golf-apparel.html
-- Custom swimwear and water sports apparel: https://glorystarwears.com/products/swimwear-water-sports.html
-- Custom combat sports apparel: https://glorystarwears.com/products/combat-sports-apparel.html
-- Custom racket sports apparel: https://glorystarwears.com/products/racket-sports-apparel.html
-- Custom rugby and field hockey teamwear: https://glorystarwears.com/products/rugby-hockey-teamwear.html
-- Custom kids and youth sportswear: https://glorystarwears.com/products/youth-sportswear.html
-- Custom dancewear and cheer apparel: https://glorystarwears.com/products/dancewear-cheer.html
-- Customization: https://glorystarwears.com/customization.html
-- Fabrics: https://glorystarwears.com/fabrics.html
-- One-stop service: https://glorystarwears.com/one-stop-service.html
-- Quality control: https://glorystarwears.com/quality.html
+- Factory media and verification checklist: https://glorystarwears.com/factory-video.html
 - Production process: https://glorystarwears.com/process.html
-- FAQ: https://glorystarwears.com/faq.html
+- Quality control: https://glorystarwears.com/quality.html
+- Customization methods: https://glorystarwears.com/customization.html
+- Fabrics and decoration: https://glorystarwears.com/fabrics.html
+- Packaging and order preparation: https://glorystarwears.com/one-stop-service.html
 - Contact and quote request: https://glorystarwears.com/contact.html
 
-## Product Categories
+## Buyer Guides
 
-- Private label yoga wear: leggings, sports bras, crop tops, biker shorts, seamless sets, ribbed sets, lounge layers, labels, hangtags, and packaging.
-- New product development: seasonal activewear capsules, gym wear refreshes, basketball and football teamwear programs, sports accessories, retail packaging, image-led product boards, and sample-ready OEM/ODM briefs.
-- Athleisure: hoodies, joggers, sweatshirts, fleece, French terry, lifestyle training layers, trims, and retail-ready brand systems.
-- Training wear: gym tees, tanks, shorts, compression tops, tracksuits, performance mesh, logo placement, labels, and private label trims.
-- Teamwear: basketball uniforms, football kits, volleyball uniforms, baseball uniforms, rugby teamwear, field hockey apparel, sponsor marks, player names, numbers, and roster packing.
-- More sports: custom running wear, custom cycling wear, volleyball uniforms, golf apparel, tennis and pickleball apparel, padel apparel, racket sports apparel, swimwear and water sports apparel, combat sports apparel, baseball uniforms, rugby and field hockey teamwear, kids and youth sportswear, dancewear, cheer apparel, trail and hiking apparel, winter sports apparel, triathlon apparel, and fan merchandise.
-- Accessories and packaging: socks, caps, bags, sleeves, towels, hangtags, woven labels, care labels, barcode stickers, polybags, boxes, cartons, SKU sorting, and shipment preparation.
+- Buyer resource center: https://glorystarwears.com/resources/
+- OEM vs ODM sportswear manufacturing: https://glorystarwears.com/resources/oem-vs-odm-sportswear.html
+- Private label activewear MOQ planning: https://glorystarwears.com/resources/private-label-activewear-moq.html
+- Custom sportswear tech pack checklist: https://glorystarwears.com/resources/custom-sportswear-tech-pack.html
+- Sportswear sample approval checklist: https://glorystarwears.com/resources/sportswear-sample-approval-checklist.html
+- Activewear size grading guide: https://glorystarwears.com/resources/activewear-size-grading-guide.html
+- Teamwear roster and packing guide: https://glorystarwears.com/resources/teamwear-roster-packing-guide.html
+- Quote preparation checklist: https://glorystarwears.com/quote-checklist.html
 
-## Buyer Questions GloryStarWear Answers
+## Product Scope
 
-- What products can a custom sportswear manufacturer produce?
-- How do I choose a private label activewear manufacturer?
-- Can a custom teamwear uniform manufacturer add names, numbers, sponsor logos, club crests, and roster packing?
-- What is the difference between OEM and ODM sportswear manufacturing?
-- What affects MOQ for private label activewear?
-- What should a custom sportswear tech pack include?
-- What factory, certificate, media, and case materials should a B2B buyer verify?
-- What information should a buyer send for a fast quote?
-- How should a buyer prepare a custom sportswear quote request?
-- Can GloryStarWear produce custom racket sports apparel, youth sportswear, dancewear, cheer apparel, rugby teamwear, and field hockey teamwear?
-- Can GloryStarWear produce custom running wear, cycling wear, volleyball uniforms, golf apparel, swimwear, and combat sports apparel?
-- How can sportswear be customized with logos, labels, fabric, fit, color, trims, and packaging?
-- How are private label sportswear orders sampled, inspected, packed, and prepared for shipment?
+- Complete product catalog: https://glorystarwears.com/products/
+- Private label activewear: https://glorystarwears.com/private-label-activewear-manufacturer.html
+- Custom teamwear uniforms: https://glorystarwears.com/custom-teamwear-uniforms.html
+- Yoga wear: https://glorystarwears.com/products/yoga-wear.html
+- Training and gym wear: https://glorystarwears.com/products/training-wear.html
+- Athleisure: https://glorystarwears.com/products/athleisure.html
+- Basketball apparel: https://glorystarwears.com/products/basketball-wear.html
+- Football kits: https://glorystarwears.com/products/football-kits.html
+- Running wear: https://glorystarwears.com/products/running-wear.html
+- Cycling wear: https://glorystarwears.com/products/cycling-wear.html
+- Golf apparel: https://glorystarwears.com/products/golf-apparel.html
+- Tennis and pickleball apparel: https://glorystarwears.com/products/tennis-pickleball-apparel.html
+- Swimwear and water sports: https://glorystarwears.com/products/swimwear-water-sports.html
+- Combat sports apparel: https://glorystarwears.com/products/combat-sports-apparel.html
+- Sports accessories and packaging: https://glorystarwears.com/products/accessories.html
+- Additional sports categories: https://glorystarwears.com/products/more-sports.html
 
-## Quote Inputs
+## Sourcing Notes
 
-For an accurate quote, send product reference images, logo files, target quantity, size range, target market, fabric direction, color direction, customization method, packaging requirements, delivery country, and expected timeline.
+- OEM projects normally begin with buyer-controlled specifications; ODM projects begin with a commercial brief and require more supplier development input.
+- MOQ is project-specific and may be set by style, fabric, color, decoration, label, packaging, or size breakdown. Request a component-level answer rather than assuming one site-wide number.
+- Buyers should verify current certificates, product relevance, factory evidence, sample scope, production details, and commercial terms directly before ordering.
+- No fixed MOQ, lead time, price, certification, or production claim should be inferred unless it appears on the relevant canonical page or is confirmed in a current quotation.
+- For a useful quote, provide product references or tech packs, total quantity and SKU split, target market, fabric and color direction, artwork, labels, packaging, delivery country, and expected timeline.

@@ -59,8 +59,16 @@
       <image:title>Custom basketball uniforms product board</image:title>
     </image:image>
     <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/basketball-jerseys-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom basketball jersey manufacturer product board</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://glorystarwears.com/assets/images/product-board-football-kits.jpg</image:loc>
       <image:title>Custom football kits product board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/football-jerseys-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom football jersey manufacturer product board</image:title>
     </image:image>
     <image:image>
       <image:loc>https://glorystarwears.com/assets/images/product-board-multi-sport-apparel.jpg</image:loc>
@@ -126,7 +134,19 @@
       <image:loc>https://glorystarwears.com/assets/images/combat-sports-training-range.jpg</image:loc>
       <image:title>Custom combat sports and martial arts apparel range</image:title>
     </image:image>
-    <lastmod>2026-06-29</lastmod>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/rugby-hockey-teamwear-range.jpg</image:loc>
+      <image:title>Custom lacrosse uniform product range</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/combat-sports-oem-detail.jpg</image:loc>
+      <image:title>Custom wrestling singlets and team apparel product board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/dance-cheer-training-apparel-range.jpg</image:loc>
+      <image:title>Custom gymnastics leotards and studio apparel range</image:title>
+    </image:image>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -166,7 +186,7 @@
       <image:loc>https://glorystarwears.com/assets/images/athleisure-retail-drop-card.jpg</image:loc>
       <image:title>Private label athleisure manufacturer retail drop</image:title>
     </image:image>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.88</priority>
   </url>
@@ -184,7 +204,11 @@
       <image:loc>https://glorystarwears.com/assets/images/rugby-hockey-teamwear-range.jpg</image:loc>
       <image:title>Custom rugby and field hockey teamwear manufacturer range</image:title>
     </image:image>
-    <lastmod>2026-06-29</lastmod>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/running-wear-product-range.jpg</image:loc>
+      <image:title>Custom track and field uniform manufacturer range</image:title>
+    </image:image>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.88</priority>
   </url>
@@ -234,7 +258,7 @@
       <image:loc>https://glorystarwears.com/assets/images/faq-buyer-consultation-desk.jpg</image:loc>
       <image:title>Custom sportswear buyer resources and guides</image:title>
     </image:image>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.82</priority>
   </url>
@@ -244,7 +268,7 @@
       <image:loc>https://glorystarwears.com/assets/images/custom-design-studio.jpg</image:loc>
       <image:title>OEM vs ODM sportswear manufacturing guide</image:title>
     </image:image>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
@@ -254,7 +278,7 @@
       <image:loc>https://glorystarwears.com/assets/images/product-board-yoga-seamless-activewear.jpg</image:loc>
       <image:title>Private label activewear MOQ guide</image:title>
     </image:image>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
@@ -264,9 +288,39 @@
       <image:loc>https://glorystarwears.com/assets/images/custom-sportswear-consultation.jpg</image:loc>
       <image:title>Custom sportswear tech pack checklist</image:title>
     </image:image>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/resources/sportswear-sample-approval-checklist.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/production-process-sample-room.jpg</image:loc>
+      <image:title>Sportswear sample approval with measurements materials artwork labels and packing references</image:title>
+    </image:image>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.79</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/resources/activewear-size-grading-guide.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/plus-size-activewear-product-board.jpg</image:loc>
+      <image:title>Activewear size grading with measurements fit blocks size sets labels and packing references</image:title>
+    </image:image>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.79</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/resources/teamwear-roster-packing-guide.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/teamwear-custom-showroom.jpg</image:loc>
+      <image:title>Teamwear roster packing with player names numbers sizes uniforms labels and sorted packs</image:title>
+    </image:image>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.79</priority>
   </url>
   <url>
     <loc>https://glorystarwears.com/quote-checklist.html</loc>
@@ -353,6 +407,10 @@
       <image:title>Sports accessories and private label packaging supplier product card</image:title>
     </image:image>
     <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/custom-sports-socks-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom sports socks manufacturer product card</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://glorystarwears.com/assets/images/more-sports-apparel-range-card.jpg</image:loc>
       <image:title>More custom sportswear categories product card</image:title>
     </image:image>
@@ -363,6 +421,10 @@
     <image:image>
       <image:loc>https://glorystarwears.com/assets/images/running-wear-oem-detail.jpg</image:loc>
       <image:title>Custom running wear OEM product detail board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/running-singlets-shirts-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom running singlets and marathon shirts product detail board</image:title>
     </image:image>
     <image:image>
       <image:loc>https://glorystarwears.com/assets/images/tennis-pickleball-apparel-range.jpg</image:loc>
@@ -425,8 +487,16 @@
       <image:title>Custom trail running and hiking apparel manufacturer</image:title>
     </image:image>
     <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/trail-hiking-apparel-detail.jpg</image:loc>
+      <image:title>Custom trail running hiking apparel shell jackets sun hoodies cargo shorts and outdoor packs</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://glorystarwears.com/assets/images/winter-sports-ski-apparel-range.jpg</image:loc>
       <image:title>Custom winter sports and ski apparel manufacturer</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/winter-sports-apparel-detail.jpg</image:loc>
+      <image:title>Custom winter sports ski apparel thermal layers fleece midlayers snow pants and accessories</image:title>
     </image:image>
     <image:image>
       <image:loc>https://glorystarwears.com/assets/images/triathlon-endurance-apparel-range.jpg</image:loc>
@@ -436,7 +506,23 @@
       <image:loc>https://glorystarwears.com/assets/images/club-fan-merchandise-apparel-range.jpg</image:loc>
       <image:title>Custom club fan merchandise apparel supplier</image:title>
     </image:image>
-    <lastmod>2026-06-30</lastmod>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/running-wear-product-range.jpg</image:loc>
+      <image:title>Custom track and field uniform manufacturer</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/rugby-hockey-teamwear-range.jpg</image:loc>
+      <image:title>Custom lacrosse uniform manufacturer</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/combat-sports-oem-detail.jpg</image:loc>
+      <image:title>Custom wrestling singlet manufacturer</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/dance-cheer-training-apparel-range.jpg</image:loc>
+      <image:title>Custom gymnastics leotard manufacturer</image:title>
+    </image:image>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -479,10 +565,62 @@
       <image:title>Custom multi-sport apparel product quote board</image:title>
     </image:image>
     <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/tennis-pickleball-apparel-range.jpg</image:loc>
+      <image:title>New tennis and pickleball apparel product capsule</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://glorystarwears.com/assets/images/product-board-accessories-packaging.jpg</image:loc>
       <image:title>Sports accessories and packaging product quote board</image:title>
     </image:image>
-    <lastmod>2026-06-28</lastmod>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/compression-base-layer-range.jpg</image:loc>
+      <image:title>New compression base layer product capsule</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/outdoor-training-outerwear-range.jpg</image:loc>
+      <image:title>New outdoor training outerwear product capsule</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/trail-hiking-apparel-detail.jpg</image:loc>
+      <image:title>New trail running and hiking apparel product capsule</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/winter-sports-apparel-detail.jpg</image:loc>
+      <image:title>New winter sports and ski apparel product capsule</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/baseball-softball-teamwear-range.jpg</image:loc>
+      <image:title>New baseball and softball teamwear product capsule</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/club-fan-merchandise-apparel-range.jpg</image:loc>
+      <image:title>New club fan merchandise product capsule</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/running-singlets-shirts-manufacturer-detail.jpg</image:loc>
+      <image:title>New running singlets and marathon shirts product capsule</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/custom-sports-socks-manufacturer-detail.jpg</image:loc>
+      <image:title>New custom sports socks product capsule</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/running-wear-product-range.jpg</image:loc>
+      <image:title>New track and field uniform product capsule</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/rugby-hockey-teamwear-range.jpg</image:loc>
+      <image:title>New lacrosse uniform product capsule</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/combat-sports-oem-detail.jpg</image:loc>
+      <image:title>New wrestling singlet product capsule</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/dance-cheer-training-apparel-range.jpg</image:loc>
+      <image:title>New gymnastics leotard product capsule</image:title>
+    </image:image>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.82</priority>
   </url>
@@ -513,10 +651,86 @@
       <image:title>Sports accessories and packaging product gallery</image:title>
     </image:image>
     <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/custom-sports-socks-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom sports socks product gallery</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/running-singlets-shirts-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom running singlets and shirts product gallery</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://glorystarwears.com/assets/images/product-board-multi-sport-apparel.jpg</image:loc>
       <image:title>Custom multi-sport apparel product gallery</image:title>
     </image:image>
-    <lastmod>2026-06-28</lastmod>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/tennis-pickleball-apparel-range.jpg</image:loc>
+      <image:title>Custom tennis and pickleball apparel product gallery</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/compression-base-layer-range.jpg</image:loc>
+      <image:title>Custom compression base layers product gallery</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/outdoor-training-outerwear-range.jpg</image:loc>
+      <image:title>Custom outdoor training outerwear product gallery</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/trail-hiking-apparel-detail.jpg</image:loc>
+      <image:title>Custom trail running and hiking apparel product gallery</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/winter-sports-apparel-detail.jpg</image:loc>
+      <image:title>Custom winter sports and ski apparel product gallery</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/baseball-softball-teamwear-range.jpg</image:loc>
+      <image:title>Custom baseball and softball teamwear product gallery</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/club-fan-merchandise-apparel-range.jpg</image:loc>
+      <image:title>Custom club fan merchandise product gallery</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/yoga-leggings-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom yoga leggings manufacturer product gallery</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/sports-bra-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom sports bra manufacturer product gallery</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/gym-tshirts-tank-tops-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom gym T-shirts and tank tops manufacturer product gallery</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/training-shorts-joggers-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom training shorts and joggers manufacturer product gallery</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/hoodies-sweatshirts-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom hoodies and sweatshirts manufacturer product gallery</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/joggers-tracksuits-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom joggers and tracksuits manufacturer product gallery</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/running-wear-product-range.jpg</image:loc>
+      <image:title>Custom track and field uniforms product gallery</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/rugby-hockey-teamwear-range.jpg</image:loc>
+      <image:title>Custom lacrosse uniforms product gallery</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/combat-sports-oem-detail.jpg</image:loc>
+      <image:title>Custom wrestling singlets product gallery</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/dance-cheer-training-apparel-range.jpg</image:loc>
+      <image:title>Custom gymnastics leotards product gallery</image:title>
+    </image:image>
+    <lastmod>2026-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -530,7 +744,91 @@
       <image:loc>https://glorystarwears.com/assets/images/seamless-yoga-sets-range.jpg</image:loc>
       <image:title>Seamless yoga sets and ribbed activewear</image:title>
     </image:image>
-    <lastmod>2026-05-22</lastmod>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/yoga-flare-ribbed-studio-sets-detail.jpg</image:loc>
+      <image:title>Private label yoga flare leggings and ribbed studio sets</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/yoga-leggings-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom yoga leggings product details</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/sports-bra-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom sports bra product details</image:title>
+    </image:image>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/yoga-leggings.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/yoga-leggings-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom yoga leggings manufacturer details</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/yoga-high-waist-leggings-detail.jpg</image:loc>
+      <image:title>High waist yoga leggings OEM ODM details</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/yoga-flare-ribbed-studio-sets-detail.jpg</image:loc>
+      <image:title>Flare pocket and ribbed yoga leggings product board</image:title>
+    </image:image>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/sports-bras.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/sports-bra-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom sports bra manufacturer details</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/yoga-sports-bras-detail.jpg</image:loc>
+      <image:title>Private label sports bras OEM ODM product board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/yoga-matching-sets-detail.jpg</image:loc>
+      <image:title>Sports bra and matching yoga set product board</image:title>
+    </image:image>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/seamless-activewear.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/seamless-activewear-product-board.jpg</image:loc>
+      <image:title>Seamless activewear leggings sports bras crop tops and packaging</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/yoga-matching-sets-detail.jpg</image:loc>
+      <image:title>Private label seamless matching activewear sets</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/performance-fabric-swatch-lab.jpg</image:loc>
+      <image:title>Seamless activewear fabric swatches and trim planning</image:title>
+    </image:image>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/plus-size-activewear.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/plus-size-activewear-product-board.jpg</image:loc>
+      <image:title>Plus size activewear inclusive sizing product planning</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/yoga-leggings-manufacturer-detail.jpg</image:loc>
+      <image:title>Inclusive leggings waistband and fit sample planning</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/sports-bra-manufacturer-detail.jpg</image:loc>
+      <image:title>Inclusive sports bras support and size grading planning</image:title>
+    </image:image>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -548,7 +846,51 @@
       <image:loc>https://glorystarwears.com/assets/images/athleisure-tees-jackets-detail.jpg</image:loc>
       <image:title>Private label athleisure tees and light jackets</image:title>
     </image:image>
-    <lastmod>2026-06-27</lastmod>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/hoodies-sweatshirts-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom hoodies and sweatshirts product details</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/joggers-tracksuits-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom joggers and tracksuits product details</image:title>
+    </image:image>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/hoodies-sweatshirts.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/hoodies-sweatshirts-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom hoodie and sweatshirt manufacturer details</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/athleisure-retail-drop-flatlay.jpg</image:loc>
+      <image:title>Private label hoodie sweatshirt retail drop planning</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/athleisure-hoodie-jogger-system.jpg</image:loc>
+      <image:title>Private label hoodie jogger system</image:title>
+    </image:image>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/joggers-tracksuits.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/joggers-tracksuits-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom joggers and tracksuits manufacturer details</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/training-shorts-joggers-manufacturer-detail.jpg</image:loc>
+      <image:title>Private label joggers track pants and training bottoms</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/athleisure-training-capsule-detail.jpg</image:loc>
+      <image:title>Private label joggers tracksuits and athleisure sets</image:title>
+    </image:image>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -563,8 +905,16 @@
       <image:title>Custom training tops and gym tees</image:title>
     </image:image>
     <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/gym-tshirts-tank-tops-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom gym T-shirts and tank tops manufacturer product board</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://glorystarwears.com/assets/images/training-shorts-pants-detail.jpg</image:loc>
       <image:title>Custom training shorts pants and joggers</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/training-shorts-joggers-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom training shorts and joggers manufacturer product board</image:title>
     </image:image>
     <image:image>
       <image:loc>https://glorystarwears.com/assets/images/training-sets-detail.jpg</image:loc>
@@ -578,7 +928,61 @@
       <image:loc>https://glorystarwears.com/assets/images/training-warmup-layers-detail.jpg</image:loc>
       <image:title>Custom training warm-up layers</image:title>
     </image:image>
-    <lastmod>2026-06-27</lastmod>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/gym-tshirts-tank-tops.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/gym-tshirts-tank-tops-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom gym T-shirts and tank tops manufacturer details</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/training-tops-detail.jpg</image:loc>
+      <image:title>Private label gym tees tanks and training tops</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/training-compression-layers-detail.jpg</image:loc>
+      <image:title>Compression training tops and fitted gym shirts</image:title>
+    </image:image>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/training-shorts-joggers.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/training-shorts-joggers-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom training shorts and joggers manufacturer details</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/training-shorts-pants-detail.jpg</image:loc>
+      <image:title>Private label gym shorts running shorts track pants and joggers</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/training-sets-detail.jpg</image:loc>
+      <image:title>Training shorts joggers and matching gym sets</image:title>
+    </image:image>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/private-label-gym-clothing.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/product-board-training-performance-wear.jpg</image:loc>
+      <image:title>Private label gym clothing product board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/gym-tshirts-tank-tops-manufacturer-detail.jpg</image:loc>
+      <image:title>Private label gym T-shirts tank tops and pump covers</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/training-shorts-joggers-manufacturer-detail.jpg</image:loc>
+      <image:title>Private label gym shorts joggers and training bottoms</image:title>
+    </image:image>
+    <lastmod>2026-07-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -593,6 +997,10 @@
       <image:title>Custom basketball game jerseys</image:title>
     </image:image>
     <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/basketball-jerseys-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom basketball jersey manufacturer product board</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://glorystarwears.com/assets/images/basketball-shorts-sets-detail.jpg</image:loc>
       <image:title>Custom basketball shorts and matching sets</image:title>
     </image:image>
@@ -604,7 +1012,25 @@
       <image:loc>https://glorystarwears.com/assets/images/basketball-practice-fan-gear-detail.jpg</image:loc>
       <image:title>Custom basketball practice vests and fan gear</image:title>
     </image:image>
-    <lastmod>2026-06-27</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/basketball-jerseys.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/basketball-jerseys-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom basketball jersey manufacturer details</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/basketball-teamwear-detail-range.jpg</image:loc>
+      <image:title>Basketball game jerseys and number customization</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/basketball-warmup-apparel-detail.jpg</image:loc>
+      <image:title>Basketball practice vests shooting shirts and warm-up apparel</image:title>
+    </image:image>
+    <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -619,6 +1045,10 @@
       <image:title>Custom football match jerseys and club kit systems</image:title>
     </image:image>
     <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/football-jerseys-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom football jersey manufacturer product board</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://glorystarwears.com/assets/images/football-shorts-socks-detail.jpg</image:loc>
       <image:title>Custom football shorts and socks</image:title>
     </image:image>
@@ -630,7 +1060,47 @@
       <image:loc>https://glorystarwears.com/assets/images/football-goalkeeper-club-addons-detail.jpg</image:loc>
       <image:title>Custom football goalkeeper kits and club add-ons</image:title>
     </image:image>
-    <lastmod>2026-06-27</lastmod>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/football-jerseys.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/football-jerseys-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom football jersey manufacturer details</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/football-club-kit-system-detail.jpg</image:loc>
+      <image:title>Football home away and goalkeeper jersey systems</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/football-shorts-socks-detail.jpg</image:loc>
+      <image:title>Football shorts socks and roster packing</image:title>
+    </image:image>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/custom-sublimated-teamwear.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/teamwear-custom-showroom.jpg</image:loc>
+      <image:title>Custom sublimated teamwear jerseys kits uniforms and roster packing</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/product-board-basketball-uniforms.jpg</image:loc>
+      <image:title>Sublimated basketball jerseys shorts names numbers and sponsors</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/product-board-football-kits.jpg</image:loc>
+      <image:title>Sublimated football kits club crests sponsors and roster packing</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/volleyball-teamwear-product-range.jpg</image:loc>
+      <image:title>Sublimated volleyball uniforms and multi-sport teamwear</image:title>
+    </image:image>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -649,6 +1119,10 @@
       <image:title>Custom sports socks sleeves towels and soft goods</image:title>
     </image:image>
     <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/custom-sports-socks-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom sports socks grip socks compression socks and packaging</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://glorystarwears.com/assets/images/accessories-caps-bags-detail.jpg</image:loc>
       <image:title>Custom sports caps bags and club accessories</image:title>
     </image:image>
@@ -660,7 +1134,25 @@
       <image:loc>https://glorystarwears.com/assets/images/wholesale-packing-sku-sorting-detail.jpg</image:loc>
       <image:title>Wholesale sportswear packing and SKU sorting</image:title>
     </image:image>
-    <lastmod>2026-06-27</lastmod>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/custom-sports-socks.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/custom-sports-socks-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom sports socks manufacturer product detail board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/accessories-socks-soft-goods-detail.jpg</image:loc>
+      <image:title>Custom socks compression sleeves and soft goods packaging</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/product-board-accessories-packaging.jpg</image:loc>
+      <image:title>Sports socks labels hang cards and retail packaging</image:title>
+    </image:image>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -755,8 +1247,16 @@
       <image:title>Custom trail running hiking and outdoor apparel product range</image:title>
     </image:image>
     <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/trail-hiking-apparel-detail.jpg</image:loc>
+      <image:title>Custom trail running and hiking apparel development board</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://glorystarwears.com/assets/images/winter-sports-ski-apparel-range.jpg</image:loc>
       <image:title>Custom winter sports ski and snowboard apparel product range</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/winter-sports-apparel-detail.jpg</image:loc>
+      <image:title>Custom winter sports and ski apparel development board</image:title>
     </image:image>
     <image:image>
       <image:loc>https://glorystarwears.com/assets/images/triathlon-endurance-apparel-range.jpg</image:loc>
@@ -766,9 +1266,171 @@
       <image:loc>https://glorystarwears.com/assets/images/club-fan-merchandise-apparel-range.jpg</image:loc>
       <image:title>Custom club fan merchandise and sports lifestyle apparel product range</image:title>
     </image:image>
-    <lastmod>2026-06-30</lastmod>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/running-wear-product-range.jpg</image:loc>
+      <image:title>Custom track and field uniforms singlets shorts and warm-ups</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/rugby-hockey-teamwear-range.jpg</image:loc>
+      <image:title>Custom lacrosse uniforms jerseys shorts kilts and pinnies</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/combat-sports-oem-detail.jpg</image:loc>
+      <image:title>Custom wrestling singlets compression layers and team packs</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/dance-cheer-training-apparel-range.jpg</image:loc>
+      <image:title>Custom gymnastics leotards biketards and studio apparel</image:title>
+    </image:image>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/baseball-softball-teamwear.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/baseball-softball-teamwear-range.jpg</image:loc>
+      <image:title>Custom baseball and softball teamwear jerseys pants caps socks and roster packing</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/baseball-softball-teamwear-detail.jpg</image:loc>
+      <image:title>Baseball button jerseys raglan softball tops pinstripe pants caps socks patches and number sets</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/accessories-caps-bags-detail.jpg</image:loc>
+      <image:title>Custom caps bags belts socks and baseball team accessories</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/club-fan-merchandise-apparel-range.jpg</image:loc>
+      <image:title>Club fan merchandise and roster packing for baseball programs</image:title>
+    </image:image>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/compression-base-layers.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/compression-base-layer-range.jpg</image:loc>
+      <image:title>Custom compression base layers tops tights half tights sleeves and thermal fabrics</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/compression-base-layer-detail.jpg</image:loc>
+      <image:title>Compression base layer tops tights sleeves socks mesh panels flatlock seams and fabric swatches</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/training-compression-layers-detail.jpg</image:loc>
+      <image:title>Training compression layers mesh zones flatlock seams and logo placement</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/accessories-socks-soft-goods-detail.jpg</image:loc>
+      <image:title>Compression sleeves socks and sports accessory packaging</image:title>
+    </image:image>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/outdoor-training-outerwear.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/outdoor-training-outerwear-range.jpg</image:loc>
+      <image:title>Custom outdoor training outerwear windbreakers rain shells vests and reflective trims</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/outdoor-training-outerwear-detail.jpg</image:loc>
+      <image:title>Outdoor windbreakers rain shells quarter zips track pants zipper trims and reflective tape</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/training-warmup-layers-detail.jpg</image:loc>
+      <image:title>Quarter zips track jackets track pants and outdoor warm-up layers</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/performance-fabric-trims.jpg</image:loc>
+      <image:title>Outdoor training outerwear fabrics zipper trims and reflective tape</image:title>
+    </image:image>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/trail-hiking-apparel.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/trail-hiking-apparel-detail.jpg</image:loc>
+      <image:title>Custom trail running and hiking apparel shell jackets sun hoodies trail tops cargo shorts and trekking pants</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/trail-hiking-outdoor-apparel-range.jpg</image:loc>
+      <image:title>Trail running hiking and outdoor apparel product range</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/accessories-socks-soft-goods-detail.jpg</image:loc>
+      <image:title>Trail caps gaiters socks sleeves towels pouches labels and outdoor accessory packaging</image:title>
+    </image:image>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/winter-sports-apparel.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/winter-sports-apparel-detail.jpg</image:loc>
+      <image:title>Custom winter sports and ski apparel thermal layers fleece midlayers softshell jackets snow pants gloves and socks</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/winter-sports-ski-apparel-range.jpg</image:loc>
+      <image:title>Winter sports ski snowboard and cold-weather apparel product range</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/compression-base-layer-detail.jpg</image:loc>
+      <image:title>Thermal compression base layers tights sleeves socks and flatlock seam details</image:title>
+    </image:image>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/triathlon-endurance-apparel.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/triathlon-endurance-apparel-range.jpg</image:loc>
+      <image:title>Custom triathlon and endurance apparel tri suits race jerseys sleeves and swim caps</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/triathlon-endurance-apparel-detail.jpg</image:loc>
+      <image:title>Tri suits race jerseys singlets compression shorts sleeves swim caps and race belts</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/running-wear-oem-detail.jpg</image:loc>
+      <image:title>Running race singlets split shorts and endurance event apparel</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/compression-base-layer-range.jpg</image:loc>
+      <image:title>Compression accessories for triathlon and endurance sports</image:title>
+    </image:image>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/club-fan-merchandise.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/club-fan-merchandise-apparel-range.jpg</image:loc>
+      <image:title>Custom club fan merchandise jerseys scarves caps hoodies patches and retail packaging</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/club-fan-merchandise-detail.jpg</image:loc>
+      <image:title>Club fan jerseys scarves caps hoodies varsity jackets tote bags patches and retail packaging</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/athleisure-hoodie-jogger-system.jpg</image:loc>
+      <image:title>Club hoodies joggers varsity jackets and lifestyle fan apparel</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/accessories-packaging-system-card.jpg</image:loc>
+      <image:title>Retail packaging barcode labels and ecommerce prep for fan merchandise</image:title>
+    </image:image>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
   </url>
   <url>
     <loc>https://glorystarwears.com/products/running-wear.html</loc>
@@ -784,9 +1446,117 @@
       <image:loc>https://glorystarwears.com/assets/images/compression-base-layer-range.jpg</image:loc>
       <image:title>Compression base layers for running clubs and race apparel</image:title>
     </image:image>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/running-singlets-shirts.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/running-singlets-shirts-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom running singlets and shirts manufacturer details</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/running-wear-product-range.jpg</image:loc>
+      <image:title>Running shirts race singlets and training tops</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/product-board-accessories-packaging.jpg</image:loc>
+      <image:title>Running event labels polybags and packing system</image:title>
+    </image:image>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/track-field-uniforms.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/track-field-uniforms-product-board.jpg</image:loc>
+      <image:title>Custom track and field uniforms manufacturer product board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/running-singlets-shirts-manufacturer-detail.jpg</image:loc>
+      <image:title>Track singlets crop tops split shorts and event apparel</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/compression-base-layer-range.jpg</image:loc>
+      <image:title>Track warm-up layers compression shorts sleeves and team packs</image:title>
+    </image:image>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/lacrosse-uniforms.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/lacrosse-uniforms-product-board.jpg</image:loc>
+      <image:title>Custom lacrosse uniforms manufacturer product board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/teamwear-custom-showroom.jpg</image:loc>
+      <image:title>Lacrosse jerseys shorts kilts practice pinnies and team packing</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/football-training-apparel-detail.jpg</image:loc>
+      <image:title>Lacrosse warm-up jackets training tops and club apparel</image:title>
+    </image:image>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/wrestling-singlets.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/wrestling-singlets-product-board.jpg</image:loc>
+      <image:title>Custom wrestling singlets manufacturer product board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/compression-base-layer-range.jpg</image:loc>
+      <image:title>Wrestling singlets compression layers and training shorts</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/combat-sports-training-range.jpg</image:loc>
+      <image:title>Wrestling team warm-ups hoodies bags labels and tournament packing</image:title>
+    </image:image>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/gymnastics-leotards.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/gymnastics-leotards-product-board.jpg</image:loc>
+      <image:title>Custom gymnastics leotards manufacturer product board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/yoga-sports-bras-detail.jpg</image:loc>
+      <image:title>Gymnastics training crop tops straps and support pieces</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/youth-sportswear-teamwear-range.jpg</image:loc>
+      <image:title>Youth gymnastics leotards studio labels and team packing</image:title>
+    </image:image>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/tennis-pickleball-apparel.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/tennis-pickleball-apparel-range.jpg</image:loc>
+      <image:title>Custom tennis and pickleball apparel product detail board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/racket-sports-apparel-range.jpg</image:loc>
+      <image:title>Custom racket sports club colorways labels and packaging</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/performance-fabric-swatch-lab.jpg</image:loc>
+      <image:title>Cooling UV stretch fabrics for tennis and pickleball apparel</image:title>
+    </image:image>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://glorystarwears.com/products/cycling-wear.html</loc>
@@ -802,7 +1572,7 @@
       <image:loc>https://glorystarwears.com/assets/images/performance-fabric-swatch-lab.jpg</image:loc>
       <image:title>Performance mesh and stretch fabrics for cycling apparel</image:title>
     </image:image>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
@@ -820,7 +1590,7 @@
       <image:loc>https://glorystarwears.com/assets/images/teamwear-custom-showroom.jpg</image:loc>
       <image:title>Custom teamwear showroom for volleyball clubs schools and leagues</image:title>
     </image:image>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
@@ -838,7 +1608,7 @@
       <image:loc>https://glorystarwears.com/assets/images/performance-fabric-swatch-lab.jpg</image:loc>
       <image:title>Stretch pique cooling jersey and UV fabrics for golf apparel</image:title>
     </image:image>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
@@ -856,7 +1626,7 @@
       <image:loc>https://glorystarwears.com/assets/images/accessories-retail-packaging-detail.jpg</image:loc>
       <image:title>Retail packaging labels hangtags and pouches for swimwear</image:title>
     </image:image>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
@@ -874,9 +1644,99 @@
       <image:loc>https://glorystarwears.com/assets/images/compression-base-layer-range.jpg</image:loc>
       <image:title>Compression base layers for combat sports gyms and training programs</image:title>
     </image:image>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/cycling-jerseys-bib-shorts.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/cycling-wear-oem-detail.jpg</image:loc>
+      <image:title>Custom cycling jerseys and bib shorts manufacturer product board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/cycling-wear-product-range.jpg</image:loc>
+      <image:title>Cycling jerseys bib shorts wind vests sleeves chamois pads and grippers</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/product-board-accessories-packaging.jpg</image:loc>
+      <image:title>Cycling rider packs labels hangtags socks caps and packaging</image:title>
+    </image:image>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/volleyball-uniforms.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/volleyball-teamwear-oem-detail.jpg</image:loc>
+      <image:title>Custom volleyball uniforms manufacturer product board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/volleyball-teamwear-product-range.jpg</image:loc>
+      <image:title>Volleyball jerseys libero kits shorts warm-up jackets knee pads and roster packs</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/teamwear-custom-showroom.jpg</image:loc>
+      <image:title>Volleyball teamwear roster packing labels and club color systems</image:title>
+    </image:image>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/golf-polo-shirts-skorts.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/golf-apparel-oem-detail.jpg</image:loc>
+      <image:title>Custom golf polo shirts and skorts manufacturer product board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/golf-apparel-product-range.jpg</image:loc>
+      <image:title>Golf polos skorts shorts quarter zips visors gloves and retail packaging</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/performance-fabric-swatch-lab.jpg</image:loc>
+      <image:title>Stretch pique cooling jersey and UV fabrics for golf apparel</image:title>
+    </image:image>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/rash-guards-board-shorts.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/swimwear-water-sports-oem-detail.jpg</image:loc>
+      <image:title>Custom rash guards and board shorts manufacturer product board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/swimwear-water-sports-range.jpg</image:loc>
+      <image:title>Rash guards surf shirts swim trunks board shorts kids swimwear and pouches</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/accessories-retail-packaging-detail.jpg</image:loc>
+      <image:title>Retail packaging pouches labels hangtags and cartons for swimwear</image:title>
+    </image:image>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/mma-rash-guards-fight-shorts.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/combat-sports-oem-detail.jpg</image:loc>
+      <image:title>Custom MMA rash guards and fight shorts manufacturer product board</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/combat-sports-training-range.jpg</image:loc>
+      <image:title>MMA rash guards fight shorts compression shorts hoodies wraps and patches</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/compression-base-layer-range.jpg</image:loc>
+      <image:title>Compression layers and stretch fabric options for MMA apparel</image:title>
+    </image:image>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://glorystarwears.com/products/racket-sports-apparel.html</loc>
@@ -892,7 +1752,7 @@
       <image:loc>https://glorystarwears.com/assets/images/performance-fabric-swatch-lab.jpg</image:loc>
       <image:title>Cooling UV stretch fabrics for racket sports apparel</image:title>
     </image:image>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
@@ -910,7 +1770,7 @@
       <image:loc>https://glorystarwears.com/assets/images/teamwear-custom-showroom.jpg</image:loc>
       <image:title>Custom teamwear showroom with uniforms and club color systems</image:title>
     </image:image>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
@@ -928,7 +1788,7 @@
       <image:loc>https://glorystarwears.com/assets/images/product-board-football-kits.jpg</image:loc>
       <image:title>Youth football kits jerseys shorts socks and club labels</image:title>
     </image:image>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
@@ -946,9 +1806,153 @@
       <image:loc>https://glorystarwears.com/assets/images/athleisure-training-capsule-detail.jpg</image:loc>
       <image:title>Warm-up jackets joggers and studio merchandise for dance apparel</image:title>
     </image:image>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/soccer-uniforms.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/soccer-uniforms-product-board.jpg</image:loc>
+      <image:title>Custom soccer uniform manufacturer jerseys shorts socks and sponsor artwork</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/football-kit-product-range.jpg</image:loc>
+      <image:title>Soccer uniform product range with match kits goalkeeper tops and team packing</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/football-shorts-socks-detail.jpg</image:loc>
+      <image:title>Custom soccer shorts socks labels and roster packing</image:title>
+    </image:image>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/esports-jerseys.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/esports-jerseys-product-board.jpg</image:loc>
+      <image:title>Custom esports jersey manufacturer gaming team jerseys and fan merchandise</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/teamwear-custom-showroom.jpg</image:loc>
+      <image:title>Custom sublimated esports teamwear sponsor artwork and player packing</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/accessories-packaging-system-card.jpg</image:loc>
+      <image:title>Esports jersey labels hangtags barcode stickers and packaging</image:title>
+    </image:image>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/marathon-event-apparel.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/marathon-event-apparel-product-board.jpg</image:loc>
+      <image:title>Custom marathon event apparel race shirts singlets and sponsor artwork</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/running-wear-product-range.jpg</image:loc>
+      <image:title>Marathon event running shirts finisher tees volunteer shirts and event packing</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/custom-sports-socks-manufacturer-detail.jpg</image:loc>
+      <image:title>Custom marathon socks running accessories and event bundles</image:title>
+    </image:image>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/cheerleading-uniforms.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/cheerleading-uniforms-product-board.jpg</image:loc>
+      <image:title>Custom cheerleading uniform manufacturer cheer tops skirts shorts and warm-ups</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/youth-sportswear-teamwear-range.jpg</image:loc>
+      <image:title>Youth cheerleading uniforms school teamwear labels and roster packing</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/yoga-sports-bras-detail.jpg</image:loc>
+      <image:title>Cheer practice tops crop tops support pieces and stretch trims</image:title>
+    </image:image>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/custom-sports-caps-bags.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/accessories-caps-bags-detail.jpg</image:loc>
+      <image:title>Custom sports caps and bags supplier with gym bags drawstring bags and patches</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/accessories-brand-packaging-flatlay.jpg</image:loc>
+      <image:title>Sports caps bags labels hangtags and accessory brand packaging system</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/accessories-bundles-detail.jpg</image:loc>
+      <image:title>Custom sports accessory bundles with caps bags socks towels and team packing</image:title>
+    </image:image>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/private-label-sportswear-packaging.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/accessories-retail-packaging-detail.jpg</image:loc>
+      <image:title>Private label sportswear packaging with polybags boxes hangtags and labels</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/wholesale-packing-sku-sorting-detail.jpg</image:loc>
+      <image:title>Sportswear SKU sorting barcode labels size stickers and carton packing</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/accessories-packaging-system-card.jpg</image:loc>
+      <image:title>Custom sportswear packaging system with boxes polybags and barcode labels</image:title>
+    </image:image>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/team-warm-up-jackets.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/training-warmup-layers-detail.jpg</image:loc>
+      <image:title>Custom team warm-up jackets quarter zips track jackets and roster packing</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/outdoor-training-outerwear-detail.jpg</image:loc>
+      <image:title>Team windbreakers travel jackets reflective trims and outdoor warm-up layers</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/teamwear-custom-showroom.jpg</image:loc>
+      <image:title>Custom teamwear showroom with warm-up jackets uniforms and player packing</image:title>
+    </image:image>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/club-hoodies-varsity-jackets.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/club-fan-merchandise-detail.jpg</image:loc>
+      <image:title>Custom club hoodies and varsity jackets supplier with patches and labels</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/athleisure-hoodie-jogger-system.jpg</image:loc>
+      <image:title>Club hoodie jogger merchandise system with fleece trims labels and packaging</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/accessories-packaging-system-card.jpg</image:loc>
+      <image:title>Club merchandise packaging with boxes polybags hangtags and barcode labels</image:title>
+    </image:image>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://glorystarwears.com/customization.html</loc>
@@ -956,7 +1960,7 @@
       <image:loc>https://glorystarwears.com/assets/images/private-label-trims-customization.jpg</image:loc>
       <image:title>OEM and ODM sportswear design development</image:title>
     </image:image>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -966,7 +1970,7 @@
       <image:loc>https://glorystarwears.com/assets/images/performance-fabric-swatch-lab.jpg</image:loc>
       <image:title>Sportswear performance fabrics trims and decoration methods</image:title>
     </image:image>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -986,7 +1990,7 @@
       <image:loc>https://glorystarwears.com/assets/images/quality-inspection-workflow.jpg</image:loc>
       <image:title>Custom sportswear quality control inspection</image:title>
     </image:image>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1000,7 +2004,7 @@
       <image:loc>https://glorystarwears.com/assets/images/production-process-sample-room.jpg</image:loc>
       <image:title>Custom sportswear production sample room workflow</image:title>
     </image:image>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1024,7 +2028,7 @@
       <image:loc>https://glorystarwears.com/assets/images/custom-sportswear-consultation.jpg</image:loc>
       <image:title>Contact GloryStarWear for custom sportswear quote</image:title>
     </image:image>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-07-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

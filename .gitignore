@@ -9,3 +9,6 @@ build/
 .cache/
 .vercel/
 .netlify/
+.local-backups/
+assets/images/gym-tshirts-tank-tops-manufacturer-detail.png
+assets/images/training-shorts-joggers-manufacturer-detail.png
