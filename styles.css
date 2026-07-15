@@ -1122,6 +1122,10 @@ h3 {
   line-height: 1.65;
 }
 
+.quality-copy .eyebrow {
+  color: var(--lime);
+}
+
 .quality-checks {
   display: grid;
   gap: 14px;
