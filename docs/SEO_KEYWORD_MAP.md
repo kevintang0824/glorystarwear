@@ -1,6 +1,6 @@
 # GloryStarWear Search Intent Map
 
-Last updated: 2026-07-14
+Last updated: 2026-07-15
 
 ## Page Ownership Rule
 
@@ -34,6 +34,7 @@ Last updated: 2026-07-14
 | `/resources/oem-vs-odm-sportswear.html` | Which development route fits the information and product control the buyer already has? |
 | `/resources/private-label-activewear-moq.html` | Which style, material, color, component, packaging, or SKU decision creates the order minimum? |
 | `/resources/custom-sportswear-tech-pack.html` | What information turns a sportswear design into a quoteable and controllable specification? |
+| `/resources/activewear-fabric-selection-guide.html` | How should a buyer define, compare, approve, and control an activewear fabric beyond composition and GSM? |
 | `/resources/sportswear-sample-approval-checklist.html` | What must be reviewed and closed before a sample becomes a bulk-production reference? |
 | `/resources/activewear-size-grading-guide.html` | How should a buyer control base fit, grade rules, tolerances, inclusive proportions, and size-set approval? |
 | `/resources/teamwear-roster-packing-guide.html` | How should a teamwear buyer control player data, personalization, revisions, packs, and carton allocation? |

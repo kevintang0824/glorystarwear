@@ -146,7 +146,7 @@
       <image:loc>https://glorystarwears.com/assets/images/dance-cheer-training-apparel-range.jpg</image:loc>
       <image:title>Custom gymnastics leotards and studio apparel range</image:title>
     </image:image>
-    <lastmod>2026-07-14</lastmod>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -258,7 +258,7 @@
       <image:loc>https://glorystarwears.com/assets/images/faq-buyer-consultation-desk.jpg</image:loc>
       <image:title>Custom sportswear buyer resources and guides</image:title>
     </image:image>
-    <lastmod>2026-07-14</lastmod>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.82</priority>
   </url>
@@ -291,6 +291,16 @@
     <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/resources/activewear-fabric-selection-guide.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/performance-fabric-swatch-lab.jpg</image:loc>
+      <image:title>Activewear fabric selection with coded swatches GSM stretch recovery color and approval references</image:title>
+    </image:image>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.79</priority>
   </url>
   <url>
     <loc>https://glorystarwears.com/resources/sportswear-sample-approval-checklist.html</loc>
@@ -1970,7 +1980,7 @@
       <image:loc>https://glorystarwears.com/assets/images/performance-fabric-swatch-lab.jpg</image:loc>
       <image:title>Sportswear performance fabrics trims and decoration methods</image:title>
     </image:image>
-    <lastmod>2026-07-11</lastmod>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

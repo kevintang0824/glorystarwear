@@ -22,6 +22,7 @@ class PageParser(HTMLParser):
         self.in_title = False
         self.h1_count = 0
         self.description = ""
+        self.robots = ""
         self.canonical = ""
         self.ids = []
         self.links = []
@@ -36,8 +37,12 @@ class PageParser(HTMLParser):
             self.in_title = True
         elif tag == "h1":
             self.h1_count += 1
-        elif tag == "meta" and attributes.get("name", "").lower() == "description":
-            self.description = attributes.get("content", "").strip()
+        elif tag == "meta":
+            meta_name = attributes.get("name", "").lower()
+            if meta_name == "description":
+                self.description = attributes.get("content", "").strip()
+            elif meta_name == "robots":
+                self.robots = attributes.get("content", "").strip()
         elif tag == "link":
             relationships = set(attributes.get("rel", "").lower().split())
             href = attributes.get("href", "")
@@ -215,6 +220,18 @@ def main():
 
     for duplicate in duplicate_values(sitemap_urls):
         errors.append(f"duplicate sitemap URL: {duplicate}")
+
+    sitemap_url_set = set(sitemap_urls)
+
+    for html_file, page in pages.items():
+        if not page.canonical:
+            continue
+        relative_name = html_file.relative_to(ROOT).as_posix()
+        is_noindex = "noindex" in page.robots.lower()
+        if is_noindex and page.canonical in sitemap_url_set:
+            errors.append(f"noindex page appears in sitemap: {relative_name}")
+        elif not is_noindex and page.canonical not in sitemap_url_set:
+            errors.append(f"indexable page missing from sitemap: {relative_name}")
 
     for url in sitemap_urls:
         target_file = site_file_for_url(url)

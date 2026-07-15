@@ -1,6 +1,6 @@
 # GloryStarWear Search Visibility Review
 
-Last updated: 2026-07-14
+Last updated: 2026-07-16
 
 ## Working Principle
 
@@ -14,7 +14,7 @@ Google AI Overviews and AI Mode use the same crawl, index, and ranking foundatio
 
 - Production canonical URLs use `https://glorystarwears.com`.
 - `robots.txt` allows standard crawlers, `OAI-SearchBot`, and `ChatGPT-User`.
-- `sitemap.xml` contains 82 unique canonical URLs with image entries and meaningful `lastmod` dates.
+- `sitemap.xml` contains 83 unique canonical URLs with image entries and meaningful `lastmod` dates.
 - The site includes a public IndexNow key and `scripts/submit-indexnow.mjs` for changed URLs.
 - All indexable pages include a unique title, meta description, canonical, and one H1.
 - Structured data is connected to the site Organization identity without invented prices, ratings, addresses, or certifications.
@@ -25,6 +25,7 @@ Google AI Overviews and AI Mode use the same crawl, index, and ranking foundatio
 - The OEM vs ODM guide compares responsibilities, inputs, tradeoffs, hybrid routes, and quote requirements.
 - The activewear MOQ guide explains style, material, color, component, packaging, and SKU-level constraints without publishing an unverified universal MOQ.
 - The tech pack guide covers drawings, bill of materials, measurements, construction, artwork, packaging, QC, and version control.
+- The activewear fabric selection guide separates fabric identity, composition, GSM, construction, stretch, recovery, opacity, color, evidence, sample approval, and bulk control. Its downloadable CSV turns those decisions into a reusable material record.
 - The sample approval guide covers revision identity, materials, measurements, wearer fit, construction, artwork, packing, comments, and bulk sign-off.
 - The activewear size grading guide separates base fit, grade rules, tolerances, product-specific measurements, inclusive range decisions, and size-set approval.
 - The teamwear roster and packing guide covers structured player data, names, numbers, artwork control, revisions, individual packs, carton allocation, and reconciliation.
@@ -37,17 +38,19 @@ Google AI Overviews and AI Mode use the same crawl, index, and ranking foundatio
 - First-touch landing URL, referrer, `utm_*`, `gclid`, and `msclkid` values are kept in session storage.
 - Prepared email and WhatsApp inquiries include source and campaign context.
 - Visitors without a configured email client can copy a complete project brief for another messaging app.
-- The size-grading and teamwear-roster guides include reusable CSV templates with anonymous download tracking.
+- The fabric-selection, size-grading, and teamwear-roster guides include reusable CSV templates with anonymous download tracking.
 - `window.dataLayer` receives vendor-neutral events for campaign landing, contact clicks, quote starts, email, WhatsApp and copied-brief actions, catalog filters, and catalog searches.
 - No names, email addresses, phone numbers, or project-message content are sent to the data layer.
 
 ### Verification Baseline
 
 - The first optimization sprint passed a local Chromium crawl with 79 sitemap URLs, no console errors, no key-page desktop or mobile overflow, and working attribution events.
-- The current dependency-free static audit covers 83 HTML files and 82 sitemap URLs.
-- It confirms 83 unique canonicals, 82 valid JSON-LD blocks, 82 internal targets, and 349 referenced local assets with no errors.
+- The current dependency-free static audit covers 84 HTML files and 83 sitemap URLs.
+- It confirms 84 unique canonicals, 83 valid JSON-LD blocks, 86 internal targets, and 412 referenced local assets with no errors.
 - Run `python3 scripts/audit_static_site.py` before deployment and after adding a page, link, canonical, schema block, or asset.
-- The browser crawl confirms 82 unique indexed-page titles, descriptions, canonicals, and JSON-LD blocks, with no broken internal targets or console errors.
+- The current 83-URL release passed a mobile Chromium crawl with no broken sitemap targets, H1 errors, console errors, page errors, or horizontal overflow.
+- The fabric guide passed dedicated mobile and desktop checks for responsive images, schema types, CSV delivery, layout, and runtime errors. Axe 4.12 reported no WCAG A/AA violations; image-backed contrast candidates were also reviewed visually.
+- Quick-contact containers use an explicit group role so their accessible labels are valid across the 19 pages that include the floating control.
 - Indexed-page titles currently stay between 30 and 65 characters and descriptions between 100 and 170 characters.
 - Under local simulated 4G and 4x CPU throttling, the homepage rendered at approximately 1.1 second LCP with zero CLS. Moving the below-fold service background to a lazy image reduced initial transfer from about 545 KB to 297 KB. These are lab measurements, not field Core Web Vitals.
 
@@ -57,7 +60,7 @@ Google AI Overviews and AI Mode use the same crawl, index, and ranking foundatio
 2. Confirm the live key URL returns only the key value: `https://glorystarwears.com/8022fa20d2ef4befc52093d274ae7687.txt`.
 3. Verify the production domain property in Google Search Console.
 4. Submit `https://glorystarwears.com/sitemap.xml` in Search Console.
-5. Inspect the homepage, resource center, and six buyer guides with URL Inspection.
+5. Inspect the homepage, resource center, and seven buyer guides with URL Inspection.
 6. Run IndexNow only after the changed pages are live.
 7. Connect the real GTM or GA4 property and map the existing data-layer events.
 8. Record the deployment date so performance can be compared over 28-day and 90-day windows.
@@ -78,7 +81,7 @@ Track outcomes by landing page, country, device, query theme, and inquiry source
 3. Add a real form endpoint with success and failure states. The current static form prepares an email or WhatsApp message but cannot confirm server-side lead delivery.
 4. Add verified company facts only when supporting evidence is available: business entity, location, production scope, relevant markets, current certificates, and named contact ownership.
 5. Consolidate overlapping product intent. Broad category pages should explain collection planning; narrower pages should focus on product-specific construction, specifications, and use cases.
-6. Build future guides from recurring sales questions, such as artwork preparation, fabric selection, packaging handoff, compliance evidence, and reorder planning.
+6. Build future guides from recurring sales questions, such as artwork preparation, packaging handoff, compliance evidence, and reorder planning.
 
 ## Editorial Rules
 
