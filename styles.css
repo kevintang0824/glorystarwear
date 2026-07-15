@@ -873,7 +873,7 @@ h3 {
   display: inline-flex;
   align-items: center;
   margin-top: 16px;
-  color: var(--green-text);
+  color: var(--forest);
   font-weight: 900;
 }
 
@@ -1862,7 +1862,7 @@ h3 {
   justify-content: space-between;
   gap: 28px;
   padding: 36px clamp(18px, 5vw, 72px);
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--white);
   background: var(--ink);
 }
 
@@ -1886,6 +1886,10 @@ h3 {
   max-width: 960px;
   color: var(--white);
   font-weight: 800;
+}
+
+.footer-links a {
+  opacity: 1;
 }
 
 .floating-contact {
@@ -2449,7 +2453,12 @@ h3 {
   .keyword-grid a,
   .contact-methods a,
   .footer-links a {
-    min-height: 48px;
+    min-height: 52px;
+  }
+
+  .keyword-grid a,
+  .footer-links a {
+    padding-block: 14px;
   }
 
   .mobile-nav a,
