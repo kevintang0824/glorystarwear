@@ -2444,6 +2444,20 @@ h3 {
     width: 100%;
   }
 
+  .mobile-nav a,
+  .resource-grid a,
+  .keyword-grid a,
+  .contact-methods a,
+  .footer-links a {
+    min-height: 48px;
+  }
+
+  .mobile-nav a,
+  .footer-links a {
+    display: flex;
+    align-items: center;
+  }
+
   .stats-band,
   .seo-answer-bar,
   .decision-grid,
