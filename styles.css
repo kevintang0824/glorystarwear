@@ -68,7 +68,7 @@ a {
 }
 
 @supports (content-visibility: auto) {
-  .home-page main > section:nth-of-type(n + 5) {
+  .home-page main > section:nth-of-type(n + 5):not(.keyword-section) {
     content-visibility: auto;
     contain-intrinsic-size: auto 860px;
   }
