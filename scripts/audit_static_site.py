@@ -47,8 +47,8 @@ class PageParser(HTMLParser):
                 self.assets.append(href)
         elif tag == "a" and attributes.get("href"):
             self.links.append(attributes["href"])
-        elif tag == "img":
-            if attributes.get("src"):
+        elif tag in {"img", "source"}:
+            if tag == "img" and attributes.get("src"):
                 self.assets.append(attributes["src"])
             for candidate in attributes.get("srcset", "").split(","):
                 source = candidate.strip().split(" ", 1)[0]
