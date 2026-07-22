@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import json
+import re
 import sys
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
@@ -10,9 +11,19 @@ from urllib.parse import unquote, urljoin, urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 PRODUCTION_ORIGIN = "https://glorystarwears.com"
-EXPECTED_ASSET_VERSION = "20260715-7"
+EXPECTED_ASSET_VERSION = "20260722-1"
 TITLE_LENGTH_RANGE = (30, 65)
 DESCRIPTION_LENGTH_RANGE = (100, 170)
+IMAGE_RE = re.compile(r"<img\b[^>]*>", re.IGNORECASE | re.DOTALL)
+IGNORED_PATH_PARTS = {
+    ".git",
+    ".local-backups",
+    ".vercel",
+    ".wrangler",
+    "build",
+    "dist",
+    "node_modules",
+}
 
 
 class PageParser(HTMLParser):
@@ -27,6 +38,7 @@ class PageParser(HTMLParser):
         self.ids = []
         self.links = []
         self.assets = []
+        self.image_preloads = []
         self.json_ld_blocks = []
         self.current_json_ld = None
 
@@ -50,6 +62,14 @@ class PageParser(HTMLParser):
                 self.canonical = href
             if relationships.intersection({"stylesheet", "icon"}) and href:
                 self.assets.append(href)
+            if "preload" in relationships and attributes.get("as", "").lower() == "image":
+                self.image_preloads.append(attributes)
+                if href:
+                    self.assets.append(href)
+                for candidate in attributes.get("imagesrcset", "").split(","):
+                    source = candidate.strip().split(" ", 1)[0]
+                    if source:
+                        self.assets.append(source)
         elif tag == "a" and attributes.get("href"):
             self.links.append(attributes["href"])
         elif tag in {"img", "source"}:
@@ -118,8 +138,14 @@ def main():
     internal_targets = set()
     local_assets = set()
     json_ld_count = 0
+    image_count = 0
+    avif_image_count = 0
 
-    html_files = sorted(ROOT.rglob("*.html"))
+    html_files = sorted(
+        path
+        for path in ROOT.rglob("*.html")
+        if not IGNORED_PATH_PARTS.intersection(path.relative_to(ROOT).parts)
+    )
     for html_file in html_files:
         parser = PageParser()
         source = html_file.read_text(encoding="utf-8")
@@ -183,6 +209,32 @@ def main():
                 errors.append(
                     f"{relative_name}: expected asset version {EXPECTED_ASSET_VERSION}"
                 )
+
+        for preload in parser.image_preloads:
+            if preload.get("type", "").lower() != "image/avif":
+                errors.append(f"{relative_name}: image preload is not AVIF")
+            if preload.get("fetchpriority", "").lower() != "high":
+                errors.append(
+                    f"{relative_name}: image preload is missing fetchpriority=high"
+                )
+
+        for image_match in IMAGE_RE.finditer(source):
+            image_count += 1
+            picture_start = source.rfind("<picture", 0, image_match.start())
+            picture_end = source.rfind("</picture>", 0, image_match.start())
+            if picture_start <= picture_end:
+                errors.append(
+                    f"{relative_name}: image is missing an AVIF picture source"
+                )
+                continue
+            picture_close = source.find("</picture>", image_match.end())
+            picture_markup = source[picture_start:picture_close]
+            if 'type="image/avif"' not in picture_markup:
+                errors.append(
+                    f"{relative_name}: image picture is missing image/avif"
+                )
+                continue
+            avif_image_count += 1
 
         base_url = parser.canonical or urljoin(f"{PRODUCTION_ORIGIN}/", relative_name)
         for href in parser.links:
@@ -251,6 +303,8 @@ def main():
         "unique_titles": len(title_owners),
         "unique_descriptions": len(description_owners),
         "json_ld_blocks": json_ld_count,
+        "images": image_count,
+        "avif_images": avif_image_count,
         "internal_targets": len(internal_targets),
         "local_assets": len(local_assets),
         "errors": errors,

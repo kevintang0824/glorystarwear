@@ -117,6 +117,7 @@ You can also open `index.html` directly in a browser, but using a local server i
 Run the dependency-free static SEO and link audit before deployment:
 
 ```bash
+python3 scripts/generate_hero_avif.py --all-images
 python3 scripts/audit_static_site.py
 ```
 
@@ -208,6 +209,7 @@ Before going live, verify that `https://glorystarwears.com/` is the final domain
 
 - Add new product images to `assets/images/`.
 - Use descriptive lowercase filenames with hyphens.
+- Keep an AVIF source alongside every JPEG; run `python3 scripts/generate_hero_avif.py --all-images` after adding or replacing website images.
 - Keep image references relative in HTML, such as `../assets/images/example.jpg`.
 - Keep all important product images listed in `sitemap.xml`.
 - Use accurate sitemap `lastmod` dates only when a page changes meaningfully.

@@ -8,6 +8,7 @@ dist/
 build/
 .cache/
 .vercel/
+.wrangler/
 .netlify/
 .local-backups/
 assets/images/gym-tshirts-tank-tops-manufacturer-detail.png

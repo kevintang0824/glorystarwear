@@ -73,12 +73,21 @@ if (catalogGrid) {
   document.documentElement.classList.add("has-enhanced-catalog");
 }
 
+let headerSyncScheduled = false;
+
 const syncHeader = () => {
   header?.classList.toggle("is-scrolled", window.scrollY > 24);
+  headerSyncScheduled = false;
 };
 
-window.addEventListener("scroll", syncHeader, { passive: true });
-syncHeader();
+const scheduleHeaderSync = () => {
+  if (headerSyncScheduled) return;
+  headerSyncScheduled = true;
+  window.requestAnimationFrame(syncHeader);
+};
+
+window.addEventListener("scroll", scheduleHeaderSync, { passive: true });
+scheduleHeaderSync();
 
 menuToggle?.setAttribute("aria-expanded", "false");
 if (mobileNav && !mobileNav.id) {

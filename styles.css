@@ -35,6 +35,10 @@ body.menu-open {
   overflow: hidden;
 }
 
+picture {
+  display: block;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -63,7 +67,7 @@ a {
 }
 
 :where(a, button, summary, input, select, textarea):focus-visible {
-  outline: 3px solid rgba(31, 138, 112, 0.32);
+  outline: 3px solid var(--green-text);
   outline-offset: 3px;
 }
 
@@ -1942,6 +1946,11 @@ h3 {
   padding: 130px clamp(18px, 5vw, 72px) 72px;
   color: var(--white);
   background: var(--forest);
+}
+
+.product-hero picture {
+  position: absolute;
+  inset: 0;
 }
 
 .product-hero img {
