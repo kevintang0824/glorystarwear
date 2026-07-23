@@ -99,9 +99,13 @@ if (mobileNav?.id) {
 mobileNav?.setAttribute("aria-hidden", "true");
 
 const contactUrl = isContactPage ? "#quote-form" : new URL("/contact.html", window.location.href).href;
-const defaultWhatsAppText = encodeURIComponent(
-  "Hi GloryStarWear, I want to start a custom sportswear project.",
-);
+const currentPageTopic = document.title.split("|")[0].trim() || "custom sportswear";
+const contextualWhatsAppText = [
+  `Hi GloryStarWear, I am interested in ${currentPageTopic}.`,
+  `Page: ${window.location.origin}${window.location.pathname}`,
+  "Please share MOQ, sample cost, lead time, and quote details.",
+].join("\n");
+const defaultWhatsAppText = encodeURIComponent(contextualWhatsAppText);
 
 if (mobileNav && !mobileNav.querySelector(".mobile-nav-actions")) {
   const actions = document.createElement("div");
@@ -123,6 +127,14 @@ if (!document.querySelector("[data-mobile-quote-bar]")) {
   `;
   document.body.append(bar);
 }
+
+document.querySelectorAll(`a[href^="https://wa.me/${whatsappNumber}"]`).forEach((link) => {
+  const target = new URL(link.href);
+  if (!target.searchParams.has("text")) {
+    target.searchParams.set("text", contextualWhatsAppText);
+    link.href = target.toString();
+  }
+});
 
 const setMobileMenu = (isOpen) => {
   mobileNav?.classList.toggle("is-open", isOpen);
