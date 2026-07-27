@@ -385,7 +385,7 @@ a {
   display: grid;
   align-content: center;
   min-height: 92vh;
-  width: min(760px, calc(100% - 36px));
+  width: min(1100px, calc(100% - 36px));
   padding: 120px 0 78px;
   margin-left: clamp(18px, 7vw, 96px);
 }
@@ -420,9 +420,11 @@ h1 {
 }
 
 .hero h1 {
-  font-size: clamp(52px, 7.2vw, 104px);
+  max-width: 1050px;
+  font-size: clamp(50px, 6vw, 86px);
   overflow-wrap: normal;
-  white-space: nowrap;
+  text-wrap: balance;
+  white-space: normal;
 }
 
 h2 {
