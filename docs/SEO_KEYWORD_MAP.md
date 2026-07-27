@@ -1,6 +1,6 @@
 # GloryStarWear Search Intent Map
 
-Last updated: 2026-07-15
+Last updated: 2026-07-27
 
 ## Page Ownership Rule
 
@@ -9,6 +9,16 @@ Last updated: 2026-07-15
 - Broad and narrow pages should link to each other with language that explains the different task.
 - Do not reuse the same H1, section headings, direct answer, or FAQ question across both pages.
 - If two pages cannot maintain different buyer tasks, consolidate them instead of publishing another keyword variation.
+
+## Core Commercial Page Ownership
+
+| URL | Primary intent | Supporting intent |
+| --- | --- | --- |
+| `/` | Broad `custom sportswear manufacturer` discovery, product range, and route selection | Activewear, teamwear, niche sports, packaging, trust, and inquiry paths |
+| `/sportswear-manufacturer.html` | `private label sportswear manufacturer` and OEM/ODM supplier evaluation | Development inputs, provider scope, sampling, branding, quality, packaging, and commercial handoff |
+| `/private-label-activewear-manufacturer.html` | Activewear-specific private label program | Yoga, seamless, plus-size, gym clothing, fabrics, labels, and ecommerce packaging |
+| `/custom-teamwear-uniforms.html` | Teamwear-specific uniform program | Personalization, sublimation, roster control, player packing, and seasonal reorders |
+| `/process.html` | `custom sportswear sampling` and production service process | Prototype, fit sample, size set, pre-production approval, bulk QC, packing, and shipment |
 
 ## Priority Page Pairs
 

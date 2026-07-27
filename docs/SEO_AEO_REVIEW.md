@@ -45,8 +45,8 @@ Google AI Overviews and AI Mode use the same crawl, index, and ranking foundatio
 ### Verification Baseline
 
 - The first optimization sprint passed a local Chromium crawl with 79 sitemap URLs, no console errors, no key-page desktop or mobile overflow, and working attribution events.
-- The current dependency-free static audit covers 84 HTML files and 83 sitemap URLs.
-- It confirms 84 unique canonicals, 83 valid JSON-LD blocks, 86 internal targets, and 412 referenced local assets with no errors.
+- The current dependency-free static audit covers 85 HTML files and 84 sitemap URLs.
+- It confirms 85 unique canonicals, 84 valid JSON-LD blocks, 87 internal targets, and 775 referenced local assets with no errors.
 - Run `python3 scripts/audit_static_site.py` before deployment and after adding a page, link, canonical, schema block, or asset.
 - The current 83-URL release passed a mobile Chromium crawl with no broken sitemap targets, H1 errors, console errors, page errors, or horizontal overflow.
 - The fabric guide passed dedicated mobile and desktop checks for responsive images, schema types, CSV delivery, layout, and runtime errors. Axe 4.12 reported no WCAG A/AA violations; image-backed contrast candidates were also reviewed visually.
