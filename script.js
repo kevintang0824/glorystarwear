@@ -535,16 +535,6 @@ if (catalogGrid) {
   applyCatalogFilters();
 }
 
-document.querySelector("[data-expand-products]")?.addEventListener("click", (event) => {
-  const section = event.currentTarget.closest("[data-product-section]");
-  const isCollapsed = section?.classList.toggle("is-collapsed");
-  event.currentTarget.setAttribute("aria-expanded", String(!isCollapsed));
-  event.currentTarget.innerHTML = isCollapsed
-    ? '<i data-lucide="grid-3x3"></i>Show all product categories'
-    : '<i data-lucide="chevrons-up"></i>Show fewer products';
-  renderIcons();
-});
-
 const renderIcons = () => {
   window.lucide?.createIcons();
 };
