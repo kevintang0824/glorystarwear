@@ -16,9 +16,9 @@
     <link rel="icon" type="image/svg+xml" href="./assets/logo-mark.svg" />
 
     <title>Contact GloryStarWear | Custom Sportswear Quote</title>
-    <link rel="stylesheet" href="./styles.css?v=20260722-1" />
+    <link rel="stylesheet" href="./styles.css?v=20260728-1" />
     <script src="./assets/vendor/lucide.min.js?v=20260722-1" defer></script>
-    <script src="./script.js?v=20260723-1" defer></script>
+    <script src="./script.js?v=20260728-2" defer></script>
   </head>
   <body class="product-page">
     <header class="site-header" data-header><a class="brand" href="./#top"><span class="brand-mark">GS</span><span>GloryStarWear</span></a><nav class="desktop-nav"><div class="nav-dropdown"><a class="nav-trigger" href="./products/">Products <i data-lucide="chevron-down"></i></a><div class="nav-menu"><a href="./products/">All Products</a><a href="./products/new-products.html">New Products</a><a href="./products/lookbook.html">Product Gallery</a><a href="./products/yoga-wear.html">Yoga Wear</a><a href="./products/athleisure.html">Athleisure</a><a href="./products/training-wear.html">Training Wear</a><a href="./products/basketball-wear.html">Basketball Wear</a><a href="./products/football-kits.html">Football Kits</a><a href="./products/accessories.html">Accessories & Packaging</a>
@@ -28,7 +28,7 @@
       <section class="product-hero"><picture><source type="image/avif" srcset="./assets/images/custom-sportswear-consultation-900.avif 900w, ./assets/images/custom-sportswear-consultation-1200.avif 1200w, ./assets/images/custom-sportswear-consultation.avif 1672w" sizes="100vw" /><img src="./assets/images/custom-sportswear-consultation.jpg" srcset="./assets/images/custom-sportswear-consultation-900.jpg 900w, ./assets/images/custom-sportswear-consultation-1200.jpg 1200w, ./assets/images/custom-sportswear-consultation.jpg 1672w" sizes="100vw" alt="Contact GloryStarWear for custom sportswear consultation and quote" width="1672" height="941" fetchpriority="high" decoding="async"></picture><div class="product-hero-content"><div class="breadcrumb"><a href="./">Home</a><span>/</span><span>Contact</span></div><p class="eyebrow">Start a project</p><h1>Contact GloryStarWear</h1><p>Send your product idea, reference styles, logo files, quantity, target market, fabric direction, and packaging needs.</p></div></section>
       <section class="contact-section">
         <div class="contact-copy"><p class="eyebrow">Sales contact</p><h2>Tell us what you want to make</h2><p>We will help you choose the right route for flexible custom, full private-label production, or one-stop product-to-packaging service.</p><div class="contact-methods"><a href="tel:18020755949"><i data-lucide="phone"></i>18020755949</a><a href="https://wa.me/8618020755949" target="_blank" rel="noreferrer"><i data-lucide="message-circle"></i>WhatsApp: +86 18020755949</a><a href="mailto:kevin@glorystarwears.com"><i data-lucide="mail"></i>kevin@glorystarwears.com</a></div></div>
-        <form class="quote-form" id="quote-form" data-quote-form>
+        <form class="quote-form" id="quote-form" data-quote-form data-lead-endpoint="https://glorystarwear.vercel.app/api/lead">
           <div class="quote-form-heading"><span>Project brief</span><strong>Start with four essentials</strong></div>
           <div class="inquiry-context" data-inquiry-context hidden>
             <i data-lucide="corner-down-right" aria-hidden="true"></i>
@@ -46,6 +46,7 @@
           </div>
           <label>Product Interest<select name="product" required><option value="">Select a category</option><option>Yoga wear</option><option>Athleisure</option><option>Training wear</option><option>Basketball wear</option><option>Football kits</option><option>Running wear</option><option>Tennis and pickleball apparel</option><option>Golf apparel</option><option>Baseball and softball teamwear</option><option>Swimwear and water sports</option><option>Combat sports apparel</option><option>Accessories</option><option>Packaging and one-stop service</option><option>Other custom sportswear</option></select></label>
           <label>Project Details<textarea name="message" rows="5" placeholder="Quantity, logo, fabric, style references, packaging needs..." required></textarea></label>
+          <label class="form-honeypot" aria-hidden="true">Company website<input name="companyWebsite" type="text" tabindex="-1" autocomplete="off" /></label>
           <details class="quote-form-more">
             <summary><span><i data-lucide="list-plus"></i>Add order details</span><small>Quantity, market, timing, and WhatsApp</small></summary>
             <div class="quote-form-grid">
@@ -55,12 +56,14 @@
               <label>Expected Timeline<input name="timeline" type="text" placeholder="Sample this month, bulk in 45 days" /></label>
             </div>
           </details>
+          <label class="quote-consent"><input name="consent" type="checkbox" required /><span>I agree that my contact and project details may be used to reply to this inquiry. Read the <a href="./privacy.html">privacy notice</a>.</span></label>
           <div class="quote-form-actions">
-            <button class="button primary" type="submit"><i data-lucide="mail-plus"></i>Email Inquiry</button>
+            <button class="button primary" type="submit" data-server-submit hidden><i data-lucide="send"></i>Submit Secure Inquiry</button>
             <button class="button whatsapp" type="button" data-whatsapp-inquiry><i data-lucide="message-circle"></i>Send on WhatsApp</button>
+            <button class="button secondary" type="button" data-email-inquiry><i data-lucide="mail-plus"></i>Email Inquiry</button>
             <button class="button secondary" type="button" data-copy-inquiry><i data-lucide="copy"></i>Copy Project Brief</button>
           </div>
-          <p class="form-note" data-form-note role="status" aria-live="polite">Choose email, WhatsApp, or copy the brief for another messaging app.</p>
+          <p class="form-note" data-form-note role="status" aria-live="polite">WhatsApp is the fastest working route. Email requires a local email app. A secure submit button appears only when server receipt is available.</p>
         </form>
       </section>
       <section class="section visual-proof-section">

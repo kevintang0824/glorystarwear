@@ -33,9 +33,9 @@
 
     <title>Custom Sportswear &amp; Activewear Manufacturer | GloryStarWear</title>
     <link rel="preload" as="image" type="image/avif" fetchpriority="high" href="./assets/images/hero-brand-campaign.avif" imagesrcset="./assets/images/hero-brand-campaign-900.avif 900w, ./assets/images/hero-brand-campaign-1200.avif 1200w, ./assets/images/hero-brand-campaign.avif 1672w" imagesizes="100vw" />
-    <link rel="stylesheet" href="./styles.css?v=20260727-1" />
+    <link rel="stylesheet" href="./styles.css?v=20260728-1" />
     <script src="./assets/vendor/lucide.min.js?v=20260722-1" defer></script>
-    <script src="./script.js?v=20260723-1" defer></script>
+    <script src="./script.js?v=20260728-2" defer></script>
   </head>
   <body class="home-page">
     <header class="site-header" data-header>
@@ -1344,7 +1344,7 @@
             </a>
           </div>
         </div>
-        <form class="quote-form" data-quote-form>
+        <form class="quote-form" data-quote-form data-lead-endpoint="https://glorystarwear.vercel.app/api/lead">
           <div class="quote-form-heading">
             <span>Project brief</span>
             <strong>Start with four essentials</strong>
@@ -1383,6 +1383,10 @@
             Project Details
             <textarea name="message" rows="5" placeholder="Quantity, logo, fabric, style references, packaging needs..." required></textarea>
           </label>
+          <label class="form-honeypot" aria-hidden="true">
+            Company website
+            <input name="companyWebsite" type="text" tabindex="-1" autocomplete="off" />
+          </label>
           <details class="quote-form-more">
             <summary>
               <span><i data-lucide="list-plus"></i>Add order details</span>
@@ -1407,21 +1411,29 @@
               </label>
             </div>
           </details>
+          <label class="quote-consent">
+            <input name="consent" type="checkbox" required />
+            <span>I agree that my contact and project details may be used to reply to this inquiry. Read the <a href="./privacy.html">privacy notice</a>.</span>
+          </label>
           <div class="quote-form-actions">
-            <button class="button primary" type="submit">
-              <i data-lucide="mail-plus"></i>
-              Email Inquiry
+            <button class="button primary" type="submit" data-server-submit hidden>
+              <i data-lucide="send"></i>
+              Submit Secure Inquiry
             </button>
             <button class="button whatsapp" type="button" data-whatsapp-inquiry>
               <i data-lucide="message-circle"></i>
               Send on WhatsApp
+            </button>
+            <button class="button secondary" type="button" data-email-inquiry>
+              <i data-lucide="mail-plus"></i>
+              Email Inquiry
             </button>
             <button class="button secondary" type="button" data-copy-inquiry>
               <i data-lucide="copy"></i>
               Copy Project Brief
             </button>
           </div>
-          <p class="form-note" data-form-note role="status" aria-live="polite">Choose email, WhatsApp, or copy the brief for another messaging app.</p>
+          <p class="form-note" data-form-note role="status" aria-live="polite">WhatsApp is the fastest working route. Email requires a local email app. A secure submit button appears only when server receipt is available.</p>
         </form>
       </section>
     </main>

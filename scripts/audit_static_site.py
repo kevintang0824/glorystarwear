@@ -12,7 +12,8 @@ from urllib.parse import unquote, urljoin, urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 PRODUCTION_ORIGIN = "https://glorystarwears.com"
-EXPECTED_ASSET_VERSION = "20260722-1"
+EXPECTED_SCRIPT_VERSION = "20260728-2"
+EXPECTED_FORM_STYLE_VERSION = "20260728-1"
 TITLE_LENGTH_RANGE = (30, 65)
 DESCRIPTION_LENGTH_RANGE = (100, 170)
 IMAGE_RE = re.compile(r"<img\b[^>]*>", re.IGNORECASE | re.DOTALL)
@@ -263,10 +264,27 @@ def main():
                 f"{relative_name}: visible breadcrumb is missing BreadcrumbList JSON-LD"
             )
 
-        if "styles.css" in source or "script.js" in source:
-            if f"v={EXPECTED_ASSET_VERSION}" not in source:
+        if "script.js" in source and f"script.js?v={EXPECTED_SCRIPT_VERSION}" not in source:
+            errors.append(
+                f"{relative_name}: expected script version {EXPECTED_SCRIPT_VERSION}"
+            )
+
+        if "data-quote-form" in source:
+            required_form_markers = {
+                'name="consent" type="checkbox" required': "required privacy consent",
+                "data-server-submit": "server submit control",
+                "data-whatsapp-inquiry": "WhatsApp fallback",
+                "data-email-inquiry": "email fallback",
+                "data-copy-inquiry": "copy fallback",
+                'href="./privacy.html"': "privacy notice link",
+            }
+            for marker, label in required_form_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: quote form is missing {label}")
+            if f"styles.css?v={EXPECTED_FORM_STYLE_VERSION}" not in source:
                 errors.append(
-                    f"{relative_name}: expected asset version {EXPECTED_ASSET_VERSION}"
+                    f"{relative_name}: expected form style version "
+                    f"{EXPECTED_FORM_STYLE_VERSION}"
                 )
 
         for preload in parser.image_preloads:

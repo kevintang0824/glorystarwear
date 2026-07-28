@@ -1762,6 +1762,36 @@ h3 {
   font-weight: 900;
 }
 
+.form-honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+.quote-consent {
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 10px !important;
+  font-weight: 700 !important;
+  line-height: 1.5;
+}
+
+.quote-form .quote-consent input {
+  width: 20px;
+  min-height: 20px;
+  padding: 0;
+  margin-top: 1px;
+  accent-color: var(--green);
+}
+
+.quote-consent a {
+  color: var(--green-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .quote-form input,
 .quote-form select,
 .quote-form textarea {
@@ -1842,6 +1872,10 @@ h3 {
 
 .quote-form-actions .button {
   width: 100%;
+}
+
+.quote-form-actions [hidden] {
+  display: none;
 }
 
 .quote-form-actions [data-copy-inquiry] {

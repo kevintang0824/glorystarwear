@@ -5,6 +5,7 @@ const quoteForms = document.querySelectorAll("[data-quote-form]");
 const catalogGrid = document.querySelector("[data-catalog-grid]");
 const whatsappNumber = "8618020755949";
 const isContactPage = window.location.pathname.endsWith("/contact.html");
+const isThankYouPage = window.location.pathname.endsWith("/thank-you.html");
 const inquirySourceKey = "glorystarwear-inquiry-source";
 const attributionStorageKey = "glorystarwear-attribution";
 const campaignParameterNames = [
@@ -68,6 +69,10 @@ if (isNewAttributionSession) {
   });
 }
 
+if (isThankYouPage) {
+  trackEvent("thank_you_view", { confirmation_source: "server_redirect" });
+}
+
 document.documentElement.classList.add("has-enhanced-contact");
 if (catalogGrid) {
   document.documentElement.classList.add("has-enhanced-catalog");
@@ -128,6 +133,15 @@ if (!document.querySelector("[data-mobile-quote-bar]")) {
   document.body.append(bar);
 }
 
+document.querySelectorAll(".footer-links").forEach((footerLinks) => {
+  if (footerLinks.querySelector('a[href$="/privacy.html"], a[href="./privacy.html"]')) return;
+
+  const privacyLink = document.createElement("a");
+  privacyLink.href = new URL("/privacy.html", window.location.href).href;
+  privacyLink.textContent = "Privacy";
+  footerLinks.append(privacyLink);
+});
+
 document.querySelectorAll(`a[href^="https://wa.me/${whatsappNumber}"]`).forEach((link) => {
   const target = new URL(link.href);
   if (!target.searchParams.has("text")) {
@@ -172,6 +186,13 @@ document.addEventListener("click", (event) => {
         contact_method: contactMethod,
         link_text: link.textContent.trim().slice(0, 80),
       });
+
+      if (contactMethod === "whatsapp" || contactMethod === "email") {
+        trackEvent(`${contactMethod}_click`, {
+          link_context: "site_link",
+          link_text: link.textContent.trim().slice(0, 80),
+        });
+      }
     }
 
     if (link.dataset.resourceDownload) {
@@ -314,6 +335,28 @@ const getInquiryLines = (form) => {
   ];
 };
 
+const getInquiryPayload = (form) => {
+  const data = new FormData(form);
+  const attribution = readAttribution() || pageAttribution;
+
+  return {
+    name: data.get("name"),
+    email: data.get("email"),
+    phone: data.get("phone"),
+    product: data.get("product"),
+    quantity: data.get("quantity"),
+    market: data.get("market"),
+    timeline: data.get("timeline"),
+    message: data.get("message"),
+    companyWebsite: data.get("companyWebsite"),
+    consent: data.get("consent") === "on",
+    sourcePage: getInquirySource(),
+    landingPage: attribution?.landingPage || "",
+    referrer: attribution?.referrer || "",
+    campaign: attribution?.campaign || {},
+  };
+};
+
 const setFormNote = (form, message, state) => {
   const note = form.querySelector("[data-form-note]");
   if (!note) return;
@@ -342,8 +385,19 @@ const copyText = async (value) => {
   }
 };
 
+const fetchWithTimeout = (url, options = {}, timeoutMilliseconds = 8000) => {
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), timeoutMilliseconds);
+
+  return fetch(url, { ...options, signal: controller.signal })
+    .finally(() => window.clearTimeout(timeout));
+};
+
 quoteForms.forEach((form) => {
   let hasStartedQuote = false;
+  let serverSubmissionAvailable = false;
+  const leadEndpoint = form.dataset.leadEndpoint || "";
+  const serverSubmitButton = form.querySelector("[data-server-submit]");
   const trackQuoteStart = () => {
     if (hasStartedQuote) return;
     hasStartedQuote = true;
@@ -353,15 +407,76 @@ quoteForms.forEach((form) => {
   form.addEventListener("input", trackQuoteStart);
   form.addEventListener("focusin", trackQuoteStart);
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const data = new FormData(form);
-    const subject = encodeURIComponent(`GloryStarWear inquiry - ${data.get("product")}`);
-    const body = encodeURIComponent(getInquiryLines(form).join("\n"));
+  if (leadEndpoint && serverSubmitButton) {
+    fetchWithTimeout(leadEndpoint, {
+      method: "GET",
+      mode: "cors",
+      cache: "no-store",
+      headers: { Accept: "application/json" },
+    }, 4000)
+      .then((response) => response.ok ? response.json() : { configured: false })
+      .then((status) => {
+        if (!status.configured) return;
+        serverSubmissionAvailable = true;
+        serverSubmitButton.hidden = false;
+        setFormNote(
+          form,
+          "Secure server submission is available. Success is shown only after the receiving service confirms delivery.",
+          "success",
+        );
+      })
+      .catch(() => {
+        // WhatsApp, email, and copy remain available when the server check cannot complete.
+      });
+  }
 
-    setFormNote(form, "Opening your email app with the project brief...", "opening");
-    trackEvent("quote_submit_email", { product_interest: data.get("product") || "" });
-    window.location.href = `mailto:kevin@glorystarwears.com?subject=${subject}&body=${body}`;
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+
+    if (!serverSubmissionAvailable || !leadEndpoint || !serverSubmitButton) {
+      form.querySelector("[data-whatsapp-inquiry]")?.click();
+      return;
+    }
+
+    const data = new FormData(form);
+    serverSubmitButton.disabled = true;
+    setFormNote(form, "Sending your inquiry securely...", "opening");
+
+    try {
+      const response = await fetchWithTimeout(leadEndpoint, {
+        method: "POST",
+        mode: "cors",
+        cache: "no-store",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(getInquiryPayload(form)),
+      }, 12000);
+
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !result.ok) {
+        throw new Error(result.error || `HTTP ${response.status}`);
+      }
+
+      trackEvent("lead_submit_success", {
+        form_location: window.location.pathname,
+        product_interest: data.get("product") || "",
+      });
+      window.location.assign(new URL("/thank-you.html", window.location.href).href);
+    } catch {
+      setFormNote(
+        form,
+        "We could not confirm receipt, so this inquiry has not been marked as received. Please use WhatsApp or email instead.",
+        "error",
+      );
+      trackEvent("lead_submit_error", {
+        form_location: window.location.pathname,
+        product_interest: data.get("product") || "",
+      });
+      serverSubmitButton.disabled = false;
+    }
   });
 
   form.querySelector("[data-whatsapp-inquiry]")?.addEventListener("click", () => {
@@ -373,7 +488,8 @@ quoteForms.forEach((form) => {
       ),
     );
     setFormNote(form, "Opening WhatsApp with the project brief...", "opening");
-    trackEvent("quote_submit_whatsapp", {
+    trackEvent("whatsapp_click", {
+      link_context: "quote_form",
       product_interest: new FormData(form).get("product") || "",
     });
     const whatsappLink = document.createElement("a");
@@ -381,6 +497,25 @@ quoteForms.forEach((form) => {
     whatsappLink.target = "_blank";
     whatsappLink.rel = "noreferrer";
     whatsappLink.click();
+  });
+
+  form.querySelector("[data-email-inquiry]")?.addEventListener("click", () => {
+    if (!form.reportValidity()) return;
+
+    const data = new FormData(form);
+    const subject = encodeURIComponent(`GloryStarWear inquiry - ${data.get("product")}`);
+    const body = encodeURIComponent(getInquiryLines(form).join("\n"));
+
+    setFormNote(
+      form,
+      "Opening your email app. This is not counted as received until you send the message and it reaches the mailbox.",
+      "opening",
+    );
+    trackEvent("email_click", {
+      link_context: "quote_form",
+      product_interest: data.get("product") || "",
+    });
+    window.location.href = `mailto:kevin@glorystarwears.com?subject=${subject}&body=${body}`;
   });
 
   form.querySelector("[data-copy-inquiry]")?.addEventListener("click", async (event) => {

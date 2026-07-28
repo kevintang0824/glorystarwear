@@ -1,6 +1,6 @@
 # GloryStarWear Search Visibility Review
 
-Last updated: 2026-07-16
+Last updated: 2026-07-28
 
 ## Working Principle
 
@@ -38,6 +38,8 @@ Google AI Overviews and AI Mode use the same crawl, index, and ranking foundatio
 - First-touch landing URL, referrer, `utm_*`, `gclid`, and `msclkid` values are kept in session storage.
 - Prepared email and WhatsApp inquiries include source and campaign context.
 - Visitors without a configured email client can copy a complete project brief for another messaging app.
+- WhatsApp and email clicks are tracked as contact intent, not successful lead delivery.
+- The secure server submit control appears only when the Vercel endpoint confirms a real receiving webhook is configured; `lead_submit_success` is emitted only after that receiver returns success.
 - The fabric-selection, size-grading, and teamwear-roster guides include reusable CSV templates with anonymous download tracking.
 - `window.dataLayer` receives vendor-neutral events for campaign landing, contact clicks, quote starts, email, WhatsApp and copied-brief actions, catalog filters, and catalog searches.
 - No names, email addresses, phone numbers, or project-message content are sent to the data layer.
@@ -45,8 +47,8 @@ Google AI Overviews and AI Mode use the same crawl, index, and ranking foundatio
 ### Verification Baseline
 
 - The first optimization sprint passed a local Chromium crawl with 79 sitemap URLs, no console errors, no key-page desktop or mobile overflow, and working attribution events.
-- The current dependency-free static audit covers 85 HTML files and 84 sitemap URLs.
-- It confirms 85 unique canonicals, 84 valid JSON-LD blocks, 87 internal targets, and 775 referenced local assets with no errors.
+- The current dependency-free static audit covers 88 HTML files and 85 sitemap URLs.
+- It confirms 88 unique canonicals, 87 valid JSON-LD blocks, 89 internal targets, and 761 referenced local assets with no errors.
 - Run `python3 scripts/audit_static_site.py` before deployment and after adding a page, link, canonical, schema block, or asset.
 - The current 83-URL release passed a mobile Chromium crawl with no broken sitemap targets, H1 errors, console errors, page errors, or horizontal overflow.
 - The fabric guide passed dedicated mobile and desktop checks for responsive images, schema types, CSV delivery, layout, and runtime errors. Axe 4.12 reported no WCAG A/AA violations; image-backed contrast candidates were also reviewed visually.
@@ -62,8 +64,9 @@ Google AI Overviews and AI Mode use the same crawl, index, and ranking foundatio
 4. Submit `https://glorystarwears.com/sitemap.xml` in Search Console.
 5. Inspect the homepage, resource center, and seven buyer guides with URL Inspection.
 6. Run IndexNow only after the changed pages are live.
-7. Connect the real GTM or GA4 property and map the existing data-layer events.
-8. Record the deployment date so performance can be compared over 28-day and 90-day windows.
+7. Connect `LEAD_WEBHOOK_URL` to an owned CRM, automation flow, or server inbox and verify durable receipt before enabling the secure submit route.
+8. Connect the real GTM or GA4 property and map the existing data-layer events.
+9. Record the deployment date so performance can be compared over 28-day and 90-day windows.
 
 ## Measurement Plan
 
@@ -78,7 +81,7 @@ Track outcomes by landing page, country, device, query theme, and inquiry source
 
 1. Replace or supplement generated imagery with current factory, sample-room, material, measurement, inspection, packing, and shipment evidence.
 2. Publish real project case studies with buyer type, initial brief, development decisions, approved scope, quality checkpoints, and outcome. Remove confidential details rather than inventing them.
-3. Add a real form endpoint with success and failure states. The current static form prepares an email or WhatsApp message but cannot confirm server-side lead delivery.
+3. Connect the deployed Vercel lead endpoint to a real receiving webhook and test durable delivery. Until then, WhatsApp remains the primary working route and email remains a local-client fallback.
 4. Add verified company facts only when supporting evidence is available: business entity, location, production scope, relevant markets, current certificates, and named contact ownership.
 5. Consolidate overlapping product intent. Broad category pages should explain collection planning; narrower pages should focus on product-specific construction, specifications, and use cases.
 6. Build future guides from recurring sales questions, such as artwork preparation, packaging handoff, compliance evidence, and reorder planning.
