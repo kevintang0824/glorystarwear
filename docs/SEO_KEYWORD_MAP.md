@@ -16,6 +16,7 @@ Last updated: 2026-07-27
 | --- | --- | --- |
 | `/` | Broad `custom sportswear manufacturer` discovery, product range, and route selection | Activewear, teamwear, niche sports, packaging, trust, and inquiry paths |
 | `/sportswear-manufacturer.html` | `private label sportswear manufacturer` and OEM/ODM supplier evaluation | Development inputs, provider scope, sampling, branding, quality, packaging, and commercial handoff |
+| `/low-moq-sportswear-manufacturer.html` | `low MOQ sportswear manufacturer` and startup first-order planning | Light custom, focused capsule, team or event, full custom, component minimums, sample route, and quote inputs |
 | `/private-label-activewear-manufacturer.html` | Activewear-specific private label program | Yoga, seamless, plus-size, gym clothing, fabrics, labels, and ecommerce packaging |
 | `/custom-teamwear-uniforms.html` | Teamwear-specific uniform program | Personalization, sublimation, roster control, player packing, and seasonal reorders |
 | `/process.html` | `custom sportswear sampling` and production service process | Prototype, fit sample, size set, pre-production approval, bulk QC, packing, and shipment |

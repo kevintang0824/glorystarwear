@@ -80,17 +80,38 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Service",
-        "name": "One-Stop Custom Sportswear Service",
-        "url": "https://glorystarwears.com/one-stop-service.html",
-        "image": "https://glorystarwears.com/assets/images/retail-packaging-shipment.jpg",
-        "provider": {
-          "@type": "Organization",
-          "name": "GloryStarWear",
-          "url": "https://glorystarwears.com/"
-        },
-        "serviceType": "OEM and ODM sportswear manufacturing, packaging, and shipment coordination",
-        "description": "One-stop custom sportswear service for design support, fabric sourcing, sampling, bulk production, quality inspection, private labels, retail packaging, carton packing, and shipment coordination."
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://glorystarwears.com/one-stop-service.html#webpage",
+            "url": "https://glorystarwears.com/one-stop-service.html",
+            "name": "One-Stop Apparel Service",
+            "description": "One-stop custom sportswear service for design support, fabric sourcing, sampling, bulk production, quality inspection, private labels, retail packaging, carton packing, and shipment coordination.",
+            "image": "https://glorystarwears.com/assets/images/retail-packaging-shipment.jpg",
+            "breadcrumb": {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://glorystarwears.com/" },
+                { "@type": "ListItem", "position": 2, "name": "One-Stop Service", "item": "https://glorystarwears.com/one-stop-service.html" }
+              ]
+            }
+          },
+          {
+            "@type": "Service",
+            "@id": "https://glorystarwears.com/one-stop-service.html#service",
+            "name": "One-Stop Custom Sportswear Service",
+            "url": "https://glorystarwears.com/one-stop-service.html",
+            "image": "https://glorystarwears.com/assets/images/retail-packaging-shipment.jpg",
+            "provider": {
+              "@type": "Organization",
+              "name": "GloryStarWear",
+              "url": "https://glorystarwears.com/"
+            },
+            "serviceType": "OEM and ODM sportswear manufacturing, packaging, and shipment coordination",
+            "description": "One-stop custom sportswear service for design support, fabric sourcing, sampling, bulk production, quality inspection, private labels, retail packaging, carton packing, and shipment coordination.",
+            "mainEntityOfPage": { "@id": "https://glorystarwears.com/one-stop-service.html#webpage" }
+          }
+        ]
       }
     </script>
   </body>

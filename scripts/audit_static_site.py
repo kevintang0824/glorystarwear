@@ -4,6 +4,7 @@ import json
 import re
 import sys
 import xml.etree.ElementTree as ET
+from html import unescape
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urljoin, urlparse
@@ -15,6 +16,11 @@ EXPECTED_ASSET_VERSION = "20260722-1"
 TITLE_LENGTH_RANGE = (30, 65)
 DESCRIPTION_LENGTH_RANGE = (100, 170)
 IMAGE_RE = re.compile(r"<img\b[^>]*>", re.IGNORECASE | re.DOTALL)
+NON_VISIBLE_RE = re.compile(
+    r"<(?:script|style)\b[^>]*>[\s\S]*?</(?:script|style)>",
+    re.IGNORECASE,
+)
+TAG_RE = re.compile(r"<[^>]+>")
 IGNORED_PATH_PARTS = {
     ".git",
     ".local-backups",
@@ -129,6 +135,22 @@ def duplicate_values(values):
     return sorted(duplicates)
 
 
+def normalized_text(value):
+    return re.sub(r"\s+", " ", unescape(value)).strip()
+
+
+def structured_nodes(value):
+    if not isinstance(value, (dict, list)):
+        return
+    if isinstance(value, dict):
+        yield value
+        for child in value.values():
+            yield from structured_nodes(child)
+    else:
+        for child in value:
+            yield from structured_nodes(child)
+
+
 def main():
     errors = []
     pages = {}
@@ -150,6 +172,9 @@ def main():
         parser = PageParser()
         source = html_file.read_text(encoding="utf-8")
         parser.feed(source)
+        visible_text = normalized_text(
+            TAG_RE.sub(" ", NON_VISIBLE_RE.sub(" ", source))
+        )
         relative_name = html_file.relative_to(ROOT).as_posix()
         pages[html_file.resolve()] = parser
 
@@ -197,12 +222,46 @@ def main():
                 )
             owners[value] = relative_name
 
+        structured_types = set()
         for block in parser.json_ld_blocks:
             json_ld_count += 1
             try:
-                json.loads(block)
+                structured_data = json.loads(block)
             except json.JSONDecodeError as error:
                 errors.append(f"{relative_name}: invalid JSON-LD: {error}")
+                continue
+
+            for node in structured_nodes(structured_data):
+                node_type = node.get("@type")
+                if isinstance(node_type, str):
+                    structured_types.add(node_type)
+                elif isinstance(node_type, list):
+                    structured_types.update(
+                        value for value in node_type if isinstance(value, str)
+                    )
+
+                if node_type != "FAQPage":
+                    continue
+                for question in node.get("mainEntity", []):
+                    question_text = normalized_text(question.get("name", ""))
+                    answer_text = normalized_text(
+                        question.get("acceptedAnswer", {}).get("text", "")
+                    )
+                    if question_text and question_text not in visible_text:
+                        errors.append(
+                            f"{relative_name}: FAQ question is not visible: "
+                            f"{question_text}"
+                        )
+                    if answer_text and answer_text not in visible_text:
+                        errors.append(
+                            f"{relative_name}: FAQ answer is not visible for: "
+                            f"{question_text}"
+                        )
+
+        if 'class="breadcrumb"' in source and "BreadcrumbList" not in structured_types:
+            errors.append(
+                f"{relative_name}: visible breadcrumb is missing BreadcrumbList JSON-LD"
+            )
 
         if "styles.css" in source or "script.js" in source:
             if f"v={EXPECTED_ASSET_VERSION}" not in source:

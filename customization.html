@@ -104,17 +104,38 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Service",
-        "name": "Custom Sportswear OEM and ODM Service",
-        "url": "https://glorystarwears.com/customization.html",
-        "image": "https://glorystarwears.com/assets/images/private-label-trims-customization.jpg",
-        "provider": {
-          "@type": "Organization",
-          "name": "GloryStarWear",
-          "url": "https://glorystarwears.com/"
-        },
-        "serviceType": "Private label sportswear customization",
-        "description": "Light custom and full OEM/ODM sportswear service for logo decoration, labels, trims, samples, patterns, fabrics, packaging, and bulk production."
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://glorystarwears.com/customization.html#webpage",
+            "url": "https://glorystarwears.com/customization.html",
+            "name": "Custom Sportswear Service",
+            "description": "Light custom and full OEM/ODM sportswear service for logo decoration, labels, trims, samples, patterns, fabrics, packaging, and bulk production.",
+            "image": "https://glorystarwears.com/assets/images/private-label-trims-customization.jpg",
+            "breadcrumb": {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://glorystarwears.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Customization", "item": "https://glorystarwears.com/customization.html" }
+              ]
+            }
+          },
+          {
+            "@type": "Service",
+            "@id": "https://glorystarwears.com/customization.html#service",
+            "name": "Custom Sportswear OEM and ODM Service",
+            "url": "https://glorystarwears.com/customization.html",
+            "image": "https://glorystarwears.com/assets/images/private-label-trims-customization.jpg",
+            "provider": {
+              "@type": "Organization",
+              "name": "GloryStarWear",
+              "url": "https://glorystarwears.com/"
+            },
+            "serviceType": "Private label sportswear customization",
+            "description": "Light custom and full OEM/ODM sportswear service for logo decoration, labels, trims, samples, patterns, fabrics, packaging, and bulk production.",
+            "mainEntityOfPage": { "@id": "https://glorystarwears.com/customization.html#webpage" }
+          }
+        ]
       }
     </script>
   </body>
