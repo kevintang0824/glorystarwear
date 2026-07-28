@@ -1437,6 +1437,11 @@ h3 {
   -webkit-overflow-scrolling: touch;
 }
 
+.guide-table-wrap:focus-visible {
+  outline: 3px solid var(--green);
+  outline-offset: 3px;
+}
+
 .guide-table {
   width: 100%;
   min-width: 760px;

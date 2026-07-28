@@ -12,7 +12,7 @@ from urllib.parse import unquote, urljoin, urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 PRODUCTION_ORIGIN = "https://glorystarwears.com"
-EXPECTED_SCRIPT_VERSION = "20260728-2"
+EXPECTED_SCRIPT_VERSION = "20260728-3"
 EXPECTED_FORM_STYLE_VERSION = "20260728-1"
 TITLE_LENGTH_RANGE = (30, 65)
 DESCRIPTION_LENGTH_RANGE = (100, 170)
@@ -45,6 +45,7 @@ class PageParser(HTMLParser):
         self.ids = []
         self.links = []
         self.assets = []
+        self.image_assets = []
         self.image_preloads = []
         self.json_ld_blocks = []
         self.current_json_ld = None
@@ -73,19 +74,23 @@ class PageParser(HTMLParser):
                 self.image_preloads.append(attributes)
                 if href:
                     self.assets.append(href)
+                    self.image_assets.append(href)
                 for candidate in attributes.get("imagesrcset", "").split(","):
                     source = candidate.strip().split(" ", 1)[0]
                     if source:
                         self.assets.append(source)
+                        self.image_assets.append(source)
         elif tag == "a" and attributes.get("href"):
             self.links.append(attributes["href"])
         elif tag in {"img", "source"}:
             if tag == "img" and attributes.get("src"):
                 self.assets.append(attributes["src"])
+                self.image_assets.append(attributes["src"])
             for candidate in attributes.get("srcset", "").split(","):
                 source = candidate.strip().split(" ", 1)[0]
                 if source:
                     self.assets.append(source)
+                    self.image_assets.append(source)
         elif tag == "script":
             if attributes.get("src"):
                 self.assets.append(attributes["src"])
@@ -340,12 +345,26 @@ def main():
 
     sitemap_tree = ET.parse(ROOT / "sitemap.xml")
     sitemap_root = sitemap_tree.getroot()
-    namespace = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
-    sitemap_urls = [
-        node.text.strip()
-        for node in sitemap_root.findall("s:url/s:loc", namespace)
-        if node.text
-    ]
+    namespace = {
+        "s": "http://www.sitemaps.org/schemas/sitemap/0.9",
+        "image": "http://www.google.com/schemas/sitemap-image/1.1",
+    }
+    sitemap_entries = []
+    for url_node in sitemap_root.findall("s:url", namespace):
+        location_node = url_node.find("s:loc", namespace)
+        if location_node is None or not location_node.text:
+            continue
+        sitemap_entries.append(
+            {
+                "url": location_node.text.strip(),
+                "images": [
+                    node.text.strip()
+                    for node in url_node.findall("image:image/image:loc", namespace)
+                    if node.text
+                ],
+            }
+        )
+    sitemap_urls = [entry["url"] for entry in sitemap_entries]
 
     for duplicate in duplicate_values(sitemap_urls):
         errors.append(f"duplicate sitemap URL: {duplicate}")
@@ -362,7 +381,8 @@ def main():
         elif not is_noindex and page.canonical not in sitemap_url_set:
             errors.append(f"indexable page missing from sitemap: {relative_name}")
 
-    for url in sitemap_urls:
+    for entry in sitemap_entries:
+        url = entry["url"]
         target_file = site_file_for_url(url)
         if target_file is None or not target_file.exists():
             errors.append(f"sitemap URL has no local file: {url}")
@@ -373,9 +393,32 @@ def main():
         elif page.canonical != url:
             errors.append(f"sitemap/canonical mismatch: {url} != {page.canonical}")
 
+        duplicate_images = duplicate_values(entry["images"])
+        if duplicate_images:
+            errors.append(
+                f"sitemap URL has duplicate images: {url}: "
+                f"{', '.join(duplicate_images)}"
+            )
+
+        if page is None:
+            continue
+        page_image_urls = {
+            urljoin(page.canonical or url, asset)
+            for asset in page.image_assets
+        }
+        for image_url in entry["images"]:
+            image_file = site_file_for_url(image_url)
+            if image_file is None or not image_file.exists():
+                errors.append(f"sitemap image has no local file: {url}: {image_url}")
+            if image_url not in page_image_urls:
+                errors.append(
+                    f"sitemap image is not referenced by page: {url}: {image_url}"
+                )
+
     summary = {
         "html_files": len(html_files),
         "sitemap_urls": len(sitemap_urls),
+        "sitemap_images": sum(len(entry["images"]) for entry in sitemap_entries),
         "unique_canonicals": len(canonical_owners),
         "unique_titles": len(title_owners),
         "unique_descriptions": len(description_owners),

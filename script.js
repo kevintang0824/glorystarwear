@@ -8,6 +8,8 @@ const isContactPage = window.location.pathname.endsWith("/contact.html");
 const isThankYouPage = window.location.pathname.endsWith("/thank-you.html");
 const inquirySourceKey = "glorystarwear-inquiry-source";
 const attributionStorageKey = "glorystarwear-attribution";
+const leadReceiptStorageKey = "glorystarwear-lead-receipt";
+const leadReceiptLifetimeMilliseconds = 15 * 60 * 1000;
 const campaignParameterNames = [
   "utm_source",
   "utm_medium",
@@ -61,6 +63,40 @@ const trackEvent = (eventName, details = {}) => {
   });
 };
 
+const storeLeadReceipt = () => {
+  try {
+    sessionStorage.setItem(
+      leadReceiptStorageKey,
+      JSON.stringify({
+        version: 1,
+        confirmedAt: Date.now(),
+        sourcePath: window.location.pathname,
+      }),
+    );
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+const consumeLeadReceipt = () => {
+  try {
+    const storedReceipt = sessionStorage.getItem(leadReceiptStorageKey);
+    sessionStorage.removeItem(leadReceiptStorageKey);
+    if (!storedReceipt) return null;
+
+    const receipt = JSON.parse(storedReceipt);
+    const receiptAge = Date.now() - receipt.confirmedAt;
+    const isValid = receipt.version === 1 &&
+      Number.isFinite(receipt.confirmedAt) &&
+      receiptAge >= 0 &&
+      receiptAge <= leadReceiptLifetimeMilliseconds;
+    return isValid ? receipt : null;
+  } catch {
+    return null;
+  }
+};
+
 if (isNewAttributionSession) {
   trackEvent("session_landing", {
     campaign_source: pageAttribution.campaign.utm_source || "",
@@ -70,7 +106,45 @@ if (isNewAttributionSession) {
 }
 
 if (isThankYouPage) {
-  trackEvent("thank_you_view", { confirmation_source: "server_redirect" });
+  const leadReceipt = consumeLeadReceipt();
+  if (leadReceipt) {
+    document.title = "Inquiry Received | GloryStarWear";
+    document.querySelector('meta[name="description"]')?.setAttribute(
+      "content",
+      "Confirmation and next-step guidance for a GloryStarWear custom sportswear inquiry received by the secure server form.",
+    );
+
+    const eyebrow = document.querySelector("[data-thank-you-eyebrow]");
+    const heading = document.querySelector("[data-thank-you-heading]");
+    const message = document.querySelector("[data-thank-you-message]");
+    const breadcrumb = document.querySelector("[data-thank-you-breadcrumb]");
+    const primaryAction = document.querySelector("[data-thank-you-primary]");
+    const primaryActionLabel = primaryAction?.querySelector("span");
+    const unconfirmedGuidance = document.querySelector("[data-thank-you-unconfirmed]");
+    const confirmedGuidance = document.querySelector("[data-thank-you-confirmed]");
+
+    if (eyebrow) eyebrow.textContent = "Server-confirmed submission";
+    if (heading) heading.textContent = "Thank You — Your Inquiry Was Received";
+    if (message) {
+      message.textContent = "The receiving service confirmed your project brief. Keep this page for your records and add any urgent delivery date or reference-file note by WhatsApp.";
+    }
+    if (breadcrumb) breadcrumb.textContent = "Inquiry Received";
+    if (primaryAction) {
+      primaryAction.href = `https://wa.me/${whatsappNumber}`;
+      primaryAction.target = "_blank";
+      primaryAction.rel = "noreferrer";
+      primaryAction.classList.remove("primary");
+      primaryAction.classList.add("whatsapp");
+    }
+    if (primaryActionLabel) primaryActionLabel.textContent = "Add Details on WhatsApp";
+    if (unconfirmedGuidance) unconfirmedGuidance.hidden = true;
+    if (confirmedGuidance) confirmedGuidance.hidden = false;
+
+    trackEvent("thank_you_view", {
+      confirmation_source: "server_redirect",
+      submission_source_path: leadReceipt.sourcePath || "",
+    });
+  }
 }
 
 document.documentElement.classList.add("has-enhanced-contact");
@@ -111,6 +185,15 @@ const contextualWhatsAppText = [
   "Please share MOQ, sample cost, lead time, and quote details.",
 ].join("\n");
 const defaultWhatsAppText = encodeURIComponent(contextualWhatsAppText);
+
+const getCtaLocation = (element) => {
+  if (element.closest("[data-quote-form]")) return "form";
+  if (element.closest("[data-mobile-quote-bar], .floating-contact")) return "sticky";
+  if (element.closest(".site-header, [data-mobile-nav]")) return "header";
+  if (element.closest(".product-hero, .hero")) return "hero";
+  if (element.closest(".site-footer")) return "footer";
+  return "content";
+};
 
 if (mobileNav && !mobileNav.querySelector(".mobile-nav-actions")) {
   const actions = document.createElement("div");
@@ -173,23 +256,28 @@ document.addEventListener("click", (event) => {
 
   try {
     const target = new URL(link.href, window.location.href);
-    const contactMethod = target.protocol === "mailto:"
-      ? "email"
-      : target.hostname === "wa.me"
-        ? "whatsapp"
-        : target.pathname.endsWith("/contact.html") || target.hash === "#quote-form"
-          ? "quote_page"
-          : "";
+    const ctaLocation = getCtaLocation(link);
+    const contactMethod = target.protocol === "tel:"
+      ? "phone"
+      : target.protocol === "mailto:"
+        ? "email"
+        : target.hostname === "wa.me"
+          ? "whatsapp"
+          : target.pathname.endsWith("/contact.html") || target.hash === "#quote-form"
+            ? "quote_page"
+            : "";
 
     if (contactMethod) {
       trackEvent("contact_click", {
         contact_method: contactMethod,
+        cta_location: ctaLocation,
         link_text: link.textContent.trim().slice(0, 80),
       });
 
-      if (contactMethod === "whatsapp" || contactMethod === "email") {
+      if (contactMethod === "whatsapp" || contactMethod === "email" || contactMethod === "phone") {
         trackEvent(`${contactMethod}_click`, {
           link_context: "site_link",
+          cta_location: ctaLocation,
           link_text: link.textContent.trim().slice(0, 80),
         });
       }
@@ -251,6 +339,11 @@ const getShortPageTitle = (title) => title.split("|")[0].trim();
 
 const getProductInterestForPath = (path) => {
   const routes = [
+    ["Private label activewear program", /\/private-label-activewear-manufacturer\.html$/],
+    ["Custom teamwear program", /\/custom-teamwear-uniforms\.html$/],
+    ["Low MOQ launch planning", /\/low-moq-sportswear-manufacturer\.html$/],
+    ["Supplier capability review", /\/sportswear-manufacturer\.html$/],
+    ["Sampling and approval support", /\/process\.html$/],
     ["Yoga wear", /yoga|sports-bras|seamless-activewear|plus-size-activewear/],
     ["Athleisure", /athleisure|hoodies-sweatshirts|joggers-tracksuits|club-hoodies/],
     ["Training wear", /training-wear|gym-tshirts|training-shorts|private-label-gym|compression-base|outdoor-training/],
@@ -405,7 +498,7 @@ quoteForms.forEach((form) => {
   };
 
   form.addEventListener("input", trackQuoteStart);
-  form.addEventListener("focusin", trackQuoteStart);
+  form.addEventListener("change", trackQuoteStart);
 
   if (leadEndpoint && serverSubmitButton) {
     fetchWithTimeout(leadEndpoint, {
@@ -464,7 +557,15 @@ quoteForms.forEach((form) => {
         form_location: window.location.pathname,
         product_interest: data.get("product") || "",
       });
-      window.location.assign(new URL("/thank-you.html", window.location.href).href);
+      if (storeLeadReceipt()) {
+        window.location.assign(new URL("/thank-you.html", window.location.href).href);
+      } else {
+        setFormNote(
+          form,
+          "Your inquiry was received, but this browser could not open the one-time confirmation page. Please keep this page for your records.",
+          "success",
+        );
+      }
     } catch {
       setFormNote(
         form,
@@ -490,6 +591,7 @@ quoteForms.forEach((form) => {
     setFormNote(form, "Opening WhatsApp with the project brief...", "opening");
     trackEvent("whatsapp_click", {
       link_context: "quote_form",
+      cta_location: "form",
       product_interest: new FormData(form).get("product") || "",
     });
     const whatsappLink = document.createElement("a");
@@ -513,6 +615,7 @@ quoteForms.forEach((form) => {
     );
     trackEvent("email_click", {
       link_context: "quote_form",
+      cta_location: "form",
       product_interest: data.get("product") || "",
     });
     window.location.href = `mailto:kevin@glorystarwears.com?subject=${subject}&body=${body}`;
