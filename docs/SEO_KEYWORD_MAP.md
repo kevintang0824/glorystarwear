@@ -1,6 +1,6 @@
 # GloryStarWear Search Intent Map
 
-Last updated: 2026-07-27
+Last updated: 2026-07-29
 
 ## Page Ownership Rule
 
@@ -37,6 +37,15 @@ Last updated: 2026-07-27
 | `/products/yoga-wear.html` | Coordinated yoga and studio collection, product architecture, color story, labels, and packaging | `/products/yoga-leggings.html` and `/products/sports-bras.html` | Garment-specific waistband, support, coverage, cup, strap, seam, fit, and sample decisions |
 | `/products/training-wear.html` | Gym and training collection across tops, bottoms, compression, layers, and merchandise | `/products/gym-tshirts-tank-tops.html` and `/products/training-shorts-joggers.html` | Product-specific neckline, armhole, liner, pocket, waistband, fit, and construction decisions |
 | `/products/accessories.html` | Accessory and packaging system across socks, caps, bags, labels, and shipment preparation | Dedicated socks, caps and bags, and packaging pages | Component-specific materials, dimensions, branding methods, supplier minimums, and packing rules |
+
+## Specialized Team Sport Ownership
+
+| URL | Primary intent | Supporting intent and separation rule |
+| --- | --- | --- |
+| `/products/cricket-uniforms.html` | `custom cricket uniform manufacturer` for club, academy, school, league, reseller, and private-label sourcing | Owns cricket whites, ODI/T20 colored kits, shirts, trousers, sweater vests, caps, sponsor artwork, roster control, and seasonal reorders |
+| `/products/american-football-uniforms.html` | `custom American football uniform manufacturer` and gridiron teamwear sourcing | Always uses American football or gridiron wording; owns jerseys, football pants, practice tops, 7v7 sets, layering reference, and roster control without competing with association football kit pages |
+| `/products/netball-uniforms.html` | `custom netball uniform manufacturer` for clubs, schools, associations, and teamwear resellers | Owns netball dresses, bodysuits, tops, skorts, position panels, women’s and youth sizing, coverage decisions, and team packing |
+| `/products/ice-hockey-jerseys.html` | `custom ice hockey jersey manufacturer` for clubs, schools, leagues, team stores, and resellers | Owns ice-hockey apparel only: skater, goalie-cut, practice jerseys, hockey socks, layering reference, roster control, and reorders; it does not own field-hockey or protective-equipment intent |
 
 ## Resource Intent
 

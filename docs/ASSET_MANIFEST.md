@@ -107,6 +107,11 @@ Responsive derivatives with `-900.jpg` and `-1200.jpg` suffixes are performance 
 
 ## More Sports Images
 
+- `assets/images/cricket-uniforms-product-board.jpg` and `assets/images/cricket-uniforms-specification-board.jpg`: generated planning visuals for cricket whites, colored limited-overs kits, trousers, sweater vests, caps, artwork, labels, and roster packing.
+- `assets/images/american-football-uniforms-product-board.jpg` and `assets/images/american-football-uniforms-specification-board.jpg`: generated planning visuals for gridiron jerseys, football pants, practice tops, 7v7 sets, artwork, player numbers, and roster packing; no protective equipment is offered or represented as supplied.
+- `assets/images/netball-uniforms-product-board.jpg` and `assets/images/netball-uniforms-specification-board.jpg`: generated planning visuals for netball dresses, bodysuits, tops, skorts, warm-up layers, position panels, sizing, labels, and team packing.
+- `assets/images/ice-hockey-jerseys-product-board.jpg` and `assets/images/ice-hockey-jerseys-specification-board.jpg`: generated planning visuals for skater jerseys, goalie-cut jerseys, practice tops, hockey socks, crests, names, numbers, and roster packing; the product scope is apparel only.
+- Each new product-board and specification-board image has matching full-size, `-1200`, and `-900` JPG and AVIF files. The product pages disclose that these are planning visuals and require final specifications to be approved through project samples.
 - `assets/images/running-wear-product-range.jpg`
 - `assets/images/running-singlets-shirts-manufacturer-detail.jpg`: race singlets, marathon shirts, sleeveless running vests, running tees, mesh panels, reflective trims, race bib samples, fabric swatches, labels, and event packaging.
 - `assets/images/tennis-pickleball-apparel-range.jpg`: tennis and pickleball polos, pleated skorts, court dresses, visors, wristbands, socks, UV fabrics, and retail packaging.

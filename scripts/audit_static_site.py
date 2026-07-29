@@ -12,7 +12,7 @@ from urllib.parse import unquote, urljoin, urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 PRODUCTION_ORIGIN = "https://glorystarwears.com"
-EXPECTED_SCRIPT_VERSION = "20260728-3"
+EXPECTED_SCRIPT_VERSION = "20260729-1"
 EXPECTED_FORM_STYLE_VERSION = "20260728-1"
 TITLE_LENGTH_RANGE = (30, 65)
 DESCRIPTION_LENGTH_RANGE = (100, 170)

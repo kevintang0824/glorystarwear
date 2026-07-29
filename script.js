@@ -348,6 +348,7 @@ const getProductInterestForPath = (path) => {
     ["Athleisure", /athleisure|hoodies-sweatshirts|joggers-tracksuits|club-hoodies/],
     ["Training wear", /training-wear|gym-tshirts|training-shorts|private-label-gym|compression-base|outdoor-training/],
     ["Basketball wear", /basketball/],
+    ["Custom teamwear program", /american-football|cricket-uniforms|netball-uniforms|ice-hockey-jerseys/],
     ["Football kits", /football|soccer/],
     ["Running wear", /running|track-field|marathon|triathlon|trail-hiking/],
     ["Tennis and pickleball apparel", /tennis|pickleball|racket-sports/],
@@ -672,7 +673,8 @@ if (catalogGrid) {
       "team-warm-up-jackets", "baseball-softball-teamwear", "rugby-hockey-teamwear",
       "youth-sportswear", "club-fan-merchandise", "club-hoodies-varsity-jackets", "soccer-uniforms",
       "esports-jerseys", "cheerleading-uniforms", "track-field-uniforms", "lacrosse-uniforms",
-      "wrestling-singlets", "gymnastics-leotards",
+      "wrestling-singlets", "gymnastics-leotards", "cricket-uniforms", "american-football-uniforms",
+      "netball-uniforms", "ice-hockey-jerseys",
     ]),
     specialty: new Set([
       "running-wear", "running-singlets-shirts", "tennis-pickleball-apparel", "cycling-wear",
