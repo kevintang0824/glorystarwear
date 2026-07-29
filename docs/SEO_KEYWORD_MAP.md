@@ -23,7 +23,8 @@ Last updated: 2026-07-29
 | `/fabrics.html` | `sportswear fabrics and decoration methods` compatibility | Material construction, GSM, stretch, opacity, recovery, product use, decoration fit, sample approval, and bulk control |
 | `/one-stop-service.html` | `one-stop sportswear service` and cross-stage order handoff | Brief, tech pack, sampling, manufacturing, quality control, private label packaging, and shipment preparation |
 | `/quality.html` | `sportswear quality control checklist` and factory QC workflow | Approved references, incoming material, in-line production, measurement, packing, evidence, and release decisions |
-| `/process.html` | `custom sportswear sampling` and production service process | Prototype, fit sample, size set, pre-production approval, bulk QC, packing, and shipment |
+| `/process.html` | `custom sportswear sampling` and production service process | Prototype, fit sample, size set, evidence-led bulk approval, QC, packing, and shipment |
+| `/products/private-label-gym-clothing.html` | `private label gym clothing` and `white label fitness clothing` | Existing-style white label route, private label collection development, OEM specifications, workout tops, bottoms, layers, labels, and packaging |
 
 ## Priority Page Pairs
 
@@ -55,6 +56,7 @@ Last updated: 2026-07-29
 
 | URL | Buyer question owned by the page |
 | --- | --- |
+| `/resources/sportswear-manufacturer-due-diligence-checklist.html` | How should a buyer verify supplier identity, operating scope, product fit, material and sample control, certificate scope, quality evidence, commercial assumptions, and decision gates? |
 | `/resources/oem-vs-odm-sportswear.html` | Which development route fits the information and product control the buyer already has? |
 | `/resources/private-label-activewear-moq.html` | Which style, material, color, component, packaging, or SKU decision creates the order minimum? |
 | `/resources/custom-sportswear-tech-pack.html` | What information turns a sportswear design into a quoteable and controllable specification? |
@@ -68,3 +70,13 @@ Last updated: 2026-07-29
 ## Review Trigger
 
 Review a pair when both pages gain impressions for the same query but neither develops stable clicks, or when their visible text similarity rises because a shared template has replaced product-specific information. Check title, H1, direct answer, unique section headings, internal anchor text, and the next action before changing canonical URLs.
+
+## Search Console Evidence — 2026-07-29
+
+The first available Search Console window covers 2026-07-13 through 2026-07-27:
+
+- `/products/private-label-gym-clothing.html` received 63 impressions at an average position of 76.4. Its observed query family includes `white label fitness clothing`, `private label gym clothes`, `white label gym clothing`, `white label athletic wear`, `private label fitness apparel`, and `private label workout clothes`.
+- `/private-label-activewear-manufacturer.html` received 8 impressions at an average position of 88.1; `activewear private label` appeared in the leading query table.
+- `/process.html` was the only URL reported as `Crawled - currently not indexed`, with the shown last crawl date of 2026-06-18.
+
+Decision: keep white label and private label gym intent on one commercial URL, strengthen the route comparison and descriptive internal anchors, and make the process page materially distinct through approval-record evidence. Do not create separate thin pages for each wording variant.

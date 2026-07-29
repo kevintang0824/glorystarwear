@@ -20,6 +20,140 @@ const campaignParameterNames = [
   "msclkid",
 ];
 
+const attributionHostGroups = {
+  ai_assistant: [
+    ["chatgpt", ["chatgpt.com", "chat.openai.com"]],
+    ["perplexity", ["perplexity.ai"]],
+    ["gemini", ["gemini.google.com"]],
+    ["copilot", ["copilot.microsoft.com"]],
+    ["claude", ["claude.ai"]],
+    ["you.com", ["you.com"]],
+  ],
+  organic_search: [
+    ["google", ["google.com", "google.co.uk", "google.ca", "google.com.au", "google.de", "google.fr"]],
+    ["bing", ["bing.com"]],
+    ["yahoo", ["search.yahoo.com"]],
+    ["duckduckgo", ["duckduckgo.com"]],
+    ["yandex", ["yandex.com", "yandex.ru"]],
+    ["baidu", ["baidu.com"]],
+  ],
+  organic_social: [
+    ["linkedin", ["linkedin.com", "lnkd.in"]],
+    ["youtube", ["youtube.com", "youtu.be"]],
+    ["facebook", ["facebook.com", "m.facebook.com"]],
+    ["instagram", ["instagram.com"]],
+    ["pinterest", ["pinterest.com"]],
+    ["reddit", ["reddit.com"]],
+    ["x", ["x.com", "twitter.com", "t.co"]],
+    ["tiktok", ["tiktok.com"]],
+  ],
+};
+
+const getHostname = (value) => {
+  if (!value) return "";
+
+  try {
+    return new URL(value).hostname.toLowerCase().replace(/^www\./, "");
+  } catch {
+    return "";
+  }
+};
+
+const hostnameMatches = (hostname, domain) =>
+  hostname === domain || hostname.endsWith(`.${domain}`);
+
+const findAttributionHost = (hostname, group) => {
+  if (!hostname) return "";
+  if (group === "organic_search" && /(^|\.)google\.[a-z.]+$/.test(hostname)) {
+    return "google";
+  }
+
+  const match = attributionHostGroups[group].find(([, domains]) =>
+    domains.some((domain) => hostnameMatches(hostname, domain)));
+  return match?.[0] || "";
+};
+
+const classifyAttribution = (attribution) => {
+  const campaign = attribution?.campaign || {};
+  const source = String(campaign.utm_source || "").trim().toLowerCase();
+  const medium = String(campaign.utm_medium || "").trim().toLowerCase();
+  const referrerHost = getHostname(attribution?.referrer);
+  const campaignHost = getHostname(
+    source.includes(".") ? `https://${source.replace(/^https?:\/\//, "")}` : "",
+  );
+  const sourceHost = campaignHost || referrerHost;
+  const aiSource = findAttributionHost(sourceHost, "ai_assistant") ||
+    (/chatgpt|openai|perplexity|gemini|copilot|claude/.test(source) ? source : "");
+
+  if (
+    campaign.gclid ||
+    campaign.msclkid ||
+    /^(cpc|ppc|paid|paid_search|display|cpm)$/.test(medium)
+  ) {
+    return {
+      channel: "paid_search",
+      source: source || (campaign.gclid ? "google_ads" : "microsoft_ads"),
+      referrerHost,
+    };
+  }
+
+  if (/^(email|newsletter)$/.test(medium)) {
+    return { channel: "email", source: source || "email", referrerHost };
+  }
+
+  if (/^(affiliate|partner)$/.test(medium)) {
+    return { channel: "partner", source: source || referrerHost, referrerHost };
+  }
+
+  if (/^(social|organic_social)$/.test(medium)) {
+    return {
+      channel: "organic_social",
+      source: source || findAttributionHost(referrerHost, "organic_social") || referrerHost,
+      referrerHost,
+    };
+  }
+
+  if (/^(organic|organic_search)$/.test(medium)) {
+    return {
+      channel: "organic_search",
+      source: source || findAttributionHost(referrerHost, "organic_search") || referrerHost,
+      referrerHost,
+    };
+  }
+
+  if (aiSource) {
+    return { channel: "ai_assistant", source: aiSource, referrerHost };
+  }
+
+  const socialSource = findAttributionHost(sourceHost, "organic_social");
+  if (socialSource) {
+    return {
+      channel: "organic_social",
+      source: socialSource,
+      referrerHost,
+    };
+  }
+
+  const searchSource = findAttributionHost(sourceHost, "organic_search");
+  if (searchSource) {
+    return {
+      channel: "organic_search",
+      source: searchSource || source || referrerHost,
+      referrerHost,
+    };
+  }
+
+  if (source || medium) {
+    return { channel: "campaign", source: source || medium, referrerHost };
+  }
+
+  if (referrerHost) {
+    return { channel: "referral", source: referrerHost, referrerHost };
+  }
+
+  return { channel: "direct", source: "direct", referrerHost: "" };
+};
+
 const readAttribution = () => {
   try {
     return JSON.parse(sessionStorage.getItem(attributionStorageKey));
@@ -53,12 +187,16 @@ const captureAttribution = () => {
 };
 
 const { attribution: pageAttribution, isNewSession: isNewAttributionSession } = captureAttribution();
+const pageTrafficAttribution = classifyAttribution(pageAttribution);
 
 window.dataLayer = window.dataLayer || [];
 const trackEvent = (eventName, details = {}) => {
   window.dataLayer.push({
     event: eventName,
     page_path: window.location.pathname,
+    traffic_channel: pageTrafficAttribution.channel,
+    traffic_source: pageTrafficAttribution.source,
+    referrer_host: pageTrafficAttribution.referrerHost,
     ...details,
   });
 };
@@ -343,6 +481,8 @@ const getProductInterestForPath = (path) => {
     ["Custom teamwear program", /\/custom-teamwear-uniforms\.html$/],
     ["Low MOQ launch planning", /\/low-moq-sportswear-manufacturer\.html$/],
     ["Supplier capability review", /\/sportswear-manufacturer\.html$/],
+    ["Supplier verification and documents", /\/resources\/sportswear-manufacturer-due-diligence-checklist\.html$/],
+    ["Supplier verification and documents", /\/(about-factory|certificates|factory-video)\.html$/],
     ["Sampling and approval support", /\/process\.html$/],
     ["Yoga wear", /yoga|sports-bras|seamless-activewear|plus-size-activewear/],
     ["Athleisure", /athleisure|hoodies-sweatshirts|joggers-tracksuits|club-hoodies/],
@@ -404,10 +544,13 @@ if (inquiryContext && storedInquirySource) {
 const getInquiryLines = (form) => {
   const data = new FormData(form);
   const attribution = readAttribution() || pageAttribution;
+  const trafficAttribution = classifyAttribution(attribution);
   const campaign = Object.entries(attribution?.campaign || {})
     .map(([name, value]) => `${name}=${value}`)
     .join(" | ");
   const attributionLines = [
+    `Source Channel: ${trafficAttribution.channel}`,
+    `Source Platform: ${trafficAttribution.source}`,
     campaign ? `Campaign: ${campaign}` : "",
     attribution?.landingPage ? `Landing Page: ${attribution.landingPage}` : "",
     attribution?.referrer ? `Referrer: ${attribution.referrer}` : "",
@@ -432,6 +575,7 @@ const getInquiryLines = (form) => {
 const getInquiryPayload = (form) => {
   const data = new FormData(form);
   const attribution = readAttribution() || pageAttribution;
+  const trafficAttribution = classifyAttribution(attribution);
 
   return {
     name: data.get("name"),
@@ -447,6 +591,8 @@ const getInquiryPayload = (form) => {
     sourcePage: getInquirySource(),
     landingPage: attribution?.landingPage || "",
     referrer: attribution?.referrer || "",
+    trafficChannel: trafficAttribution.channel,
+    trafficSource: trafficAttribution.source,
     campaign: attribution?.campaign || {},
   };
 };

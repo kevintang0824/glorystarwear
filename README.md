@@ -79,6 +79,7 @@ Keep these files and folders together in the GitHub repository:
 - `faq.html`: buyer questions covering development, ordering, quality, and delivery preparation.
 - `contact.html`: inquiry and contact page.
 - `resources/sportswear-sample-approval-checklist.html`: sample revision, fit, measurement, artwork, packing, and bulk sign-off guide.
+- `resources/sportswear-manufacturer-due-diligence-checklist.html`: evidence-based supplier identity, operating-scope, product-fit, material, quality, certificate, commercial-risk, and decision-gate guide.
 - `resources/sportswear-aql-inspection-checklist.html`: lot definition, sampling instructions, defect classes, product checks, evidence, and pre-shipment release guide.
 - `resources/activewear-size-grading-guide.html`: base-size fit, grade rules, tolerances, inclusive ranges, and size-set approval guide.
 - `resources/teamwear-roster-packing-guide.html`: player data, personalization, roster revisions, individual packs, and carton sorting guide.
@@ -121,6 +122,17 @@ Run the dependency-free static SEO and link audit before deployment:
 python3 scripts/generate_hero_avif.py --all-images
 python3 scripts/audit_static_site.py
 ```
+
+The audit validates canonicals, titles, descriptions, H1s, JSON-LD/visible FAQ parity, sitemap membership, local assets, internal targets, homepage reachability, click depth, and hero-image preload coverage for priority landing pages.
+
+After exporting a Search Console performance table, generate a prioritized opportunity report:
+
+```bash
+python3 scripts/analyze_search_console.py path/to/export.csv \
+  --output reports/search-console-opportunities.md
+```
+
+See `docs/SEARCH_CONSOLE_RUNBOOK.md` for property setup, priority URL inspection, event mapping, and the weekly review loop.
 
 ## Deployment
 
@@ -192,6 +204,7 @@ After changed pages are live, submit only their canonical URLs:
 ```bash
 node scripts/submit-indexnow.mjs \
   https://glorystarwears.com/resources/ \
+  https://glorystarwears.com/resources/sportswear-manufacturer-due-diligence-checklist.html \
   https://glorystarwears.com/resources/oem-vs-odm-sportswear.html \
   https://glorystarwears.com/resources/private-label-activewear-moq.html \
   https://glorystarwears.com/resources/custom-sportswear-tech-pack.html \

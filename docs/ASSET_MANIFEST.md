@@ -9,6 +9,15 @@ Responsive derivatives with `-900.jpg` and `-1200.jpg` suffixes are performance 
 - `assets/logo-mark.svg`: compact GS logo mark used in the header and favicon.
 - `assets/logo-glorystarwear.svg`: full horizontal logo with brand name and OEM/ODM tagline.
 
+## Downloadable Buyer Assets
+
+- `assets/downloads/sportswear-manufacturer-due-diligence-scorecard.csv`: supplier-comparison scorecard covering identity, operating scope, product fit, materials, samples, quality, certificates, commercial assumptions, packing, risk, owner, review date, and next action.
+- `assets/downloads/sportswear-supplier-evidence-request-template.csv`: claim-by-claim supplier evidence request and review log.
+- `assets/downloads/activewear-fabric-specification-template.csv`: activewear fabric identity and approval record.
+- `assets/downloads/activewear-size-grading-template.csv`: size, grade-rule, tolerance, and size-set review record.
+- `assets/downloads/teamwear-roster-packing-template.csv`: player, artwork, packing, and carton allocation record.
+- `assets/downloads/sportswear-pre-shipment-inspection-brief.csv`: inspection scope, defect, evidence, corrective-action, and release record.
+
 ## Core Visual Assets
 
 - `assets/images/hero-brand-campaign.jpg`: homepage hero and main brand image.

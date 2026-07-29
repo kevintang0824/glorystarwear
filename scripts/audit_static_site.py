@@ -2,8 +2,11 @@
 
 import json
 import re
+import shutil
+import subprocess
 import sys
 import xml.etree.ElementTree as ET
+from collections import deque
 from html import unescape
 from html.parser import HTMLParser
 from pathlib import Path
@@ -12,8 +15,23 @@ from urllib.parse import unquote, urljoin, urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 PRODUCTION_ORIGIN = "https://glorystarwears.com"
-EXPECTED_SCRIPT_VERSION = "20260729-1"
+EXPECTED_SCRIPT_VERSION = "20260729-2"
 EXPECTED_FORM_STYLE_VERSION = "20260728-1"
+PRIORITY_LCP_PAGES = {
+    "index.html",
+    "sportswear-manufacturer.html",
+    "low-moq-sportswear-manufacturer.html",
+    "private-label-activewear-manufacturer.html",
+    "custom-teamwear-uniforms.html",
+    "products/yoga-wear.html",
+    "products/training-wear.html",
+    "products/basketball-wear.html",
+    "products/football-kits.html",
+    "resources/index.html",
+    "resources/sportswear-manufacturer-due-diligence-checklist.html",
+    "resources/private-label-activewear-moq.html",
+    "resources/sportswear-aql-inspection-checklist.html",
+}
 TITLE_LENGTH_RANGE = (30, 65)
 DESCRIPTION_LENGTH_RANGE = (100, 170)
 IMAGE_RE = re.compile(r"<img\b[^>]*>", re.IGNORECASE | re.DOTALL)
@@ -160,6 +178,7 @@ def structured_nodes(value):
 def main():
     errors = []
     pages = {}
+    page_internal_links = {}
     canonical_owners = {}
     title_owners = {}
     description_owners = {}
@@ -168,6 +187,29 @@ def main():
     json_ld_count = 0
     image_count = 0
     avif_image_count = 0
+
+    script_source = (ROOT / "script.js").read_text(encoding="utf-8")
+    required_attribution_markers = {
+        '"ai_assistant"': "AI-assistant traffic classification",
+        "traffic_channel": "traffic channel event field",
+        "traffic_source": "traffic source event field",
+        "referrer_host": "referrer host event field",
+    }
+    for marker, label in required_attribution_markers.items():
+        if marker not in script_source:
+            errors.append(f"script.js: missing {label}")
+
+    node_binary = shutil.which("node")
+    if node_binary:
+        syntax_check = subprocess.run(
+            [node_binary, "--check", str(ROOT / "script.js")],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        if syntax_check.returncode:
+            details = (syntax_check.stderr or syntax_check.stdout).strip()
+            errors.append(f"script.js: JavaScript syntax check failed: {details}")
 
     html_files = sorted(
         path
@@ -319,13 +361,16 @@ def main():
             avif_image_count += 1
 
         base_url = parser.canonical or urljoin(f"{PRODUCTION_ORIGIN}/", relative_name)
+        page_internal_links[html_file.resolve()] = set()
         for href in parser.links:
             if href.startswith(("mailto:", "tel:", "javascript:", "data:")):
                 continue
             target_url = urljoin(base_url, href)
             target_file = site_file_for_url(target_url)
             if target_file is not None:
-                internal_targets.add(target_file.resolve())
+                resolved_target = target_file.resolve()
+                internal_targets.add(resolved_target)
+                page_internal_links[html_file.resolve()].add(resolved_target)
 
         for asset in parser.assets:
             if asset.startswith("data:"):
@@ -370,6 +415,47 @@ def main():
         errors.append(f"duplicate sitemap URL: {duplicate}")
 
     sitemap_url_set = set(sitemap_urls)
+
+    indexable_files = {
+        html_file
+        for html_file, page in pages.items()
+        if page.canonical in sitemap_url_set and "noindex" not in page.robots.lower()
+    }
+    start_file = (ROOT / "index.html").resolve()
+    click_depth = {start_file: 0}
+    queue = deque([start_file])
+    while queue:
+        source_file = queue.popleft()
+        next_depth = click_depth[source_file] + 1
+        for target_file in page_internal_links.get(source_file, set()):
+            if target_file not in indexable_files or target_file in click_depth:
+                continue
+            click_depth[target_file] = next_depth
+            queue.append(target_file)
+
+    unreachable_indexable = sorted(indexable_files - set(click_depth))
+    for html_file in unreachable_indexable:
+        errors.append(
+            f"{html_file.relative_to(ROOT)}: indexable page is unreachable from homepage"
+        )
+
+    deep_indexable = sorted(
+        (depth, html_file)
+        for html_file, depth in click_depth.items()
+        if html_file in indexable_files and depth > 3
+    )
+    for depth, html_file in deep_indexable:
+        errors.append(
+            f"{html_file.relative_to(ROOT)}: click depth {depth} exceeds 3"
+        )
+
+    for relative_name in sorted(PRIORITY_LCP_PAGES):
+        html_file = (ROOT / relative_name).resolve()
+        page = pages.get(html_file)
+        if page is None:
+            errors.append(f"{relative_name}: priority LCP page is missing")
+        elif not page.image_preloads:
+            errors.append(f"{relative_name}: priority LCP page is missing an image preload")
 
     for html_file, page in pages.items():
         if not page.canonical:
@@ -427,6 +513,8 @@ def main():
         "avif_images": avif_image_count,
         "internal_targets": len(internal_targets),
         "local_assets": len(local_assets),
+        "max_click_depth": max(click_depth.values(), default=0),
+        "unreachable_indexable": len(unreachable_indexable),
         "errors": errors,
     }
     print(json.dumps(summary, indent=2))

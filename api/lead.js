@@ -103,6 +103,8 @@ module.exports = async function leadHandler(request, response) {
     sourcePage: cleanText(body.sourcePage, 500),
     landingPage: cleanText(body.landingPage, 500),
     referrer: cleanText(body.referrer, 500),
+    trafficChannel: cleanText(body.trafficChannel, 80),
+    trafficSource: cleanText(body.trafficSource, 120),
     campaign: cleanCampaign(body.campaign),
   };
 

@@ -1,0 +1,10 @@
+Evidence ID,Category,Claim or decision to verify,Requested proof,Holder or entity,Scope,Issuer or source,Issue date,Expiry date,Verification link or method,Disclosure level,Status,Owner,Review date,Notes
+EV-001,Business identity,Legal entity and brand relationship,Business registration or official registry record,,,,,,,Public or redacted,Requested,,,
+EV-002,Factory identity,Production location and operating entity,Current timestamped exterior media plus registration or audit reference,,,,,,,Public or qualified-buyer only,Requested,,,
+EV-003,Development,Sample and approval workflow,Revision record approved sample reference and responsible approver,,,,,,,Project-private,Requested,,,
+EV-004,Material,Fabric identity and performance scope,Specification sheet supplier record swatch reference and applicable test report,,,,,,,Project-private,Requested,,,
+EV-005,Certification,Certificate claim and covered scope,Current certificate showing holder issuer number scope and validity,,,,,,,Public or redacted,Requested,,,
+EV-006,Quality control,Measurement appearance artwork label and packing checks,Inspection checklist photos measurement record and corrective-action status,,,,,,,Project-private,Requested,,,
+EV-007,Teamwear roster,Names numbers sizes and packing allocation,Approved roster version artwork proof and packing reconciliation,,,,,,,Project-private,Requested,,,
+EV-008,Packing and shipment,SKU sorting carton marks and shipment handoff,Approved packing reference packing list carton photos and shipment record,,,,,,,Project-private,Requested,,,
+EV-009,Project case,Published outcome or testimonial,Buyer-approved facts media quotation authorization and public link,,,,,,,Public with written approval,Requested,,,
