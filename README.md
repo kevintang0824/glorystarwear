@@ -71,14 +71,15 @@ Keep these files and folders together in the GitHub repository:
 - `products/golf-polo-shirts-skorts.html`: golf polos, sleeveless tops, skorts, shorts, quarter zips, UV fabrics, and resort retail packaging.
 - `products/rash-guards-board-shorts.html`: rash guards, surf shirts, swim trunks, board shorts, kids swimwear, pouches, and retail packaging.
 - `products/mma-rash-guards-fight-shorts.html`: MMA rash guards, fight shorts, compression shorts, gym hoodies, patches, and combat sports merchandise.
-- `customization.html`: OEM, ODM, logo, labels, trims, and packaging options.
-- `fabrics.html`: performance fabric and decoration information.
-- `one-stop-service.html`: packaging, labels, retail preparation, shipment.
-- `quality.html`: QC process and inspection checkpoints.
+- `customization.html`: custom sportswear printing, embroidery, sublimation, OEM/ODM, labels, trims, and packaging options.
+- `fabrics.html`: sportswear fabric performance, construction, and decoration compatibility.
+- `one-stop-service.html`: product brief, samples, production, quality, packaging, and shipment handoff.
+- `quality.html`: approved references, material, in-line, measurement, packing, and release checkpoints.
 - `process.html`: production process.
 - `faq.html`: buyer questions covering development, ordering, quality, and delivery preparation.
 - `contact.html`: inquiry and contact page.
 - `resources/sportswear-sample-approval-checklist.html`: sample revision, fit, measurement, artwork, packing, and bulk sign-off guide.
+- `resources/sportswear-aql-inspection-checklist.html`: lot definition, sampling instructions, defect classes, product checks, evidence, and pre-shipment release guide.
 - `resources/activewear-size-grading-guide.html`: base-size fit, grade rules, tolerances, inclusive ranges, and size-set approval guide.
 - `resources/teamwear-roster-packing-guide.html`: player data, personalization, roster revisions, individual packs, and carton sorting guide.
 - `404.html`: GitHub Pages fallback page for broken or moved URLs.
@@ -195,6 +196,7 @@ node scripts/submit-indexnow.mjs \
   https://glorystarwears.com/resources/private-label-activewear-moq.html \
   https://glorystarwears.com/resources/custom-sportswear-tech-pack.html \
   https://glorystarwears.com/resources/sportswear-sample-approval-checklist.html \
+  https://glorystarwears.com/resources/sportswear-aql-inspection-checklist.html \
   https://glorystarwears.com/resources/activewear-size-grading-guide.html \
   https://glorystarwears.com/resources/teamwear-roster-packing-guide.html
 ```

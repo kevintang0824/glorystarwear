@@ -1,6 +1,6 @@
 # GloryStarWear Search Visibility Review
 
-Last updated: 2026-07-28
+Last updated: 2026-07-29
 
 ## Working Principle
 
@@ -14,7 +14,7 @@ Google AI Overviews and AI Mode use the same crawl, index, and ranking foundatio
 
 - Production canonical URLs use `https://glorystarwears.com`.
 - `robots.txt` allows standard crawlers, `OAI-SearchBot`, and `ChatGPT-User`.
-- `sitemap.xml` contains 83 unique canonical URLs with image entries and meaningful `lastmod` dates.
+- `sitemap.xml` contains 90 unique canonical URLs with image entries and meaningful `lastmod` dates.
 - The site includes a public IndexNow key and `scripts/submit-indexnow.mjs` for changed URLs.
 - All indexable pages include a unique title, meta description, canonical, and one H1.
 - Structured data is connected to the site Organization identity without invented prices, ratings, addresses, or certifications.
@@ -27,6 +27,7 @@ Google AI Overviews and AI Mode use the same crawl, index, and ranking foundatio
 - The tech pack guide covers drawings, bill of materials, measurements, construction, artwork, packaging, QC, and version control.
 - The activewear fabric selection guide separates fabric identity, composition, GSM, construction, stretch, recovery, opacity, color, evidence, sample approval, and bulk control. Its downloadable CSV turns those decisions into a reusable material record.
 - The sample approval guide covers revision identity, materials, measurements, wearer fit, construction, artwork, packing, comments, and bulk sign-off.
+- The AQL inspection guide covers lot definition, the 2026 sampling-standard reference, defect classification, sportswear-specific checks, evidence, corrective action, and shipment release without reproducing licensed sampling tables.
 - The activewear size grading guide separates base fit, grade rules, tolerances, product-specific measurements, inclusive range decisions, and size-set approval.
 - The teamwear roster and packing guide covers structured player data, names, numbers, artwork control, revisions, individual packs, carton allocation, and reconciliation.
 - Commercial pages link to factory, certificate, case, process, quality, resource, product, and contact pages where relevant.
@@ -40,17 +41,17 @@ Google AI Overviews and AI Mode use the same crawl, index, and ranking foundatio
 - Visitors without a configured email client can copy a complete project brief for another messaging app.
 - WhatsApp and email clicks are tracked as contact intent, not successful lead delivery.
 - The secure server submit control appears only when the Vercel endpoint confirms a real receiving webhook is configured; `lead_submit_success` is emitted only after that receiver returns success.
-- The fabric-selection, size-grading, and teamwear-roster guides include reusable CSV templates with anonymous download tracking.
+- The fabric-selection, size-grading, teamwear-roster, and pre-shipment inspection guides include reusable CSV templates with anonymous download tracking.
 - `window.dataLayer` receives vendor-neutral events for campaign landing, contact clicks, quote starts, email, WhatsApp and copied-brief actions, catalog filters, and catalog searches.
 - No names, email addresses, phone numbers, or project-message content are sent to the data layer.
 
 ### Verification Baseline
 
 - The first optimization sprint passed a local Chromium crawl with 79 sitemap URLs, no console errors, no key-page desktop or mobile overflow, and working attribution events.
-- The current dependency-free static audit covers 88 HTML files and 85 sitemap URLs.
-- It confirms 88 unique canonicals, 87 valid JSON-LD blocks, 89 internal targets, and 761 referenced local assets with no errors.
+- The current dependency-free static audit covers 93 HTML files and 90 sitemap URLs.
+- It confirms 93 unique canonicals, 92 valid JSON-LD blocks, 95 internal targets, and 765 referenced local assets with no errors.
 - Run `python3 scripts/audit_static_site.py` before deployment and after adding a page, link, canonical, schema block, or asset.
-- The current 83-URL release passed a mobile Chromium crawl with no broken sitemap targets, H1 errors, console errors, page errors, or horizontal overflow.
+- The AQL guide and four upgraded commercial pages passed a 390-pixel mobile layout check with no horizontal overflow; the AQL guide also passed a 1280-pixel desktop review with all requested local assets returning successfully.
 - The fabric guide passed dedicated mobile and desktop checks for responsive images, schema types, CSV delivery, layout, and runtime errors. Axe 4.12 reported no WCAG A/AA violations; image-backed contrast candidates were also reviewed visually.
 - Quick-contact containers use an explicit group role so their accessible labels are valid across the 19 pages that include the floating control.
 - Indexed-page titles currently stay between 30 and 65 characters and descriptions between 100 and 170 characters.
@@ -62,7 +63,7 @@ Google AI Overviews and AI Mode use the same crawl, index, and ranking foundatio
 2. Confirm the live key URL returns only the key value: `https://glorystarwears.com/8022fa20d2ef4befc52093d274ae7687.txt`.
 3. Verify the production domain property in Google Search Console.
 4. Submit `https://glorystarwears.com/sitemap.xml` in Search Console.
-5. Inspect the homepage, resource center, and seven buyer guides with URL Inspection.
+5. Inspect the homepage, resource center, and nine buyer guides with URL Inspection.
 6. Run IndexNow only after the changed pages are live.
 7. Connect `LEAD_WEBHOOK_URL` to an owned CRM, automation flow, or server inbox and verify durable receipt before enabling the secure submit route.
 8. Connect the real GTM or GA4 property and map the existing data-layer events.

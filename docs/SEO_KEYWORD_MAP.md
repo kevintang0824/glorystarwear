@@ -19,6 +19,10 @@ Last updated: 2026-07-29
 | `/low-moq-sportswear-manufacturer.html` | `low MOQ sportswear manufacturer` and startup first-order planning | Light custom, focused capsule, team or event, full custom, component minimums, sample route, and quote inputs |
 | `/private-label-activewear-manufacturer.html` | Activewear-specific private label program | Yoga, seamless, plus-size, gym clothing, fabrics, labels, and ecommerce packaging |
 | `/custom-teamwear-uniforms.html` | Teamwear-specific uniform program | Personalization, sublimation, roster control, player packing, and seasonal reorders |
+| `/customization.html` | `custom sportswear printing` and private label decoration route selection | Sublimation, heat transfer, screen print, embroidery, badges, labels, trims, packaging, and approval evidence |
+| `/fabrics.html` | `sportswear fabrics and decoration methods` compatibility | Material construction, GSM, stretch, opacity, recovery, product use, decoration fit, sample approval, and bulk control |
+| `/one-stop-service.html` | `one-stop sportswear service` and cross-stage order handoff | Brief, tech pack, sampling, manufacturing, quality control, private label packaging, and shipment preparation |
+| `/quality.html` | `sportswear quality control checklist` and factory QC workflow | Approved references, incoming material, in-line production, measurement, packing, evidence, and release decisions |
 | `/process.html` | `custom sportswear sampling` and production service process | Prototype, fit sample, size set, pre-production approval, bulk QC, packing, and shipment |
 
 ## Priority Page Pairs
@@ -56,6 +60,7 @@ Last updated: 2026-07-29
 | `/resources/custom-sportswear-tech-pack.html` | What information turns a sportswear design into a quoteable and controllable specification? |
 | `/resources/activewear-fabric-selection-guide.html` | How should a buyer define, compare, approve, and control an activewear fabric beyond composition and GSM? |
 | `/resources/sportswear-sample-approval-checklist.html` | What must be reviewed and closed before a sample becomes a bulk-production reference? |
+| `/resources/sportswear-aql-inspection-checklist.html` | How should a buyer define a bulk lot, sampling instruction, defect classes, sportswear checks, evidence, and pre-shipment release decision? |
 | `/resources/activewear-size-grading-guide.html` | How should a buyer control base fit, grade rules, tolerances, inclusive proportions, and size-set approval? |
 | `/resources/teamwear-roster-packing-guide.html` | How should a teamwear buyer control player data, personalization, revisions, packs, and carton allocation? |
 | `/quote-checklist.html` | What commercial and product information should the buyer send in the first inquiry? |
