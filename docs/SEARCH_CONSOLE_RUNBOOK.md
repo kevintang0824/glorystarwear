@@ -30,14 +30,17 @@ Inspect these URLs after the first verified deployment and after a significant t
 5. `https://glorystarwears.com/custom-teamwear-uniforms.html`
 6. `https://glorystarwears.com/products/private-label-gym-clothing.html`
 7. `https://glorystarwears.com/process.html`
-8. `https://glorystarwears.com/products/yoga-wear.html`
-9. `https://glorystarwears.com/products/training-wear.html`
-10. `https://glorystarwears.com/products/basketball-wear.html`
-11. `https://glorystarwears.com/products/football-kits.html`
-12. `https://glorystarwears.com/resources/`
-13. `https://glorystarwears.com/resources/sportswear-manufacturer-due-diligence-checklist.html`
-14. `https://glorystarwears.com/resources/private-label-activewear-moq.html`
-15. `https://glorystarwears.com/resources/sportswear-aql-inspection-checklist.html`
+8. `https://glorystarwears.com/one-stop-service.html`
+9. `https://glorystarwears.com/products/lookbook.html`
+10. `https://glorystarwears.com/resources/custom-sportswear-tech-pack.html`
+11. `https://glorystarwears.com/products/yoga-wear.html`
+12. `https://glorystarwears.com/products/training-wear.html`
+13. `https://glorystarwears.com/products/basketball-wear.html`
+14. `https://glorystarwears.com/products/football-kits.html`
+15. `https://glorystarwears.com/resources/`
+16. `https://glorystarwears.com/resources/sportswear-manufacturer-due-diligence-checklist.html`
+17. `https://glorystarwears.com/resources/private-label-activewear-moq.html`
+18. `https://glorystarwears.com/resources/sportswear-aql-inspection-checklist.html`
 
 For each URL, record:
 

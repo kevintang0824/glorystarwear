@@ -23,6 +23,7 @@ PRIORITY_LCP_PAGES = {
     "low-moq-sportswear-manufacturer.html",
     "private-label-activewear-manufacturer.html",
     "custom-teamwear-uniforms.html",
+    "one-stop-service.html",
     "products/yoga-wear.html",
     "products/training-wear.html",
     "products/basketball-wear.html",
