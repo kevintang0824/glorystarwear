@@ -206,6 +206,20 @@ def main():
         if marker not in script_source:
             errors.append(f"script.js: missing {label}")
 
+    vercel_config = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))
+    www_redirect_present = any(
+        redirect.get("destination") == "https://glorystarwears.com/$1"
+        and redirect.get("permanent") is True
+        and any(
+            condition.get("type") == "host"
+            and condition.get("value") == "www.glorystarwears.com"
+            for condition in redirect.get("has", [])
+        )
+        for redirect in vercel_config.get("redirects", [])
+    )
+    if not www_redirect_present:
+        errors.append("vercel.json: missing permanent www-to-apex host redirect")
+
     node_binary = shutil.which("node")
     if node_binary:
         syntax_check = subprocess.run(

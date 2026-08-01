@@ -13,6 +13,7 @@ Google AI Overviews and AI Mode use the same crawl, index, and ranking foundatio
 ### Crawl and Indexing
 
 - Production canonical URLs use `https://glorystarwears.com`.
+- The `www` hostname permanently redirects to the apex canonical host while preserving the requested path.
 - `robots.txt` allows standard crawlers, `OAI-SearchBot`, and `ChatGPT-User`.
 - `sitemap.xml` contains 91 unique canonical URLs with image entries and meaningful `lastmod` dates.
 - The site includes a public IndexNow key and `scripts/submit-indexnow.mjs` for changed URLs.
