@@ -25,13 +25,18 @@ PRIORITY_LCP_PAGES = {
     "custom-teamwear-uniforms.html",
     "one-stop-service.html",
     "products/yoga-wear.html",
+    "products/new-products.html",
     "products/training-wear.html",
+    "products/compression-base-layers.html",
+    "products/private-label-gym-clothing.html",
     "products/basketball-wear.html",
+    "products/basketball-jerseys.html",
     "products/football-kits.html",
     "resources/index.html",
     "resources/sportswear-manufacturer-due-diligence-checklist.html",
     "resources/private-label-activewear-moq.html",
     "resources/sportswear-aql-inspection-checklist.html",
+    "resources/teamwear-roster-packing-guide.html",
 }
 TITLE_LENGTH_RANGE = (30, 65)
 DESCRIPTION_LENGTH_RANGE = (100, 170)

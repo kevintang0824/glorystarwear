@@ -41,18 +41,21 @@ Last updated: 2026-07-30
 - [Sportswear sample approval checklist](https://glorystarwears.com/resources/sportswear-sample-approval-checklist.html)
 - [Sportswear AQL and pre-shipment inspection checklist](https://glorystarwears.com/resources/sportswear-aql-inspection-checklist.html)
 - [Activewear size grading guide](https://glorystarwears.com/resources/activewear-size-grading-guide.html)
-- [Teamwear roster and packing guide](https://glorystarwears.com/resources/teamwear-roster-packing-guide.html)
+- [Teamwear roster and packing CSV template](https://glorystarwears.com/resources/teamwear-roster-packing-guide.html)
 - [Quote preparation checklist](https://glorystarwears.com/quote-checklist.html)
 
 ## Product Scope
 
 - [Complete product catalog](https://glorystarwears.com/products/)
+- [New sportswear collection development with CSV brief](https://glorystarwears.com/products/new-products.html)
 - [Private label activewear](https://glorystarwears.com/private-label-activewear-manufacturer.html)
+- [Private and white label gym clothing with collection planner](https://glorystarwears.com/products/private-label-gym-clothing.html)
 - [Custom teamwear uniforms](https://glorystarwears.com/custom-teamwear-uniforms.html)
 - [Yoga wear](https://glorystarwears.com/products/yoga-wear.html)
 - [Training and gym wear](https://glorystarwears.com/products/training-wear.html)
+- [Custom compression base layers with sample checklist](https://glorystarwears.com/products/compression-base-layers.html)
 - [Athleisure](https://glorystarwears.com/products/athleisure.html)
-- [Basketball apparel](https://glorystarwears.com/products/basketball-wear.html)
+- [Custom basketball uniform manufacturer](https://glorystarwears.com/products/basketball-wear.html)
 - [Football kits](https://glorystarwears.com/products/football-kits.html)
 - [Cricket uniforms](https://glorystarwears.com/products/cricket-uniforms.html)
 - [American football uniforms](https://glorystarwears.com/products/american-football-uniforms.html)

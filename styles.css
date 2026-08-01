@@ -2000,6 +2000,7 @@ h3 {
 .product-hero {
   position: relative;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   min-height: 64vh;
   align-items: end;
   overflow: hidden;
@@ -2035,6 +2036,8 @@ h3 {
   position: relative;
   z-index: 1;
   width: min(920px, 100%);
+  min-width: 0;
+  max-width: 100%;
 }
 
 .product-hero h1 {
@@ -2073,6 +2076,7 @@ h3 {
 .catalog-tabs a {
   display: inline-flex;
   align-items: center;
+  max-width: 100%;
   min-height: 40px;
   padding: 0 14px;
   border: 1px solid rgba(255, 255, 255, 0.34);

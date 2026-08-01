@@ -1,6 +1,6 @@
 # GloryStarWear Search Console Runbook
 
-Updated: 2026-07-29
+Updated: 2026-07-30
 
 ## Purpose
 
@@ -32,15 +32,18 @@ Inspect these URLs after the first verified deployment and after a significant t
 7. `https://glorystarwears.com/process.html`
 8. `https://glorystarwears.com/one-stop-service.html`
 9. `https://glorystarwears.com/products/lookbook.html`
-10. `https://glorystarwears.com/resources/custom-sportswear-tech-pack.html`
-11. `https://glorystarwears.com/products/yoga-wear.html`
-12. `https://glorystarwears.com/products/training-wear.html`
-13. `https://glorystarwears.com/products/basketball-wear.html`
-14. `https://glorystarwears.com/products/football-kits.html`
-15. `https://glorystarwears.com/resources/`
-16. `https://glorystarwears.com/resources/sportswear-manufacturer-due-diligence-checklist.html`
-17. `https://glorystarwears.com/resources/private-label-activewear-moq.html`
-18. `https://glorystarwears.com/resources/sportswear-aql-inspection-checklist.html`
+10. `https://glorystarwears.com/products/new-products.html`
+11. `https://glorystarwears.com/resources/custom-sportswear-tech-pack.html`
+12. `https://glorystarwears.com/products/yoga-wear.html`
+13. `https://glorystarwears.com/products/training-wear.html`
+14. `https://glorystarwears.com/products/compression-base-layers.html`
+15. `https://glorystarwears.com/products/basketball-wear.html`
+16. `https://glorystarwears.com/products/football-kits.html`
+17. `https://glorystarwears.com/resources/`
+18. `https://glorystarwears.com/resources/sportswear-manufacturer-due-diligence-checklist.html`
+19. `https://glorystarwears.com/resources/private-label-activewear-moq.html`
+20. `https://glorystarwears.com/resources/sportswear-aql-inspection-checklist.html`
+21. `https://glorystarwears.com/resources/teamwear-roster-packing-guide.html`
 
 For each URL, record:
 
