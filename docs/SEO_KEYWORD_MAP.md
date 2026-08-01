@@ -1,6 +1,6 @@
 # GloryStarWear Search Intent Map
 
-Last updated: 2026-08-01
+Last updated: 2026-08-02
 
 ## Page Ownership Rule
 
@@ -62,6 +62,7 @@ Last updated: 2026-08-01
 | `/resources/private-label-activewear-moq.html` | Which style, material, color, component, packaging, or SKU decision creates the order minimum? |
 | `/resources/custom-sportswear-tech-pack.html` | What should a custom sportswear tech pack include, and how can a buyer use a free blank CSV template to control the required inputs? |
 | `/resources/sportswear-logo-artwork-preparation-guide.html` | How should a buyer prepare and approve sportswear logo and artwork files across source format, rights, method, substrate, dimensions, placement, color, production file, and physical evidence? |
+| `/resources/sportswear-packaging-label-handoff-checklist.html` | How should a buyer hand off label text, component artwork, SKU and barcode data, folding, individual packs, carton rules, packed samples, and approval evidence? |
 | `/resources/activewear-fabric-selection-guide.html` | How should a buyer define, compare, approve, and control an activewear fabric beyond composition and GSM? |
 | `/resources/sportswear-sample-approval-checklist.html` | What must be inspected and closed before a sample becomes a bulk-production reference? The process page owns the cross-stage revision and release workflow. |
 | `/resources/sportswear-aql-inspection-checklist.html` | How should a buyer define a bulk lot, sampling instruction, defect classes, sportswear checks, evidence, and pre-shipment release decision? |
@@ -89,3 +90,5 @@ The activewear-specific commercial intent remains on `/private-label-activewear-
 The tech pack resource owns both the checklist question and the blank sportswear intake-template task. It must disclose that the CSV is not a garment-specific finished tech pack; style drawings, measurements, materials, construction, artwork, and controlled approvals remain project-specific.
 
 The artwork resource owns source-file and artwork-release intent. `/customization.html` continues to own decoration-method selection and commercial customization scope; the tech pack owns the complete garment specification; the sample guide owns physical approval of the resulting garment revision.
+
+The packaging product page owns supplier and component-range intent for polybags, boxes, hangtags, labels, stickers, SKU sorting, and carton preparation. The packaging handoff resource owns the buyer's controlled specification task across component files, label copy, SKU and barcode data, folding, packs, cartons, destinations, packed samples, and approval. `/one-stop-service.html` continues to own cross-stage coordination from brief through shipment.

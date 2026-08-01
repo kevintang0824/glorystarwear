@@ -30,6 +30,7 @@ PRIORITY_LCP_PAGES = {
     "products/training-wear.html",
     "products/compression-base-layers.html",
     "products/private-label-gym-clothing.html",
+    "products/private-label-sportswear-packaging.html",
     "products/basketball-wear.html",
     "products/basketball-jerseys.html",
     "products/football-kits.html",
@@ -38,6 +39,7 @@ PRIORITY_LCP_PAGES = {
     "resources/private-label-activewear-moq.html",
     "resources/custom-sportswear-tech-pack.html",
     "resources/sportswear-logo-artwork-preparation-guide.html",
+    "resources/sportswear-packaging-label-handoff-checklist.html",
     "resources/sportswear-aql-inspection-checklist.html",
     "resources/teamwear-roster-packing-guide.html",
 }
@@ -314,6 +316,20 @@ def main():
                 "adobe.com/creativecloud/file-types/image/comparison/raster-vs-vector.html": "authoritative vector and raster reference",
             }
             for marker, label in required_artwork_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "resources/sportswear-packaging-label-handoff-checklist.html":
+            required_packaging_markers = {
+                "sportswear-packaging-handoff-register.csv": "packaging handoff register link",
+                'data-resource-download="sportswear-packaging-handoff-register"': "packaging download tracking",
+                '"@type":"DigitalDocument"': "packaging document schema",
+                '"isAccessibleForFree":true': "free packaging register disclosure in schema",
+                '"dateModified":"2026-08-02"': "current packaging guide modification date",
+                "gs1.org/standards/barcodes": "authoritative barcode reference",
+                "ftc.gov/business-guidance/industry/clothing-and-textiles": "authoritative clothing labeling reference",
+            }
+            for marker, label in required_packaging_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 

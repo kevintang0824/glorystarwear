@@ -215,3 +215,28 @@ After deployment and recrawl, compare full 28-day and 90-day windows:
 - whether artwork-file intent remains with the new guide while decoration-method selection remains with `/customization.html`;
 - `resource_download` events for `sportswear-artwork-approval-register`;
 - continuations to customization, tech pack, sample approval, roster planning, quote preparation, contact, email, and WhatsApp paths.
+
+## Phase 9 — sportswear packaging and label handoff
+
+The commercial packaging page already owned supplier and component-range discovery, but buyers did not have a dedicated record for releasing label copy, component files, SKU and barcode data, folding, individual packs, cartons, destinations, packed samples, and approval. This phase created that operational resource without turning the supplier page into a competing checklist article.
+
+Changes in this phase:
+
+- published `/resources/sportswear-packaging-label-handoff-checklist.html` with one clear packaging-specification and supplier-handoff intent;
+- separated component sourcing from the controlled buyer record, while keeping one-stop service focused on coordination across production, packing, and shipment;
+- explained the distinction between SKU or item identity, buyer-assigned GTIN data, the printed barcode symbol, scan evidence, and carton reconciliation;
+- linked to current GS1 barcode guidance and FTC clothing-and-textile guidance while stating that destination, retailer, marketplace, carrier, and product-specific requirements still need qualified confirmation;
+- added a free 45-field CSV register for component artwork, required text, SKU and barcode data, folding, pack hierarchy, carton assortment, marks, destinations, physical samples, approval, inspection evidence, and open issues;
+- added matching `Article`, `BreadcrumbList`, `FAQPage`, and `DigitalDocument` structured data plus responsive AVIF hero preloading;
+- linked the guide from the commercial packaging page, one-stop workflow, quote checklist, tech-pack guide, artwork guide, AQL checklist, roster guide, and resource center;
+- updated the sitemap, `llms.txt`, keyword map, asset manifest, and static regression coverage without claiming universal labeling law, barcode ownership, retailer acceptance, packing performance, or ranking gains.
+
+### Phase 9 measurement
+
+After deployment and recrawl, compare full 28-day and 90-day windows:
+
+- indexing status, impressions, clicks, CTR, and average position for the packaging handoff resource;
+- query mix for sportswear packaging checklist, apparel packaging specification, clothing label checklist, barcode handoff, carton packing, and related buyer tasks;
+- whether supplier and component-range intent remains with `/products/private-label-sportswear-packaging.html` while specification and handoff intent stays with the resource;
+- `resource_download` events for `sportswear-packaging-handoff-register`;
+- continuations to packaging supply, one-stop service, tech pack, artwork, AQL inspection, quote preparation, contact, email, and WhatsApp paths.

@@ -5,7 +5,7 @@
 Canonical site: [https://glorystarwears.com/](https://glorystarwears.com/)
 Contact: kevin@glorystarwears.com
 Phone and WhatsApp: +86 18020755949
-Last updated: 2026-08-01
+Last updated: 2026-08-02
 
 ## Direct Answer Summary
 
@@ -40,6 +40,8 @@ Last updated: 2026-08-01
 - [Free sportswear tech pack intake template (CSV)](https://glorystarwears.com/assets/downloads/sportswear-tech-pack-intake-template.csv)
 - [Sportswear logo and artwork file preparation guide](https://glorystarwears.com/resources/sportswear-logo-artwork-preparation-guide.html)
 - [Sportswear artwork approval register (CSV)](https://glorystarwears.com/assets/downloads/sportswear-artwork-approval-register.csv)
+- [Sportswear packaging and label handoff checklist](https://glorystarwears.com/resources/sportswear-packaging-label-handoff-checklist.html)
+- [Sportswear packaging handoff register (CSV)](https://glorystarwears.com/assets/downloads/sportswear-packaging-handoff-register.csv)
 - [Activewear fabric selection and specification guide](https://glorystarwears.com/resources/activewear-fabric-selection-guide.html)
 - [Sportswear sample approval checklist and CSV register](https://glorystarwears.com/resources/sportswear-sample-approval-checklist.html)
 - [Sportswear sampling and production approval register (CSV)](https://glorystarwears.com/assets/downloads/sportswear-sampling-production-approval-register.csv)
