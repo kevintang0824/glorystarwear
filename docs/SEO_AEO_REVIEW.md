@@ -25,7 +25,7 @@ Google AI Overviews and AI Mode use the same crawl, index, and ranking foundatio
 - The resource center maps a sourcing workflow from product brief to supplier comparison.
 - The OEM vs ODM guide compares responsibilities, inputs, tradeoffs, hybrid routes, and quote requirements.
 - The activewear MOQ guide explains style, material, color, component, packaging, and SKU-level constraints without publishing an unverified universal MOQ.
-- The tech pack guide covers drawings, bill of materials, measurements, construction, artwork, packaging, QC, and version control.
+- The tech pack guide pairs a free 40-row CSV intake template with drawings, bill of materials, measurements, construction, artwork, packaging, QC, and version-control guidance. It states clearly that the blank register does not replace garment-specific drawings, graded measurements, production artwork, or approval.
 - The activewear fabric selection guide separates fabric identity, composition, GSM, construction, stretch, recovery, opacity, color, evidence, sample approval, and bulk control. Its downloadable CSV turns those decisions into a reusable material record.
 - The sample approval guide covers revision identity, materials, measurements, wearer fit, construction, artwork, packing, comments, and bulk sign-off. It connects to a 39-field CSV register for review evidence, open issues, approval decisions, and the controlled bulk-production reference.
 - The process page now owns the revision-controlled sampling and production-release workflow, while the one-stop service page owns service scope and cross-stage handoff. The process page provides the same approval register as a direct working tool.
@@ -59,7 +59,7 @@ Google AI Overviews and AI Mode use the same crawl, index, and ranking foundatio
 - The current dependency-free static audit covers 94 HTML files and 91 sitemap URLs.
 - It confirms 94 unique canonicals, 93 valid JSON-LD blocks, 104 internal targets, and 765 referenced local assets with no errors.
 - All 91 indexable URLs are reachable from the homepage within two internal-link clicks, with no orphaned indexable pages.
-- Twenty priority commercial and resource landing pages preload their responsive AVIF hero candidate with high fetch priority; the audit now prevents that coverage from silently regressing.
+- Twenty-one priority commercial and resource landing pages preload their responsive AVIF hero candidate with high fetch priority; the audit now prevents that coverage from silently regressing.
 - Run `python3 scripts/audit_static_site.py` before deployment and after adding a page, link, canonical, schema block, or asset.
 - The AQL guide and four upgraded commercial pages passed a 390-pixel mobile layout check with no horizontal overflow; the AQL guide also passed a 1280-pixel desktop review with all requested local assets returning successfully.
 - The fabric guide passed dedicated mobile and desktop checks for responsive images, schema types, CSV delivery, layout, and runtime errors. Axe 4.12 reported no WCAG A/AA violations; image-backed contrast candidates were also reviewed visually.

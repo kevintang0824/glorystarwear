@@ -60,7 +60,7 @@ Last updated: 2026-08-01
 | `/resources/sportswear-manufacturer-due-diligence-checklist.html` | How should a buyer verify supplier identity, operating scope, product fit, material and sample control, certificate scope, quality evidence, commercial assumptions, and decision gates? |
 | `/resources/oem-vs-odm-sportswear.html` | Which development route fits the information and product control the buyer already has? |
 | `/resources/private-label-activewear-moq.html` | Which style, material, color, component, packaging, or SKU decision creates the order minimum? |
-| `/resources/custom-sportswear-tech-pack.html` | What information turns a sportswear design into a quoteable and controllable specification? |
+| `/resources/custom-sportswear-tech-pack.html` | What should a custom sportswear tech pack include, and how can a buyer use a free blank CSV template to control the required inputs? |
 | `/resources/activewear-fabric-selection-guide.html` | How should a buyer define, compare, approve, and control an activewear fabric beyond composition and GSM? |
 | `/resources/sportswear-sample-approval-checklist.html` | What must be inspected and closed before a sample becomes a bulk-production reference? The process page owns the cross-stage revision and release workflow. |
 | `/resources/sportswear-aql-inspection-checklist.html` | How should a buyer define a bulk lot, sampling instruction, defect classes, sportswear checks, evidence, and pre-shipment release decision? |
@@ -78,8 +78,11 @@ The first available Search Console window covers 2026-07-13 through 2026-07-27:
 
 - `/products/private-label-gym-clothing.html` received 63 impressions at an average position of 76.4. Its observed query family includes `white label fitness clothing`, `private label gym clothes`, `white label gym clothing`, `white label athletic wear`, `private label fitness apparel`, and `private label workout clothes`.
 - `/private-label-activewear-manufacturer.html` received 8 impressions at an average position of 88.1; `activewear private label` appeared in the leading query table.
+- `/resources/custom-sportswear-tech-pack.html` received 7 impressions at an average position of 12.9 with no clicks, making it the clearest title-and-template-intent opportunity close to page one.
 - `/process.html` was the only URL reported as `Crawled - currently not indexed`, with the shown last crawl date of 2026-06-18.
 
 Decision: keep white label and private label gym intent on one commercial URL, strengthen the route comparison and descriptive internal anchors, and make the process page materially distinct through approval-record evidence. Do not create separate thin pages for each wording variant.
 
 The activewear-specific commercial intent remains on `/private-label-activewear-manufacturer.html`. It owns collection-level planning across yoga, seamless, inclusive sizing, training, and athleisure; `/products/private-label-gym-clothing.html` remains limited to white-label and private-label gym merchandise and fitness apparel routes.
+
+The tech pack resource owns both the checklist question and the blank sportswear intake-template task. It must disclose that the CSV is not a garment-specific finished tech pack; style drawings, measurements, materials, construction, artwork, and controlled approvals remain project-specific.

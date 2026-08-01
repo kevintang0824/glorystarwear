@@ -36,6 +36,7 @@ PRIORITY_LCP_PAGES = {
     "resources/index.html",
     "resources/sportswear-manufacturer-due-diligence-checklist.html",
     "resources/private-label-activewear-moq.html",
+    "resources/custom-sportswear-tech-pack.html",
     "resources/sportswear-aql-inspection-checklist.html",
     "resources/teamwear-roster-packing-guide.html",
 }
@@ -285,6 +286,19 @@ def main():
                 '"dateModified": "2026-08-01"': "current activewear page modification date",
             }
             for marker, label in required_activewear_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "resources/custom-sportswear-tech-pack.html":
+            required_tech_pack_markers = {
+                "sportswear-tech-pack-intake-template.csv": "tech pack template link",
+                'data-resource-download="sportswear-tech-pack-intake-template"': "tech pack download tracking",
+                '"@type":"DigitalDocument"': "tech pack document schema",
+                '"isAccessibleForFree":true': "free template disclosure in schema",
+                '"dateModified":"2026-08-01"': "current tech pack modification date",
+                "What it is not:": "visible template scope disclosure",
+            }
+            for marker, label in required_tech_pack_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 

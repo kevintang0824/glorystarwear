@@ -165,3 +165,27 @@ After deployment and recrawl, compare a full 28-day window with the prior period
 - whether white-label gym queries remain with `/products/private-label-gym-clothing.html`;
 - `resource_download` events for `private-label-activewear-collection-planner`;
 - continuations to fabric, grading, product-specific, sample, contact, email, and WhatsApp paths.
+
+## Phase 7 — sportswear tech pack template discovery
+
+The first Search Console window showed `/resources/custom-sportswear-tech-pack.html` with 7 impressions, no clicks, and an average position of 12.9. The URL was already indexed, useful, and close to page one, so this phase preserved the canonical and core checklist intent while improving the search result promise and template usability.
+
+Changes in this phase:
+
+- aligned the title, H1, social title, and description with `custom sportswear tech pack template` plus checklist intent without creating a competing template URL;
+- identified the download honestly as a free, blank 40-row CSV intake register and explained the difference between the worksheet and a finished garment-specific tech pack;
+- added a five-step quick start for row duplication, file references, open decisions, revision control, and supplier handoff;
+- added a visible FAQ answer explaining that the template does not replace drawings, graded measurements, production artwork, or controlled approval, with matching FAQ structured data;
+- expanded the `DigitalDocument` description and free-access disclosure while keeping the structured data aligned with the visible download;
+- added responsive AVIF hero preloading and static regression coverage for LCP, template scope, current modification date, download tracking, and document schema;
+- updated the sitemap, `llms.txt`, keyword map, asset manifest, and review documentation without inventing factory, price, MOQ, lead-time, download-count, or ranking claims.
+
+### Phase 7 measurement
+
+After deployment and recrawl, compare a full 28-day window with the prior period:
+
+- impressions, clicks, CTR, and average position for the tech pack resource;
+- query mix for `custom sportswear tech pack template`, `sportswear tech pack checklist`, `activewear tech pack template`, and related information-seeking variants;
+- whether the page moves from its 12.9 baseline without losing the existing canonical or checklist relevance;
+- `resource_download` events for `sportswear-tech-pack-intake-template`;
+- continuations to sample approval, quote preparation, customization, contact, email, and WhatsApp paths.
