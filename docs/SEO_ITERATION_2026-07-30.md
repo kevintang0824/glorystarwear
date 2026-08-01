@@ -141,3 +141,27 @@ After deployment, request re-indexing for `/process.html` and compare a full 28-
 - whether one-stop service queries remain with `/one-stop-service.html` while sampling-process queries move to `/process.html`;
 - `resource_download` events for `sampling-production-approval-register`;
 - continuations from the process page to the sample checklist, tech-pack guide, quality page, contact, email, or WhatsApp action.
+
+## Phase 6 — private label activewear collection planning
+
+The first Search Console window showed `/private-label-activewear-manufacturer.html` with 8 impressions at an average position of 88.1, while `activewear private label` appeared among the leading queries. The page already had the exact commercial title and a broad product range, so this phase kept its title and H1 stable and added a collection-level working tool instead of repeating generic manufacturing claims.
+
+Changes in this phase:
+
+- reframed the meta description around planning a private label activewear collection while retaining OEM, ODM, product, fabric, fit, sampling, branding, and packaging relevance;
+- added a 49-field activewear collection CSV with one clearly marked illustrative row and fields for market, customer, style role, product, route, fit, grading, fabric behavior, color, construction, branding, packaging, quantity assumptions, sample evidence, bulk release, launch priority, and reorder control;
+- exposed the planner from the hero and collection-control section with anonymous download tracking and `DigitalDocument` structured data;
+- added a visible collection-brief FAQ with matching FAQ structured data and a current modification date;
+- strengthened contextual links from the homepage, activewear fabric guide, activewear grading guide, and tech-pack guide;
+- clarified that the commercial parent owns multi-style activewear planning while gym, yoga, seamless, and plus-size pages retain their narrower product and buyer tasks;
+- updated the sitemap, `llms.txt`, keyword map, and static regression coverage without adding unsupported MOQ, price, lead-time, fabric-performance, location, or certification claims.
+
+### Phase 6 measurement
+
+After deployment and recrawl, compare a full 28-day window with the prior period:
+
+- impressions, clicks, CTR, and average position for the activewear manufacturer page;
+- query ownership for `private label activewear manufacturer`, `activewear private label`, and collection-planning variants;
+- whether white-label gym queries remain with `/products/private-label-gym-clothing.html`;
+- `resource_download` events for `private-label-activewear-collection-planner`;
+- continuations to fabric, grading, product-specific, sample, contact, email, and WhatsApp paths.

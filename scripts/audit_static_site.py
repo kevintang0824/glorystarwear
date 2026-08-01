@@ -277,6 +277,17 @@ def main():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 
+        if relative_name == "private-label-activewear-manufacturer.html":
+            required_activewear_markers = {
+                "private-label-activewear-collection-planner.csv": "activewear collection planner link",
+                'data-resource-download="private-label-activewear-collection-planner"': "activewear planner download tracking",
+                '"@type": "DigitalDocument"': "activewear planner document schema",
+                '"dateModified": "2026-08-01"': "current activewear page modification date",
+            }
+            for marker, label in required_activewear_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
         duplicate_ids = duplicate_values(parser.ids)
         if duplicate_ids:
             errors.append(f"{relative_name}: duplicate IDs: {', '.join(duplicate_ids)}")

@@ -17,7 +17,7 @@ Last updated: 2026-08-01
 | `/` | Broad `custom sportswear manufacturer` discovery, product range, and route selection | Activewear, teamwear, niche sports, packaging, trust, and inquiry paths |
 | `/sportswear-manufacturer.html` | `private label sportswear manufacturer` and OEM/ODM supplier evaluation | Development inputs, provider scope, sampling, branding, quality, packaging, and commercial handoff |
 | `/low-moq-sportswear-manufacturer.html` | `low MOQ sportswear manufacturer` and startup first-order planning | Light custom, focused capsule, team or event, full custom, component minimums, sample route, and quote inputs |
-| `/private-label-activewear-manufacturer.html` | Activewear-specific private label program | Yoga, seamless, plus-size, gym clothing, fabrics, labels, and ecommerce packaging |
+| `/private-label-activewear-manufacturer.html` | `private label activewear manufacturer`, `activewear private label`, and activewear collection planning | Owns multi-style activewear architecture, development route, fit blocks, fabric and color systems, labels, packaging, sampling, launch priority, and reorders; garment and gym-specific pages own their narrower product decisions |
 | `/custom-teamwear-uniforms.html` | Teamwear-specific uniform program | Personalization, sublimation, roster control, player packing, and seasonal reorders |
 | `/customization.html` | `custom sportswear printing` and private label decoration route selection | Sublimation, heat transfer, screen print, embroidery, badges, labels, trims, packaging, and approval evidence |
 | `/fabrics.html` | `sportswear fabrics and decoration methods` compatibility | Material construction, GSM, stretch, opacity, recovery, product use, decoration fit, sample approval, and bulk control |
@@ -81,3 +81,5 @@ The first available Search Console window covers 2026-07-13 through 2026-07-27:
 - `/process.html` was the only URL reported as `Crawled - currently not indexed`, with the shown last crawl date of 2026-06-18.
 
 Decision: keep white label and private label gym intent on one commercial URL, strengthen the route comparison and descriptive internal anchors, and make the process page materially distinct through approval-record evidence. Do not create separate thin pages for each wording variant.
+
+The activewear-specific commercial intent remains on `/private-label-activewear-manufacturer.html`. It owns collection-level planning across yoga, seamless, inclusive sizing, training, and athleisure; `/products/private-label-gym-clothing.html` remains limited to white-label and private-label gym merchandise and fitness apparel routes.

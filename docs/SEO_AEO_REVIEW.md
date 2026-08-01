@@ -29,6 +29,7 @@ Google AI Overviews and AI Mode use the same crawl, index, and ranking foundatio
 - The activewear fabric selection guide separates fabric identity, composition, GSM, construction, stretch, recovery, opacity, color, evidence, sample approval, and bulk control. Its downloadable CSV turns those decisions into a reusable material record.
 - The sample approval guide covers revision identity, materials, measurements, wearer fit, construction, artwork, packing, comments, and bulk sign-off. It connects to a 39-field CSV register for review evidence, open issues, approval decisions, and the controlled bulk-production reference.
 - The process page now owns the revision-controlled sampling and production-release workflow, while the one-stop service page owns service scope and cross-stage handoff. The process page provides the same approval register as a direct working tool.
+- The private label activewear page now turns broad manufacturer discovery into a 49-field collection-planning handoff across style roles, development routes, fit, grading, fabric, color, branding, packaging, sampling, launch priority, release, and reorders.
 - The AQL inspection guide covers lot definition, the 2026 sampling-standard reference, defect classification, sportswear-specific checks, evidence, corrective action, and shipment release without reproducing licensed sampling tables.
 - The activewear size grading guide separates base fit, grade rules, tolerances, product-specific measurements, inclusive range decisions, and size-set approval.
 - The new-product development page turns a broad product gallery into a style-level launch or reorder brief with assortment roles, development routes, specification inputs, quantity planning, sample approvals, and a reusable CSV handoff.
@@ -46,7 +47,7 @@ Google AI Overviews and AI Mode use the same crawl, index, and ranking foundatio
 - Visitors without a configured email client can copy a complete project brief for another messaging app.
 - WhatsApp and email clicks are tracked as contact intent, not successful lead delivery.
 - The secure server submit control appears only when the Vercel endpoint confirms a real receiving webhook is configured; `lead_submit_success` is emitted only after that receiver returns success.
-- The collection-development, gym-planning, compression, tech-pack, fabric-selection, size-grading, teamwear-roster, pre-shipment inspection, and sampling-process pages include reusable CSV templates with anonymous download tracking.
+- The collection-development, private-label-activewear, gym-planning, compression, tech-pack, fabric-selection, size-grading, teamwear-roster, pre-shipment inspection, and sampling-process pages include reusable CSV templates with anonymous download tracking.
 - The supplier verification page includes a reusable evidence-request CSV that records claim, holder, scope, validity, verification method, disclosure level, owner, and review date.
 - The manufacturer due-diligence guide adds an evidence ladder, ten-area verification workflow, escalation signals, authoritative public references, and a supplier-comparison CSV with decision gates.
 - `window.dataLayer` receives vendor-neutral events for campaign landing, contact clicks, quote starts, email, WhatsApp and copied-brief actions, catalog filters, and catalog searches.
@@ -56,7 +57,7 @@ Google AI Overviews and AI Mode use the same crawl, index, and ranking foundatio
 
 - The first optimization sprint passed a local Chromium crawl with 79 sitemap URLs, no console errors, no key-page desktop or mobile overflow, and working attribution events.
 - The current dependency-free static audit covers 94 HTML files and 91 sitemap URLs.
-- It confirms 94 unique canonicals, 93 valid JSON-LD blocks, 103 internal targets, and 765 referenced local assets with no errors.
+- It confirms 94 unique canonicals, 93 valid JSON-LD blocks, 104 internal targets, and 765 referenced local assets with no errors.
 - All 91 indexable URLs are reachable from the homepage within two internal-link clicks, with no orphaned indexable pages.
 - Twenty priority commercial and resource landing pages preload their responsive AVIF hero candidate with high fetch priority; the audit now prevents that coverage from silently regressing.
 - Run `python3 scripts/audit_static_site.py` before deployment and after adding a page, link, canonical, schema block, or asset.
