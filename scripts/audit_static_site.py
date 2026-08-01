@@ -24,6 +24,7 @@ PRIORITY_LCP_PAGES = {
     "private-label-activewear-manufacturer.html",
     "custom-teamwear-uniforms.html",
     "one-stop-service.html",
+    "process.html",
     "products/yoga-wear.html",
     "products/new-products.html",
     "products/training-wear.html",
@@ -250,6 +251,17 @@ def main():
             errors.append(f"{relative_name}: missing canonical")
         if parser.h1_count != 1:
             errors.append(f"{relative_name}: expected one H1, found {parser.h1_count}")
+
+        if relative_name == "process.html":
+            required_process_markers = {
+                "sportswear-sampling-production-approval-register.csv": "sampling approval register link",
+                'data-resource-download="sampling-production-approval-register"': "sampling approval download tracking",
+                '"@type": "DigitalDocument"': "sampling approval document schema",
+                '"dateModified": "2026-08-01"': "current process modification date",
+            }
+            for marker, label in required_process_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
 
         duplicate_ids = duplicate_values(parser.ids)
         if duplicate_ids:

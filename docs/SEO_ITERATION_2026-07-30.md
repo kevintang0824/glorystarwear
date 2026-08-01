@@ -118,3 +118,26 @@ After deployment and recrawl, compare a full 28-day window with the prior period
 - `resource_download` events for `sportswear-collection-development-brief`;
 - indexed status, Google-selected canonical, and structured-data validity;
 - continuations to the tech-pack guide, quote checklist, contact, email, or WhatsApp action.
+
+## Phase 5 — sampling process indexability and approval evidence
+
+The first Search Console coverage window showed `/process.html` as the only URL in `Crawled - currently not indexed`, with a displayed last crawl date of 2026-06-18. The page already explained the overall workflow, so this phase did not change its stable title or H1. It instead made the page's buyer task more distinct from `/one-stop-service.html` and the sample checklist.
+
+Changes in this phase:
+
+- defined when a sportswear sample is ready to control bulk production, including sample identity, linked evidence, decision language, and the controlled production reference;
+- added a 39-field sampling and production approval CSV with one clearly marked illustrative row covering sample and file revisions, material, measurement, fit, construction, artwork, labels, packaging, evidence, open issues, approval, and bulk release;
+- exposed the CSV from the process hero, the process control section, and the sample approval guide, with anonymous download tracking and `DigitalDocument` structured data;
+- clarified page ownership: the one-stop page owns service scope and cross-stage handoff, the sample guide owns inspection questions, and the process page owns revision-controlled sampling and production release;
+- added contextual links from the manufacturer, one-stop service, quality, and sample approval pages;
+- updated modification dates, sitemap signals, `llms.txt`, and static regression coverage without adding unsupported factory, lead-time, price, MOQ, or certification claims.
+
+### Phase 5 measurement
+
+After deployment, request re-indexing for `/process.html` and compare a full 28-day window after Google re-crawls it with the prior period:
+
+- indexed status, last crawl, and Google-selected canonical for the process page;
+- impressions, clicks, CTR, and query mix for custom sportswear sampling, sample revision, pre-production sample, and bulk-release intent;
+- whether one-stop service queries remain with `/one-stop-service.html` while sampling-process queries move to `/process.html`;
+- `resource_download` events for `sampling-production-approval-register`;
+- continuations from the process page to the sample checklist, tech-pack guide, quality page, contact, email, or WhatsApp action.

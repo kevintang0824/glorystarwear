@@ -1,6 +1,6 @@
 # GloryStarWear Search Intent Map
 
-Last updated: 2026-07-29
+Last updated: 2026-08-01
 
 ## Page Ownership Rule
 
@@ -21,10 +21,10 @@ Last updated: 2026-07-29
 | `/custom-teamwear-uniforms.html` | Teamwear-specific uniform program | Personalization, sublimation, roster control, player packing, and seasonal reorders |
 | `/customization.html` | `custom sportswear printing` and private label decoration route selection | Sublimation, heat transfer, screen print, embroidery, badges, labels, trims, packaging, and approval evidence |
 | `/fabrics.html` | `sportswear fabrics and decoration methods` compatibility | Material construction, GSM, stretch, opacity, recovery, product use, decoration fit, sample approval, and bulk control |
-| `/one-stop-service.html` | `one-stop sportswear service` and cross-stage order handoff | Brief, tech pack, sampling, manufacturing, quality control, private label packaging, and shipment preparation |
+| `/one-stop-service.html` | `one-stop sportswear service` and cross-stage order handoff | Owns service scope, responsibilities, inputs, deliverables, packaging, and shipment handoff; links to the process page for sample revision and production-release control |
 | `/products/new-products.html` | New sportswear product and collection development planning | Owns launch or reorder goals, assortment roles, development-route selection, style-level planning, sample approval, and launch handoff; garment-specific manufacturer intent remains with the relevant category page |
 | `/quality.html` | `sportswear quality control checklist` and factory QC workflow | Approved references, incoming material, in-line production, measurement, packing, evidence, and release decisions |
-| `/process.html` | `custom sportswear sampling` and production service process | Prototype, fit sample, size set, evidence-led bulk approval, QC, packing, and shipment |
+| `/process.html` | `custom sportswear sampling process`, sample revisions, and production release | Owns sample-stage choice, sample IDs and revisions, approval evidence, open exceptions, the controlled bulk reference, production gates, QC, packing, and shipment |
 | `/products/private-label-gym-clothing.html` | `private label gym clothing` and `white label fitness clothing` | Existing-style white label route, private label collection development, OEM specifications, workout tops, bottoms, layers, labels, and packaging |
 
 ## Priority Page Pairs
@@ -62,7 +62,7 @@ Last updated: 2026-07-29
 | `/resources/private-label-activewear-moq.html` | Which style, material, color, component, packaging, or SKU decision creates the order minimum? |
 | `/resources/custom-sportswear-tech-pack.html` | What information turns a sportswear design into a quoteable and controllable specification? |
 | `/resources/activewear-fabric-selection-guide.html` | How should a buyer define, compare, approve, and control an activewear fabric beyond composition and GSM? |
-| `/resources/sportswear-sample-approval-checklist.html` | What must be reviewed and closed before a sample becomes a bulk-production reference? |
+| `/resources/sportswear-sample-approval-checklist.html` | What must be inspected and closed before a sample becomes a bulk-production reference? The process page owns the cross-stage revision and release workflow. |
 | `/resources/sportswear-aql-inspection-checklist.html` | How should a buyer define a bulk lot, sampling instruction, defect classes, sportswear checks, evidence, and pre-shipment release decision? |
 | `/resources/activewear-size-grading-guide.html` | How should a buyer control base fit, grade rules, tolerances, inclusive proportions, and size-set approval? |
 | `/resources/teamwear-roster-packing-guide.html` | How should a teamwear buyer control player data, personalization, revisions, packs, and carton allocation? |
