@@ -12,6 +12,7 @@ Responsive derivatives with `-900.jpg` and `-1200.jpg` suffixes are performance 
 ## Downloadable Buyer Assets
 
 - `assets/downloads/sportswear-tech-pack-intake-template.csv`: blank 40-row tech pack intake register covering style identity, views, materials, measurements, construction, artwork, labels, packaging, performance, approvals, QC, bulk release, and revision control.
+- `assets/downloads/sportswear-artwork-approval-register.csv`: 35-field artwork register connecting each logo, sponsor mark, panel print, patch, label, or packaging mark to its rights status, source file, method, substrate, dimensions, placement, production file, physical sample, approval, and evidence.
 - `assets/downloads/sportswear-manufacturer-due-diligence-scorecard.csv`: supplier-comparison scorecard covering identity, operating scope, product fit, materials, samples, quality, certificates, commercial assumptions, packing, risk, owner, review date, and next action.
 - `assets/downloads/sportswear-supplier-evidence-request-template.csv`: claim-by-claim supplier evidence request and review log.
 - `assets/downloads/activewear-fabric-specification-template.csv`: activewear fabric identity and approval record.

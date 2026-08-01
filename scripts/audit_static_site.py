@@ -37,6 +37,7 @@ PRIORITY_LCP_PAGES = {
     "resources/sportswear-manufacturer-due-diligence-checklist.html",
     "resources/private-label-activewear-moq.html",
     "resources/custom-sportswear-tech-pack.html",
+    "resources/sportswear-logo-artwork-preparation-guide.html",
     "resources/sportswear-aql-inspection-checklist.html",
     "resources/teamwear-roster-packing-guide.html",
 }
@@ -299,6 +300,20 @@ def main():
                 "What it is not:": "visible template scope disclosure",
             }
             for marker, label in required_tech_pack_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "resources/sportswear-logo-artwork-preparation-guide.html":
+            required_artwork_markers = {
+                "sportswear-artwork-approval-register.csv": "artwork approval register link",
+                'data-resource-download="sportswear-artwork-approval-register"': "artwork download tracking",
+                '"@type":"DigitalDocument"': "artwork document schema",
+                '"isAccessibleForFree":true': "free artwork register disclosure in schema",
+                '"dateModified":"2026-08-01"': "current artwork guide modification date",
+                "rights confirmation": "artwork rights field disclosure",
+                "adobe.com/creativecloud/file-types/image/comparison/raster-vs-vector.html": "authoritative vector and raster reference",
+            }
+            for marker, label in required_artwork_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 

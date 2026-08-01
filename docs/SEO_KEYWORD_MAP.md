@@ -61,6 +61,7 @@ Last updated: 2026-08-01
 | `/resources/oem-vs-odm-sportswear.html` | Which development route fits the information and product control the buyer already has? |
 | `/resources/private-label-activewear-moq.html` | Which style, material, color, component, packaging, or SKU decision creates the order minimum? |
 | `/resources/custom-sportswear-tech-pack.html` | What should a custom sportswear tech pack include, and how can a buyer use a free blank CSV template to control the required inputs? |
+| `/resources/sportswear-logo-artwork-preparation-guide.html` | How should a buyer prepare and approve sportswear logo and artwork files across source format, rights, method, substrate, dimensions, placement, color, production file, and physical evidence? |
 | `/resources/activewear-fabric-selection-guide.html` | How should a buyer define, compare, approve, and control an activewear fabric beyond composition and GSM? |
 | `/resources/sportswear-sample-approval-checklist.html` | What must be inspected and closed before a sample becomes a bulk-production reference? The process page owns the cross-stage revision and release workflow. |
 | `/resources/sportswear-aql-inspection-checklist.html` | How should a buyer define a bulk lot, sampling instruction, defect classes, sportswear checks, evidence, and pre-shipment release decision? |
@@ -86,3 +87,5 @@ Decision: keep white label and private label gym intent on one commercial URL, s
 The activewear-specific commercial intent remains on `/private-label-activewear-manufacturer.html`. It owns collection-level planning across yoga, seamless, inclusive sizing, training, and athleisure; `/products/private-label-gym-clothing.html` remains limited to white-label and private-label gym merchandise and fitness apparel routes.
 
 The tech pack resource owns both the checklist question and the blank sportswear intake-template task. It must disclose that the CSV is not a garment-specific finished tech pack; style drawings, measurements, materials, construction, artwork, and controlled approvals remain project-specific.
+
+The artwork resource owns source-file and artwork-release intent. `/customization.html` continues to own decoration-method selection and commercial customization scope; the tech pack owns the complete garment specification; the sample guide owns physical approval of the resulting garment revision.

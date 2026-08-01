@@ -189,3 +189,29 @@ After deployment and recrawl, compare a full 28-day window with the prior period
 - whether the page moves from its 12.9 baseline without losing the existing canonical or checklist relevance;
 - `resource_download` events for `sportswear-tech-pack-intake-template`;
 - continuations to sample approval, quote preparation, customization, contact, email, and WhatsApp paths.
+
+## Phase 8 — sportswear logo and artwork preparation
+
+The site repeatedly asked buyers to send logo files but did not own the underlying information task: how to distinguish source from preview files, connect artwork to a method and substrate, define scale and placement, confirm usage authority, and approve the actual production result. This phase created one dedicated resource instead of expanding the commercial customization page into a competing file-preparation article.
+
+Changes in this phase:
+
+- published `/resources/sportswear-logo-artwork-preparation-guide.html` with one clear source-file and artwork-release intent;
+- explained true vector, raster, stable PDF preview, and reference-only screenshot roles without treating a filename extension as proof of production readiness;
+- linked to current Adobe documentation for vector-versus-raster behavior and outlined text while keeping supplier-specific method requirements explicit;
+- separated handoff and approval questions for full-panel sublimation, screen print, heat transfer or DTF, embroidery, patches, labels, and packaging;
+- added repeatable controls for artwork IDs, dimensions, seam or panel references, offsets, orientation, colorway variants, production files, physical samples, rights confirmation, approval, and evidence;
+- added a free 35-field artwork approval CSV with one clearly marked illustrative row and anonymous download tracking;
+- added matching `Article`, `BreadcrumbList`, `FAQPage`, and `DigitalDocument` structured data plus a responsive AVIF hero preload;
+- linked the new resource from the customization service, quote checklist, tech-pack guide, sample-approval guide, and resource center, while linking back to each next operational task;
+- updated the sitemap, `llms.txt`, keyword map, asset manifest, and static regression coverage without claiming universal artwork specifications, intellectual-property clearance, production outcomes, or ranking gains.
+
+### Phase 8 measurement
+
+After deployment and recrawl, compare full 28-day and 90-day windows:
+
+- indexing status, impressions, clicks, CTR, and average position for the artwork resource;
+- query mix for sportswear logo file, custom apparel artwork preparation, vector logo for clothing, artwork placement, and method-specific variants;
+- whether artwork-file intent remains with the new guide while decoration-method selection remains with `/customization.html`;
+- `resource_download` events for `sportswear-artwork-approval-register`;
+- continuations to customization, tech pack, sample approval, roster planning, quote preparation, contact, email, and WhatsApp paths.
