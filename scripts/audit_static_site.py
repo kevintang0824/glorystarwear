@@ -28,6 +28,7 @@ PRIORITY_LCP_PAGES = {
     "certificates.html",
     "products/yoga-wear.html",
     "products/new-products.html",
+    "products/lookbook.html",
     "products/training-wear.html",
     "products/compression-base-layers.html",
     "products/private-label-gym-clothing.html",
@@ -348,6 +349,19 @@ def main():
                 "commission.europa.eu/business-economy-euro/doing-business-eu": "authoritative EU product-safety reference",
             }
             for marker, label in required_compliance_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "products/lookbook.html":
+            required_gallery_markers = {
+                "sportswear-product-gallery-shortlist.csv": "product gallery shortlist link",
+                'data-resource-download="sportswear-product-gallery-shortlist"': "gallery shortlist download tracking",
+                '"@type": "DigitalDocument"': "gallery shortlist document schema",
+                '"isAccessibleForFree": true': "free gallery shortlist disclosure in schema",
+                '"dateModified": "2026-08-02"': "current product gallery modification date",
+                "A visual reference is not a production specification": "visible visual-reference scope disclosure",
+            }
+            for marker, label in required_gallery_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 

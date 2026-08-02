@@ -265,3 +265,28 @@ After deployment and recrawl, compare full 28-day and 90-day windows:
 - whether product-evidence intent stays with `/certificates.html`, supplier-verification intent stays with the due-diligence page, and inspection intent stays with the AQL page;
 - `resource_download` events for `sportswear-compliance-evidence-register`;
 - continuations to tech packs, fabric control, packaging, AQL inspection, supplier due diligence, quote preparation, contact, email, and WhatsApp paths.
+
+## Phase 11 — product gallery shortlist and near-page-one opportunity
+
+The first Search Console window showed `/products/lookbook.html` with 4 impressions and an average position of 15.8. The URL already matched product-gallery intent and sat close to page one, so this phase kept its canonical URL, title, and H1 stable while increasing the value delivered after a search visit.
+
+Changes in this phase:
+
+- retained `Custom Sportswear Product Gallery` as the page-owned intent instead of creating another catalog, lookbook, or inspiration URL;
+- added a direct answer explaining how buyers should capture the exact reference, intended use, features to keep or change, development route, fit, fabric, color, size, artwork, packaging, quantity, market, and timing;
+- added a free 34-field product-gallery shortlist CSV with one clearly marked illustrative row and anonymous download tracking;
+- stated visibly that a visual reference is not a production specification and routed shortlisted products into collection development, tech-pack, quote, and product-specific workflows;
+- expanded the structured category `ItemList` from 6 to 12 priority routes and added a matching free `DigitalDocument` entity;
+- added responsive AVIF hero preloading and regression coverage for the page, modification date, download, disclosure, and structured document;
+- strengthened contextual links from the homepage, new-product development page, and quote checklist while keeping visual discovery, collection planning, and garment specification as separate tasks;
+- updated the sitemap, `llms.txt`, keyword map, asset manifest, and visibility review without changing the title or H1 and without claiming rankings, product approval, price, MOQ, lead time, capacity, testing, or delivery outcomes.
+
+### Phase 11 measurement
+
+After deployment and recrawl, compare full 28-day and 90-day windows:
+
+- impressions, clicks, CTR, and average position for `/products/lookbook.html` against the 15.8 baseline;
+- query mix for custom sportswear product gallery, sportswear product catalog, activewear product gallery, teamwear gallery, and related visual-discovery variants;
+- whether visual discovery stays with the gallery, collection-development intent stays with `/products/new-products.html`, and specific manufacturer queries stay with their category or garment pages;
+- `resource_download` events for `sportswear-product-gallery-shortlist`;
+- continuations from the gallery to product detail pages, collection development, tech packs, quote preparation, contact, email, and WhatsApp paths.

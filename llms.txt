@@ -54,6 +54,8 @@ Last updated: 2026-08-02
 ## Product Scope
 
 - [Complete product catalog](https://glorystarwears.com/products/)
+- [Custom sportswear product gallery with visual-reference shortlist](https://glorystarwears.com/products/lookbook.html)
+- [Sportswear product gallery shortlist (CSV)](https://glorystarwears.com/assets/downloads/sportswear-product-gallery-shortlist.csv)
 - [New sportswear collection development with CSV brief](https://glorystarwears.com/products/new-products.html)
 - [Private label activewear collection planning with CSV](https://glorystarwears.com/private-label-activewear-manufacturer.html)
 - [Private label activewear collection planner (CSV)](https://glorystarwears.com/assets/downloads/private-label-activewear-collection-planner.csv)

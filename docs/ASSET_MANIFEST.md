@@ -11,6 +11,7 @@ Responsive derivatives with `-900.jpg` and `-1200.jpg` suffixes are performance 
 
 ## Downloadable Buyer Assets
 
+- `assets/downloads/sportswear-product-gallery-shortlist.csv`: 34-field visual-reference shortlist connecting the exact category page or image to product direction, keep/change decisions, development route, fit, fabric, color, size, artwork, packaging, quantity, timing, ownership, and next action.
 - `assets/downloads/sportswear-tech-pack-intake-template.csv`: blank 40-row tech pack intake register covering style identity, views, materials, measurements, construction, artwork, labels, packaging, performance, approvals, QC, bulk release, and revision control.
 - `assets/downloads/sportswear-artwork-approval-register.csv`: 35-field artwork register connecting each logo, sponsor mark, panel print, patch, label, or packaging mark to its rights status, source file, method, substrate, dimensions, placement, production file, physical sample, approval, and evidence.
 - `assets/downloads/sportswear-packaging-handoff-register.csv`: 45-field packaging register connecting SKU and barcode data, component artwork, label text, folding, individual and inner packs, carton assortment, marks, destination, packed-sample approval, inspection evidence, and open issues.
