@@ -28,6 +28,7 @@ Google AI Overviews and AI Mode use the same crawl, index, and ranking foundatio
 - The tech pack guide pairs a free 40-row CSV intake template with drawings, bill of materials, measurements, construction, artwork, packaging, QC, and version-control guidance. It states clearly that the blank register does not replace garment-specific drawings, graded measurements, production artwork, or approval.
 - The logo and artwork guide separates editable source files, vector and raster behavior, rights confirmation, method-specific handoff, substrate, dimensions, placement, color, production files, and physical sample evidence. Its 35-field CSV controls one row per artwork application without claiming one universal production-file rule.
 - The packaging and label handoff guide separates component sourcing from the buyer's release record across label copy, component files, SKU and barcode data, folding, individual packs, carton assortment, marks, destinations, packed samples, inspection evidence, and approval. Its 45-field CSV keeps those decisions in a reusable register without claiming one universal legal or retailer standard.
+- The compliance checklist now owns product and market evidence planning across applicability, labels, tests, reports, certificates, declarations, claims, corrective action, approval, release, and retention. Its 47-field CSV functions as an evidence index without presenting one universal test list or claiming that GloryStarWear holds an unverified certificate or report.
 - The activewear fabric selection guide separates fabric identity, composition, GSM, construction, stretch, recovery, opacity, color, evidence, sample approval, and bulk control. Its downloadable CSV turns those decisions into a reusable material record.
 - The sample approval guide covers revision identity, materials, measurements, wearer fit, construction, artwork, packing, comments, and bulk sign-off. It connects to a 39-field CSV register for review evidence, open issues, approval decisions, and the controlled bulk-production reference.
 - The process page now owns the revision-controlled sampling and production-release workflow, while the one-stop service page owns service scope and cross-stage handoff. The process page provides the same approval register as a direct working tool.
@@ -49,7 +50,7 @@ Google AI Overviews and AI Mode use the same crawl, index, and ranking foundatio
 - Visitors without a configured email client can copy a complete project brief for another messaging app.
 - WhatsApp and email clicks are tracked as contact intent, not successful lead delivery.
 - The secure server submit control appears only when the Vercel endpoint confirms a real receiving webhook is configured; `lead_submit_success` is emitted only after that receiver returns success.
-- The collection-development, private-label-activewear, gym-planning, compression, tech-pack, artwork-preparation, packaging-handoff, fabric-selection, size-grading, teamwear-roster, pre-shipment inspection, and sampling-process pages include reusable CSV templates with anonymous download tracking.
+- The collection-development, private-label-activewear, gym-planning, compression, tech-pack, artwork-preparation, packaging-handoff, compliance-evidence, fabric-selection, size-grading, teamwear-roster, pre-shipment inspection, and sampling-process pages include reusable CSV templates with anonymous download tracking.
 - The supplier verification page includes a reusable evidence-request CSV that records claim, holder, scope, validity, verification method, disclosure level, owner, and review date.
 - The manufacturer due-diligence guide adds an evidence ladder, ten-area verification workflow, escalation signals, authoritative public references, and a supplier-comparison CSV with decision gates.
 - `window.dataLayer` receives vendor-neutral events for campaign landing, contact clicks, quote starts, email, WhatsApp and copied-brief actions, catalog filters, and catalog searches.
@@ -59,9 +60,9 @@ Google AI Overviews and AI Mode use the same crawl, index, and ranking foundatio
 
 - The first optimization sprint passed a local Chromium crawl with 79 sitemap URLs, no console errors, no key-page desktop or mobile overflow, and working attribution events.
 - The current dependency-free static audit covers 96 HTML files and 93 sitemap URLs.
-- It confirms 96 unique canonicals, 95 valid JSON-LD blocks, 108 internal targets, 765 referenced local assets, and matching AVIF coverage for all 511 referenced images with no errors.
+- It confirms 96 unique canonicals, 95 valid JSON-LD blocks, 109 internal targets, 765 referenced local assets, and matching AVIF coverage for all 511 referenced images with no errors.
 - All 93 indexable URLs are reachable from the homepage within two internal-link clicks, with no orphaned indexable pages.
-- Twenty-four priority commercial and resource landing pages preload their responsive AVIF hero candidate with high fetch priority; the audit now prevents that coverage from silently regressing.
+- Twenty-five priority commercial and resource landing pages preload their responsive AVIF hero candidate with high fetch priority; the audit now prevents that coverage from silently regressing.
 - Run `python3 scripts/audit_static_site.py` before deployment and after adding a page, link, canonical, schema block, or asset.
 - The AQL guide and four upgraded commercial pages passed a 390-pixel mobile layout check with no horizontal overflow; the AQL guide also passed a 1280-pixel desktop review with all requested local assets returning successfully.
 - The fabric guide passed dedicated mobile and desktop checks for responsive images, schema types, CSV delivery, layout, and runtime errors. Axe 4.12 reported no WCAG A/AA violations; image-backed contrast candidates were also reviewed visually.
@@ -99,7 +100,7 @@ Track outcomes by landing page, country, device, query theme, and inquiry source
 4. Add verified company facts only when supporting evidence is available: business entity, location, production scope, relevant markets, current certificates, and named contact ownership.
 5. Complete the due-diligence scorecard for GloryStarWear with current business, payment, operating-scope, product, certificate, sample, and quality evidence that can be disclosed publicly or under NDA.
 6. Consolidate overlapping product intent. Broad category pages should explain collection planning; narrower pages should focus on product-specific construction, specifications, and use cases.
-7. Build future guides from recurring sales questions, such as compliance evidence and reorder planning.
+7. Build future guides from recurring sales questions, such as reorder planning, only when the new task remains distinct from existing collection, roster, material, and sampling pages.
 
 ## Editorial Rules
 

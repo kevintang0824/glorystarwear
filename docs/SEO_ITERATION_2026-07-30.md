@@ -240,3 +240,28 @@ After deployment and recrawl, compare full 28-day and 90-day windows:
 - whether supplier and component-range intent remains with `/products/private-label-sportswear-packaging.html` while specification and handoff intent stays with the resource;
 - `resource_download` events for `sportswear-packaging-handoff-register`;
 - continuations to packaging supply, one-stop service, tech pack, artwork, AQL inspection, quote preparation, contact, email, and WhatsApp paths.
+
+## Phase 10 — sportswear compliance evidence file
+
+Current search results contain distinct demand for apparel compliance checklists, testing evidence, labels, and buyer document readiness. The site already had a high-authority `/certificates.html` navigation page, so this phase upgraded that URL instead of publishing a competing compliance article.
+
+Changes in this phase:
+
+- retained `/certificates.html` as the canonical page and aligned its title and description with sportswear compliance checklist plus downloadable evidence-register intent;
+- replaced a short certificate-name overview with a product-specific workflow covering product identity, intended user and use, market and channel, applicability, labels, tests, reports, certificates, declarations, claims, corrective action, approval, release, and record retention;
+- added a free 47-field CSV that indexes one requirement or evidence item per row and links it to the actual style, material, sample, lot, report, label file, result, owner, release gate, and retention location;
+- distinguished applicability decisions, test reports, certificates, supplier declarations, label approvals, and inspection records so one document is not presented as universal proof;
+- linked to official NIST, FTC, CPSC, Your Europe, and European Commission entry points while stating that the responsible business must confirm the current requirement for the actual product and market with qualified support;
+- added matching `Article`, `BreadcrumbList`, `FAQPage`, and `DigitalDocument` structured data and expanded static regression markers for every authoritative reference and download control;
+- strengthened contextual links from the homepage-linked resource center, quality page, quote checklist, tech-pack guide, fabric guide, packaging guide, and AQL guide while preserving due-diligence, QC, and inspection intent boundaries;
+- updated the sitemap, `llms.txt`, keyword map, asset manifest, and measurement documentation without claiming legal advice, a universal test list, or any certificate, accreditation, audit, or test report that has not been verified.
+
+### Phase 10 measurement
+
+After deployment and recrawl, compare full 28-day and 90-day windows:
+
+- impressions, clicks, CTR, and average position for `/certificates.html`;
+- query mix for sportswear compliance checklist, apparel compliance checklist, clothing compliance documents, textile testing evidence, label compliance, and certificate readiness;
+- whether product-evidence intent stays with `/certificates.html`, supplier-verification intent stays with the due-diligence page, and inspection intent stays with the AQL page;
+- `resource_download` events for `sportswear-compliance-evidence-register`;
+- continuations to tech packs, fabric control, packaging, AQL inspection, supplier due diligence, quote preparation, contact, email, and WhatsApp paths.

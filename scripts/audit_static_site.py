@@ -25,6 +25,7 @@ PRIORITY_LCP_PAGES = {
     "custom-teamwear-uniforms.html",
     "one-stop-service.html",
     "process.html",
+    "certificates.html",
     "products/yoga-wear.html",
     "products/new-products.html",
     "products/training-wear.html",
@@ -330,6 +331,23 @@ def main():
                 "ftc.gov/business-guidance/industry/clothing-and-textiles": "authoritative clothing labeling reference",
             }
             for marker, label in required_packaging_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "certificates.html":
+            required_compliance_markers = {
+                "sportswear-compliance-evidence-register.csv": "compliance evidence register link",
+                'data-resource-download="sportswear-compliance-evidence-register"': "compliance download tracking",
+                '"@type":"DigitalDocument"': "compliance document schema",
+                '"isAccessibleForFree":true': "free compliance register disclosure in schema",
+                '"dateModified":"2026-08-02"': "current compliance checklist modification date",
+                "nist.gov/publications/guide-united-states-apparel": "authoritative U.S. apparel overview",
+                "ftc.gov/business-guidance/industry/clothing-and-textiles": "authoritative U.S. label reference",
+                "cpsc.gov/FAQ/Clothing": "authoritative U.S. product-safety reference",
+                "europa.eu/youreurope/business/product-rules-compliance": "authoritative EU textile-label reference",
+                "commission.europa.eu/business-economy-euro/doing-business-eu": "authoritative EU product-safety reference",
+            }
+            for marker, label in required_compliance_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 

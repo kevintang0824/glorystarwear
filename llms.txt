@@ -19,7 +19,7 @@ Last updated: 2026-08-02
 
 - [Company and supplier capabilities](https://glorystarwears.com/sportswear-manufacturer.html)
 - [Factory profile and buyer verification](https://glorystarwears.com/about-factory.html)
-- [Certificates and document review](https://glorystarwears.com/certificates.html)
+- [Sportswear compliance checklist and evidence review](https://glorystarwears.com/certificates.html)
 - [Custom sportswear case studies](https://glorystarwears.com/case-studies.html)
 - [Factory media and verification checklist](https://glorystarwears.com/factory-video.html)
 - [Sampling and production process with revision-controlled approval register](https://glorystarwears.com/process.html)
@@ -42,6 +42,7 @@ Last updated: 2026-08-02
 - [Sportswear artwork approval register (CSV)](https://glorystarwears.com/assets/downloads/sportswear-artwork-approval-register.csv)
 - [Sportswear packaging and label handoff checklist](https://glorystarwears.com/resources/sportswear-packaging-label-handoff-checklist.html)
 - [Sportswear packaging handoff register (CSV)](https://glorystarwears.com/assets/downloads/sportswear-packaging-handoff-register.csv)
+- [Sportswear compliance evidence register (CSV)](https://glorystarwears.com/assets/downloads/sportswear-compliance-evidence-register.csv)
 - [Activewear fabric selection and specification guide](https://glorystarwears.com/resources/activewear-fabric-selection-guide.html)
 - [Sportswear sample approval checklist and CSV register](https://glorystarwears.com/resources/sportswear-sample-approval-checklist.html)
 - [Sportswear sampling and production approval register (CSV)](https://glorystarwears.com/assets/downloads/sportswear-sampling-production-approval-register.csv)
