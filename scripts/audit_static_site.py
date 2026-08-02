@@ -26,6 +26,7 @@ PRIORITY_LCP_PAGES = {
     "one-stop-service.html",
     "process.html",
     "certificates.html",
+    "contact.html",
     "products/yoga-wear.html",
     "products/new-products.html",
     "products/lookbook.html",
@@ -39,6 +40,7 @@ PRIORITY_LCP_PAGES = {
     "resources/index.html",
     "resources/sportswear-manufacturer-due-diligence-checklist.html",
     "resources/private-label-activewear-moq.html",
+    "resources/custom-sportswear-cost-lead-time.html",
     "resources/custom-sportswear-tech-pack.html",
     "resources/sportswear-logo-artwork-preparation-guide.html",
     "resources/sportswear-packaging-label-handoff-checklist.html",
@@ -362,6 +364,31 @@ def main():
                 "A visual reference is not a production specification": "visible visual-reference scope disclosure",
             }
             for marker, label in required_gallery_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "resources/custom-sportswear-cost-lead-time.html":
+            required_quote_comparison_markers = {
+                "sportswear-supplier-quote-comparison.csv": "supplier quote comparison link",
+                'data-resource-download="sportswear-supplier-quote-comparison"': "quote comparison download tracking",
+                '"@type":"DigitalDocument"': "quote comparison document schema",
+                '"isAccessibleForFree":true': "free quote comparison disclosure in schema",
+                '"dateModified":"2026-08-02"': "current cost and lead-time modification date",
+                "This worksheet does not calculate or guarantee price": "visible quote worksheet scope disclosure",
+                "Ask on WhatsApp": "direct WhatsApp inquiry route",
+            }
+            for marker, label in required_quote_comparison_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "contact.html":
+            required_contact_markers = {
+                'data-lead-endpoint="/api/lead"': "same-origin lead endpoint",
+                "Complete once, then send by WhatsApp or email": "working inquiry-route explanation",
+                "Cost and lead-time review": "commercial planning inquiry option",
+                "sportswear-supplier-quote-comparison.csv": "supplier comparison handoff",
+            }
+            for marker, label in required_contact_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 

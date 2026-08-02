@@ -62,6 +62,7 @@ Last updated: 2026-08-02
 | `/resources/sportswear-manufacturer-due-diligence-checklist.html` | How should a buyer verify supplier identity, operating scope, product fit, material and sample control, certificate scope, quality evidence, commercial assumptions, and decision gates? |
 | `/resources/oem-vs-odm-sportswear.html` | Which development route fits the information and product control the buyer already has? |
 | `/resources/private-label-activewear-moq.html` | Which style, material, color, component, packaging, or SKU decision creates the order minimum? |
+| `/resources/custom-sportswear-cost-lead-time.html` | Which product, material, quantity, sampling, packaging, quality, commercial, and delivery assumptions must be normalized before comparing sportswear supplier quotes, costs, and lead times? |
 | `/resources/custom-sportswear-tech-pack.html` | What should a custom sportswear tech pack include, and how can a buyer use a free blank CSV template to control the required inputs? |
 | `/resources/sportswear-logo-artwork-preparation-guide.html` | How should a buyer prepare and approve sportswear logo and artwork files across source format, rights, method, substrate, dimensions, placement, color, production file, and physical evidence? |
 | `/resources/sportswear-packaging-label-handoff-checklist.html` | How should a buyer hand off label text, component artwork, SKU and barcode data, folding, individual packs, carton rules, packed samples, and approval evidence? |

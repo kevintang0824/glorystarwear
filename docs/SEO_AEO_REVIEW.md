@@ -37,6 +37,7 @@ Google AI Overviews and AI Mode use the same crawl, index, and ranking foundatio
 - The activewear size grading guide separates base fit, grade rules, tolerances, product-specific measurements, inclusive range decisions, and size-set approval.
 - The new-product development page turns a broad product gallery into a style-level launch or reorder brief with assortment roles, development routes, specification inputs, quantity planning, sample approvals, and a reusable CSV handoff.
 - The product gallery now turns image-led discovery into a controlled shortlist task. Its 34-field CSV records the exact reference, features to keep or change, development route, product direction, fit, fabric, color, size, artwork, packaging, quantity, timing, owner, and next action while stating that a visual reference is not a production specification.
+- The cost and lead-time guide now turns commercial research into a comparable supplier-quote task. Its 53-field CSV keeps product scope, cost components, minimums, schedule boundaries, delivery terms, exclusions, assumptions, payment terms, open questions, and next actions aligned without publishing or implying fixed commercial promises.
 - The compression base layer page separates the broad training-wear assortment from garment-level use, fabric, fit, compression-zone, seam, artwork, care, packing, and sample-release decisions. Its downloadable CSV carries those controls into a reusable approval record.
 - The teamwear roster and packing guide covers structured player data, names, numbers, artwork control, revisions, individual packs, carton allocation, and reconciliation.
 - Commercial pages link to factory, certificate, case, process, quality, resource, product, and contact pages where relevant.
@@ -51,7 +52,7 @@ Google AI Overviews and AI Mode use the same crawl, index, and ranking foundatio
 - Visitors without a configured email client can copy a complete project brief for another messaging app.
 - WhatsApp and email clicks are tracked as contact intent, not successful lead delivery.
 - The secure server submit control appears only when the Vercel endpoint confirms a real receiving webhook is configured; `lead_submit_success` is emitted only after that receiver returns success.
-- The product-gallery shortlist, collection-development, private-label-activewear, gym-planning, compression, tech-pack, artwork-preparation, packaging-handoff, compliance-evidence, fabric-selection, size-grading, teamwear-roster, pre-shipment inspection, and sampling-process pages include reusable CSV templates with anonymous download tracking.
+- The supplier-quote comparison, product-gallery shortlist, collection-development, private-label-activewear, gym-planning, compression, tech-pack, artwork-preparation, packaging-handoff, compliance-evidence, fabric-selection, size-grading, teamwear-roster, pre-shipment inspection, and sampling-process pages include reusable CSV templates with anonymous download tracking.
 - The supplier verification page includes a reusable evidence-request CSV that records claim, holder, scope, validity, verification method, disclosure level, owner, and review date.
 - The manufacturer due-diligence guide adds an evidence ladder, ten-area verification workflow, escalation signals, authoritative public references, and a supplier-comparison CSV with decision gates.
 - `window.dataLayer` receives vendor-neutral events for campaign landing, contact clicks, quote starts, email, WhatsApp and copied-brief actions, catalog filters, and catalog searches.
@@ -61,9 +62,9 @@ Google AI Overviews and AI Mode use the same crawl, index, and ranking foundatio
 
 - The first optimization sprint passed a local Chromium crawl with 79 sitemap URLs, no console errors, no key-page desktop or mobile overflow, and working attribution events.
 - The current dependency-free static audit covers 96 HTML files and 93 sitemap URLs.
-- It confirms 96 unique canonicals, 95 valid JSON-LD blocks, 110 internal targets, 765 referenced local assets, and matching AVIF coverage for all 511 referenced images with no errors.
+- It confirms 96 unique canonicals, 95 valid JSON-LD blocks, 111 internal targets, 765 referenced local assets, and matching AVIF coverage for all 511 referenced images with no errors.
 - All 93 indexable URLs are reachable from the homepage within two internal-link clicks, with no orphaned indexable pages.
-- Twenty-six priority commercial and resource landing pages preload their responsive AVIF hero candidate with high fetch priority; the audit now prevents that coverage from silently regressing.
+- Twenty-eight priority commercial and resource landing pages preload their responsive AVIF hero candidate with high fetch priority; the audit now prevents that coverage from silently regressing.
 - Run `python3 scripts/audit_static_site.py` before deployment and after adding a page, link, canonical, schema block, or asset.
 - The AQL guide and four upgraded commercial pages passed a 390-pixel mobile layout check with no horizontal overflow; the AQL guide also passed a 1280-pixel desktop review with all requested local assets returning successfully.
 - The fabric guide passed dedicated mobile and desktop checks for responsive images, schema types, CSV delivery, layout, and runtime errors. Axe 4.12 reported no WCAG A/AA violations; image-backed contrast candidates were also reviewed visually.

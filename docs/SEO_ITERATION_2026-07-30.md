@@ -290,3 +290,28 @@ After deployment and recrawl, compare full 28-day and 90-day windows:
 - whether visual discovery stays with the gallery, collection-development intent stays with `/products/new-products.html`, and specific manufacturer queries stay with their category or garment pages;
 - `resource_download` events for `sportswear-product-gallery-shortlist`;
 - continuations from the gallery to product detail pages, collection development, tech packs, quote preparation, contact, email, and WhatsApp paths.
+
+## Phase 12 — commercial-intent traffic and inquiry handoff
+
+The site already had a comprehensive cost and lead-time guide, but it stopped at education and did not give a buyer a reusable way to normalize supplier quotations. Production verification also showed that `/api/lead` was healthy but returned `configured:false`, and Vercel had no production environment variables. This phase preserves the safeguard that hides server submission until a real receiver exists and improves only the inquiry routes that can currently work.
+
+Changes in this phase:
+
+- kept the existing cost-and-lead-time canonical, title, H1, and primary informational intent stable;
+- added a free 53-field supplier quote comparison CSV covering the common product scope, cost components, MOQ basis, component minimums, sample and bulk timing, inspection and packing, freight, exclusions, assumptions, payment terms, owner, and next action;
+- used `TO CONFIRM` rather than invented figures in the illustrative row and stated visibly that the worksheet does not calculate or guarantee price, MOQ, lead time, freight, duty, capacity, compliance, testing, or delivery;
+- added download tracking, `DigitalDocument` structured data, current modification dates, responsive AVIF hero preloading, and static regression coverage;
+- placed project-specific contact, contextual WhatsApp, comparison-download, and quote-checklist routes at the hero, comparison section, and final commercial handoff;
+- upgraded the contact page with a same-origin lead endpoint, hero inquiry actions, cost and quote-comparison project options, clearer working-channel guidance, planning-tool links, and responsive hero preloading;
+- strengthened contextual links from the homepage, resource center, quote checklist, sportswear manufacturer, low-MOQ, one-stop service, and contact surfaces;
+- updated the sitemap, `llms.txt`, keyword map, asset manifest, and review documentation without claiming that a lead was received until a real webhook confirms durable acceptance.
+
+### Phase 12 measurement
+
+After deployment and recrawl, compare full 28-day and 90-day windows:
+
+- impressions, clicks, CTR, and average position for cost, price, quote-comparison, production-time, lead-time, MOQ-cost, and landed-scope query families;
+- `resource_download` events for `sportswear-supplier-quote-comparison` by landing page and traffic source;
+- continuations from the cost guide to contact, WhatsApp, email, quote checklist, MOQ planning, tech packs, and sample approval;
+- `quote_start`, `whatsapp_click`, `email_click`, and copied-brief events by original landing page;
+- confirmed `lead_submit_success` only after an owned receiver is configured and tested; until then, WhatsApp and sent email remain the working inquiry channels.
