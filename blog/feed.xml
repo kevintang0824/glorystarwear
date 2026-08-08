@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GloryStarWear Sportswear Manufacturing Blog</title>
+    <link>https://glorystarwears.com/blog/</link>
+    <description>Decision-led sportswear manufacturing articles about samples, product testing, sourcing, quality, and private-label launch planning.</description>
+    <language>en</language>
+    <lastBuildDate>Sun, 09 Aug 2026 12:00:00 +0800</lastBuildDate>
+    <atom:link href="https://glorystarwears.com/blog/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Test Sports Bra Fit, Support, Coverage, and Strap Comfort</title>
+      <link>https://glorystarwears.com/blog/sports-bra-fit-support-wear-test.html</link>
+      <guid isPermaLink="true">https://glorystarwears.com/blog/sports-bra-fit-support-wear-test.html</guid>
+      <pubDate>Sun, 09 Aug 2026 12:00:00 +0800</pubDate>
+      <description>Build a product-specific sports bra wear test for size architecture, band and cup fit, support, coverage, straps, movement, contact, heat, wash, and representative sizes.</description>
+    </item>
+    <item>
+      <title>How to Verify an AI-Generated Clothing Tech Pack Before Sampling</title>
+      <link>https://glorystarwears.com/blog/verify-ai-generated-tech-pack.html</link>
+      <guid isPermaLink="true">https://glorystarwears.com/blog/verify-ai-generated-tech-pack.html</guid>
+      <pubDate>Sun, 09 Aug 2026 11:00:00 +0800</pubDate>
+      <description>Verify generated construction, BOM, measurements, grading, artwork, labels, packaging, sources, claims, and revision status before sampling or production.</description>
+    </item>
+    <item>
+      <title>How to Test Running Shorts for Chafing, Ride-Up, Heat, and Pocket Bounce</title>
+      <link>https://glorystarwears.com/blog/running-shorts-chafing-ride-up-test.html</link>
+      <guid isPermaLink="true">https://glorystarwears.com/blog/running-shorts-chafing-ride-up-test.html</guid>
+      <pubDate>Sun, 09 Aug 2026 10:00:00 +0800</pubDate>
+      <description>Plan a controlled running-shorts test for shell and liner movement, chafing risk, heat, moisture, waistband stability, loaded pockets, wash, and bulk control.</description>
+    </item>
+    <item>
+      <title>Activewear Leggings Quality Testing: Opacity, Fit, Pilling, and Pockets</title>
+      <link>https://glorystarwears.com/blog/activewear-leggings-quality-testing.html</link>
+      <guid isPermaLink="true">https://glorystarwears.com/blog/activewear-leggings-quality-testing.html</guid>
+      <pubDate>Sun, 09 Aug 2026 09:00:00 +0800</pubDate>
+      <description>Turn opacity, waistband, fit, pilling, pocket, moisture, movement, and sizing complaints into a controlled activewear leggings test matrix.</description>
+    </item>
+    <item>
+      <title>How Many Clothing Sample Rounds Do You Need Before Bulk Production?</title>
+      <link>https://glorystarwears.com/blog/clothing-sample-rounds-before-bulk-production.html</link>
+      <guid isPermaLink="true">https://glorystarwears.com/blog/clothing-sample-rounds-before-bulk-production.html</guid>
+      <pubDate>Sun, 09 Aug 2026 08:00:00 +0800</pubDate>
+      <description>Choose development, fit, size-set, pre-production, and packed-sample gates by risk and open decisions instead of relying on one universal sample count.</description>
+    </item>
+  </channel>
+</rss>

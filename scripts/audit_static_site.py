@@ -34,6 +34,7 @@ PRIORITY_LCP_PAGES = {
     "products/compression-base-layers.html",
     "products/private-label-gym-clothing.html",
     "products/private-label-sportswear-packaging.html",
+    "products/sports-bras.html",
     "products/basketball-wear.html",
     "products/basketball-jerseys.html",
     "products/football-kits.html",
@@ -51,6 +52,8 @@ PRIORITY_LCP_PAGES = {
     "blog/activewear-leggings-quality-testing.html",
     "blog/running-shorts-chafing-ride-up-test.html",
     "blog/verify-ai-generated-tech-pack.html",
+    "blog/sports-bra-fit-support-wear-test.html",
+    "editorial-policy.html",
 }
 TITLE_LENGTH_RANGE = (30, 65)
 DESCRIPTION_LENGTH_RANGE = (100, 170)
@@ -320,6 +323,9 @@ def main():
                 "activewear-leggings-quality-testing.html": "leggings-test article link",
                 "running-shorts-chafing-ride-up-test.html": "running-shorts article link",
                 "verify-ai-generated-tech-pack.html": "AI tech-pack article link",
+                "sports-bra-fit-support-wear-test.html": "sports-bra article link",
+                "feed.xml": "RSS feed discovery link",
+                "editorial-policy.html": "editorial policy link",
                 '"@type":"Blog"': "blog structured data",
                 '"dateModified":"2026-08-09"': "current blog modification date",
             }
@@ -372,6 +378,42 @@ def main():
                 "Treat every AI-generated tech pack as an unverified draft": "visible verification limitation",
             }
             for marker, label in required_ai_tech_pack_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "blog/sports-bra-fit-support-wear-test.html":
+            required_sports_bra_markers = {
+                "sports-bra-fit-wear-test-checklist.csv": "sports-bra checklist link",
+                'data-resource-download="sports-bra-fit-wear-test-checklist"': "sports-bra download tracking",
+                '"@type":"BlogPosting"': "blog posting structured data",
+                '"dateModified":"2026-08-09"': "current article modification date",
+                "No size architecture or fabric can guarantee": "visible support limitation",
+                "editorial-policy.html": "author methodology link",
+                "feed.xml": "RSS feed discovery",
+            }
+            for marker, label in required_sports_bra_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "editorial-policy.html":
+            required_editorial_markers = {
+                "Who, how, and why": "visible Who How Why explanation",
+                "AI may assist the workflow": "AI-assistance disclosure",
+                "Planning visuals and sample rows are illustrative": "image and example disclosure",
+                "Report an error or unsupported statement": "correction process",
+                '"@id":"https://glorystarwears.com/#editorial-team"': "editorial team entity",
+                "feed.xml": "RSS feed link",
+            }
+            for marker, label in required_editorial_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "products/sports-bras.html":
+            required_sports_bra_product_markers = {
+                "sports-bra-fit-support-wear-test.html": "sports-bra validation guide link",
+                "sports-bra-fit-wear-test-checklist.csv": "sports-bra checklist link",
+            }
+            for marker, label in required_sports_bra_product_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 

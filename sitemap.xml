@@ -694,7 +694,7 @@
       <image:loc>https://glorystarwears.com/assets/images/yoga-matching-sets-detail.jpg</image:loc>
       <image:title>Sports bra and matching yoga set product board</image:title>
     </image:image>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-08-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1983,5 +1983,25 @@
     <lastmod>2026-08-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.76</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/blog/sports-bra-fit-support-wear-test.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/sports-bra-manufacturer-detail.jpg</image:loc>
+      <image:title>Sports bra fit support coverage and strap comfort wear testing</image:title>
+    </image:image>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.76</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/editorial-policy.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/custom-sportswear-consultation.jpg</image:loc>
+      <image:title>GloryStarWear editorial research evidence and product-testing policy</image:title>
+    </image:image>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.55</priority>
   </url>
 </urlset>

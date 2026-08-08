@@ -82,6 +82,8 @@ Last updated: 2026-08-09
 | `/blog/activewear-leggings-quality-testing.html` | How should a brand test leggings opacity, waistband stability, fit, pilling, pockets, moisture visibility, wash behavior, and color-by-size risk? | Owns product validation. The yoga leggings page owns commercial sourcing; the fabric guide owns material specification; the size-grading guide owns grade control. |
 | `/blog/running-shorts-chafing-ride-up-test.html` | How should a brand test running shorts liner route, chafing risk, ride-up, heat, moisture, waistband, pocket load, and wash behavior? | Owns wear-test planning and limitations. The running-wear product page owns commercial sourcing and collection scope; the fabric guide owns material specification. |
 | `/blog/verify-ai-generated-tech-pack.html` | How should an AI-generated clothing tech pack be verified before quotation, sampling, or production? | Owns generated-draft verification. The core tech-pack resource owns required contents and the blank intake template; the sample article owns physical round and bulk-release decisions. |
+| `/blog/sports-bra-fit-support-wear-test.html` | How should a brand test sports-bra size architecture, underband and front fit, support, coverage, straps, pressure, movement, wash, and representative wearer scope? | Owns product validation and evidence limits. The sports-bra product page owns commercial sourcing and construction options; the size-grading guide owns grade-rule control. |
+| `/editorial-policy.html` | Who prepares GloryStarWear content, how is it reviewed, where may AI assist, and how are evidence, illustrative images, limitations, and corrections handled? | Trust and methodology page only; it does not own a product, supplier, or testing keyword. |
 
 ## Review Trigger
 

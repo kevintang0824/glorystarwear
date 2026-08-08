@@ -88,4 +88,26 @@ Content decision:
 
 ### Deferred topic: sports bra support and size architecture
 
-The sports-bra topic remains commercially relevant, especially band/cup mismatch, adjustable support, coverage, strap pressure, and larger-cup fit. It is deferred until the site can support a sufficiently precise product-testing framework that does not turn wearer anecdotes into medical, biomechanical, or universal support claims.
+The sports-bra topic remains commercially relevant, especially band/cup mismatch, adjustable support, coverage, strap pressure, and larger-cup fit. It was deferred until the site could support a sufficiently precise product-testing framework that does not turn wearer anecdotes into medical, biomechanical, or universal support claims.
+
+## Round 3 research update — 2026-08-09
+
+### Sports bras: size architecture, underband fit, coverage, and pressure
+
+Current wearer discussions show that “high support” is not one fabric or compression question. A recurring mismatch appears when a wearer sizes up to gain front coverage but the underband becomes loose, or sizes down for underband stability and experiences reduced coverage or excessive pressure. Strap stability, underarm contact, heat, closures, and activity-specific movement are separate variables.
+
+- [Activewear inclusivity opinions wanted](https://www.reddit.com/r/bigboobproblems/comments/1swrgqh/activewear_inclusivity_opinions_wanted/) (April 27, 2026) describes the limitation of S/M/L sizing when chest and torso proportions do not scale together.
+- [Need supportive sports bras](https://www.reddit.com/r/bigboobproblems/comments/1txxpuq/need_supportive_sport_bras/) (June 5, 2026) contrasts a smaller size that feels overly compressive with the next size having a loose band.
+- [Sports bra recommendations](https://www.reddit.com/r/bigboobproblems/comments/1v1zo6s/sports_bra_recs/) (July 20, 2026) asks for high-impact control without a suffocating feel, reinforcing the need to record activity and wearer-reported pressure separately.
+- [Sports bras](https://www.reddit.com/r/bigboobproblems/comments/1sbli67/sports_bras/) (April 3, 2026) discusses high-impact movement, underband, cup, and strap routes rather than one universal style.
+- [Women’s running sports-bra suggestions megathread](https://www.reddit.com/r/XXRunning/comments/1o1cpni/sports_bra_suggestions_megathread/) adds running-specific support, chafing, strap, and size concerns.
+
+Content decision:
+
+- URL: `/blog/sports-bra-fit-support-wear-test.html`
+- Primary intent: `sports bra fit test`, `sports bra support test`
+- Supporting intent: sports bra band too loose, sports bra sizing architecture, sports bra strap comfort, sports bra coverage test, sports bra wear test
+- Conversion bridge: commercial sports-bra page, plus-size activewear page, size-grading guide, fabric guide, sample-round article, quality page, and downloadable wear-test CSV
+- Separation rule: the blog article owns product validation, wearer scope, and test limitations; `/products/sports-bras.html` owns commercial sourcing and construction options; `/resources/activewear-size-grading-guide.html` owns grade-rule control.
+
+Editorial safeguard: wearer comments inform question language only. The published article must not turn an anecdote into a medical statement, a universal support rating, or proof that one size architecture is better for every wearer.
