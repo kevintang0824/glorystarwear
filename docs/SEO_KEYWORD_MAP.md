@@ -1,6 +1,6 @@
 # GloryStarWear Search Intent Map
 
-Last updated: 2026-08-02
+Last updated: 2026-08-09
 
 ## Page Ownership Rule
 
@@ -72,6 +72,14 @@ Last updated: 2026-08-02
 | `/resources/activewear-size-grading-guide.html` | How should a buyer control base fit, grade rules, tolerances, inclusive proportions, and size-set approval? |
 | `/resources/teamwear-roster-packing-guide.html` | How should a teamwear buyer control player data, personalization, revisions, packs, and carton allocation? |
 | `/quote-checklist.html` | What commercial and product information should the buyer send in the first inquiry? |
+
+## Blog Intent
+
+| URL | Primary question owned by the article | Separation rule |
+| --- | --- | --- |
+| `/blog/` | Which current sportswear manufacturing and product-testing questions have decision-led answers? | Discovery hub only; it does not own an individual product or sourcing query. |
+| `/blog/clothing-sample-rounds-before-bulk-production.html` | How many clothing sample rounds are needed, what should each round prove, and when can bulk production be released? | Owns the number-and-gate decision. The sample-approval resource owns the detailed physical inspection checklist; the process page owns the full production sequence. |
+| `/blog/activewear-leggings-quality-testing.html` | How should a brand test leggings opacity, waistband stability, fit, pilling, pockets, moisture visibility, wash behavior, and color-by-size risk? | Owns product validation. The yoga leggings page owns commercial sourcing; the fabric guide owns material specification; the size-grading guide owns grade control. |
 
 ## Review Trigger
 

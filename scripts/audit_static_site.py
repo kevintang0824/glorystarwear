@@ -46,6 +46,9 @@ PRIORITY_LCP_PAGES = {
     "resources/sportswear-packaging-label-handoff-checklist.html",
     "resources/sportswear-aql-inspection-checklist.html",
     "resources/teamwear-roster-packing-guide.html",
+    "blog/index.html",
+    "blog/clothing-sample-rounds-before-bulk-production.html",
+    "blog/activewear-leggings-quality-testing.html",
 }
 TITLE_LENGTH_RANGE = (30, 65)
 DESCRIPTION_LENGTH_RANGE = (100, 170)
@@ -279,7 +282,7 @@ def main():
                 "sportswear-sampling-production-approval-register.csv": "sampling approval register link",
                 'data-resource-download="sampling-production-approval-register"': "sampling approval download tracking",
                 '"@type": "DigitalDocument"': "sampling approval document schema",
-                '"dateModified": "2026-08-01"': "current process modification date",
+                '"dateModified": "2026-08-09"': "current process modification date",
             }
             for marker, label in required_process_markers.items():
                 if marker not in source:
@@ -306,6 +309,41 @@ def main():
                 "What it is not:": "visible template scope disclosure",
             }
             for marker, label in required_tech_pack_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "blog/index.html":
+            required_blog_markers = {
+                "clothing-sample-rounds-before-bulk-production.html": "sample-round article link",
+                "activewear-leggings-quality-testing.html": "leggings-test article link",
+                '"@type":"Blog"': "blog structured data",
+                '"dateModified":"2026-08-09"': "current blog modification date",
+            }
+            for marker, label in required_blog_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "blog/clothing-sample-rounds-before-bulk-production.html":
+            required_sample_round_markers = {
+                "sportswear-sampling-production-approval-register.csv": "sample approval register link",
+                'data-resource-download="sampling-production-approval-register"': "sample register download tracking",
+                '"@type":"BlogPosting"': "blog posting structured data",
+                '"dateModified":"2026-08-09"': "current article modification date",
+                "There is no responsible fixed number": "visible direct-answer limitation",
+            }
+            for marker, label in required_sample_round_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "blog/activewear-leggings-quality-testing.html":
+            required_leggings_test_markers = {
+                "activewear-leggings-quality-test-checklist.csv": "leggings test checklist link",
+                'data-resource-download="activewear-leggings-quality-test-checklist"': "leggings checklist download tracking",
+                '"@type":"BlogPosting"': "blog posting structured data",
+                '"dateModified":"2026-08-09"': "current article modification date",
+                "one black base-size sample cannot prove": "visible test-scope limitation",
+            }
+            for marker, label in required_leggings_test_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 

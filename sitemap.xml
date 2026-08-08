@@ -46,7 +46,7 @@
       <image:loc>https://glorystarwears.com/assets/images/retail-packaging-shipment.jpg</image:loc>
       <image:title>Sportswear packaging and shipment preparation</image:title>
     </image:image>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-08-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -168,7 +168,7 @@
       <image:loc>https://glorystarwears.com/assets/images/faq-buyer-consultation-desk.jpg</image:loc>
       <image:title>Custom sportswear buyer resources and guides</image:title>
     </image:image>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-08-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.82</priority>
   </url>
@@ -1850,7 +1850,7 @@
       <image:loc>https://glorystarwears.com/assets/images/production-process-sample-room.jpg</image:loc>
       <image:title>Custom sportswear production sample room workflow</image:title>
     </image:image>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1933,5 +1933,35 @@
     <lastmod>2026-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/blog/</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/custom-sportswear-consultation.jpg</image:loc>
+      <image:title>Sportswear manufacturing blog for product development and quality decisions</image:title>
+    </image:image>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/blog/clothing-sample-rounds-before-bulk-production.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/production-process-sample-room.jpg</image:loc>
+      <image:title>Clothing sample rounds and bulk production approval planning</image:title>
+    </image:image>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.76</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/blog/activewear-leggings-quality-testing.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/yoga-high-waist-leggings-detail.jpg</image:loc>
+      <image:title>Activewear leggings quality testing for opacity fit pilling and pockets</image:title>
+    </image:image>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.76</priority>
   </url>
 </urlset>

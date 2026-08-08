@@ -26,6 +26,11 @@
       "source": "/resources/index.html",
       "destination": "/resources/",
       "permanent": true
+    },
+    {
+      "source": "/blog/index.html",
+      "destination": "/blog/",
+      "permanent": true
     }
   ],
   "headers": [

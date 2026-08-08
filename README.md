@@ -83,6 +83,9 @@ Keep these files and folders together in the GitHub repository:
 - `resources/sportswear-aql-inspection-checklist.html`: lot definition, sampling instructions, defect classes, product checks, evidence, and pre-shipment release guide.
 - `resources/activewear-size-grading-guide.html`: base-size fit, grade rules, tolerances, inclusive ranges, and size-set approval guide.
 - `resources/teamwear-roster-packing-guide.html`: player data, personalization, roster revisions, individual packs, and carton sorting guide.
+- `blog/index.html`: discussion-led sportswear manufacturing article hub.
+- `blog/clothing-sample-rounds-before-bulk-production.html`: sample-stage, revision, and bulk-release planning article.
+- `blog/activewear-leggings-quality-testing.html`: opacity, waistband, fit, pilling, pocket, wash, and color-by-size validation article with a free CSV checklist.
 - `404.html`: GitHub Pages fallback page for broken or moved URLs.
 
 ## Brand and Contact Settings
