@@ -218,7 +218,7 @@
       <image:loc>https://glorystarwears.com/assets/images/custom-sportswear-consultation.jpg</image:loc>
       <image:title>Custom sportswear tech pack template and checklist</image:title>
     </image:image>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-08-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
@@ -1292,7 +1292,7 @@
       <image:loc>https://glorystarwears.com/assets/images/compression-base-layer-range.jpg</image:loc>
       <image:title>Compression base layers for running clubs and race apparel</image:title>
     </image:image>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
@@ -1959,6 +1959,26 @@
     <image:image>
       <image:loc>https://glorystarwears.com/assets/images/yoga-high-waist-leggings-detail.jpg</image:loc>
       <image:title>Activewear leggings quality testing for opacity fit pilling and pockets</image:title>
+    </image:image>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.76</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/blog/running-shorts-chafing-ride-up-test.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/running-wear-oem-detail.jpg</image:loc>
+      <image:title>Running shorts wear testing for chafing risk ride-up heat and pocket bounce</image:title>
+    </image:image>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.76</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/blog/verify-ai-generated-tech-pack.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/custom-design-studio.jpg</image:loc>
+      <image:title>AI-generated clothing tech pack verification before sampling</image:title>
     </image:image>
     <lastmod>2026-08-09</lastmod>
     <changefreq>monthly</changefreq>

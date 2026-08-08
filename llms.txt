@@ -58,6 +58,10 @@ Last updated: 2026-08-09
 - [How many clothing sample rounds before bulk production](https://glorystarwears.com/blog/clothing-sample-rounds-before-bulk-production.html)
 - [Activewear leggings quality testing for opacity, fit, pilling, and pockets](https://glorystarwears.com/blog/activewear-leggings-quality-testing.html)
 - [Activewear leggings quality test checklist (CSV)](https://glorystarwears.com/assets/downloads/activewear-leggings-quality-test-checklist.csv)
+- [Running shorts wear testing for chafing risk, ride-up, heat, and pocket bounce](https://glorystarwears.com/blog/running-shorts-chafing-ride-up-test.html)
+- [Running shorts wear-test checklist (CSV)](https://glorystarwears.com/assets/downloads/running-shorts-wear-test-checklist.csv)
+- [How to verify an AI-generated clothing tech pack](https://glorystarwears.com/blog/verify-ai-generated-tech-pack.html)
+- [AI tech pack verification checklist (CSV)](https://glorystarwears.com/assets/downloads/ai-tech-pack-verification-checklist.csv)
 
 ## Product Scope
 

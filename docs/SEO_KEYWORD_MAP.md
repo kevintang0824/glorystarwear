@@ -80,6 +80,8 @@ Last updated: 2026-08-09
 | `/blog/` | Which current sportswear manufacturing and product-testing questions have decision-led answers? | Discovery hub only; it does not own an individual product or sourcing query. |
 | `/blog/clothing-sample-rounds-before-bulk-production.html` | How many clothing sample rounds are needed, what should each round prove, and when can bulk production be released? | Owns the number-and-gate decision. The sample-approval resource owns the detailed physical inspection checklist; the process page owns the full production sequence. |
 | `/blog/activewear-leggings-quality-testing.html` | How should a brand test leggings opacity, waistband stability, fit, pilling, pockets, moisture visibility, wash behavior, and color-by-size risk? | Owns product validation. The yoga leggings page owns commercial sourcing; the fabric guide owns material specification; the size-grading guide owns grade control. |
+| `/blog/running-shorts-chafing-ride-up-test.html` | How should a brand test running shorts liner route, chafing risk, ride-up, heat, moisture, waistband, pocket load, and wash behavior? | Owns wear-test planning and limitations. The running-wear product page owns commercial sourcing and collection scope; the fabric guide owns material specification. |
+| `/blog/verify-ai-generated-tech-pack.html` | How should an AI-generated clothing tech pack be verified before quotation, sampling, or production? | Owns generated-draft verification. The core tech-pack resource owns required contents and the blank intake template; the sample article owns physical round and bulk-release decisions. |
 
 ## Review Trigger
 

@@ -49,6 +49,8 @@ PRIORITY_LCP_PAGES = {
     "blog/index.html",
     "blog/clothing-sample-rounds-before-bulk-production.html",
     "blog/activewear-leggings-quality-testing.html",
+    "blog/running-shorts-chafing-ride-up-test.html",
+    "blog/verify-ai-generated-tech-pack.html",
 }
 TITLE_LENGTH_RANGE = (30, 65)
 DESCRIPTION_LENGTH_RANGE = (100, 170)
@@ -305,7 +307,7 @@ def main():
                 'data-resource-download="sportswear-tech-pack-intake-template"': "tech pack download tracking",
                 '"@type":"DigitalDocument"': "tech pack document schema",
                 '"isAccessibleForFree":true': "free template disclosure in schema",
-                '"dateModified":"2026-08-01"': "current tech pack modification date",
+                '"dateModified":"2026-08-09"': "current tech pack modification date",
                 "What it is not:": "visible template scope disclosure",
             }
             for marker, label in required_tech_pack_markers.items():
@@ -316,6 +318,8 @@ def main():
             required_blog_markers = {
                 "clothing-sample-rounds-before-bulk-production.html": "sample-round article link",
                 "activewear-leggings-quality-testing.html": "leggings-test article link",
+                "running-shorts-chafing-ride-up-test.html": "running-shorts article link",
+                "verify-ai-generated-tech-pack.html": "AI tech-pack article link",
                 '"@type":"Blog"': "blog structured data",
                 '"dateModified":"2026-08-09"': "current blog modification date",
             }
@@ -344,6 +348,30 @@ def main():
                 "one black base-size sample cannot prove": "visible test-scope limitation",
             }
             for marker, label in required_leggings_test_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "blog/running-shorts-chafing-ride-up-test.html":
+            required_running_shorts_markers = {
+                "running-shorts-wear-test-checklist.csv": "running-shorts checklist link",
+                'data-resource-download="running-shorts-wear-test-checklist"': "running-shorts download tracking",
+                '"@type":"BlogPosting"': "blog posting structured data",
+                '"dateModified":"2026-08-09"': "current article modification date",
+                "No liner type or inseam can guarantee": "visible wear-test limitation",
+            }
+            for marker, label in required_running_shorts_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "blog/verify-ai-generated-tech-pack.html":
+            required_ai_tech_pack_markers = {
+                "ai-tech-pack-verification-checklist.csv": "AI tech-pack checklist link",
+                'data-resource-download="ai-tech-pack-verification-checklist"': "AI checklist download tracking",
+                '"@type":"BlogPosting"': "blog posting structured data",
+                '"dateModified":"2026-08-09"': "current article modification date",
+                "Treat every AI-generated tech pack as an unverified draft": "visible verification limitation",
+            }
+            for marker, label in required_ai_tech_pack_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 

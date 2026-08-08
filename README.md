@@ -86,6 +86,8 @@ Keep these files and folders together in the GitHub repository:
 - `blog/index.html`: discussion-led sportswear manufacturing article hub.
 - `blog/clothing-sample-rounds-before-bulk-production.html`: sample-stage, revision, and bulk-release planning article.
 - `blog/activewear-leggings-quality-testing.html`: opacity, waistband, fit, pilling, pocket, wash, and color-by-size validation article with a free CSV checklist.
+- `blog/running-shorts-chafing-ride-up-test.html`: liner, chafing-risk, ride-up, heat, moisture, waistband, and loaded-pocket wear-test article with a free CSV checklist.
+- `blog/verify-ai-generated-tech-pack.html`: AI-generated tech pack source, construction, BOM, measurement, grading, artwork, label, packaging, claim, and revision verification article.
 - `404.html`: GitHub Pages fallback page for broken or moved URLs.
 
 ## Brand and Contact Settings

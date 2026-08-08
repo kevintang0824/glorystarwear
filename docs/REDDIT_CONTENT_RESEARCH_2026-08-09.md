@@ -51,3 +51,41 @@ Identify current questions that sportswear founders and activewear customers rep
 - Do not copy user wording beyond short topic phrases.
 - Do not promise fixed MOQ, price, sample count, lead time, test result, or certification.
 - Keep commercial pages, operational guides, and discussion-led blog articles on separate search intents.
+
+## Round 2 research update — 2026-08-09
+
+### Running shorts: liner, chafing, ride-up, heat, and storage
+
+Recent running discussions show that “best running shorts” is not one product question. Wearers compare brief liners, compression liners, unlined shells, inseam and liner length, thigh coverage, heat, moisture, ride-up, waistband security, and whether a loaded phone pocket pulls or rubs.
+
+- [Running shorts: lined or unlined?](https://www.reddit.com/r/running/comments/1v34hpw/running_shorts_lined_or_unlined/) (July 22, 2026; 88 post votes) contains conflicting preferences for brief, compression, and unlined routes, plus repeated chafing, heat, liner-length, phone-load, and ride-up concerns.
+- [Running shorts that do not ride up or chafe](https://www.reddit.com/r/XXRunning/comments/1vhpxcx/running_shorts_that_dont_ride_upchafe/) (August 7, 2026; 30 post votes) emphasizes liner length, thigh coverage, breathability, and phone-pocket interaction.
+- [Lightweight running shorts](https://www.reddit.com/r/XXRunning/comments/1u61rp8/lightweight_shorts/) (June 15, 2026; 18 post votes) shows the tradeoff between anti-chafe coverage and heat or moisture discomfort.
+- [Running shorts with pockets](https://www.reddit.com/r/XXRunning/comments/1r8n2ys/running_shorts_with_pockets/) (February 19, 2026) asks whether a large phone and gels remain secure without causing fit or access problems.
+
+Content decision:
+
+- URL: `/blog/running-shorts-chafing-ride-up-test.html`
+- Primary intent: `running shorts chafing test`, `running shorts ride up test`
+- Supporting intent: lined vs unlined running shorts, compression liner length, phone pocket bounce, running shorts wear test
+- Separation rule: the blog article owns validation and wear-trial planning; `/products/running-wear.html` owns commercial sourcing and collection scope.
+
+### AI-generated tech packs: draft generation versus production authority
+
+Current discussions focus on an important gap: generating a visually complete file is different from verifying manufacturable construction, accurate measurements, material identity, grading, artwork, labels, packaging, and the active revision after sampling.
+
+- [Tech-pack tool feedback](https://www.reddit.com/r/fashiondesigner/comments/1pdwt82/building_a_tool_for_designers_to_create_tech/) includes discussion of incorrect technical information, unbuildable visual details, and revision control breaking down after later samples.
+- [Eight years building tech-pack software](https://www.reddit.com/r/streetwearstartup/comments/1t6apoy/after_8_years_of_building_tech_pack_software/) (May 7, 2026) highlights documentation gaps, factory handoff, and repeated sampling rounds.
+- [First tech pack feedback](https://www.reddit.com/r/streetwearstartup/comments/1typ5gn/my_first_time_ever_making_a_tech_pack_first_item/) (June 6, 2026) centers on missing seams, topstitching, BOM detail, component dimensions, wash decisions, and artwork feasibility.
+- [Tech-pack workflow lessons](https://www.reddit.com/r/streetwearstartup/comments/1twnrup/what_ive_learned_about_tech_packs_after_working/) (June 4, 2026) emphasizes clarity, open interpretation, and revision handling over visual polish.
+
+Content decision:
+
+- URL: `/blog/verify-ai-generated-tech-pack.html`
+- Primary intent: `verify AI generated tech pack`
+- Supporting intent: AI tech pack checklist, AI fashion design to manufacturer, tech pack hallucinations, tech pack revision control
+- Separation rule: the blog article owns verification of generated drafts; `/resources/custom-sportswear-tech-pack.html` owns the general tech-pack contents and free intake template.
+
+### Deferred topic: sports bra support and size architecture
+
+The sports-bra topic remains commercially relevant, especially band/cup mismatch, adjustable support, coverage, strap pressure, and larger-cup fit. It is deferred until the site can support a sufficiently precise product-testing framework that does not turn wearer anecdotes into medical, biomechanical, or universal support claims.
