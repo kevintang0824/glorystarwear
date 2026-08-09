@@ -135,3 +135,28 @@ Content decision:
 - Final visible word counts: about 1,018 and 1,409. Final pair similarity: 0.601.
 
 Editorial safeguard: Reddit is used to identify the product question, not to prove a technical cause. The public pages avoid medical conclusions and universal comfort, chafing, durability, or support claims.
+
+## Round 5 research update — 2026-08-09
+
+### Golf polos and skorts: heat, fit, tuck, pockets, liner, and wash
+
+The site-content audit found `/products/golf-polo-shirts-skorts.html` and `/products/golf-apparel.html` to be the next most similar broad/narrow commercial pair: about 514 and 442 visible words with sequence similarity of 0.855. The existing URLs already matched useful buyer intents, so the optimization separates collection planning from garment validation instead of publishing a third overlapping golf page.
+
+Current golf discussions repeatedly surface variables that a useful sample record can identify:
+
+- [Best golf polos for hot weather](https://www.reddit.com/r/GolfGear/comments/1updqhz/best_golf_polos_for_hot_weather/) (July 6, 2026) asks about breathability, visible moisture, torso ease, sleeve length, tuck length, color, and long-sleeve routes. These questions do not prove a universal cooling or sun-protection claim.
+- [Has anyone found the perfect golf shorts?](https://www.reddit.com/r/golf/comments/1vbfv3d/has_anyone_found_the_perfect_golf_shorts/) (July 31, 2026) includes pocket-bag behavior, zipper annoyance, fit, and durability after washing.
+- [What is your favorite golf attire?](https://www.reddit.com/r/golf/comments/1rjchm3d/whats_your_fav_golf_attire/) (March 3, 2026) raises hot and humid conditions, fabric weight, fit, waistband movement, pockets, and visible moisture.
+- [Skort without pockets—what to do?](https://www.reddit.com/r/WomenGolf/comments/1u3cu7m/skort_wout_pockets_what_to_do/) (June 11, 2026) shows that a nominal pocket is not useful when it is absent, inaccessible, or trapped under the shell or liner.
+- [What is lacking in women's golf clothing?](https://www.reddit.com/r/WomenGolf/comments/1v9pi6w/whats_lacking_in_womens_golf_clothing/) (August 1, 2026) reinforces the need to treat women's golf fit and function as explicit development questions.
+- [What golf shorts do you like?](https://www.reddit.com/r/golf/comments/1q2vw8o/what_golf_shorts_do_you_like/) (June 30, 2026) discusses front-pocket access in warm conditions.
+- [Best golf shorts](https://www.reddit.com/r/GolfGear/comments/1sxk83b/best_golf_shorts/) (April 27, 2026) includes hot-weather use and small-item pocket requirements.
+
+Content decision:
+
+- Update `/products/golf-apparel.html` to own program architecture: venue, wearer, selling route, assortment, artwork, fit routes, SKU and allocation data, packing, delivery, and reorders.
+- Update `/products/golf-polo-shirts-skorts.html` to own garment specification and validation: polo ease, sleeve and tuck length, collar and placket stability, exact fabric and color observations, skort waistband and liner movement, loaded-pocket access, care, representative sizes, evidence, and claim limitations.
+- Add `/assets/downloads/golf-polo-skort-sample-checklist.csv` as the controlled sample record.
+- Final visible word counts: about 1,196 and 1,733. Final pair similarity: 0.164.
+
+Editorial safeguard: Reddit is used for question discovery and user language only. The public pages do not turn one wearer, climate, color, or wash cycle into medical advice, universal fit, cooling, moisture-management, UV, or durability proof.

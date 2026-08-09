@@ -37,6 +37,8 @@ PRIORITY_LCP_PAGES = {
     "products/sports-bras.html",
     "products/cycling-wear.html",
     "products/cycling-jerseys-bib-shorts.html",
+    "products/golf-apparel.html",
+    "products/golf-polo-shirts-skorts.html",
     "products/basketball-wear.html",
     "products/basketball-jerseys.html",
     "products/football-kits.html",
@@ -442,6 +444,32 @@ def main():
                 '"@type":"FAQPage"': "cycling garment FAQ schema",
             }
             for marker, label in required_cycling_detail_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "products/golf-apparel.html":
+            required_golf_program_markers = {
+                "Plan the golf program around the venue": "collection-level direct answer",
+                "Program routes": "program route comparison",
+                "Six planning gates": "collection planning workflow",
+                "golf-polo-shirts-skorts.html": "specific polo and skort page link",
+                '"@type":"FAQPage"': "golf program FAQ schema",
+            }
+            for marker, label in required_golf_program_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "products/golf-polo-shirts-skorts.html":
+            required_golf_detail_markers = {
+                "golf-polo-skort-sample-checklist.csv": "golf sample checklist link",
+                'data-resource-download="golf-polo-skort-sample-checklist"': "golf checklist download tracking",
+                '"@type":"DigitalDocument"': "golf checklist document schema",
+                '"isAccessibleForFree":true': "free golf checklist disclosure",
+                "Approve golf polos and skorts through swing": "garment-level direct answer",
+                "no fabric name, cooling or UV label": "visible performance-claim limitation",
+                '"@type":"FAQPage"': "golf garment FAQ schema",
+            }
+            for marker, label in required_golf_detail_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 

@@ -68,7 +68,7 @@ Keep these files and folders together in the GitHub repository:
 - `products/tennis-pickleball-apparel.html`: court apparel page for tennis polos, pickleball shirts, skorts, dresses, visors, wristbands, socks, UV fabrics, labels, and retail packaging.
 - `products/cycling-jerseys-bib-shorts.html`: cycling jersey pockets, zipper and fit plus bib straps, chamois, grippers, seams, riding-posture validation, and a free sample CSV.
 - `products/volleyball-uniforms.html`: volleyball jerseys, libero kits, spandex shorts, warm-up apparel, player numbers, and roster packing.
-- `products/golf-polo-shirts-skorts.html`: golf polos, sleeveless tops, skorts, shorts, quarter zips, UV fabrics, and resort retail packaging.
+- `products/golf-polo-shirts-skorts.html`: golf polo fit, tuck length, collar and placket plus skort waist, liner, loaded pockets, wash and size validation, with a free sample CSV.
 - `products/rash-guards-board-shorts.html`: rash guards, surf shirts, swim trunks, board shorts, kids swimwear, pouches, and retail packaging.
 - `products/mma-rash-guards-fight-shorts.html`: MMA rash guards, fight shorts, compression shorts, gym hoodies, patches, and combat sports merchandise.
 - `customization.html`: custom sportswear printing, embroidery, sublimation, OEM/ODM, labels, trims, and packaging options.
