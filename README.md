@@ -66,7 +66,7 @@ Keep these files and folders together in the GitHub repository:
 - `products/team-warm-up-jackets.html`: quarter zips, track jackets, warm-up pants, windbreakers, travel jackets, reflective trims, team logos, and roster packing.
 - `products/club-hoodies-varsity-jackets.html`: club hoodies, varsity jackets, fleece crewnecks, fan shirts, patches, embroidery, preorder labels, and ecommerce packaging.
 - `products/tennis-pickleball-apparel.html`: court apparel page for tennis polos, pickleball shirts, skorts, dresses, visors, wristbands, socks, UV fabrics, labels, and retail packaging.
-- `products/cycling-jerseys-bib-shorts.html`: cycling jerseys, bib shorts, chamois pads, grippers, rider labels, and club/event packing.
+- `products/cycling-jerseys-bib-shorts.html`: cycling jersey pockets, zipper and fit plus bib straps, chamois, grippers, seams, riding-posture validation, and a free sample CSV.
 - `products/volleyball-uniforms.html`: volleyball jerseys, libero kits, spandex shorts, warm-up apparel, player numbers, and roster packing.
 - `products/golf-polo-shirts-skorts.html`: golf polos, sleeveless tops, skorts, shorts, quarter zips, UV fabrics, and resort retail packaging.
 - `products/rash-guards-board-shorts.html`: rash guards, surf shirts, swim trunks, board shorts, kids swimwear, pouches, and retail packaging.

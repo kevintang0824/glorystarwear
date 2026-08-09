@@ -35,6 +35,8 @@ PRIORITY_LCP_PAGES = {
     "products/private-label-gym-clothing.html",
     "products/private-label-sportswear-packaging.html",
     "products/sports-bras.html",
+    "products/cycling-wear.html",
+    "products/cycling-jerseys-bib-shorts.html",
     "products/basketball-wear.html",
     "products/basketball-jerseys.html",
     "products/football-kits.html",
@@ -414,6 +416,32 @@ def main():
                 "sports-bra-fit-wear-test-checklist.csv": "sports-bra checklist link",
             }
             for marker, label in required_sports_bra_product_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "products/cycling-wear.html":
+            required_cycling_program_markers = {
+                "Build the cycling collection around the rider program": "collection-level direct answer",
+                "Program architecture": "program route comparison",
+                "Six planning gates": "collection planning workflow",
+                "cycling-jerseys-bib-shorts.html": "specific jersey and bib page link",
+                '"@type":"FAQPage"': "cycling program FAQ schema",
+            }
+            for marker, label in required_cycling_program_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "products/cycling-jerseys-bib-shorts.html":
+            required_cycling_detail_markers = {
+                "cycling-jersey-bib-sample-checklist.csv": "cycling sample checklist link",
+                'data-resource-download="cycling-jersey-bib-sample-checklist"': "cycling checklist download tracking",
+                '"@type":"DigitalDocument"': "cycling checklist document schema",
+                '"isAccessibleForFree":true': "free cycling checklist disclosure",
+                "Approve cycling jerseys and bib shorts in riding posture": "garment-level direct answer",
+                "no chamois shape, thickness, gripper width": "visible universal-comfort limitation",
+                '"@type":"FAQPage"': "cycling garment FAQ schema",
+            }
+            for marker, label in required_cycling_detail_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 

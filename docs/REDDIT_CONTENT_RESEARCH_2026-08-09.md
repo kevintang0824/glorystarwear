@@ -111,3 +111,27 @@ Content decision:
 - Separation rule: the blog article owns product validation, wearer scope, and test limitations; `/products/sports-bras.html` owns commercial sourcing and construction options; `/resources/activewear-size-grading-guide.html` owns grade-rule control.
 
 Editorial safeguard: wearer comments inform question language only. The published article must not turn an anecdote into a medical statement, a universal support rating, or proof that one size architecture is better for every wearer.
+
+## Round 4 research update — 2026-08-09
+
+### Cycling jerseys and bib shorts: proportions, chamois position, grippers, seams, and loaded pockets
+
+The site-content audit found `/products/cycling-wear.html` and `/products/cycling-jerseys-bib-shorts.html` to be the thinnest and most similar broad/narrow commercial pair: about 297 and 327 visible words with cosine similarity of 0.849. The correct response was to separate their buyer tasks and deepen both existing URLs—not publish another near-duplicate blog article.
+
+Current cycling discussions reinforce that bib-short fit is a system rather than a size-label question:
+
+- [I can't find bib shorts that fit](https://www.reddit.com/r/CyclingFashion/comments/1t1thuc/i_cant_find_bibshorts_that_fit/) (May 2, 2026) describes grippers creeping upward, insufficient chamois coverage, and a size-up route that becomes too wide elsewhere for a taller, slimmer rider.
+- [Budget bib shorts for bigger legs](https://www.reddit.com/r/CyclingFashion/comments/1vi7yfc/budget_bib_shorts_for_bigger_legs/) (August 7, 2026) centers on larger thighs, gripper pressure, inconsistent brand sizing, and the need to test the actual fit rather than trust an alpha label.
+- [Help me find bibs and jersey for an unusual fit](https://www.reddit.com/r/CyclingFashion/comments/1s9uf6w/help_me_find_bibsjersey_or_skinsuit_w_pockets/) (April 1, 2026) shows the tradeoff between thigh and glute room, waist fit, inseam, pocket requirements, and seam strain.
+- [Cycling bib gripper curling upward](https://www.reddit.com/r/CyclingFashion/comments/1v1fb9y/castelli_endurance_3_bib_shorts_leg_gripper/) (July 20, 2026) asks whether a rolling gripper is caused by fit, design, or wear, supporting a before-and-after material, construction, care, and measurement record.
+- [Bib-short recommendations](https://www.reddit.com/r/cycling/comments/1u6rpod/bib_shorts_recommendation/) (June 15, 2026) includes chamois-length, strap, seam-life, measurement, and person-specific fit comments.
+- [Budget bib comparison](https://www.reddit.com/r/CyclingFashion/comments/1ved5ag/tried_a_bunch_of_budget_bib_shorts_so_i_dont_have/) (August 3, 2026) emphasizes that chamois response varies by rider and should not be reduced to price or one universal recommendation.
+
+Content decision:
+
+- Update `/products/cycling-wear.html` to own cycling collection architecture: rider use, season, assortment, artwork, size demand, club or event operations, packing, delivery, and reorders.
+- Update `/products/cycling-jerseys-bib-shorts.html` to own garment specification and validation: riding posture, loaded jersey pockets, straps, rise, chamois identity and mounting, grippers, seams, wash, representative sizes, evidence, and limitations.
+- Add `/assets/downloads/cycling-jersey-bib-sample-checklist.csv` as the controlled sample record.
+- Final visible word counts: about 1,018 and 1,409. Final pair similarity: 0.601.
+
+Editorial safeguard: Reddit is used to identify the product question, not to prove a technical cause. The public pages avoid medical conclusions and universal comfort, chafing, durability, or support claims.
