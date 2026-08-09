@@ -45,6 +45,8 @@ Inspect these URLs after the first verified deployment and after a significant t
 20. `https://glorystarwears.com/resources/sportswear-aql-inspection-checklist.html`
 21. `https://glorystarwears.com/resources/teamwear-roster-packing-guide.html`
 22. `https://glorystarwears.com/blog/activewear-inclusive-sizing-fit-test.html`
+23. `https://glorystarwears.com/products/racket-sports-apparel.html`
+24. `https://glorystarwears.com/products/tennis-pickleball-apparel.html`
 
 For each URL, record:
 

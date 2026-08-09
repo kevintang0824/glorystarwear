@@ -182,3 +182,27 @@ Content decision:
 - Separation rule: the article owns physical fit-range validation across size, height, shape, movement, and wash. `/resources/activewear-size-grading-guide.html` owns grade-rule and measurement control; `/products/plus-size-activewear.html` owns commercial collection development; garment-specific articles own opacity, support, pocket, and other product performance tests.
 
 Editorial safeguard: Reddit informs question language only. Measurement-system context links to official ISO overviews, while actual release decisions remain product-, pattern-, material-, market-, and sample-specific. The article does not claim that one body table, fit model, size label, or proportion route represents every customer.
+
+## Round 7 research update — 2026-08-10
+
+### Tennis, pickleball, and padel apparel: ball pockets, liners, coverage, sweat, and fit
+
+The site-content audit identified `/products/racket-sports-apparel.html` and `/products/tennis-pickleball-apparel.html` as the thinnest and most similar remaining broad and narrow pair: about 330 and 443 visible words before this update. Both pages repeated products, fabrics, buyer groups, packaging, and quote inputs without giving each URL a sufficiently different task.
+
+Current court-player discussions repeatedly identify variables that can be specified and tested:
+
+- [Help me design better garments for tennis](https://www.reddit.com/r/10s/comments/1rmk0m0/help_me_design_better_garments_for_tennis/) (March 6, 2026) discusses ball-pocket opening and depth, pocket-bag pullout, wet balls, built-in shorts, ball-storage access, liner ride-up, skirt length, top length, seams, sweat, tall sizes, and wash behavior.
+- [Looking for tennis shorts](https://www.reddit.com/r/10s/comments/1uvw3sr/looking_for_tennis_shorts/) (July 14, 2026; 7 post votes) compares ball capacity, pocket routes, liner types, fit, and light-color transparency.
+- [Budget tennis shorts for a short player](https://www.reddit.com/r/10s/comments/1u32s92/budget_tennis_short_recs_for_short_guy/) (June 11, 2026; 4 post votes) includes rise, inseam, pocket bounce, zipper access, ball moisture, saturation, and player-proportion concerns.
+- [Best tennis apparel textiles](https://www.reddit.com/r/10s/comments/1ntql1g/best_tennis_apparel_brand_textiles/) (September 2025) discusses ball capacity, pocket separation from body moisture, seam feel, material thickness, stretch, and warm-weather use.
+- [Padelwear clothing](https://www.reddit.com/r/padel/comments/1qhxhpt/padelwear_clothing/) (January 20, 2026; 5 post votes) separates court function such as secure ball pockets and breathable exercise clothing from the social or athleisure role of a padel collection.
+- [Adidas 2026 Roland Garros collection discussion](https://www.reddit.com/r/tennis/comments/1so0jmn/adidas_2026_roland_garros_collection/) (April 17, 2026; 96 post votes) includes wearer criticism of skirt and liner length and liner ride-up.
+
+Content decision:
+
+- Update `/products/racket-sports-apparel.html` to own program architecture across tennis, pickleball, and padel: customer, venue, assortment roles, club or event use, retail route, size demand, allocation, packing, delivery, and reorders.
+- Update `/products/tennis-pickleball-apparel.html` to own garment specification and physical validation: top and polo fit, serve coverage, shorts, skorts, dresses, liners, pocket construction, named ball load, access, retention, bounce, moisture observations, court movement, wash, representative sizes, evidence, and limitations.
+- Add `/assets/downloads/tennis-pickleball-apparel-sample-checklist.csv` as the controlled sample record.
+- Final visible word counts: about 1,159 and 1,979. Final visible-text sequence similarity within the main content: 0.026.
+
+Editorial safeguard: Reddit is used for question discovery and player language, not proof of a product cause or claim. The public pages do not convert one player, ball, pocket, liner, climate, color, size, movement session, or wash cycle into universal fit, retention, coverage, comfort, cooling, moisture-management, UV, opacity, or durability evidence.

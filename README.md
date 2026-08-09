@@ -65,7 +65,8 @@ Keep these files and folders together in the GitHub repository:
 - `products/more-sports.html`: running, track and field, marathon event apparel, tennis, pickleball, padel, cycling, volleyball, compression, outdoor, trail, hiking, winter sports, ski apparel, triathlon, endurance apparel, golf, baseball, lacrosse, rugby, field hockey, soccer uniforms, esports jerseys, youth sportswear, dancewear, gymnastics, cheerleading uniforms, fan merchandise, swimwear, combat sports, and wrestling.
 - `products/team-warm-up-jackets.html`: quarter zips, track jackets, warm-up pants, windbreakers, travel jackets, reflective trims, team logos, and roster packing.
 - `products/club-hoodies-varsity-jackets.html`: club hoodies, varsity jackets, fleece crewnecks, fan shirts, patches, embroidery, preorder labels, and ecommerce packaging.
-- `products/tennis-pickleball-apparel.html`: court apparel page for tennis polos, pickleball shirts, skorts, dresses, visors, wristbands, socks, UV fabrics, labels, and retail packaging.
+- `products/racket-sports-apparel.html`: tennis, pickleball, and padel club, event, resort, ecommerce, assortment, allocation, packing, and reorder program page.
+- `products/tennis-pickleball-apparel.html`: court garment specification and sample-validation page for tops, shorts, skorts, dresses, liners, named ball-pocket loads, movement, care, evidence, labels, and retail packaging with a free CSV checklist.
 - `products/cycling-jerseys-bib-shorts.html`: cycling jersey pockets, zipper and fit plus bib straps, chamois, grippers, seams, riding-posture validation, and a free sample CSV.
 - `products/volleyball-uniforms.html`: volleyball jerseys, libero kits, spandex shorts, warm-up apparel, player numbers, and roster packing.
 - `products/golf-polo-shirts-skorts.html`: golf polo fit, tuck length, collar and placket plus skort waist, liner, loaded pockets, wash and size validation, with a free sample CSV.

@@ -40,6 +40,8 @@ PRIORITY_LCP_PAGES = {
     "products/cycling-jerseys-bib-shorts.html",
     "products/golf-apparel.html",
     "products/golf-polo-shirts-skorts.html",
+    "products/racket-sports-apparel.html",
+    "products/tennis-pickleball-apparel.html",
     "products/basketball-wear.html",
     "products/basketball-jerseys.html",
     "products/football-kits.html",
@@ -445,6 +447,31 @@ def main():
                 "activewear-fit-range-validation-checklist.csv": "fit-range checklist link",
             }
             for marker, label in required_inclusive_product_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "products/racket-sports-apparel.html":
+            required_racket_program_markers = {
+                "Build the racket-sports collection around the program": "program-level direct answer",
+                "Program architecture": "program route comparison",
+                "Six planning gates": "collection planning workflow",
+                "tennis-pickleball-apparel.html": "specific garment page link",
+            }
+            for marker, label in required_racket_program_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "products/tennis-pickleball-apparel.html":
+            required_court_garment_markers = {
+                "tennis-pickleball-apparel-sample-checklist.csv": "court apparel sample checklist link",
+                'data-resource-download="tennis-pickleball-apparel-sample-checklist"': "court checklist download tracking",
+                '"@type":"DigitalDocument"': "court checklist document schema",
+                '"isAccessibleForFree":true': "free court checklist disclosure",
+                "Approve court apparel with the intended ball load": "garment-level direct answer",
+                "no pocket depth, liner length, gripper, fabric, or inseam can guarantee": "visible universal-performance limitation",
+                "racket-sports-apparel.html": "program-level racket page link",
+            }
+            for marker, label in required_court_garment_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 
