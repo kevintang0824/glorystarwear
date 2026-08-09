@@ -206,3 +206,26 @@ Content decision:
 - Final visible word counts: about 1,159 and 1,979. Final visible-text sequence similarity within the main content: 0.026.
 
 Editorial safeguard: Reddit is used for question discovery and player language, not proof of a product cause or claim. The public pages do not convert one player, ball, pocket, liner, climate, color, size, movement session, or wash cycle into universal fit, retention, coverage, comfort, cooling, moisture-management, UV, opacity, or durability evidence.
+
+## Round 8 research update — 2026-08-10
+
+### Youth team uniforms: size evidence, growth assumptions, roster control, stock, and reorders
+
+The site audit identified `/products/youth-sportswear.html` as the thinnest commercial product page, with roughly 290 visible English words before this update. It named a useful category but did not yet help a school, club, league, camp, or teamwear buyer separate collection planning from physical size and order validation.
+
+Current youth-soccer discussions expose several connected but distinct problems:
+
+- [Nike kit sizes for U8/U9 players](https://www.reddit.com/r/youthsoccer/comments/1t0n8g1/nike_kit_sizes_for_u89s/) (May 1, 2026) discusses brand differences, children with different proportions, the risk of blind ordering, try-on access, current fit, and the tradeoff involved in ordering for a second season.
+- [Youth soccer travel kit cost thread](https://www.reddit.com/r/youthsoccer/comments/1vghtfy/youth_soccer_travel_kit_cost_thread/) (August 5, 2026; 22 post votes when researched) discusses mandatory match, practice, travel, and accessory products, two-year cycles, parent cost, and inconsistent sizing between product styles.
+- [Team uniforms](https://www.reddit.com/r/youthsoccer/comments/1tzmq97/team_uniforms/) (June 7, 2026) raises supplier route, delivery, correct youth versus adult labeling, and whether the selected style will remain available for two or three years.
+- [Uniforms](https://www.reddit.com/r/youthsoccer/comments/1snlkvs/uniforms/) (April 17, 2026) describes missing sizes, direct parent ordering, unique-number systems, seasonal reuse, and the operational problem created when new registrations arrive after stock decisions.
+
+Content decision:
+
+- Expand `/products/youth-sportswear.html` to own the commercial program: match, training, travel, staff, camp, and retail roles; mandatory versus optional items; youth and adult size demand; roster ownership; SKU allocation; player packs; delivery waves; replacement stock; and reorders.
+- Publish `/blog/youth-team-uniform-sizing-order-checklist.html` to own validation: named size references, representative samples, coded try-on records, present-fit and growth assumptions, junior-to-adult transitions, roster revision, names and numbers, SKU reconciliation, pack verification, spare-stock rules, style continuity, delivery, and reorder evidence.
+- Add `/assets/downloads/youth-team-uniform-order-validation-checklist.csv` as the controlled record connecting sample, size, roster, personalization, quantity, pack, delivery, continuity, evidence, issues, and release.
+
+Separation rule: the commercial page does not claim physical fit from an age label. The blog does not own manufacturer-selection or broad youth collection intent. The activewear size-grading resource continues to own measurement and grade-rule control, while the teamwear roster-packing guide owns the detailed roster and allocation workflow.
+
+Editorial safeguard: Reddit is used for question discovery and current customer language only. The published content does not treat one child, age, height, weight, brand, try-on, parent preference, current season, or larger sample as proof of fit for an age group or a future season. Personal data and fitting media should remain in access-controlled systems rather than public worksheets.

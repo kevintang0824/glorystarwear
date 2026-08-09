@@ -42,6 +42,7 @@ PRIORITY_LCP_PAGES = {
     "products/golf-polo-shirts-skorts.html",
     "products/racket-sports-apparel.html",
     "products/tennis-pickleball-apparel.html",
+    "products/youth-sportswear.html",
     "products/basketball-wear.html",
     "products/basketball-jerseys.html",
     "products/football-kits.html",
@@ -61,6 +62,7 @@ PRIORITY_LCP_PAGES = {
     "blog/verify-ai-generated-tech-pack.html",
     "blog/sports-bra-fit-support-wear-test.html",
     "blog/activewear-inclusive-sizing-fit-test.html",
+    "blog/youth-team-uniform-sizing-order-checklist.html",
     "editorial-policy.html",
 }
 TITLE_LENGTH_RANGE = (30, 65)
@@ -333,6 +335,7 @@ def main():
                 "verify-ai-generated-tech-pack.html": "AI tech-pack article link",
                 "sports-bra-fit-support-wear-test.html": "sports-bra article link",
                 "activewear-inclusive-sizing-fit-test.html": "inclusive-fit article link",
+                "youth-team-uniform-sizing-order-checklist.html": "youth-uniform article link",
                 "feed.xml": "RSS feed discovery link",
                 "editorial-policy.html": "editorial policy link",
                 '"@type":"Blog"': "blog structured data",
@@ -419,6 +422,23 @@ def main():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 
+        if relative_name == "blog/youth-team-uniform-sizing-order-checklist.html":
+            required_youth_order_markers = {
+                "youth-team-uniform-order-validation-checklist.csv": "youth order checklist link",
+                'data-resource-download="youth-team-uniform-order-validation-checklist"': "youth checklist download tracking",
+                '"@type":"BlogPosting"': "blog posting structured data",
+                '"@type":"DigitalDocument"': "youth checklist document schema",
+                '"isAccessibleForFree":true': "free youth checklist disclosure",
+                '"dateModified":"2026-08-10"': "current article modification date",
+                "one child, one sample, or one age label cannot prove fit": "visible fit-scope limitation",
+                "iso.org/standard/61686.html": "anthropometric terminology reference",
+                "editorial-policy.html": "author methodology link",
+                "feed.xml": "RSS feed discovery",
+            }
+            for marker, label in required_youth_order_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
         if relative_name == "editorial-policy.html":
             required_editorial_markers = {
                 "Who, how, and why": "visible Who How Why explanation",
@@ -447,6 +467,18 @@ def main():
                 "activewear-fit-range-validation-checklist.csv": "fit-range checklist link",
             }
             for marker, label in required_inclusive_product_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "products/youth-sportswear.html":
+            required_youth_product_markers = {
+                "Plan youth sportswear by program role": "program-level direct answer",
+                "Program architecture": "program route comparison",
+                "Six planning gates": "program planning workflow",
+                "youth-team-uniform-sizing-order-checklist.html": "youth order validation article link",
+                "youth-team-uniform-order-validation-checklist.csv": "youth order checklist link",
+            }
+            for marker, label in required_youth_product_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 

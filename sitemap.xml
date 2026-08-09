@@ -1634,7 +1634,7 @@
       <image:loc>https://glorystarwears.com/assets/images/product-board-football-kits.jpg</image:loc>
       <image:title>Youth football kits jerseys shorts socks and club labels</image:title>
     </image:image>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
@@ -1999,6 +1999,16 @@
     <image:image>
       <image:loc>https://glorystarwears.com/assets/images/plus-size-activewear-product-board.jpg</image:loc>
       <image:title>Inclusive activewear sizing and fit testing across size height and proportion</image:title>
+    </image:image>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.76</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/blog/youth-team-uniform-sizing-order-checklist.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/youth-sportswear-teamwear-range.jpg</image:loc>
+      <image:title>Youth team uniform sizing roster quantity packing and reorder validation</image:title>
     </image:image>
     <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
