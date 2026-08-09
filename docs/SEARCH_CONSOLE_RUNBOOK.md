@@ -1,6 +1,6 @@
 # GloryStarWear Search Console Runbook
 
-Updated: 2026-07-30
+Updated: 2026-08-10
 
 ## Purpose
 
@@ -44,6 +44,7 @@ Inspect these URLs after the first verified deployment and after a significant t
 19. `https://glorystarwears.com/resources/private-label-activewear-moq.html`
 20. `https://glorystarwears.com/resources/sportswear-aql-inspection-checklist.html`
 21. `https://glorystarwears.com/resources/teamwear-roster-packing-guide.html`
+22. `https://glorystarwears.com/blog/activewear-inclusive-sizing-fit-test.html`
 
 For each URL, record:
 

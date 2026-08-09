@@ -1,6 +1,6 @@
 # GloryStarWear Search Intent Map
 
-Last updated: 2026-08-09
+Last updated: 2026-08-10
 
 ## Page Ownership Rule
 
@@ -83,6 +83,7 @@ Last updated: 2026-08-09
 | `/blog/running-shorts-chafing-ride-up-test.html` | How should a brand test running shorts liner route, chafing risk, ride-up, heat, moisture, waistband, pocket load, and wash behavior? | Owns wear-test planning and limitations. The running-wear product page owns commercial sourcing and collection scope; the fabric guide owns material specification. |
 | `/blog/verify-ai-generated-tech-pack.html` | How should an AI-generated clothing tech pack be verified before quotation, sampling, or production? | Owns generated-draft verification. The core tech-pack resource owns required contents and the blank intake template; the sample article owns physical round and bulk-release decisions. |
 | `/blog/sports-bra-fit-support-wear-test.html` | How should a brand test sports-bra size architecture, underband and front fit, support, coverage, straps, pressure, movement, wash, and representative wearer scope? | Owns product validation and evidence limits. The sports-bra product page owns commercial sourcing and construction options; the size-grading guide owns grade-rule control. |
+| `/blog/activewear-inclusive-sizing-fit-test.html` | How should a brand validate activewear sizing across extended sizes, short or tall routes, body shape, rise, inseam, anatomical landmarks, movement, and wash? | Owns physical fit-range validation and representative sample selection. The plus-size product page owns commercial sourcing; the size-grading resource owns points of measure and grade-rule control; garment articles own product-specific performance tests. |
 | `/editorial-policy.html` | Who prepares GloryStarWear content, how is it reviewed, where may AI assist, and how are evidence, illustrative images, limitations, and corrections handled? | Trust and methodology page only; it does not own a product, supplier, or testing keyword. |
 
 ## Review Trigger

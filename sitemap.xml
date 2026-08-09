@@ -278,7 +278,7 @@
       <image:loc>https://glorystarwears.com/assets/images/plus-size-activewear-product-board.jpg</image:loc>
       <image:title>Activewear size grading with measurements fit blocks size sets labels and packing references</image:title>
     </image:image>
-    <lastmod>2026-07-14</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.79</priority>
   </url>
@@ -730,7 +730,7 @@
       <image:loc>https://glorystarwears.com/assets/images/sports-bra-manufacturer-detail.jpg</image:loc>
       <image:title>Inclusive sports bras support and size grading planning</image:title>
     </image:image>
-    <lastmod>2026-07-14</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1940,7 +1940,7 @@
       <image:loc>https://glorystarwears.com/assets/images/custom-sportswear-consultation.jpg</image:loc>
       <image:title>Sportswear manufacturing blog for product development and quality decisions</image:title>
     </image:image>
-    <lastmod>2026-08-09</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.78</priority>
   </url>
@@ -1991,6 +1991,16 @@
       <image:title>Sports bra fit support coverage and strap comfort wear testing</image:title>
     </image:image>
     <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.76</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/blog/activewear-inclusive-sizing-fit-test.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/plus-size-activewear-product-board.jpg</image:loc>
+      <image:title>Inclusive activewear sizing and fit testing across size height and proportion</image:title>
+    </image:image>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.76</priority>
   </url>

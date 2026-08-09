@@ -21,6 +21,7 @@ Responsive derivatives with `-900.jpg` and `-1200.jpg` suffixes are performance 
 - `assets/downloads/sportswear-supplier-evidence-request-template.csv`: claim-by-claim supplier evidence request and review log.
 - `assets/downloads/activewear-fabric-specification-template.csv`: activewear fabric identity and approval record.
 - `assets/downloads/activewear-size-grading-template.csv`: size, grade-rule, tolerance, and size-set review record.
+- `assets/downloads/activewear-fit-range-validation-checklist.csv`: size, height, shape, sample, wearer-code, movement, wash, landmark, evidence, issue, and release record for representative activewear fit routes.
 - `assets/downloads/teamwear-roster-packing-template.csv`: player, artwork, packing, and carton allocation record.
 - `assets/downloads/sportswear-pre-shipment-inspection-brief.csv`: inspection scope, defect, evidence, corrective-action, and release record.
 

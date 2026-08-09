@@ -160,3 +160,25 @@ Content decision:
 - Final visible word counts: about 1,196 and 1,733. Final pair similarity: 0.164.
 
 Editorial safeguard: Reddit is used for question discovery and user language only. The public pages do not turn one wearer, climate, color, or wash cycle into medical advice, universal fit, cooling, moisture-management, UV, or durability proof.
+
+## Round 6 research update — 2026-08-10
+
+### Inclusive activewear sizing: size, height, shape, and landmark position
+
+Recent discussions show that adding sizes or alternate inseams does not resolve every fit problem. Wearers describe waist-to-hip mismatch, thigh pressure, waist movement, short and tall lengths without matching knee or ankle position, rise that lands differently by torso proportion, and size choices that solve one area while making another worse.
+
+- [What do you think women’s activewear is seriously lacking right now?](https://www.reddit.com/r/Activewear/comments/1v7ulmr/what_do_you_think_womens_activewear_is_seriously/) (July 27, 2026; 54 post votes when researched) includes short and tall inseams, rise, waist-to-hip shape, thigh room, top proportions, and garment-length concerns.
+- [Women, what’s your biggest frustration with gym wear?](https://www.reddit.com/r/Activewear/comments/1rp3v75/women_whats_your_biggest_frustration_with_gym/) (March 9, 2026) includes waist-to-height mismatch, tall and short proportions, hip-to-waist difference, rise, waistband movement, and bra band-to-cup mismatch.
+- [How to properly size running tights?](https://www.reddit.com/r/XXRunning/comments/1sa2v54/how_to_properly_size_running_tights/) (April 2, 2026; 20 post votes) centers on thighs fitting while the waist gaps, pocket load, drawcord use, and the limits of solving the problem only by changing alpha size.
+- [Running leggings/shorts recommendations for curvier women](https://www.reddit.com/r/XXRunning/comments/1qutd7z/running_leggingsshorts_recommendations_for/) (February 3, 2026) describes the conflict between waist, hip, seat, and thigh fit.
+- [Athletic shorts that do not hit at an awkward length](https://www.reddit.com/r/PetiteFashionAdvice/comments/1v2eh0r/athletic_shorts_that_dont_hit_at_an_awkward/) (July 21, 2026) asks for proportion changes rather than a straight pattern reduced only in length.
+
+Content decision:
+
+- URL: `/blog/activewear-inclusive-sizing-fit-test.html`
+- Primary intent: `inclusive activewear sizing`, `activewear fit testing`
+- Supporting intent: petite activewear fit, tall activewear sizing, activewear inseam options, leggings waist and hip fit, representative size-set testing
+- Conversion bridge: plus-size activewear commercial page, activewear size-grading resource, leggings and sports-bra validation articles, sample approval, quality control, and a downloadable fit-range CSV
+- Separation rule: the article owns physical fit-range validation across size, height, shape, movement, and wash. `/resources/activewear-size-grading-guide.html` owns grade-rule and measurement control; `/products/plus-size-activewear.html` owns commercial collection development; garment-specific articles own opacity, support, pocket, and other product performance tests.
+
+Editorial safeguard: Reddit informs question language only. Measurement-system context links to official ISO overviews, while actual release decisions remain product-, pattern-, material-, market-, and sample-specific. The article does not claim that one body table, fit model, size label, or proportion route represents every customer.

@@ -35,6 +35,7 @@ PRIORITY_LCP_PAGES = {
     "products/private-label-gym-clothing.html",
     "products/private-label-sportswear-packaging.html",
     "products/sports-bras.html",
+    "products/plus-size-activewear.html",
     "products/cycling-wear.html",
     "products/cycling-jerseys-bib-shorts.html",
     "products/golf-apparel.html",
@@ -57,6 +58,7 @@ PRIORITY_LCP_PAGES = {
     "blog/running-shorts-chafing-ride-up-test.html",
     "blog/verify-ai-generated-tech-pack.html",
     "blog/sports-bra-fit-support-wear-test.html",
+    "blog/activewear-inclusive-sizing-fit-test.html",
     "editorial-policy.html",
 }
 TITLE_LENGTH_RANGE = (30, 65)
@@ -328,10 +330,11 @@ def main():
                 "running-shorts-chafing-ride-up-test.html": "running-shorts article link",
                 "verify-ai-generated-tech-pack.html": "AI tech-pack article link",
                 "sports-bra-fit-support-wear-test.html": "sports-bra article link",
+                "activewear-inclusive-sizing-fit-test.html": "inclusive-fit article link",
                 "feed.xml": "RSS feed discovery link",
                 "editorial-policy.html": "editorial policy link",
                 '"@type":"Blog"': "blog structured data",
-                '"dateModified":"2026-08-09"': "current blog modification date",
+                '"dateModified":"2026-08-10"': "current blog modification date",
             }
             for marker, label in required_blog_markers.items():
                 if marker not in source:
@@ -399,6 +402,21 @@ def main():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 
+        if relative_name == "blog/activewear-inclusive-sizing-fit-test.html":
+            required_inclusive_fit_markers = {
+                "activewear-fit-range-validation-checklist.csv": "fit-range checklist link",
+                'data-resource-download="activewear-fit-range-validation-checklist"': "fit-range download tracking",
+                '"@type":"BlogPosting"': "blog posting structured data",
+                '"dateModified":"2026-08-10"': "current article modification date",
+                "One base-size wearer cannot prove the full range": "visible fit-scope limitation",
+                "iso.org/standard/61686.html": "current anthropometric definition reference",
+                "editorial-policy.html": "author methodology link",
+                "feed.xml": "RSS feed discovery",
+            }
+            for marker, label in required_inclusive_fit_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
         if relative_name == "editorial-policy.html":
             required_editorial_markers = {
                 "Who, how, and why": "visible Who How Why explanation",
@@ -418,6 +436,15 @@ def main():
                 "sports-bra-fit-wear-test-checklist.csv": "sports-bra checklist link",
             }
             for marker, label in required_sports_bra_product_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "products/plus-size-activewear.html":
+            required_inclusive_product_markers = {
+                "activewear-inclusive-sizing-fit-test.html": "inclusive fit validation guide link",
+                "activewear-fit-range-validation-checklist.csv": "fit-range checklist link",
+            }
+            for marker, label in required_inclusive_product_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 

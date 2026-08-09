@@ -5,7 +5,7 @@
 Canonical site: [https://glorystarwears.com/](https://glorystarwears.com/)
 Contact: kevin@glorystarwears.com
 Phone and WhatsApp: +86 18020755949
-Last updated: 2026-08-09
+Last updated: 2026-08-10
 
 ## Direct Answer Summary
 
@@ -57,6 +57,8 @@ Last updated: 2026-08-09
 - [Sportswear manufacturing blog](https://glorystarwears.com/blog/)
 - [Blog RSS feed](https://glorystarwears.com/blog/feed.xml)
 - [Editorial and product-testing policy](https://glorystarwears.com/editorial-policy.html)
+- [Inclusive activewear sizing and fit-range testing across size, height, and proportion](https://glorystarwears.com/blog/activewear-inclusive-sizing-fit-test.html)
+- [Activewear fit-range validation checklist (CSV)](https://glorystarwears.com/assets/downloads/activewear-fit-range-validation-checklist.csv)
 - [Sports bra fit, support, coverage, and strap-comfort wear testing](https://glorystarwears.com/blog/sports-bra-fit-support-wear-test.html)
 - [Sports bra fit and wear-test checklist (CSV)](https://glorystarwears.com/assets/downloads/sports-bra-fit-wear-test-checklist.csv)
 - [How many clothing sample rounds before bulk production](https://glorystarwears.com/blog/clothing-sample-rounds-before-bulk-production.html)
