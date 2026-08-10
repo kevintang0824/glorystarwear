@@ -15,8 +15,8 @@ from urllib.parse import unquote, urljoin, urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 PRODUCTION_ORIGIN = "https://glorystarwears.com"
-EXPECTED_SCRIPT_VERSION = "20260729-2"
-EXPECTED_FORM_STYLE_VERSION = "20260728-1"
+EXPECTED_SCRIPT_VERSION = "20260811-1"
+EXPECTED_FORM_STYLE_VERSION = "20260811-1"
 PRIORITY_LCP_PAGES = {
     "index.html",
     "sportswear-manufacturer.html",
@@ -232,6 +232,14 @@ def main():
         "traffic_channel": "traffic channel event field",
         "traffic_source": "traffic source event field",
         "referrer_host": "referrer host event field",
+        'googleAnalyticsMeasurementId = "G-3QHK9TGCHQ"': "GA4 measurement ID",
+        'analytics_storage: "denied"': "default denied analytics storage",
+        'ad_user_data: "denied"': "denied advertising user data",
+        'ad_personalization: "denied"': "denied advertising personalization",
+        "loadGoogleAnalytics": "consent-controlled Google tag loader",
+        'window.gtag("event", "generate_lead"': "recommended GA4 lead event",
+        'data-manage-analytics-consent': "analytics preference control",
+        "window.siteDataLayer.push(eventDetails)": "separate vendor-neutral event layer",
     }
     for marker, label in required_attribution_markers.items():
         if marker not in script_source:
@@ -815,6 +823,21 @@ def main():
             errors.append(
                 f"{relative_name}: expected script version {EXPECTED_SCRIPT_VERSION}"
             )
+        if "styles.css" in source and f"styles.css?v={EXPECTED_FORM_STYLE_VERSION}" not in source:
+            errors.append(
+                f"{relative_name}: expected style version {EXPECTED_FORM_STYLE_VERSION}"
+            )
+
+        if relative_name == "privacy.html":
+            required_analytics_privacy_markers = {
+                "Google Analytics 4 loads only after you allow analytics": "analytics consent disclosure",
+                "glorystarwear-analytics-consent-v1": "analytics preference storage disclosure",
+                "Advertising storage, advertising user data, and ad personalization remain denied": "advertising consent disclosure",
+                "data-manage-analytics-consent": "analytics choice control",
+            }
+            for marker, label in required_analytics_privacy_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
 
         if "data-quote-form" in source:
             required_form_markers = {
