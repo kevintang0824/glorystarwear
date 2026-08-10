@@ -63,6 +63,7 @@ PRIORITY_LCP_PAGES = {
     "blog/sports-bra-fit-support-wear-test.html",
     "blog/activewear-inclusive-sizing-fit-test.html",
     "blog/youth-team-uniform-sizing-order-checklist.html",
+    "blog/custom-apparel-packaging-moq-inventory-planning.html",
     "editorial-policy.html",
 }
 TITLE_LENGTH_RANGE = (30, 65)
@@ -336,6 +337,7 @@ def main():
                 "sports-bra-fit-support-wear-test.html": "sports-bra article link",
                 "activewear-inclusive-sizing-fit-test.html": "inclusive-fit article link",
                 "youth-team-uniform-sizing-order-checklist.html": "youth-uniform article link",
+                "custom-apparel-packaging-moq-inventory-planning.html": "packaging-MOQ article link",
                 "feed.xml": "RSS feed discovery link",
                 "editorial-policy.html": "editorial policy link",
                 '"@type":"Blog"': "blog structured data",
@@ -439,6 +441,24 @@ def main():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 
+        if relative_name == "blog/custom-apparel-packaging-moq-inventory-planning.html":
+            required_packaging_moq_markers = {
+                "apparel-packaging-moq-inventory-planner.csv": "packaging inventory planner link",
+                'data-resource-download="apparel-packaging-moq-inventory-planner"': "packaging planner download tracking",
+                '"@type":"BlogPosting"': "blog posting structured data",
+                '"@type":"DigitalDocument"': "packaging planner document schema",
+                '"isAccessibleForFree":true': "free packaging planner disclosure",
+                '"dateModified":"2026-08-10"': "current article modification date",
+                "there is no responsible universal packaging MOQ": "visible universal-MOQ limitation",
+                "gs1.org/standards/barcodes": "authoritative barcode reference",
+                "ftc.gov/business-guidance/industry/clothing-and-textiles": "authoritative apparel label reference",
+                "editorial-policy.html": "author methodology link",
+                "feed.xml": "RSS feed discovery",
+            }
+            for marker, label in required_packaging_moq_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
         if relative_name == "editorial-policy.html":
             required_editorial_markers = {
                 "Who, how, and why": "visible Who How Why explanation",
@@ -479,6 +499,19 @@ def main():
                 "youth-team-uniform-order-validation-checklist.csv": "youth order checklist link",
             }
             for marker, label in required_youth_product_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "products/private-label-sportswear-packaging.html":
+            required_packaging_product_markers = {
+                "Quote every packaging component at its own quantity": "component-level direct answer",
+                "Customization routes": "packaging route comparison",
+                "custom-apparel-packaging-moq-inventory-planning.html": "packaging-MOQ article link",
+                "apparel-packaging-moq-inventory-planner.csv": "packaging planner link",
+                "sportswear-packaging-label-handoff-checklist.html": "packaging handoff link",
+                '"dateModified":"2026-08-10"': "current product page modification date",
+            }
+            for marker, label in required_packaging_product_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 
@@ -579,7 +612,8 @@ def main():
                 'data-resource-download="sportswear-packaging-handoff-register"': "packaging download tracking",
                 '"@type":"DigitalDocument"': "packaging document schema",
                 '"isAccessibleForFree":true': "free packaging register disclosure in schema",
-                '"dateModified":"2026-08-02"': "current packaging guide modification date",
+                '"dateModified":"2026-08-10"': "current packaging guide modification date",
+                "custom-apparel-packaging-moq-inventory-planning.html": "packaging-MOQ article link",
                 "gs1.org/standards/barcodes": "authoritative barcode reference",
                 "ftc.gov/business-guidance/industry/clothing-and-textiles": "authoritative clothing labeling reference",
             }

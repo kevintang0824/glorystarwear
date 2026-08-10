@@ -49,6 +49,9 @@ Inspect these URLs after the first verified deployment and after a significant t
 24. `https://glorystarwears.com/products/tennis-pickleball-apparel.html`
 25. `https://glorystarwears.com/products/youth-sportswear.html`
 26. `https://glorystarwears.com/blog/youth-team-uniform-sizing-order-checklist.html`
+27. `https://glorystarwears.com/products/private-label-sportswear-packaging.html`
+28. `https://glorystarwears.com/resources/sportswear-packaging-label-handoff-checklist.html`
+29. `https://glorystarwears.com/blog/custom-apparel-packaging-moq-inventory-planning.html`
 
 For each URL, record:
 

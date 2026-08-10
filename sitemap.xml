@@ -238,7 +238,7 @@
       <image:loc>https://glorystarwears.com/assets/images/retail-packaging-shipment.jpg</image:loc>
       <image:title>Sportswear packaging and label handoff with SKU barcode packing carton and shipment controls</image:title>
     </image:image>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.79</priority>
   </url>
@@ -1760,7 +1760,7 @@
       <image:loc>https://glorystarwears.com/assets/images/accessories-packaging-system-card.jpg</image:loc>
       <image:title>Custom sportswear packaging system with boxes polybags and barcode labels</image:title>
     </image:image>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2009,6 +2009,16 @@
     <image:image>
       <image:loc>https://glorystarwears.com/assets/images/youth-sportswear-teamwear-range.jpg</image:loc>
       <image:title>Youth team uniform sizing roster quantity packing and reorder validation</image:title>
+    </image:image>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.76</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/blog/custom-apparel-packaging-moq-inventory-planning.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/accessories-retail-packaging-detail.jpg</image:loc>
+      <image:title>Custom apparel packaging MOQ inventory version and change planning</image:title>
     </image:image>
     <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>

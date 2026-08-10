@@ -229,3 +229,27 @@ Content decision:
 Separation rule: the commercial page does not claim physical fit from an age label. The blog does not own manufacturer-selection or broad youth collection intent. The activewear size-grading resource continues to own measurement and grade-rule control, while the teamwear roster-packing guide owns the detailed roster and allocation workflow.
 
 Editorial safeguard: Reddit is used for question discovery and current customer language only. The published content does not treat one child, age, height, weight, brand, try-on, parent preference, current season, or larger sample as proof of fit for an age group or a future season. Personal data and fitting media should remain in access-controlled systems rather than public worksheets.
+
+## Round 9 research update — 2026-08-10
+
+### Apparel packaging: component MOQ, version scope, stored inventory, and change exposure
+
+The commercial packaging page had about 468 visible English words before this update. The existing packaging handoff resource already controlled approved labels, artwork, SKU and barcode data, folds, packs, cartons, samples, and shipment release, but the site did not yet own the earlier decision: how much of each packaging component to commit to while demand, SKUs, channels, artwork, and product dimensions may still change.
+
+Recent small-business and packaging discussions repeatedly identify this gap:
+
+- [Top custom packaging companies for small businesses without huge orders](https://www.reddit.com/r/Packaging/comments/1vf37nv/top_custom_packaging_companies_for_small_business/) (August 4, 2026; 15 post votes when researched) discusses cash tied up in packaging that may change, short runs, digital print, stock products, semi-custom formats, and the risk that excess units become more expensive after a required change.
+- [How did you navigate high custom packaging MOQs for your first inventory run?](https://www.reddit.com/r/StartBusiness/comments/1vg5cov/how_did_you_navigate_high_custom_packaging_moqs/) (August 5, 2026) raises setup, tooling or plate cost, added lead time, unvalidated demand, generic versus semi-custom presentation, and first-run cash exposure.
+- [How do small product brands handle custom packaging without high MOQs?](https://www.reddit.com/r/smallbusiness/comments/1rdcfyf/how_do_small_product_brands_handle_custom/) (February 24, 2026; 6 post votes when researched) shows that the answer changes by packaging format, customization method, print process, supplier scope, design-file readiness, and what the pack must do.
+- [Where do you find affordable custom packaging suppliers?](https://www.reddit.com/r/Packaging/comments/1m7h2kx/where_do_you_usually_find_affordable_custom/) includes 2026 discussion of setup fees, freight, low-volume tests, samples, turnaround, commitment details, and the difference between plain low-quantity stock and heavily customized high-quantity supply.
+
+Content decision:
+
+- Expand `/products/private-label-sportswear-packaging.html` to own commercial supply and quotation across garment labels, hangtags, stickers, polybags, mailers, boxes, inserts, SKU sorting, inner packs, cartons, and ecommerce preparation. Add a component-level direct answer and stock, semi-custom, short-run, and fully custom route comparison.
+- Publish `/blog/custom-apparel-packaging-moq-inventory-planning.html` to own commitment planning: product demand, component demand, supplier MOQ or unit bundle, setup, expected consumption, remaining inventory, stable and variable data, version scope, storage, change triggers, rework, disposition, and decision evidence.
+- Add `/assets/downloads/apparel-packaging-moq-inventory-planner.csv` as the controlled component and inventory record.
+- Link the existing packaging handoff resource to the new article while keeping its intent focused on released files, data, physical samples, packs, cartons, and shipment control.
+
+Separation rule: `/resources/private-label-activewear-moq.html` continues to own collection-level minimums across garment styles, materials, colors, decoration, labels, packaging, and size splits. The new blog owns packaging-specific quantity and version exposure. The packaging product page owns supplier and component sourcing. The packaging handoff resource owns the approved operational specification.
+
+Editorial safeguard: Reddit is used for question discovery, not as proof of a supplier's capability, a fixed packaging MOQ, a universal cost, or a recommended inventory quantity. The public content does not promise that a stock, semi-custom, digital, or fully custom route will be available, compliant, cheaper, faster, reusable, recyclable, or suitable for another project. Current supplier terms, physical samples, product scope, market, channel, storage, and qualified requirements still control the decision.

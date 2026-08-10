@@ -57,6 +57,8 @@ Last updated: 2026-08-10
 - [Sportswear manufacturing blog](https://glorystarwears.com/blog/)
 - [Blog RSS feed](https://glorystarwears.com/blog/feed.xml)
 - [Editorial and product-testing policy](https://glorystarwears.com/editorial-policy.html)
+- [Custom apparel packaging MOQ and unused-inventory planning](https://glorystarwears.com/blog/custom-apparel-packaging-moq-inventory-planning.html)
+- [Apparel packaging MOQ and inventory planner (CSV)](https://glorystarwears.com/assets/downloads/apparel-packaging-moq-inventory-planner.csv)
 - [Youth team uniform sizing and season-order validation](https://glorystarwears.com/blog/youth-team-uniform-sizing-order-checklist.html)
 - [Youth team uniform order validation checklist (CSV)](https://glorystarwears.com/assets/downloads/youth-team-uniform-order-validation-checklist.csv)
 - [Inclusive activewear sizing and fit-range testing across size, height, and proportion](https://glorystarwears.com/blog/activewear-inclusive-sizing-fit-test.html)
