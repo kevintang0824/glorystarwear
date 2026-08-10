@@ -46,6 +46,8 @@ PRIORITY_LCP_PAGES = {
     "products/basketball-wear.html",
     "products/basketball-jerseys.html",
     "products/football-kits.html",
+    "products/volleyball-teamwear.html",
+    "products/volleyball-uniforms.html",
     "resources/index.html",
     "resources/sportswear-manufacturer-due-diligence-checklist.html",
     "resources/private-label-activewear-moq.html",
@@ -56,6 +58,7 @@ PRIORITY_LCP_PAGES = {
     "resources/sportswear-aql-inspection-checklist.html",
     "resources/teamwear-roster-packing-guide.html",
     "blog/index.html",
+    "blog/volleyball-uniform-rules-checklist.html",
     "blog/clothing-sample-to-bulk-quality-control.html",
     "blog/clothing-sample-rounds-before-bulk-production.html",
     "blog/activewear-leggings-quality-testing.html",
@@ -340,6 +343,7 @@ def main():
                 "youth-team-uniform-sizing-order-checklist.html": "youth-uniform article link",
                 "custom-apparel-packaging-moq-inventory-planning.html": "packaging-MOQ article link",
                 "clothing-sample-to-bulk-quality-control.html": "sample-to-bulk article link",
+                "volleyball-uniform-rules-checklist.html": "volleyball-rules article link",
                 "feed.xml": "RSS feed discovery link",
                 "editorial-policy.html": "editorial policy link",
                 '"@type":"Blog"': "blog structured data",
@@ -478,6 +482,49 @@ def main():
                 "feed.xml": "RSS feed discovery",
             }
             for marker, label in required_sample_to_bulk_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "blog/volleyball-uniform-rules-checklist.html":
+            required_volleyball_rules_markers = {
+                "volleyball-uniform-ruleset-approval-checklist.csv": "volleyball ruleset checklist link",
+                'data-resource-download="volleyball-uniform-ruleset-approval-checklist"': "volleyball checklist download tracking",
+                '"@type":"BlogPosting"': "blog posting structured data",
+                '"@type":"DigitalDocument"': "volleyball checklist document schema",
+                '"isAccessibleForFree":true': "free volleyball checklist disclosure",
+                '"dateModified":"2026-08-10"': "current article modification date",
+                "there is no universal volleyball uniform design": "visible universal-design limitation",
+                "usavolleyball.org/resources-for-officials/rulebooks-and-interpretations/": "current USA Volleyball rules source",
+                "nfhs.org/sports/volleyball/rules": "current NFHS volleyball rules source",
+                "ncaa.org/championships/playing-rules/womens-volleyball-playing-rules/": "current NCAA volleyball rules source",
+                "editorial-policy.html": "author methodology link",
+                "feed.xml": "RSS feed discovery",
+            }
+            for marker, label in required_volleyball_rules_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "products/volleyball-teamwear.html":
+            required_volleyball_program_markers = {
+                "volleyball-uniform-rules-checklist.html": "volleyball rules article link",
+                "Seven program roles": "program-role separation",
+                "Eight planning gates": "season planning workflow",
+                '"dateModified":"2026-08-10"': "current page modification date",
+            }
+            for marker, label in required_volleyball_program_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "products/volleyball-uniforms.html":
+            required_volleyball_uniform_markers = {
+                "volleyball-uniform-rules-checklist.html": "volleyball rules article link",
+                "volleyball-uniform-ruleset-approval-checklist.csv": "volleyball ruleset checklist link",
+                'data-resource-download="volleyball-uniform-ruleset-approval-checklist"': "volleyball checklist download tracking",
+                "Eight sample checks": "physical uniform approval workflow",
+                '"@type":"DigitalDocument"': "volleyball checklist document schema",
+                '"dateModified":"2026-08-10"': "current page modification date",
+            }
+            for marker, label in required_volleyball_uniform_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 

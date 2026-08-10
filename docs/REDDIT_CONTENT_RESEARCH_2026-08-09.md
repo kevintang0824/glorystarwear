@@ -274,3 +274,26 @@ Content decision:
 Separation rule: `/blog/clothing-sample-rounds-before-bulk-production.html` owns how many development and approval gates are needed. `/resources/sportswear-sample-approval-checklist.html` owns inspection and closure of the physical sample. `/resources/sportswear-aql-inspection-checklist.html` owns finished-lot sampling and acceptance planning. `/quality.html` owns the factory QC overview. The new article owns continuity and deviation control between those stages.
 
 Editorial safeguard: Reddit supplies question language only. The public article does not infer a root cause from an anecdote, accuse a supplier, promise that one sample or inspection proves every unit, prescribe a universal AQL, or decide a legal or contractual remedy. Current product specifications, material and production identity, qualified methods, written agreements, destination requirements, observed evidence, and authorized owners control the decision.
+
+## Round 11 research update — 2026-08-10
+
+### Volleyball uniforms: controlling ruleset, libero contrast, numbers, garments, and approval evidence
+
+The audit identified two closely related commercial pages with limited visible content and high textual similarity. `/products/volleyball-teamwear.html` and `/products/volleyball-uniforms.html` needed clearer ownership before another page targeted rules and approval questions.
+
+Current volleyball discussions repeatedly separate visual preference from competition acceptance:
+
+- [Launching a volleyball-specific uniform and apparel brand](https://www.reddit.com/r/volleyball/comments/1kwoaof/launching_a_volley_specific_uniform_and_apparel/) includes a 2026 follow-up and comments from officials about number readability, libero contrast, and ruleset differences.
+- [Colors and design associated with volleyball](https://www.reddit.com/r/volleyball/comments/1v1i80j/colors_and_design_associated_with_volleyball/) (July 2026) shows that color identity and rules-based contrast review are distinct decisions.
+- [Weekly short questions thread](https://www.reddit.com/r/volleyball/comments/1uv43zi/weekly_short_questions_thread/) (July 2026) includes current demand for custom sublimation jersey recommendations.
+
+Official sources checked for the article include the [USA Volleyball rulebooks and interpretations hub](https://usavolleyball.org/resources-for-officials/rulebooks-and-interpretations/), the [NFHS volleyball rules hub](https://www.nfhs.org/sports/volleyball/rules), and the [NCAA women's volleyball playing-rules page](https://www.ncaa.org/championships/playing-rules/womens-volleyball-playing-rules/). These sources do not make one design universal: the team must still identify the competition, discipline, level, country, season, current edition, interpretations, event instructions, local amendments, and authorized reviewer that actually control.
+
+Content decision:
+
+- Expand `/products/volleyball-teamwear.html` to own the full program: competition, practice, travel, staff, tournament, fan, replacement, allocation, delivery waves, and reorder continuity.
+- Expand `/products/volleyball-uniforms.html` to own the physical garment specification: jersey and bottom construction, fit routes, primary, alternate and libero colorways, artwork, numbers, marks, representative samples, roster data, labels, player packs, inspection, and bulk handoff.
+- Publish `/blog/volleyball-uniform-rules-checklist.html` to own the current ruleset and approval workflow: official source, applicable requirement, uniform roles, front and back artwork, libero comparison, numbers, marks, garments, physical evidence, issue, authority, decision, and release.
+- Add `/assets/downloads/volleyball-uniform-ruleset-approval-checklist.csv` as the controlled review record.
+
+Separation rule: the broad commercial page does not approve match legality; the narrow commercial page does not define the controlling competition source; the article does not promise manufacturer certification or replace official review. Reddit provides question language only and is not cited as a rule. One past approval, mockup, summary, colorway, number outline, sample, size, official, or supplier opinion cannot prove acceptance for every current competition.

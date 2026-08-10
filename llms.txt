@@ -57,6 +57,8 @@ Last updated: 2026-08-10
 - [Sportswear manufacturing blog](https://glorystarwears.com/blog/)
 - [Blog RSS feed](https://glorystarwears.com/blog/feed.xml)
 - [Editorial and product-testing policy](https://glorystarwears.com/editorial-policy.html)
+- [Volleyball uniform rules, libero, number, and approval checklist](https://glorystarwears.com/blog/volleyball-uniform-rules-checklist.html)
+- [Volleyball uniform ruleset approval checklist (CSV)](https://glorystarwears.com/assets/downloads/volleyball-uniform-ruleset-approval-checklist.csv)
 - [Clothing sample-to-bulk quality control and production-drift response](https://glorystarwears.com/blog/clothing-sample-to-bulk-quality-control.html)
 - [Sample-to-bulk quality control checklist (CSV)](https://glorystarwears.com/assets/downloads/sample-to-bulk-quality-control-checklist.csv)
 - [Custom apparel packaging MOQ and unused-inventory planning](https://glorystarwears.com/blog/custom-apparel-packaging-moq-inventory-planning.html)
