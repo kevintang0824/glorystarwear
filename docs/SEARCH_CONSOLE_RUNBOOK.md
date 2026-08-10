@@ -52,6 +52,7 @@ Inspect these URLs after the first verified deployment and after a significant t
 27. `https://glorystarwears.com/products/private-label-sportswear-packaging.html`
 28. `https://glorystarwears.com/resources/sportswear-packaging-label-handoff-checklist.html`
 29. `https://glorystarwears.com/blog/custom-apparel-packaging-moq-inventory-planning.html`
+30. `https://glorystarwears.com/blog/clothing-sample-to-bulk-quality-control.html`
 
 For each URL, record:
 

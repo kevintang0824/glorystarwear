@@ -56,6 +56,7 @@ PRIORITY_LCP_PAGES = {
     "resources/sportswear-aql-inspection-checklist.html",
     "resources/teamwear-roster-packing-guide.html",
     "blog/index.html",
+    "blog/clothing-sample-to-bulk-quality-control.html",
     "blog/clothing-sample-rounds-before-bulk-production.html",
     "blog/activewear-leggings-quality-testing.html",
     "blog/running-shorts-chafing-ride-up-test.html",
@@ -338,6 +339,7 @@ def main():
                 "activewear-inclusive-sizing-fit-test.html": "inclusive-fit article link",
                 "youth-team-uniform-sizing-order-checklist.html": "youth-uniform article link",
                 "custom-apparel-packaging-moq-inventory-planning.html": "packaging-MOQ article link",
+                "clothing-sample-to-bulk-quality-control.html": "sample-to-bulk article link",
                 "feed.xml": "RSS feed discovery link",
                 "editorial-policy.html": "editorial policy link",
                 '"@type":"Blog"': "blog structured data",
@@ -456,6 +458,26 @@ def main():
                 "feed.xml": "RSS feed discovery",
             }
             for marker, label in required_packaging_moq_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "blog/clothing-sample-to-bulk-quality-control.html":
+            required_sample_to_bulk_markers = {
+                "sample-to-bulk-quality-control-checklist.csv": "sample-to-bulk checklist link",
+                'data-resource-download="sample-to-bulk-quality-control-checklist"': "sample-to-bulk download tracking",
+                '"@type":"BlogPosting"': "blog posting structured data",
+                '"@type":"DigitalDocument"': "sample-to-bulk checklist document schema",
+                '"isAccessibleForFree":true': "free sample-to-bulk checklist disclosure",
+                '"dateModified":"2026-08-10"': "current article modification date",
+                "No sealed sample, photograph, video call, or single inspection can guarantee": "visible production-control limitation",
+                "iso.org/standard/85464.html": "current ISO 2859-1 reference",
+                "iso.org/standard/57309.html": "dimensional-change preparation reference",
+                "iso.org/standard/41877.html": "dimensional-change method reference",
+                "ftc.gov/business-guidance/industry/clothing-and-textiles": "authoritative U.S. apparel label reference",
+                "editorial-policy.html": "author methodology link",
+                "feed.xml": "RSS feed discovery",
+            }
+            for marker, label in required_sample_to_bulk_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 

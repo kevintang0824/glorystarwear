@@ -11,6 +11,7 @@ Responsive derivatives with `-900.jpg` and `-1200.jpg` suffixes are performance 
 
 ## Downloadable Buyer Assets
 
+- `assets/downloads/sample-to-bulk-quality-control-checklist.csv`: 45-field order, reference-sample, file-revision, bulk-lot, comparison-method, unit-selection, result, deviation, containment, disposition, corrective-action, evidence, owner, and release record.
 - `assets/downloads/sportswear-supplier-quote-comparison.csv`: 53-field supplier quote and lead-time comparison covering one written product scope, cost components, minimums, schedule boundaries, delivery terms, exclusions, assumptions, payment terms, decisions, and next actions without implying fixed prices or timing.
 - `assets/downloads/sportswear-product-gallery-shortlist.csv`: 34-field visual-reference shortlist connecting the exact category page or image to product direction, keep/change decisions, development route, fit, fabric, color, size, artwork, packaging, quantity, timing, ownership, and next action.
 - `assets/downloads/sportswear-tech-pack-intake-template.csv`: blank 40-row tech pack intake register covering style identity, views, materials, measurements, construction, artwork, labels, packaging, performance, approvals, QC, bulk release, and revision control.

@@ -253,3 +253,24 @@ Content decision:
 Separation rule: `/resources/private-label-activewear-moq.html` continues to own collection-level minimums across garment styles, materials, colors, decoration, labels, packaging, and size splits. The new blog owns packaging-specific quantity and version exposure. The packaging product page owns supplier and component sourcing. The packaging handoff resource owns the approved operational specification.
 
 Editorial safeguard: Reddit is used for question discovery, not as proof of a supplier's capability, a fixed packaging MOQ, a universal cost, or a recommended inventory quantity. The public content does not promise that a stock, semi-custom, digital, or fully custom route will be available, compliant, cheaper, faster, reusable, recyclable, or suitable for another project. Current supplier terms, physical samples, product scope, market, channel, storage, and qualified requirements still control the decision.
+
+## Round 10 research update — 2026-08-10
+
+### Clothing sample-to-bulk drift: reference control, production checks, containment, and release
+
+Recent founder discussions repeatedly describe a gap between an approved development sample and the actual bulk order. The useful content task is not to claim one universal cause. It is to show how a buyer connects the sealed sample to the files, bulk inputs, production lots, comparison methods, distributed checks, deviations, corrective action, and shipment decision.
+
+- [What is the biggest manufacturing headache you have faced?](https://www.reddit.com/r/ClothingStartups/comments/1v7cw40/whats_the_biggest_manufacturing_headache_youve/) (July 26, 2026) explicitly names sample-to-bulk drift, material or shade inconsistency, production delay, tech-pack deviation, communication, a locked pre-production reference, and mid-run inspection.
+- [Dealing with manufacturers](https://www.reddit.com/r/streetwearstartup/comments/1qujs0f/dealing_with_manufactures/) (February 3, 2026; 16 post votes when researched) describes an approved sample followed by unacceptable bulk garments and print execution.
+- [Got my bulk](https://www.reddit.com/r/streetwearstartup/comments/1t1enr4/got_my_bulk/) (May 2, 2026; 3 post votes when researched) describes a bulk material that did not match the buyer's subjective expectation and asks whether it matched the sample, supporting material identity, lot, measurement, and evidence rather than handfeel language alone.
+- [What I learned the hard way about contacting clothing manufacturers](https://www.reddit.com/r/streetwearstartup/comments/1s2pm22/what_i_learned_the_hard_way_about_contacting/) (March 24, 2026; 10 post votes when researched) raises written acknowledgment, tolerances, milestone timing, and the question of what happens when bulk differs from the approved sample.
+
+Content decision:
+
+- Publish `/blog/clothing-sample-to-bulk-quality-control.html` to own the controlled path from a sealed sample and released document set through bulk input reconciliation, first-production approval, distributed in-line checks, finished-lot inspection, deviation containment, scope, disposition, corrective action, and release.
+- Add `/assets/downloads/sample-to-bulk-quality-control-checklist.csv` as the traceable order, reference, production-lot, comparison, deviation, decision, and release record.
+- Add descriptive internal links from the sample-approval resource, AQL resource, quality page, and blog hub.
+
+Separation rule: `/blog/clothing-sample-rounds-before-bulk-production.html` owns how many development and approval gates are needed. `/resources/sportswear-sample-approval-checklist.html` owns inspection and closure of the physical sample. `/resources/sportswear-aql-inspection-checklist.html` owns finished-lot sampling and acceptance planning. `/quality.html` owns the factory QC overview. The new article owns continuity and deviation control between those stages.
+
+Editorial safeguard: Reddit supplies question language only. The public article does not infer a root cause from an anecdote, accuse a supplier, promise that one sample or inspection proves every unit, prescribe a universal AQL, or decide a legal or contractual remedy. Current product specifications, material and production identity, qualified methods, written agreements, destination requirements, observed evidence, and authorized owners control the decision.

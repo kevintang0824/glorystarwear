@@ -57,6 +57,8 @@ Last updated: 2026-08-10
 - [Sportswear manufacturing blog](https://glorystarwears.com/blog/)
 - [Blog RSS feed](https://glorystarwears.com/blog/feed.xml)
 - [Editorial and product-testing policy](https://glorystarwears.com/editorial-policy.html)
+- [Clothing sample-to-bulk quality control and production-drift response](https://glorystarwears.com/blog/clothing-sample-to-bulk-quality-control.html)
+- [Sample-to-bulk quality control checklist (CSV)](https://glorystarwears.com/assets/downloads/sample-to-bulk-quality-control-checklist.csv)
 - [Custom apparel packaging MOQ and unused-inventory planning](https://glorystarwears.com/blog/custom-apparel-packaging-moq-inventory-planning.html)
 - [Apparel packaging MOQ and inventory planner (CSV)](https://glorystarwears.com/assets/downloads/apparel-packaging-moq-inventory-planner.csv)
 - [Youth team uniform sizing and season-order validation](https://glorystarwears.com/blog/youth-team-uniform-sizing-order-checklist.html)

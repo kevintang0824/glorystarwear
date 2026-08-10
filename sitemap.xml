@@ -258,7 +258,7 @@
       <image:loc>https://glorystarwears.com/assets/images/production-process-sample-room.jpg</image:loc>
       <image:title>Sportswear sample approval with measurements materials artwork labels and packing references</image:title>
     </image:image>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.79</priority>
   </url>
@@ -268,7 +268,7 @@
       <image:loc>https://glorystarwears.com/assets/images/quality-inspection-workflow.jpg</image:loc>
       <image:title>Sportswear AQL and pre-shipment inspection checklist</image:title>
     </image:image>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1836,7 +1836,7 @@
       <image:loc>https://glorystarwears.com/assets/images/quality-inspection-workflow.jpg</image:loc>
       <image:title>Custom sportswear quality control inspection</image:title>
     </image:image>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -2019,6 +2019,16 @@
     <image:image>
       <image:loc>https://glorystarwears.com/assets/images/accessories-retail-packaging-detail.jpg</image:loc>
       <image:title>Custom apparel packaging MOQ inventory version and change planning</image:title>
+    </image:image>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.76</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/blog/clothing-sample-to-bulk-quality-control.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/quality-control.jpg</image:loc>
+      <image:title>Clothing sample-to-bulk quality control and production deviation response</image:title>
     </image:image>
     <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>

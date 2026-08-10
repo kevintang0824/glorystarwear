@@ -85,6 +85,7 @@ Keep these files and folders together in the GitHub repository:
 - `resources/activewear-size-grading-guide.html`: base-size fit, grade rules, tolerances, inclusive ranges, and size-set approval guide.
 - `resources/teamwear-roster-packing-guide.html`: player data, personalization, roster revisions, individual packs, and carton sorting guide.
 - `blog/index.html`: discussion-led sportswear manufacturing article hub.
+- `blog/clothing-sample-to-bulk-quality-control.html`: approved-reference, bulk-input, first-output, in-line, finished-lot, deviation, corrective-action, and release-control article with a free CSV checklist.
 - `blog/clothing-sample-rounds-before-bulk-production.html`: sample-stage, revision, and bulk-release planning article.
 - `blog/activewear-leggings-quality-testing.html`: opacity, waistband, fit, pilling, pocket, wash, and color-by-size validation article with a free CSV checklist.
 - `blog/running-shorts-chafing-ride-up-test.html`: liner, chafing-risk, ride-up, heat, moisture, waistband, and loaded-pocket wear-test article with a free CSV checklist.
