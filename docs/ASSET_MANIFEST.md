@@ -11,6 +11,7 @@ Responsive derivatives with `-900.jpg` and `-1200.jpg` suffixes are performance 
 
 ## Downloadable Buyer Assets
 
+- `assets/downloads/us-clothing-label-handoff-checklist.csv`: 42-field U.S. apparel label handoff record covering product scope, fiber-content source, country-of-origin basis, business identity or RN, care evidence, artwork, placement, SKU mapping, physical approval, issues, and release.
 - `assets/downloads/volleyball-uniform-ruleset-approval-checklist.csv`: competition, season, governing source, event amendment, uniform-role, colorway, number, libero, mark, garment, fit, physical-sample, roster, issue, authority, evidence, and release record.
 - `assets/downloads/sample-to-bulk-quality-control-checklist.csv`: 45-field order, reference-sample, file-revision, bulk-lot, comparison-method, unit-selection, result, deviation, containment, disposition, corrective-action, evidence, owner, and release record.
 - `assets/downloads/sportswear-supplier-quote-comparison.csv`: 53-field supplier quote and lead-time comparison covering one written product scope, cost components, minimums, schedule boundaries, delivery terms, exclusions, assumptions, payment terms, decisions, and next actions without implying fixed prices or timing.

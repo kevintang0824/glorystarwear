@@ -22,6 +22,20 @@ GA4 receives the existing site events only after permission, including:
 - `catalog_filter`, `catalog_search`, and the GA4 recommended `search` event;
 - `thank_you_view` only when a valid server-confirmed lead receipt is present.
 
+Every event now includes the low-cardinality `page_type` and `content_group` context. Examples include `blog_article` / `editorial`, `product_page` / `product_catalog`, `resource_guide` / `buyer_resources`, `commercial_landing` / `manufacturing_services`, and `trust_page` / `trust`. Confirmed `generate_lead` events also include those fields plus the site's `traffic_channel` and `traffic_source` classification.
+
+## GA4 admin configuration queue
+
+After an authorized user opens the GA4 property, complete and verify these property-level settings:
+
+1. Mark the recommended `generate_lead` event as a key event. Keep `lead_submit_success` available for diagnostic comparison; do not mark clicks or form starts as completed leads.
+2. Register event-scoped custom dimensions for `page_type`, `content_group`, `traffic_channel`, `traffic_source`, `form_location`, `product_interest`, and `resource_name`.
+3. Use Realtime or DebugView after granting analytics consent on a controlled test visit. Submit through the configured server receiver and verify exactly one `lead_submit_success` and one `generate_lead` after confirmed receipt.
+4. Download one checklist and verify `resource_download`, `resource_name`, `file_name`, `page_type`, and `content_group` without personal data.
+5. Link the Search Console domain property to GA4 under the company-owned accounts when access is available.
+
+Custom-dimension registration and key-event status live in GA4, not this repository. They remain pending until the authenticated property is opened and verified.
+
 Contact names, email addresses, phone numbers, free-text messages, and uploaded documents are not added to Analytics event parameters. The site's vendor-neutral event objects remain available separately in `window.siteDataLayer`; Google commands use `window.dataLayer` through `gtag()` so the same event is not emitted twice.
 
 ## Visitor controls

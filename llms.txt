@@ -5,7 +5,7 @@
 Canonical site: [https://glorystarwears.com/](https://glorystarwears.com/)
 Contact: kevin@glorystarwears.com
 Phone and WhatsApp: +86 18020755949
-Last updated: 2026-08-10
+Last updated: 2026-08-12
 
 ## Direct Answer Summary
 
@@ -57,6 +57,8 @@ Last updated: 2026-08-10
 - [Sportswear manufacturing blog](https://glorystarwears.com/blog/)
 - [Blog RSS feed](https://glorystarwears.com/blog/feed.xml)
 - [Editorial and product-testing policy](https://glorystarwears.com/editorial-policy.html)
+- [U.S. private-label clothing label requirements and factory handoff](https://glorystarwears.com/blog/us-clothing-label-requirements-private-label.html)
+- [U.S. clothing label handoff checklist (CSV)](https://glorystarwears.com/assets/downloads/us-clothing-label-handoff-checklist.csv)
 - [Volleyball uniform rules, libero, number, and approval checklist](https://glorystarwears.com/blog/volleyball-uniform-rules-checklist.html)
 - [Volleyball uniform ruleset approval checklist (CSV)](https://glorystarwears.com/assets/downloads/volleyball-uniform-ruleset-approval-checklist.csv)
 - [Clothing sample-to-bulk quality control and production-drift response](https://glorystarwears.com/blog/clothing-sample-to-bulk-quality-control.html)

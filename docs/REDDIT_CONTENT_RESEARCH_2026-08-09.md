@@ -297,3 +297,25 @@ Content decision:
 - Add `/assets/downloads/volleyball-uniform-ruleset-approval-checklist.csv` as the controlled review record.
 
 Separation rule: the broad commercial page does not approve match legality; the narrow commercial page does not define the controlling competition source; the article does not promise manufacturer certification or replace official review. Reddit provides question language only and is not cited as a rule. One past approval, mockup, summary, colorway, number outline, sample, size, official, or supplier opinion cannot prove acceptance for every current competition.
+
+## Round 12 research update — 2026-08-12
+
+### U.S. private-label clothing labels: fiber, origin, business identity or RN, and care evidence
+
+A recent [small-business sourcing and labeling discussion](https://www.reddit.com/r/smallbusinessUS/comments/1uz6gr3/starting_a_clothing_brand_from_home_sourcing_and/) (July 2026) asks what a small apparel brand must place on garments sold in the United States, including fiber composition, country of origin, care instructions, and responsible-business identity. The question is commercially relevant to the site's activewear, gym-clothing, tech-pack, compliance, and packaging pages, but no existing URL owned the U.S.-specific baseline and its factory handoff.
+
+Authoritative sources checked:
+
+- [FTC Textile and Wool labeling guide](https://www.ftc.gov/business-guidance/resources/threading-your-way-through-labeling-requirements-under-textile-wool-acts) for covered products, fiber content, country of origin, responsible-business identity, RN use, mechanics, advertising, and records.
+- [FTC Care Labeling Rule business guide](https://www.ftc.gov/business-guidance/resources/clothes-captioning-complying-care-labeling-rule) for covered parties and garments, permanent and legible care information, regular-care instructions, warnings, reasonable basis, packaging visibility, and exceptions.
+- [FTC RN database guidance](https://www.ftc.gov/business-guidance/industry/registered-identification-number-database) confirming that an RN can replace a qualifying business name but is optional and must be valid for the responsible business.
+
+Content decision:
+
+- Publish `/blog/us-clothing-label-requirements-private-label.html` to own the U.S.-specific question and handoff: product scope, fiber source, origin basis, business name or RN, care evidence, artwork revision, placement, attachment, SKU mapping, physical sample, packaging visibility, approval, issue, and release.
+- Add `/assets/downloads/us-clothing-label-handoff-checklist.csv` as the controlled worksheet.
+- Add descriptive internal links from `/private-label-activewear-manufacturer.html`, `/products/private-label-gym-clothing.html`, `/resources/custom-sportswear-tech-pack.html`, `/resources/sportswear-packaging-label-handoff-checklist.html`, `/products/private-label-sportswear-packaging.html`, and `/certificates.html`.
+
+Separation rule: the article owns the FTC-sourced U.S. baseline and factory handoff. `/certificates.html` owns the full product-and-market compliance evidence matrix. The packaging resource owns all label, barcode, pack, carton, and shipment components. The tech-pack page owns the complete garment specification. Commercial pages own manufacturing and component sourcing.
+
+Editorial safeguard: Reddit establishes demand language only. It does not establish law, product scope, origin, RN validity, care substantiation, placement, or compliance. The article explicitly excludes universal-compliance, legal-advice, certification, testing, factory, certificate, and customer-result claims and directs readers to current FTC guidance and qualified product-specific review.

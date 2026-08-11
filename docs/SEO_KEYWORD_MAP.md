@@ -1,6 +1,6 @@
 # GloryStarWear Search Intent Map
 
-Last updated: 2026-08-10
+Last updated: 2026-08-12
 
 ## Page Ownership Rule
 
@@ -80,6 +80,7 @@ Last updated: 2026-08-10
 | URL | Primary question owned by the article | Separation rule |
 | --- | --- | --- |
 | `/blog/` | Which current sportswear manufacturing and product-testing questions have decision-led answers? | Discovery hub only; it does not own an individual product or sourcing query. |
+| `/blog/us-clothing-label-requirements-private-label.html` | What baseline label information does a private-label brand need for covered clothing sold in the United States, and how should it be handed off to a factory? | Owns the FTC-sourced planning workflow for fiber content, country of origin, responsible-business identity or RN, care evidence, artwork, placement, physical approval, SKU mapping, and release. The compliance page owns the full product-and-market evidence file; the packaging resource owns every packaging layer; commercial pages own garment and component sourcing. |
 | `/blog/volleyball-uniform-rules-checklist.html` | How should a team identify and document the current volleyball uniform ruleset, libero and number requirements, physical evidence, authorized approval, issues, and release? | Owns the current competition, governing body, season, rule edition, interpretation, event manual, libero comparison, numbers, marks, garment requirements, evidence, authority, and approval record. The broad teamwear page owns the season program; the uniforms page owns physical garment specification and manufacturer handoff. |
 | `/blog/clothing-sample-to-bulk-quality-control.html` | How should a clothing buyer prevent, detect, contain, and resolve sample-to-bulk production drift? | Owns the controlled path from a sealed reference through bulk inputs, first output, in-line checks, finished-lot evidence, deviation scope, disposition, corrective action, and release. The sample-round article owns how many development gates are needed; the sample-approval resource owns physical approval; the AQL resource owns the finished-lot sampling plan; the quality page owns the factory QC overview. |
 | `/blog/clothing-sample-rounds-before-bulk-production.html` | How many clothing sample rounds are needed, what should each round prove, and when can bulk production be released? | Owns the number-and-gate decision. The sample-approval resource owns the detailed physical inspection checklist; the process page owns the full production sequence. |

@@ -1,6 +1,6 @@
 # GloryStarWear Search Console Runbook
 
-Updated: 2026-08-10
+Updated: 2026-08-12
 
 ## Purpose
 
@@ -56,6 +56,7 @@ Inspect these URLs after the first verified deployment and after a significant t
 31. `https://glorystarwears.com/blog/volleyball-uniform-rules-checklist.html`
 32. `https://glorystarwears.com/products/volleyball-teamwear.html`
 33. `https://glorystarwears.com/products/volleyball-uniforms.html`
+34. `https://glorystarwears.com/blog/us-clothing-label-requirements-private-label.html`
 
 For each URL, record:
 

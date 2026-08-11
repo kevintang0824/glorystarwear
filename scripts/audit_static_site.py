@@ -15,8 +15,8 @@ from urllib.parse import unquote, urljoin, urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 PRODUCTION_ORIGIN = "https://glorystarwears.com"
-EXPECTED_SCRIPT_VERSION = "20260811-1"
-EXPECTED_FORM_STYLE_VERSION = "20260811-1"
+EXPECTED_SCRIPT_VERSION = "20260812-1"
+EXPECTED_FORM_STYLE_VERSION = "20260812-1"
 PRIORITY_LCP_PAGES = {
     "index.html",
     "sportswear-manufacturer.html",
@@ -59,6 +59,7 @@ PRIORITY_LCP_PAGES = {
     "resources/teamwear-roster-packing-guide.html",
     "blog/index.html",
     "blog/volleyball-uniform-rules-checklist.html",
+    "blog/us-clothing-label-requirements-private-label.html",
     "blog/clothing-sample-to-bulk-quality-control.html",
     "blog/clothing-sample-rounds-before-bulk-production.html",
     "blog/activewear-leggings-quality-testing.html",
@@ -238,6 +239,8 @@ def main():
         'ad_personalization: "denied"': "denied advertising personalization",
         "loadGoogleAnalytics": "consent-controlled Google tag loader",
         'window.gtag("event", "generate_lead"': "recommended GA4 lead event",
+        "page_type": "GA4 page-type context",
+        "content_group": "GA4 content-group context",
         'data-manage-analytics-consent': "analytics preference control",
         "window.siteDataLayer.push(eventDetails)": "separate vendor-neutral event layer",
     }
@@ -321,7 +324,8 @@ def main():
                 "private-label-activewear-collection-planner.csv": "activewear collection planner link",
                 'data-resource-download="private-label-activewear-collection-planner"': "activewear planner download tracking",
                 '"@type": "DigitalDocument"': "activewear planner document schema",
-                '"dateModified": "2026-08-01"': "current activewear page modification date",
+                '"dateModified": "2026-08-12"': "current activewear page modification date",
+                "us-clothing-label-requirements-private-label.html": "U.S. clothing-label article link",
             }
             for marker, label in required_activewear_markers.items():
                 if marker not in source:
@@ -333,7 +337,8 @@ def main():
                 'data-resource-download="sportswear-tech-pack-intake-template"': "tech pack download tracking",
                 '"@type":"DigitalDocument"': "tech pack document schema",
                 '"isAccessibleForFree":true': "free template disclosure in schema",
-                '"dateModified":"2026-08-09"': "current tech pack modification date",
+                '"dateModified":"2026-08-12"': "current tech pack modification date",
+                "us-clothing-label-requirements-private-label.html": "U.S. clothing-label article link",
                 "What it is not:": "visible template scope disclosure",
             }
             for marker, label in required_tech_pack_markers.items():
@@ -352,12 +357,31 @@ def main():
                 "custom-apparel-packaging-moq-inventory-planning.html": "packaging-MOQ article link",
                 "clothing-sample-to-bulk-quality-control.html": "sample-to-bulk article link",
                 "volleyball-uniform-rules-checklist.html": "volleyball-rules article link",
+                "us-clothing-label-requirements-private-label.html": "U.S. clothing-label article link",
                 "feed.xml": "RSS feed discovery link",
                 "editorial-policy.html": "editorial policy link",
                 '"@type":"Blog"': "blog structured data",
-                '"dateModified":"2026-08-10"': "current blog modification date",
+                '"dateModified":"2026-08-12"': "current blog modification date",
             }
             for marker, label in required_blog_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "blog/us-clothing-label-requirements-private-label.html":
+            required_us_label_markers = {
+                "us-clothing-label-handoff-checklist.csv": "U.S. clothing-label checklist link",
+                'data-resource-download="us-clothing-label-handoff-checklist"': "U.S. label checklist download tracking",
+                '"@type":"BlogPosting"': "blog posting structured data",
+                '"@type":"DigitalDocument"': "U.S. label checklist document schema",
+                '"isAccessibleForFree":true': "free U.S. label checklist disclosure",
+                "Reddit identifies the uncertainty; FTC guidance controls the factual answer": "source-method disclosure",
+                "ftc.gov/business-guidance/resources/threading-your-way-through": "FTC textile-label source",
+                "ftc.gov/business-guidance/resources/clothes-captioning": "FTC care-label source",
+                "ftc.gov/business-guidance/industry/registered-identification-number-database": "FTC RN source",
+                "not legal advice, compliance certification": "visible legal and certification limitation",
+                '"@type":"FAQPage"': "U.S. label FAQ schema",
+            }
+            for marker, label in required_us_label_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 
@@ -586,7 +610,8 @@ def main():
                 "custom-apparel-packaging-moq-inventory-planning.html": "packaging-MOQ article link",
                 "apparel-packaging-moq-inventory-planner.csv": "packaging planner link",
                 "sportswear-packaging-label-handoff-checklist.html": "packaging handoff link",
-                '"dateModified":"2026-08-10"': "current product page modification date",
+                "us-clothing-label-requirements-private-label.html": "U.S. clothing-label article link",
+                '"dateModified":"2026-08-12"': "current product page modification date",
             }
             for marker, label in required_packaging_product_markers.items():
                 if marker not in source:
@@ -689,7 +714,8 @@ def main():
                 'data-resource-download="sportswear-packaging-handoff-register"': "packaging download tracking",
                 '"@type":"DigitalDocument"': "packaging document schema",
                 '"isAccessibleForFree":true': "free packaging register disclosure in schema",
-                '"dateModified":"2026-08-10"': "current packaging guide modification date",
+                '"dateModified":"2026-08-12"': "current packaging guide modification date",
+                "us-clothing-label-requirements-private-label.html": "U.S. clothing-label article link",
                 "custom-apparel-packaging-moq-inventory-planning.html": "packaging-MOQ article link",
                 "gs1.org/standards/barcodes": "authoritative barcode reference",
                 "ftc.gov/business-guidance/industry/clothing-and-textiles": "authoritative clothing labeling reference",
@@ -704,7 +730,8 @@ def main():
                 'data-resource-download="sportswear-compliance-evidence-register"': "compliance download tracking",
                 '"@type":"DigitalDocument"': "compliance document schema",
                 '"isAccessibleForFree":true': "free compliance register disclosure in schema",
-                '"dateModified":"2026-08-02"': "current compliance checklist modification date",
+                '"dateModified":"2026-08-12"': "current compliance checklist modification date",
+                "us-clothing-label-requirements-private-label.html": "U.S. clothing-label article link",
                 "nist.gov/publications/guide-united-states-apparel": "authoritative U.S. apparel overview",
                 "ftc.gov/business-guidance/industry/clothing-and-textiles": "authoritative U.S. label reference",
                 "cpsc.gov/FAQ/Clothing": "authoritative U.S. product-safety reference",

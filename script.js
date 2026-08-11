@@ -323,10 +323,52 @@ const captureAttribution = () => {
 const { attribution: pageAttribution, isNewSession: isNewAttributionSession } = captureAttribution();
 const pageTrafficAttribution = classifyAttribution(pageAttribution);
 
+const getPageContext = () => {
+  const path = window.location.pathname.toLowerCase();
+  if (path === "/" || path.endsWith("/index.html") && !path.includes("/blog/") && !path.includes("/products/") && !path.includes("/resources/")) {
+    return { pageType: "home", contentGroup: "home" };
+  }
+  if (path === "/blog/" || path.endsWith("/blog/index.html")) {
+    return { pageType: "blog_hub", contentGroup: "editorial" };
+  }
+  if (path.includes("/blog/")) {
+    return { pageType: "blog_article", contentGroup: "editorial" };
+  }
+  if (path === "/products/" || path.endsWith("/products/index.html")) {
+    return { pageType: "product_hub", contentGroup: "product_catalog" };
+  }
+  if (path.includes("/products/")) {
+    return { pageType: "product_page", contentGroup: "product_catalog" };
+  }
+  if (path === "/resources/" || path.endsWith("/resources/index.html")) {
+    return { pageType: "resource_hub", contentGroup: "buyer_resources" };
+  }
+  if (path.includes("/resources/")) {
+    return { pageType: "resource_guide", contentGroup: "buyer_resources" };
+  }
+  if (/\/(contact|quote-checklist|thank-you)\.html$/.test(path)) {
+    return { pageType: "conversion_page", contentGroup: "conversion" };
+  }
+  if (/\/(about-factory|certificates|case-studies|factory-video|editorial-policy)\.html$/.test(path)) {
+    return { pageType: "trust_page", contentGroup: "trust" };
+  }
+  if (/\/(process|quality|fabrics|customization|one-stop-service)\.html$/.test(path)) {
+    return { pageType: "operations_page", contentGroup: "operations" };
+  }
+  if (/\/(sportswear-manufacturer|private-label-activewear-manufacturer|custom-teamwear-uniforms|low-moq-sportswear-manufacturer)\.html$/.test(path)) {
+    return { pageType: "commercial_landing", contentGroup: "manufacturing_services" };
+  }
+  return { pageType: "site_page", contentGroup: "site_information" };
+};
+
+const pageContext = getPageContext();
+
 const trackEvent = (eventName, details = {}) => {
   const eventDetails = {
     event: eventName,
     page_path: window.location.pathname,
+    page_type: pageContext.pageType,
+    content_group: pageContext.contentGroup,
     traffic_channel: pageTrafficAttribution.channel,
     traffic_source: pageTrafficAttribution.source,
     referrer_host: pageTrafficAttribution.referrerHost,
@@ -343,6 +385,10 @@ const trackEvent = (eventName, details = {}) => {
       lead_source: "website_form",
       form_location: details.form_location || window.location.pathname,
       product_interest: details.product_interest || "",
+      page_type: pageContext.pageType,
+      content_group: pageContext.contentGroup,
+      traffic_channel: pageTrafficAttribution.channel,
+      traffic_source: pageTrafficAttribution.source,
     });
   }
 

@@ -2643,7 +2643,7 @@ h3 {
   }
 
   .analytics-consent-actions {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     min-width: 0;
   }
 
