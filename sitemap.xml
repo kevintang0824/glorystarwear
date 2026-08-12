@@ -228,7 +228,7 @@
       <image:loc>https://glorystarwears.com/assets/images/private-label-trims-customization.jpg</image:loc>
       <image:title>Sportswear logo and artwork file preparation with placement color method and approval records</image:title>
     </image:image>
-    <lastmod>2026-08-12</lastmod>
+    <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.79</priority>
   </url>
@@ -258,7 +258,7 @@
       <image:loc>https://glorystarwears.com/assets/images/production-process-sample-room.jpg</image:loc>
       <image:title>Sportswear sample approval with measurements materials artwork labels and packing references</image:title>
     </image:image>
-    <lastmod>2026-08-10</lastmod>
+    <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.79</priority>
   </url>
@@ -1806,7 +1806,7 @@
       <image:loc>https://glorystarwears.com/assets/images/private-label-trims-customization.jpg</image:loc>
       <image:title>OEM and ODM sportswear design development</image:title>
     </image:image>
-    <lastmod>2026-08-12</lastmod>
+    <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1836,7 +1836,7 @@
       <image:loc>https://glorystarwears.com/assets/images/quality-inspection-workflow.jpg</image:loc>
       <image:title>Custom sportswear quality control inspection</image:title>
     </image:image>
-    <lastmod>2026-08-10</lastmod>
+    <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -1940,9 +1940,19 @@
       <image:loc>https://glorystarwears.com/assets/images/custom-sportswear-consultation.jpg</image:loc>
       <image:title>Sportswear manufacturing blog for product development and quality decisions</image:title>
     </image:image>
-    <lastmod>2026-08-12</lastmod>
+    <lastmod>2026-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/blog/apparel-print-wash-test-logo-durability.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/quality-control.jpg</image:loc>
+      <image:title>Apparel print transfer badge and logo wash testing before bulk production</image:title>
+    </image:image>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.76</priority>
   </url>
   <url>
     <loc>https://glorystarwears.com/blog/clothing-sample-rounds-before-bulk-production.html</loc>

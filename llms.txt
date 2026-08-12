@@ -57,6 +57,8 @@ Last updated: 2026-08-12
 - [Sportswear manufacturing blog](https://glorystarwears.com/blog/)
 - [Blog RSS feed](https://glorystarwears.com/blog/feed.xml)
 - [Editorial and product-testing policy](https://glorystarwears.com/editorial-policy.html)
+- [Apparel print, transfer, badge, and logo wash-test workflow](https://glorystarwears.com/blog/apparel-print-wash-test-logo-durability.html)
+- [Apparel print wash-test register (CSV)](https://glorystarwears.com/assets/downloads/apparel-print-wash-test-register.csv)
 - [U.S. private-label clothing label requirements and factory handoff](https://glorystarwears.com/blog/us-clothing-label-requirements-private-label.html)
 - [U.S. clothing label handoff checklist (CSV)](https://glorystarwears.com/assets/downloads/us-clothing-label-handoff-checklist.csv)
 - [Sportswear sublimation color matching and bulk approval workflow](https://glorystarwears.com/blog/sportswear-sublimation-color-matching-guide.html)

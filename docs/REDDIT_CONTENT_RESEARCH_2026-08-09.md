@@ -375,3 +375,30 @@ Content decision:
 Separation rule: the new article owns delivery-term and landed-cost boundaries. The cost-and-lead-time resource owns full supplier-quote normalization across the garment, material, sample, packaging, minimum, schedule, and commercial scope. The one-stop page owns operational coordination. The quote checklist owns inquiry inputs.
 
 Editorial safeguard: Reddit documents question language only and does not prove fraud, smuggling, lawful clearance, platform protection, a preferred rule, or a project-specific cost. The article does not calculate duty or tax, select the buyer's Incoterm, determine importer eligibility, replace the full ICC rules, or provide legal, tax, accounting, brokerage, or customs advice. Qualified owners and current destination-specific sources still control the shipment.
+
+## Round 15 research update — 2026-08-13
+
+### Apparel print wash testing: specimen identity, care protocol, defect evidence, and release scope
+
+Recent apparel-decoration and jersey discussions repeatedly describe cracking, peeling, or edge lift without a controlled record connecting the garment and decoration to the care route:
+
+- [Advice needed on early cracking after 3 washes](https://www.reddit.com/r/SCREENPRINTING/comments/1vg57hm/advice_needed_on_early_cracking_after_3_washes/) (August 5, 2026; 14 post votes when researched) reports a plastisol print cracking on a heavy shirt after three washes and raises garment weight, ink build, cure evidence, wash route, and controlled sample comparison.
+- [Washing machine destroyed my beautiful jersey](https://www.reddit.com/r/SoccerJerseys/comments/1v8n6gr/washing_machine_destroyed_my_beautiful_jersey/) (July 28, 2026; 110 post votes when researched) reports patches and prints peeling during a heated care experience and shows why washing, drying, orientation, garment identity, and label instructions must be recorded together.
+- [USMNT peeling name](https://www.reddit.com/r/SoccerJerseys/comments/1uvfvou/usmnt_peeling_name/) (July 13, 2026; 275 post votes when researched) reports a name set lifting before washing, supporting baseline inspection and attachment evidence rather than assuming every failure starts in laundering.
+
+Authoritative sources checked:
+
+- [ISO 6330:2021](https://www.iso.org/standard/75934.html) for defined domestic washing and drying procedures, washer types, reference detergents, ballast, and drying routes used in textile testing.
+- [ISO 15487:2018](https://www.iso.org/standard/67602.html) for assessing apparel appearance after one or several domestic washing and drying treatments.
+- [ASTM D3938-18(2023)](https://store.astm.org/d3938-18r23.html) for determining or confirming care instructions, plus the [AATCC standards directory](https://www.aatcc.org/testing/standards) for relevant care, appearance, and colorfastness methods.
+- [FTC Care Labeling Rule guide](https://www.ftc.gov/business-guidance/resources/clothes-captioning-complying-care-labeling-rule) for the U.S.-specific reasonable-basis principle and its whole-garment/component evidence boundary.
+
+Content decision:
+
+- Publish `/blog/apparel-print-wash-test-logo-durability.html` to own specimen and decoration identity, production route, care protocol, cycle gates, inspection condition, defect mapping, criteria, evidence, containment, corrective action, retest, and release scope.
+- Add `/assets/downloads/apparel-print-wash-test-register.csv` as the controlled 59-field record.
+- Add descriptive internal links from `/customization.html`, `/resources/sportswear-logo-artwork-preparation-guide.html`, `/resources/sportswear-sample-approval-checklist.html`, `/quality.html`, and the blog hub.
+
+Separation rule: `/customization.html` owns decoration-method selection. The artwork guide owns source files, rights, dimensions, placement, and production handoff. The sample guide owns whole-garment sample approval. `/quality.html` owns the factory QC workflow. The new article owns decoration durability evidence through controlled care and the scope of the release decision.
+
+Editorial safeguard: Reddit supplies recurring question language only. The article does not diagnose a post, prescribe one wash count or method, guarantee product life, decide a consumer remedy, or infer full-lot scope from one specimen. Qualified protocol owners, current market rules, controlled samples, process records, agreed criteria, and authorized decisions control the project.

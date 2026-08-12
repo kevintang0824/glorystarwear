@@ -58,6 +58,7 @@ PRIORITY_LCP_PAGES = {
     "resources/sportswear-aql-inspection-checklist.html",
     "resources/teamwear-roster-packing-guide.html",
     "blog/index.html",
+    "blog/apparel-print-wash-test-logo-durability.html",
     "blog/apparel-incoterms-exw-fob-ddp-landed-cost.html",
     "blog/sportswear-sublimation-color-matching-guide.html",
     "blog/volleyball-uniform-rules-checklist.html",
@@ -361,10 +362,11 @@ def main():
                 "volleyball-uniform-rules-checklist.html": "volleyball-rules article link",
                 "us-clothing-label-requirements-private-label.html": "U.S. clothing-label article link",
                 "sportswear-sublimation-color-matching-guide.html": "sublimation-color article link",
+                "apparel-print-wash-test-logo-durability.html": "decoration wash-test article link",
                 "feed.xml": "RSS feed discovery link",
                 "editorial-policy.html": "editorial policy link",
                 '"@type":"Blog"': "blog structured data",
-                '"dateModified":"2026-08-12"': "current blog modification date",
+                '"dateModified":"2026-08-13"': "current blog modification date",
             }
             for marker, label in required_blog_markers.items():
                 if marker not in source:
@@ -387,6 +389,27 @@ def main():
                 '"@type":"FAQPage"': "sublimation color FAQ schema",
             }
             for marker, label in required_sublimation_color_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "blog/apparel-print-wash-test-logo-durability.html":
+            required_print_wash_markers = {
+                "apparel-print-wash-test-register.csv": "print wash-test register link",
+                'data-resource-download="apparel-print-wash-test-register"': "print wash-test download tracking",
+                '"@type":"BlogPosting"': "blog posting structured data",
+                '"@type":"DigitalDocument"': "print wash-test document schema",
+                '"isAccessibleForFree":true': "free print wash-test register disclosure",
+                '"dateModified":"2026-08-13"': "current print wash-test modification date",
+                "There is no responsible universal promise": "visible universal wash-count limitation",
+                "Reddit identifies the durability question; standards define repeatable evidence": "source-method disclosure",
+                "iso.org/standard/75934.html": "ISO domestic washing and drying source",
+                "iso.org/standard/67602.html": "ISO apparel appearance source",
+                "store.astm.org/d3938-18r23.html": "ASTM care instruction source",
+                "aatcc.org/testing/standards": "AATCC method directory source",
+                "ftc.gov/business-guidance/resources/clothes-captioning": "FTC care-label evidence source",
+                '"@type":"FAQPage"': "print wash-test FAQ schema",
+            }
+            for marker, label in required_print_wash_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 
@@ -723,8 +746,9 @@ def main():
                 'data-resource-download="sportswear-artwork-approval-register"': "artwork download tracking",
                 '"@type":"DigitalDocument"': "artwork document schema",
                 '"isAccessibleForFree":true': "free artwork register disclosure in schema",
-                '"dateModified":"2026-08-12"': "current artwork guide modification date",
+                '"dateModified":"2026-08-13"': "current artwork guide modification date",
                 "sportswear-sublimation-color-matching-guide.html": "sublimation-color article link",
+                "apparel-print-wash-test-logo-durability.html": "decoration wash-test article link",
                 "rights confirmation": "artwork rights field disclosure",
                 "adobe.com/creativecloud/file-types/image/comparison/raster-vs-vector.html": "authoritative vector and raster reference",
             }
@@ -745,8 +769,10 @@ def main():
         if relative_name == "customization.html":
             required_customization_markers = {
                 "sportswear-sublimation-color-matching-guide.html": "sublimation-color article link",
-                '"dateModified": "2026-08-12"': "current customization modification date",
+                '"dateModified": "2026-08-13"': "current customization modification date",
                 "Sublimation Color Approval": "sublimation color workflow card",
+                "Decoration Wash Testing": "decoration wash-test workflow card",
+                "apparel-print-wash-test-logo-durability.html": "decoration wash-test article link",
             }
             for marker, label in required_customization_markers.items():
                 if marker not in source:

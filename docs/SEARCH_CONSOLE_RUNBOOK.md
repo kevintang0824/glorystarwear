@@ -59,6 +59,7 @@ Inspect these URLs after the first verified deployment and after a significant t
 34. `https://glorystarwears.com/blog/us-clothing-label-requirements-private-label.html`
 35. `https://glorystarwears.com/blog/sportswear-sublimation-color-matching-guide.html`
 36. `https://glorystarwears.com/blog/apparel-incoterms-exw-fob-ddp-landed-cost.html`
+37. `https://glorystarwears.com/blog/apparel-print-wash-test-logo-durability.html`
 
 For each URL, record:
 
