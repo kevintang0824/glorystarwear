@@ -57,6 +57,7 @@ Inspect these URLs after the first verified deployment and after a significant t
 32. `https://glorystarwears.com/products/volleyball-teamwear.html`
 33. `https://glorystarwears.com/products/volleyball-uniforms.html`
 34. `https://glorystarwears.com/blog/us-clothing-label-requirements-private-label.html`
+35. `https://glorystarwears.com/blog/sportswear-sublimation-color-matching-guide.html`
 
 For each URL, record:
 

@@ -319,3 +319,31 @@ Content decision:
 Separation rule: the article owns the FTC-sourced U.S. baseline and factory handoff. `/certificates.html` owns the full product-and-market compliance evidence matrix. The packaging resource owns all label, barcode, pack, carton, and shipment components. The tech-pack page owns the complete garment specification. Commercial pages own manufacturing and component sourcing.
 
 Editorial safeguard: Reddit establishes demand language only. It does not establish law, product scope, origin, RN validity, care substantiation, placement, or compliance. The article explicitly excludes universal-compliance, legal-advice, certification, testing, factory, certificate, and customer-result claims and directs readers to current FTC guidance and qualified product-specific review.
+
+## Round 13 research update — 2026-08-12
+
+### Sportswear sublimation color: screen preview, physical target, output condition, fabric, and bulk approval
+
+Recent print and sublimation discussions repeatedly expose the gap between an on-screen color, a proof or code, a pressed sample, and the final textile result:
+
+- [Color is different from the proof](https://www.reddit.com/r/SCREENPRINTING/comments/1rz2vip/color_is_different_from_the_proof_should_i_be/) (March 20, 2026; 27 post votes when researched) asks whether a significant shirt-print shift is expected and raises the difference between a screen proof, a stated color reference, ink route, garment background, and physical comparison.
+- [Colors pressing different](https://www.reddit.com/r/SublimationPrinting/comments/1sf5fbh/colors_pressing_different/) (April 7, 2026) describes pinks shifting after transfer and discussion of profiles, inks, press settings, substrate instructions, and recorded production settings.
+- [It's impossible to color match?](https://www.reddit.com/r/SCREENPRINTING/comments/1ufgrwh/its_impossible_to_color_match/) (June 25, 2026; 8 post votes when researched) highlights that different screens show the same numeric input differently and that ink, substrate, reference system, mixing route, and physical samples remain relevant.
+- [Looking to talk with small sublimation sellers about color calibration](https://www.reddit.com/r/SublimationPrinting/comments/1v5084z/looking_to_talk_with_a_few_small_sublimation/) (July 24, 2026) discusses output gamut, profiles, translucent dyes, fabric base color, direct sublimation, and the limitation of expecting screen-perfect output.
+
+Authoritative sources checked:
+
+- [International Color Consortium profile specification background](https://www.color.org/profile.xalter) for the role of device profiles in connecting native device spaces to a device-independent profile connection space.
+- [ICC guidance on creating device profiles](https://www.color.org/creatingprofiles.xalter) for measured device output, test targets, instruments, and profile generation.
+- [Adobe soft-proofing guidance](https://helpx.adobe.com/photoshop/using/proofing-colors.html) for profile-based screen simulation and its dependence on monitor quality, device profiles, and ambient lighting.
+- [ISO 105-J03:2009 abstract](https://www.iso.org/standard/51385.html) for calculating color difference between specimens of the same material measured under the same conditions and setting an end-use-dependent maximum tolerance.
+
+Content decision:
+
+- Publish `/blog/sportswear-sublimation-color-matching-guide.html` to own the target-to-output workflow: target identity, source file and profile, output system and profile, ink or dye, transfer medium, production fabric and lot, process conditions, physical strike-off, viewing or measurement method, formula and tolerance where applicable, approval, issue, evidence, bulk continuity, and release.
+- Add `/assets/downloads/sublimation-color-approval-register.csv` as the controlled 47-field record.
+- Add descriptive internal links from `/products/custom-sublimated-teamwear.html`, `/customization.html`, `/resources/sportswear-logo-artwork-preparation-guide.html`, and the blog hub.
+
+Separation rule: the commercial teamwear page owns products, sport routes, roster inputs, fabrics, packing, and supplier inquiry. The customization page owns decoration-method selection. The artwork resource owns file preparation, rights, dimensions, placement, and artwork release. The new blog owns sublimation color evidence and approval. The sample-to-bulk article owns continuity for the whole garment and production order.
+
+Editorial safeguard: Reddit provides demand language only. The article does not diagnose a post, recommend one profile or press setting, promise Pantone or screen-perfect reproduction, set a universal Delta E tolerance, equate a numeric pass with customer acceptance, or infer supplier fault. Current artwork, production condition, fabric, physical specimens, qualified methods, agreed limits, and authorized decision owners control the project.

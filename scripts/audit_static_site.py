@@ -58,6 +58,7 @@ PRIORITY_LCP_PAGES = {
     "resources/sportswear-aql-inspection-checklist.html",
     "resources/teamwear-roster-packing-guide.html",
     "blog/index.html",
+    "blog/sportswear-sublimation-color-matching-guide.html",
     "blog/volleyball-uniform-rules-checklist.html",
     "blog/us-clothing-label-requirements-private-label.html",
     "blog/clothing-sample-to-bulk-quality-control.html",
@@ -358,12 +359,33 @@ def main():
                 "clothing-sample-to-bulk-quality-control.html": "sample-to-bulk article link",
                 "volleyball-uniform-rules-checklist.html": "volleyball-rules article link",
                 "us-clothing-label-requirements-private-label.html": "U.S. clothing-label article link",
+                "sportswear-sublimation-color-matching-guide.html": "sublimation-color article link",
                 "feed.xml": "RSS feed discovery link",
                 "editorial-policy.html": "editorial policy link",
                 '"@type":"Blog"': "blog structured data",
                 '"dateModified":"2026-08-12"': "current blog modification date",
             }
             for marker, label in required_blog_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "blog/sportswear-sublimation-color-matching-guide.html":
+            required_sublimation_color_markers = {
+                "sublimation-color-approval-register.csv": "sublimation color register link",
+                'data-resource-download="sublimation-color-approval-register"': "sublimation color download tracking",
+                '"@type":"BlogPosting"': "blog posting structured data",
+                '"@type":"DigitalDocument"': "sublimation color document schema",
+                '"isAccessibleForFree":true': "free sublimation register disclosure",
+                "A HEX, RGB, CMYK, named color code": "visible exact-match limitation",
+                "Reddit identifies the recurring problem; color standards shape the control method": "source-method disclosure",
+                "color.org/profile.xalter": "ICC profile source",
+                "color.org/creatingprofiles.xalter": "ICC profiling source",
+                "helpx.adobe.com/photoshop/using/proofing-colors.html": "Adobe soft-proof source",
+                "iso.org/standard/51385.html": "ISO color-difference source",
+                "There is no responsible universal value": "visible tolerance limitation",
+                '"@type":"FAQPage"': "sublimation color FAQ schema",
+            }
+            for marker, label in required_sublimation_color_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 
@@ -700,11 +722,32 @@ def main():
                 'data-resource-download="sportswear-artwork-approval-register"': "artwork download tracking",
                 '"@type":"DigitalDocument"': "artwork document schema",
                 '"isAccessibleForFree":true': "free artwork register disclosure in schema",
-                '"dateModified":"2026-08-01"': "current artwork guide modification date",
+                '"dateModified":"2026-08-12"': "current artwork guide modification date",
+                "sportswear-sublimation-color-matching-guide.html": "sublimation-color article link",
                 "rights confirmation": "artwork rights field disclosure",
                 "adobe.com/creativecloud/file-types/image/comparison/raster-vs-vector.html": "authoritative vector and raster reference",
             }
             for marker, label in required_artwork_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "products/custom-sublimated-teamwear.html":
+            required_sublimated_teamwear_markers = {
+                "sportswear-sublimation-color-matching-guide.html": "sublimation-color article link",
+                '"dateModified":"2026-08-12"': "current sublimated teamwear modification date",
+                "color code or screen mockup is an input": "visible physical color approval boundary",
+            }
+            for marker, label in required_sublimated_teamwear_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "customization.html":
+            required_customization_markers = {
+                "sportswear-sublimation-color-matching-guide.html": "sublimation-color article link",
+                '"dateModified": "2026-08-12"': "current customization modification date",
+                "Sublimation Color Approval": "sublimation color workflow card",
+            }
+            for marker, label in required_customization_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 
