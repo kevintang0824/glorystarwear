@@ -58,6 +58,7 @@ PRIORITY_LCP_PAGES = {
     "resources/sportswear-aql-inspection-checklist.html",
     "resources/teamwear-roster-packing-guide.html",
     "blog/index.html",
+    "blog/apparel-incoterms-exw-fob-ddp-landed-cost.html",
     "blog/sportswear-sublimation-color-matching-guide.html",
     "blog/volleyball-uniform-rules-checklist.html",
     "blog/us-clothing-label-requirements-private-label.html",
@@ -804,11 +805,30 @@ def main():
                 'data-resource-download="sportswear-supplier-quote-comparison"': "quote comparison download tracking",
                 '"@type":"DigitalDocument"': "quote comparison document schema",
                 '"isAccessibleForFree":true': "free quote comparison disclosure in schema",
-                '"dateModified":"2026-08-02"': "current cost and lead-time modification date",
+                '"dateModified":"2026-08-12"': "current cost and lead-time modification date",
                 "This worksheet does not calculate or guarantee price": "visible quote worksheet scope disclosure",
                 "Ask on WhatsApp": "direct WhatsApp inquiry route",
+                "apparel-incoterms-exw-fob-ddp-landed-cost.html": "apparel delivery-term comparison handoff",
             }
             for marker, label in required_quote_comparison_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "blog/apparel-incoterms-exw-fob-ddp-landed-cost.html":
+            required_incoterm_markers = {
+                "apparel-incoterm-landed-cost-register.csv": "apparel Incoterm register link",
+                'data-resource-download="apparel-incoterm-landed-cost-register"': "Incoterm register download tracking",
+                '"@type":"DigitalDocument"': "Incoterm register document schema",
+                '"isAccessibleForFree":true': "free Incoterm register disclosure in schema",
+                '"dateModified":"2026-08-12"': "current apparel Incoterms modification date",
+                "This register does not select a rule": "visible Incoterm worksheet limitation",
+                "academy.iccwbo.org/incoterms/article/incoterms-2020-exw-or-ddp": "ICC EXW and DDP source",
+                "academy.iccwbo.org/incoterms/article/incoterms-2020-fca-or-fob": "ICC FCA and FOB source",
+                "academy.iccwbo.org/incoterms/article/incoterms-2020-dap-or-ddp": "ICC DAP and DDP source",
+                "www.help.cbp.gov/s/article/Article-1066": "authoritative U.S. importer reference",
+                "Reddit exposes recurring buyer confusion": "visible Reddit evidence boundary",
+            }
+            for marker, label in required_incoterm_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 

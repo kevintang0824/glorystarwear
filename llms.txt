@@ -61,6 +61,8 @@ Last updated: 2026-08-12
 - [U.S. clothing label handoff checklist (CSV)](https://glorystarwears.com/assets/downloads/us-clothing-label-handoff-checklist.csv)
 - [Sportswear sublimation color matching and bulk approval workflow](https://glorystarwears.com/blog/sportswear-sublimation-color-matching-guide.html)
 - [Sublimation color approval register (CSV)](https://glorystarwears.com/assets/downloads/sublimation-color-approval-register.csv)
+- [Apparel Incoterms and landed-cost comparison workflow](https://glorystarwears.com/blog/apparel-incoterms-exw-fob-ddp-landed-cost.html)
+- [Apparel Incoterm and landed-cost register (CSV)](https://glorystarwears.com/assets/downloads/apparel-incoterm-landed-cost-register.csv)
 - [Volleyball uniform rules, libero, number, and approval checklist](https://glorystarwears.com/blog/volleyball-uniform-rules-checklist.html)
 - [Volleyball uniform ruleset approval checklist (CSV)](https://glorystarwears.com/assets/downloads/volleyball-uniform-ruleset-approval-checklist.csv)
 - [Clothing sample-to-bulk quality control and production-drift response](https://glorystarwears.com/blog/clothing-sample-to-bulk-quality-control.html)

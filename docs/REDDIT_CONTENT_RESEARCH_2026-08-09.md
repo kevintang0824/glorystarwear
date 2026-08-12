@@ -347,3 +347,31 @@ Content decision:
 Separation rule: the commercial teamwear page owns products, sport routes, roster inputs, fabrics, packing, and supplier inquiry. The customization page owns decoration-method selection. The artwork resource owns file preparation, rights, dimensions, placement, and artwork release. The new blog owns sublimation color evidence and approval. The sample-to-bulk article owns continuity for the whole garment and production order.
 
 Editorial safeguard: Reddit provides demand language only. The article does not diagnose a post, recommend one profile or press setting, promise Pantone or screen-perfect reproduction, set a universal Delta E tolerance, equate a numeric pass with customer acceptance, or infer supplier fault. Current artwork, production condition, fabric, physical specimens, qualified methods, agreed limits, and authorized decision owners control the project.
+
+## Round 14 research update — 2026-08-12
+
+### Apparel Incoterms: delivery point, customs roles, documents, risk, and landed cost
+
+Recent sourcing discussions repeatedly expose a gap between the three-letter term shown in a message and the route the buyer is actually purchasing:
+
+- [First-time buyer: proforma invoice says DDP while the platform order says EXW to a Chinese address](https://www.reddit.com/r/Alibaba/comments/1udi4p4/firsttime_buyer_is_this_a_scam_supplier_says_ship/) (June 23, 2026) asks which term and destination control platform protection, customs, and final delivery.
+- [Importing from China to the UK: is the DDP price reasonable?](https://www.reddit.com/r/AlibabaImport/comments/1oax4ws/importing_goods_from_china_to_the_uk_ddp_price/) (October 19, 2025) asks whether the quoted route is a complete landed cost and who handles duties, tax, and risk.
+- [First Alibaba DDP order dispute and document post-mortem](https://www.reddit.com/r/Alibaba/comments/1v82wms/my_first_alibaba_order_steel_screw_piles_ddp_to/) (July 27, 2026) documents buyer concerns about transport-document identity, importer visibility, clearance records, and accounting evidence.
+
+Authoritative sources checked:
+
+- [ICC Academy comparison of EXW and DDP](https://academy.iccwbo.org/incoterms/article/incoterms-2020-exw-or-ddp/) for delivery, export and import formalities, risk, precise named places, and the FCA/DAP alternatives where the edge rules are impractical.
+- [ICC Academy comparison of FCA and FOB](https://academy.iccwbo.org/incoterms/article/incoterms-2020-fca-or-fob/) for transport-mode scope, export clearance, carrier handoff, and the use of FOB only for sea or inland-waterway port-to-port movements.
+- [ICC Academy comparison of DAP and DDP](https://academy.iccwbo.org/incoterms/article/incoterms-2020-dap-or-ddp/) for the import-clearance distinction and destination delivery boundary.
+- [ICC explanation of what Incoterms do not cover](https://academy.iccwbo.org/incoterms/article/incoterms-2020-new-rules-old-problems/) for title, payment, quality, governing law, and dispute terms that still belong in the sales contract.
+- [U.S. CBP importer-number guidance](https://www.help.cbp.gov/s/article/Article-1066?language=en_US) and [customs-broker guidance](https://www.help.cbp.gov/s/article/Article-1169?language=en_US) for U.S.-specific importer and broker context; other destinations need their own current official sources.
+
+Content decision:
+
+- Publish `/blog/apparel-incoterms-exw-fob-ddp-landed-cost.html` to own the rule and version, exact delivery point, transport scope, risk handoff, export and import roles, importer, documents, evidence, contract mismatch, and landed-cost stack.
+- Add `/assets/downloads/apparel-incoterm-landed-cost-register.csv` as the controlled 59-field comparison record.
+- Add descriptive internal links from `/resources/custom-sportswear-cost-lead-time.html`, `/one-stop-service.html`, `/quote-checklist.html`, and the blog hub.
+
+Separation rule: the new article owns delivery-term and landed-cost boundaries. The cost-and-lead-time resource owns full supplier-quote normalization across the garment, material, sample, packaging, minimum, schedule, and commercial scope. The one-stop page owns operational coordination. The quote checklist owns inquiry inputs.
+
+Editorial safeguard: Reddit documents question language only and does not prove fraud, smuggling, lawful clearance, platform protection, a preferred rule, or a project-specific cost. The article does not calculate duty or tax, select the buyer's Incoterm, determine importer eligibility, replace the full ICC rules, or provide legal, tax, accounting, brokerage, or customs advice. Qualified owners and current destination-specific sources still control the shipment.

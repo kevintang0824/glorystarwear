@@ -85,6 +85,7 @@ Keep these files and folders together in the GitHub repository:
 - `resources/activewear-size-grading-guide.html`: base-size fit, grade rules, tolerances, inclusive ranges, and size-set approval guide.
 - `resources/teamwear-roster-packing-guide.html`: player data, personalization, roster revisions, individual packs, and carton sorting guide.
 - `blog/index.html`: discussion-led sportswear manufacturing article hub.
+- `blog/apparel-incoterms-exw-fob-ddp-landed-cost.html`: ICC-grounded EXW, FCA, FOB, DAP, and DDP delivery-point, customs-role, document, risk, and landed-cost comparison guide with a free CSV register.
 - `blog/sportswear-sublimation-color-matching-guide.html`: source-profile, output-condition, production-fabric, strike-off, comparison, tolerance, approval, and bulk color-control article with a free CSV register.
 - `blog/us-clothing-label-requirements-private-label.html`: FTC-sourced U.S. private-label apparel fiber, origin, business-identity/RN, care-evidence, artwork, placement, sample, SKU, and release guide with a free CSV checklist.
 - `blog/volleyball-uniform-rules-checklist.html`: current-competition ruleset, libero, number, mark, garment, evidence, authority, issue, and release workflow with a free CSV checklist.
