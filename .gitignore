@@ -11,5 +11,7 @@ build/
 .wrangler/
 .netlify/
 .local-backups/
+/.tmp-odor-register/
+/outputs/
 assets/images/gym-tshirts-tank-tops-manufacturer-detail.png
 assets/images/training-shorts-joggers-manufacturer-detail.png

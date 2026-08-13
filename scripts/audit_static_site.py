@@ -58,6 +58,7 @@ PRIORITY_LCP_PAGES = {
     "resources/sportswear-aql-inspection-checklist.html",
     "resources/teamwear-roster-packing-guide.html",
     "blog/index.html",
+    "blog/activewear-odor-resistance-antibacterial-test.html",
     "blog/moisture-wicking-quick-dry-activewear-test.html",
     "blog/apparel-print-wash-test-logo-durability.html",
     "blog/apparel-incoterms-exw-fob-ddp-landed-cost.html",
@@ -351,6 +352,7 @@ def main():
 
         if relative_name == "blog/index.html":
             required_blog_markers = {
+                "activewear-odor-resistance-antibacterial-test.html": "odor-control claim-test article link",
                 "moisture-wicking-quick-dry-activewear-test.html": "moisture-management article link",
                 "clothing-sample-rounds-before-bulk-production.html": "sample-round article link",
                 "activewear-leggings-quality-testing.html": "leggings-test article link",
@@ -371,6 +373,27 @@ def main():
                 '"dateModified":"2026-08-13"': "current blog modification date",
             }
             for marker, label in required_blog_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "blog/activewear-odor-resistance-antibacterial-test.html":
+            required_odor_markers = {
+                "activewear-odor-control-claim-test-register.csv": "odor-control claim register link",
+                'data-resource-download="activewear-odor-control-claim-test-register"': "odor register download tracking",
+                '"@type":"BlogPosting"': "odor article BlogPosting schema",
+                '"@type":"DigitalDocument"': "odor register document schema",
+                '"isAccessibleForFree":true': "free odor register disclosure",
+                '"dateModified":"2026-08-13"': "current odor article modification date",
+                "An antibacterial result does not automatically prove": "visible claim-mechanism limitation",
+                "Reddit identifies odor-return language; standards and regulators define evidence limits": "source-method disclosure",
+                "members.aatcc.org/store/tm211": "AATCC bacterial-odor source",
+                "members.aatcc.org/store/tm216": "AATCC odor-adsorbency source",
+                "epa.gov/pesticide-registration/prn-2000-1": "EPA treated-article source",
+                "epa.gov/safepestcontrol/consumer-products-treated-pesticides": "EPA consumer treated-product source",
+                "ftc.gov/business-guidance/resources/advertising-faqs": "FTC claim-substantiation source",
+                '"@type":"FAQPage"': "odor and antibacterial FAQ schema",
+            }
+            for marker, label in required_odor_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 

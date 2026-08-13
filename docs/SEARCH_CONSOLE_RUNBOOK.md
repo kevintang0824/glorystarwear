@@ -1,6 +1,6 @@
 # GloryStarWear Search Console Runbook
 
-Updated: 2026-08-12
+Updated: 2026-08-13
 
 ## Purpose
 
@@ -61,6 +61,7 @@ Inspect these URLs after the first verified deployment and after a significant t
 36. `https://glorystarwears.com/blog/apparel-incoterms-exw-fob-ddp-landed-cost.html`
 37. `https://glorystarwears.com/blog/apparel-print-wash-test-logo-durability.html`
 38. `https://glorystarwears.com/blog/moisture-wicking-quick-dry-activewear-test.html`
+39. `https://glorystarwears.com/blog/activewear-odor-resistance-antibacterial-test.html`
 
 For each URL, record:
 

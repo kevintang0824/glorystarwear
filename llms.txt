@@ -57,6 +57,8 @@ Last updated: 2026-08-12
 - [Sportswear manufacturing blog](https://glorystarwears.com/blog/)
 - [Blog RSS feed](https://glorystarwears.com/blog/feed.xml)
 - [Editorial and product-testing policy](https://glorystarwears.com/editorial-policy.html)
+- [Activewear odor-resistance, odor rebloom, and antibacterial claim test workflow](https://glorystarwears.com/blog/activewear-odor-resistance-antibacterial-test.html)
+- [Activewear odor-control claim-test register (CSV)](https://glorystarwears.com/assets/downloads/activewear-odor-control-claim-test-register.csv)
 - [Moisture-wicking, quick-dry, sweat-visibility, and activewear claim test workflow](https://glorystarwears.com/blog/moisture-wicking-quick-dry-activewear-test.html)
 - [Activewear moisture-management test register (CSV)](https://glorystarwears.com/assets/downloads/activewear-moisture-management-test-register.csv)
 - [Apparel print, transfer, badge, and logo wash-test workflow](https://glorystarwears.com/blog/apparel-print-wash-test-logo-durability.html)
