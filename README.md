@@ -85,6 +85,7 @@ Keep these files and folders together in the GitHub repository:
 - `resources/activewear-size-grading-guide.html`: base-size fit, grade rules, tolerances, inclusive ranges, and size-set approval guide.
 - `resources/teamwear-roster-packing-guide.html`: player data, personalization, roster revisions, individual packs, and carton sorting guide.
 - `blog/index.html`: discussion-led sportswear manufacturing article hub.
+- `blog/moisture-wicking-quick-dry-activewear-test.html`: liquid-transport, wicking, drying, sweat-visibility, wet-cling, garment-wear, claim-evidence, and production-scope article with a free 67-field CSV register.
 - `blog/apparel-print-wash-test-logo-durability.html`: print, heat-transfer, DTF, patch, badge, label, and embroidery wash-test planning article with a free CSV register for care cycles, defect evidence, corrective action, and release scope.
 - `blog/apparel-incoterms-exw-fob-ddp-landed-cost.html`: ICC-grounded EXW, FCA, FOB, DAP, and DDP delivery-point, customs-role, document, risk, and landed-cost comparison guide with a free CSV register.
 - `blog/sportswear-sublimation-color-matching-guide.html`: source-profile, output-condition, production-fabric, strike-off, comparison, tolerance, approval, and bulk color-control article with a free CSV register.

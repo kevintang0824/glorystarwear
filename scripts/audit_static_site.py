@@ -58,6 +58,7 @@ PRIORITY_LCP_PAGES = {
     "resources/sportswear-aql-inspection-checklist.html",
     "resources/teamwear-roster-packing-guide.html",
     "blog/index.html",
+    "blog/moisture-wicking-quick-dry-activewear-test.html",
     "blog/apparel-print-wash-test-logo-durability.html",
     "blog/apparel-incoterms-exw-fob-ddp-landed-cost.html",
     "blog/sportswear-sublimation-color-matching-guide.html",
@@ -350,6 +351,7 @@ def main():
 
         if relative_name == "blog/index.html":
             required_blog_markers = {
+                "moisture-wicking-quick-dry-activewear-test.html": "moisture-management article link",
                 "clothing-sample-rounds-before-bulk-production.html": "sample-round article link",
                 "activewear-leggings-quality-testing.html": "leggings-test article link",
                 "running-shorts-chafing-ride-up-test.html": "running-shorts article link",
@@ -369,6 +371,29 @@ def main():
                 '"dateModified":"2026-08-13"': "current blog modification date",
             }
             for marker, label in required_blog_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "blog/moisture-wicking-quick-dry-activewear-test.html":
+            required_moisture_markers = {
+                "activewear-moisture-management-test-register.csv": "moisture-management register link",
+                'data-resource-download="activewear-moisture-management-test-register"': "moisture register download tracking",
+                '"@type":"BlogPosting"': "blog posting structured data",
+                '"@type":"DigitalDocument"': "moisture register document schema",
+                '"isAccessibleForFree":true': "free moisture register disclosure",
+                '"dateModified":"2026-08-13"': "current moisture article modification date",
+                "No single moisture test proves": "visible universal performance limitation",
+                "Reddit identifies the wearer problem; textile methods define measurable properties": "source-method disclosure",
+                "aatcc.org/testing/standards": "AATCC method directory source",
+                "members.aatcc.org/store/tm195": "AATCC liquid moisture source",
+                "aatcc-2022-mid-year-standards-supplement": "AATCC vertical wicking source",
+                "members.aatcc.org/store/tm199": "AATCC drying time source",
+                "members.aatcc.org/store/tm200": "AATCC drying rate source",
+                "store.astm.org/d1776_d1776m-20r24.html": "ASTM conditioning source",
+                "ftc.gov/business-guidance/resources/advertising-faqs": "FTC claim substantiation source",
+                '"@type":"FAQPage"': "moisture-management FAQ schema",
+            }
+            for marker, label in required_moisture_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 

@@ -1,6 +1,6 @@
 # GloryStarWear Search Intent Map
 
-Last updated: 2026-08-12
+Last updated: 2026-08-13
 
 ## Page Ownership Rule
 
@@ -81,6 +81,7 @@ Last updated: 2026-08-12
 | URL | Primary question owned by the article | Separation rule |
 | --- | --- | --- |
 | `/blog/` | Which current sportswear manufacturing and product-testing questions have decision-led answers? | Discovery hub only; it does not own an individual product or sourcing query. |
+| `/blog/moisture-wicking-quick-dry-activewear-test.html` | How should an activewear brand validate moisture-wicking, quick-dry, sweat-visibility, wet-cling, and related performance claims before bulk release? | Owns claim wording, liquid transport, vertical wicking, drying, color-by-fabric sweat visibility, wet cling, garment wear trials, conditioning, prewash, criteria, evidence limitations, and released claim scope. `/fabrics.html` owns broad material routes; the activewear fabric guide owns full material specification; leggings and running-shorts articles own product-specific validation; gym and running-top pages own commercial sourcing. |
 | `/blog/apparel-print-wash-test-logo-durability.html` | How should a clothing brand wash-test screen print, heat transfer, DTF, patches, badges, labels, and embroidery before bulk production? | Owns garment and decoration identity, production route, care protocol, cycle and inspection gates, defect evidence, acceptance criteria, containment, corrective action, retest, and release scope. The customization page owns method selection; the artwork resource owns source files and placement; the sample resource owns whole-garment approval; the quality page owns factory QC. |
 | `/blog/sportswear-sublimation-color-matching-guide.html` | How should a buyer control sublimated sportswear color from a screen or color reference through physical approval and bulk production? | Owns target identity, source profile, output setup, ink or dye, transfer medium, production fabric, process conditions, strike-off, comparison method, tolerance, approval evidence, and bulk-lot continuity. The artwork resource owns source files and placement; the customization page owns method selection; the teamwear page owns commercial sourcing; the sample-to-bulk article owns whole-garment production drift. |
 | `/blog/apparel-incoterms-exw-fob-ddp-landed-cost.html` | How should an apparel buyer compare EXW, FCA, FOB, DAP, and DDP and expose the real landed-cost boundary? | Owns rule and version, transport-mode fit, exact named delivery point, risk handoff, seller and buyer transport scope, export and import roles, importer, broker and document evidence, cost-stack exclusions, contract mismatch, and approval. The cost-and-lead-time resource owns the full supplier quote across product, sample, packaging, minimum, and schedule; the one-stop page owns operational coordination; the quote checklist owns inquiry completeness. |

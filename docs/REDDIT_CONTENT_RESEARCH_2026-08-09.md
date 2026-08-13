@@ -402,3 +402,32 @@ Content decision:
 Separation rule: `/customization.html` owns decoration-method selection. The artwork guide owns source files, rights, dimensions, placement, and production handoff. The sample guide owns whole-garment sample approval. `/quality.html` owns the factory QC workflow. The new article owns decoration durability evidence through controlled care and the scope of the release decision.
 
 Editorial safeguard: Reddit supplies recurring question language only. The article does not diagnose a post, prescribe one wash count or method, guarantee product life, decide a consumer remedy, or infer full-lot scope from one specimen. Qualified protocol owners, current market rules, controlled samples, process records, agreed criteria, and authorized decisions control the project.
+
+## Round 16 research update — 2026-08-13
+
+### Moisture-wicking, quick-dry, sweat visibility, wet cling, and claim evidence
+
+Current wearer discussions repeatedly separate the real problem from the marketing phrase:
+
+- [To all my sweaty friends](https://www.reddit.com/r/XXRunning/comments/1sb3vb8/to_all_my_sweaty_friends/) (April 3, 2026; 32 post votes when researched) asks for clothing that is “sweat proof” and leaves minimal marks; replies distinguish color concealment, wet cling, lightweight fabrics, drying, and unavoidable sweating.
+- [Shirts for the heavy sweaters](https://www.reddit.com/r/ultrarunning/comments/1tsijt0/shirts_for_the_heavy_sweaters/) (May 31, 2026; 18 post votes when researched) asks what works when even easy runs leave a shirt drenched.
+- [Help me find my perfect shirt](https://www.reddit.com/r/runningfashion/comments/1tdfg7i/help_me_find_my_perfect_shirt/) (May 14, 2026; 4 post votes when researched) discusses moisture transport, drying, contact feel, and the tradeoff between moisture held near or away from the skin.
+
+Authoritative sources checked:
+
+- [AATCC standards directory](https://www.aatcc.org/testing/standards) for separate liquid-moisture-management, vertical and horizontal wicking, drying, and water-vapor methods.
+- [AATCC TM195 summary](https://members.aatcc.org/store/tm195/591/) for measurement and classification of liquid moisture-management properties of textile fabrics.
+- [AATCC 2022 standards update](https://www.aatcc.org/news-read/insights/aatcc-2022-mid-year-standards-supplement) for the separation of vertical wicking to specified distance and specified time into TM197 and TM213.
+- [AATCC TM199](https://members.aatcc.org/store/tm199/615/) and [TM200](https://members.aatcc.org/store/tm200/954/) summaries for distinct drying routes and conditions.
+- [ASTM D1776/D1776M-20(2024)](https://store.astm.org/d1776_d1776m-20r24.html) for conditioning and testing textiles when the selected method specifies conditioning.
+- [FTC Advertising FAQs](https://www.ftc.gov/business-guidance/resources/advertising-faqs-guide-small-business) for the requirement that objective advertising claims have a reasonable evidence basis before dissemination.
+
+Content decision:
+
+- Publish `/blog/moisture-wicking-quick-dry-activewear-test.html` to own claim-to-method fit, material and garment-zone identity, conditioning, liquid and environment, transport and drying results, sweat visibility, wet cling, garment wear trials, acceptance criteria, evidence limitations, and released claim scope.
+- Add `/assets/downloads/activewear-moisture-management-test-register.csv` as a controlled 67-field record.
+- Add descriptive internal links from `/fabrics.html`, `/resources/activewear-fabric-selection-guide.html`, `/products/gym-tshirts-tank-tops.html`, `/products/running-singlets-shirts.html`, and the blog hub.
+
+Separation rule: `/fabrics.html` owns broad sportswear material routes and decoration compatibility. The activewear fabric guide owns the full material specification and approval record. Leggings and running-shorts articles own garment-specific validation. Gym and running-top pages own commercial sourcing. The new article alone owns moisture claim substantiation across separate laboratory, appearance, and garment-wear evidence.
+
+Editorial safeguard: Reddit supplies question language and real-use variables only. The article does not identify one best fiber, diagnose a post, publish proprietary test procedures, prescribe a universal method or threshold, promise comfort for every wearer or climate, or claim that wicking, drying, breathability, sweat concealment, and wet comfort are interchangeable. Current methods, qualified owners, production-intent samples, prewritten criteria, destination-market rules, and scoped evidence control the decision.

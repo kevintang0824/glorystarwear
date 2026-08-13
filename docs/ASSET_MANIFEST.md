@@ -11,6 +11,7 @@ Responsive derivatives with `-900.jpg` and `-1200.jpg` suffixes are performance 
 
 ## Downloadable Buyer Assets
 
+- `assets/downloads/activewear-moisture-management-test-register.csv`: 67-field activewear claim, textile, garment-zone, method, conditioning, liquid, environment, wicking, drying, sweat-visibility, wet-cling, wear-trial, criterion, evidence, limitation, and release-scope record.
 - `assets/downloads/apparel-print-wash-test-register.csv`: 59-field garment, decoration, production-route, care-protocol, cycle-gate, inspection-condition, defect, criterion, result, corrective-action, retest, evidence, and release-scope record.
 - `assets/downloads/apparel-incoterm-landed-cost-register.csv`: 59-field quotation, packed-shipment, Incoterms rule and version, exact delivery point, risk, transport, customs, importer, document, cost-component, mismatch, evidence, and decision record.
 - `assets/downloads/sublimation-color-approval-register.csv`: 47-field color-target, source-profile, output-system, consumable, production-fabric, transfer-condition, specimen, comparison-method, tolerance, result, approval, issue, evidence, and release record.
