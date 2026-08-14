@@ -1,0 +1,31 @@
+name: Site audit
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: workers/lead-receiver/package-lock.json
+      - name: Audit static site
+        run: python3 scripts/audit_static_site.py
+      - name: Test Vercel lead contract
+        run: node scripts/test_lead_flow.mjs
+      - name: Install Worker dependencies
+        run: npm ci --prefix workers/lead-receiver
+      - name: Type-check and dry-run Worker build
+        run: |
+          printf '%s\n' 'LEAD_WEBHOOK_SECRET=ci-placeholder' > workers/lead-receiver/.dev.vars
+          npm run check --prefix workers/lead-receiver

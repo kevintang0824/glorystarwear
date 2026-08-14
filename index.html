@@ -33,9 +33,9 @@
 
     <title>Custom Sportswear Manufacturer | GloryStarWear</title>
     <link rel="preload" as="image" type="image/avif" fetchpriority="high" href="./assets/images/hero-brand-campaign.avif" imagesrcset="./assets/images/hero-brand-campaign-900.avif 900w, ./assets/images/hero-brand-campaign-1200.avif 1200w, ./assets/images/hero-brand-campaign.avif 1672w" imagesizes="100vw" />
-    <link rel="stylesheet" href="./styles.css?v=20260812-1" />
+    <link rel="stylesheet" href="./styles.css?v=20260814-1" />
     <script src="./assets/vendor/lucide.min.js?v=20260722-1" defer></script>
-    <script src="./script.js?v=20260812-1" defer></script>
+    <script src="./script.js?v=20260814-1" defer></script>
   </head>
   <body class="home-page">
     <header class="site-header" data-header>
@@ -193,7 +193,7 @@
             <span>One-stop support</span>
             <h3>Product, packaging, QC, and shipment prep</h3>
             <p>Coordinate fabric, trims, labels, retail packaging, barcode stickers, carton marks, quality checks, and delivery planning.</p>
-            <a href="./one-stop-service.html">See one-stop service</a>
+            <a href="./one-stop-service.html">Review the one-stop OEM/ODM workflow</a>
           </article>
         </div>
         <nav class="product-shortcuts" aria-label="Buyer planning links">
@@ -743,7 +743,7 @@
             </a>
           </div>
         </div>
-        <form class="quote-form" data-quote-form data-lead-endpoint="https://glorystarwear.vercel.app/api/lead">
+        <form class="quote-form" data-quote-form data-lead-endpoint="/api/lead">
           <div class="quote-form-heading">
             <span>Project brief</span>
             <strong>Start with four essentials</strong>
@@ -768,6 +768,11 @@
               <option>Supplier capability review</option>
               <option>Supplier verification and documents</option>
               <option>Sampling and approval support</option>
+              <option>Tech pack review and development</option>
+              <option>Artwork and decoration review</option>
+              <option>Fabric selection and performance testing</option>
+              <option>Packaging and label handoff</option>
+              <option>Quality and inspection planning</option>
               <option>Yoga wear</option>
               <option>Athleisure</option>
               <option>Training wear</option>
@@ -816,6 +821,10 @@
               </label>
             </div>
           </details>
+          <div class="turnstile-field" data-turnstile-container hidden>
+            <div data-turnstile-widget></div>
+            <small>Human verification protects this inquiry form from automated spam. WhatsApp, email, and copy remain available.</small>
+          </div>
           <label class="quote-consent">
             <input name="consent" type="checkbox" required />
             <span>I agree that my contact and project details may be used to reply to this inquiry. Read the <a href="./privacy.html">privacy notice</a>.</span>
@@ -909,7 +918,7 @@
             "url": "https://glorystarwears.com/",
             "name": "GloryStarWear",
             "inLanguage": "en",
-            "dateModified": "2026-08-09",
+            "dateModified": "2026-08-14",
             "publisher": {
               "@id": "https://glorystarwears.com/#organization"
             }

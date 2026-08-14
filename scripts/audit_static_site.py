@@ -15,8 +15,8 @@ from urllib.parse import unquote, urljoin, urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 PRODUCTION_ORIGIN = "https://glorystarwears.com"
-EXPECTED_SCRIPT_VERSION = "20260812-1"
-EXPECTED_FORM_STYLE_VERSION = "20260812-1"
+EXPECTED_SCRIPT_VERSION = "20260814-1"
+EXPECTED_FORM_STYLE_VERSION = "20260814-1"
 PRIORITY_LCP_PAGES = {
     "index.html",
     "sportswear-manufacturer.html",
@@ -248,10 +248,42 @@ def main():
         "content_group": "GA4 content-group context",
         'data-manage-analytics-consent': "analytics preference control",
         "window.siteDataLayer.push(eventDetails)": "separate vendor-neutral event layer",
+        'const banner = document.createElement("div")': "valid non-modal consent dialog element",
+        "quoteSubmissionIds": "idempotent quote submission identifier",
+        '"Tech pack review and development"': "tech-pack inquiry prefill route",
+        '"Quality and inspection planning"': "quality inquiry prefill route",
+        "setupTurnstile": "Turnstile form protection",
+        "turnstileToken": "Turnstile response delivery",
     }
     for marker, label in required_attribution_markers.items():
         if marker not in script_source:
             errors.append(f"script.js: missing {label}")
+
+    lead_api_source = (ROOT / "api" / "lead.js").read_text(encoding="utf-8")
+    required_lead_api_markers = {
+        "TURNSTILE_SECRET_KEY": "Turnstile server secret",
+        "TURNSTILE_SITE_KEY": "Turnstile public site key status",
+        "human_verification_required": "missing-verification rejection",
+        "https://challenges.cloudflare.com/turnstile/v0/siteverify": "Turnstile Siteverify request",
+        "LEAD_WEBHOOK_SECRET": "authenticated downstream delivery",
+        "for (let attempt = 0; attempt < 2": "idempotent transient delivery retry",
+        "body.submissionId": "client submission idempotency key",
+    }
+    for marker, label in required_lead_api_markers.items():
+        if marker not in lead_api_source:
+            errors.append(f"api/lead.js: missing {label}")
+
+    lead_worker_source = (ROOT / "workers" / "lead-receiver" / "src" / "index.ts").read_text(encoding="utf-8")
+    required_lead_worker_markers = {
+        "crypto.subtle.timingSafeEqual": "constant-time webhook secret comparison",
+        "INSERT OR IGNORE INTO leads": "idempotent D1 insert",
+        "lead_rate_limits": "persistent lead rate limit",
+        "retention_until <= datetime('now')": "scheduled retention deletion",
+        "satisfies ExportedHandler<Env>": "generated Worker binding type check",
+    }
+    for marker, label in required_lead_worker_markers.items():
+        if marker not in lead_worker_source:
+            errors.append(f"workers/lead-receiver/src/index.ts: missing {label}")
 
     vercel_config = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))
     www_redirect_present = any(
@@ -318,7 +350,8 @@ def main():
                 "sportswear-sampling-production-approval-register.csv": "sampling approval register link",
                 'data-resource-download="sampling-production-approval-register"': "sampling approval download tracking",
                 '"@type": "DigitalDocument"': "sampling approval document schema",
-                '"dateModified": "2026-08-09"': "current process modification date",
+                '"dateModified": "2026-08-14"': "current process modification date",
+                "Coordinate the wider product-to-shipment workflow": "one-stop workflow handoff",
             }
             for marker, label in required_process_markers.items():
                 if marker not in source:
@@ -342,9 +375,10 @@ def main():
                 'data-resource-download="sportswear-tech-pack-intake-template"': "tech pack download tracking",
                 '"@type":"DigitalDocument"': "tech pack document schema",
                 '"isAccessibleForFree":true': "free template disclosure in schema",
-                '"dateModified":"2026-08-12"': "current tech pack modification date",
+                '"dateModified":"2026-08-14"': "current tech pack modification date",
                 "us-clothing-label-requirements-private-label.html": "U.S. clothing-label article link",
                 "What it is not:": "visible template scope disclosure",
+                "Send Tech Pack for Review": "tech-pack conversion bridge",
             }
             for marker, label in required_tech_pack_markers.items():
                 if marker not in source:
@@ -912,8 +946,39 @@ def main():
                 "Complete once, then send by WhatsApp or email": "working inquiry-route explanation",
                 "Cost and lead-time review": "commercial planning inquiry option",
                 "sportswear-supplier-quote-comparison.csv": "supplier comparison handoff",
+                "Tech pack review and development": "tech-pack inquiry option",
+                "Artwork and decoration review": "artwork inquiry option",
+                "Fabric selection and performance testing": "fabric inquiry option",
+                "Packaging and label handoff": "packaging inquiry option",
+                "Quality and inspection planning": "quality inquiry option",
             }
             for marker, label in required_contact_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "products/private-label-gym-clothing.html":
+            required_gym_program_markers = {
+                "What happens after you send the gym clothing brief?": "post-brief response scope",
+                "Verify supplier scope and evidence": "supplier due-diligence handoff",
+                "Review sample and bulk-release controls": "sample-control handoff",
+                "Send Gym Clothing Brief": "gym inquiry CTA",
+                '"@type":"Service"': "gym manufacturing Service schema",
+                '"isAccessibleForFree":true': "free gym planner disclosure",
+                '"dateModified":"2026-08-14"': "current gym program modification date",
+            }
+            for marker, label in required_gym_program_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "one-stop-service.html":
+            required_one_stop_markers = {
+                "Build a One-Stop Order Brief": "one-stop hero inquiry CTA",
+                "Compare Cost &amp; Lead-Time Assumptions": "one-stop commercial handoff",
+                "WhatsApp the Product List": "one-stop WhatsApp CTA",
+                '"provider": { "@id": "https://glorystarwears.com/#organization" }': "organization reference in Service schema",
+                '"dateModified": "2026-08-14"': "current one-stop modification date",
+            }
+            for marker, label in required_one_stop_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 
@@ -998,6 +1063,9 @@ def main():
                 "glorystarwear-analytics-consent-v1": "analytics preference storage disclosure",
                 "Advertising storage, advertising user data, and ad personalization remain denied": "advertising consent disclosure",
                 "data-manage-analytics-consent": "analytics choice control",
+                "dedicated Cloudflare D1 inquiry database": "secure lead storage disclosure",
+                "365 days after receipt": "secure-form retention period",
+                "Cloudflare Turnstile": "automated-spam protection disclosure",
             }
             for marker, label in required_analytics_privacy_markers.items():
                 if marker not in source:
@@ -1010,6 +1078,7 @@ def main():
                 "data-whatsapp-inquiry": "WhatsApp fallback",
                 "data-email-inquiry": "email fallback",
                 "data-copy-inquiry": "copy fallback",
+                "data-turnstile-container": "human verification container",
                 'href="./privacy.html"': "privacy notice link",
             }
             for marker, label in required_form_markers.items():

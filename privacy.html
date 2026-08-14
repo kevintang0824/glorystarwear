@@ -8,9 +8,9 @@
     <link rel="canonical" href="https://glorystarwears.com/privacy.html" />
     <link rel="icon" type="image/svg+xml" href="./assets/logo-mark.svg" />
     <title>Privacy and Inquiry Data | GloryStarWear</title>
-    <link rel="stylesheet" href="./styles.css?v=20260812-1" />
+    <link rel="stylesheet" href="./styles.css?v=20260814-1" />
     <script src="./assets/vendor/lucide.min.js?v=20260722-1" defer></script>
-    <script src="./script.js?v=20260812-1" defer></script>
+    <script src="./script.js?v=20260814-1" defer></script>
   </head>
   <body class="product-page">
     <header class="site-header" data-header><a class="brand" href="./#top"><span class="brand-mark">GS</span><span>GloryStarWear</span></a><nav class="desktop-nav" aria-label="Primary navigation"><a href="./products/">Products</a><a href="./about-factory.html">Supplier Review</a><a href="./resources/">Resources</a><a href="./contact.html">Contact</a></nav><a class="header-cta" href="./contact.html#quote-form"><i data-lucide="mail"></i>Get Quote</a><button class="menu-toggle" type="button" aria-label="Open menu" data-menu-toggle><i data-lucide="menu"></i></button></header>
@@ -30,7 +30,7 @@
         <div class="answer-grid">
           <article><h3>WhatsApp</h3><p>When you choose WhatsApp, the site prepares your project brief and opens WhatsApp. The message is not sent until you confirm it in WhatsApp, whose own privacy terms then apply.</p></article>
           <article><h3>Email</h3><p>When you choose email, the site prepares a message for your local email application. The website cannot confirm delivery; your email provider's terms apply after you send it.</p></article>
-          <article><h3>Secure server form</h3><p>This option is shown only when a real receiving service is configured. A successful submission means the receiving endpoint confirmed delivery and then opens the Thank You page.</p></article>
+          <article><h3>Secure server form</h3><p>This option uses Cloudflare Turnstile to reduce automated spam, then sends the completed brief to the same-origin Vercel endpoint. Vercel validates it and forwards it through an authenticated server-to-server connection to a dedicated Cloudflare D1 inquiry database. A successful submission is shown only after the database confirms storage, then the site opens the Thank You page.</p></article>
           <article><h3>Copy project brief</h3><p>Copying uses your browser clipboard. The website does not treat a copied brief as a received inquiry.</p></article>
         </div>
       </section>
@@ -47,9 +47,9 @@
       </section>
 
       <section class="section keyword-section">
-        <div class="section-heading"><p class="eyebrow">Your choices</p><h2>Access, correction, and deletion requests</h2><p>Contact <a href="mailto:kevin@glorystarwears.com">kevin@glorystarwears.com</a> to ask about inquiry information, request a correction, or request deletion where applicable. Records may be retained when reasonably needed for a quotation, ongoing business communication, security, dispute handling, or legal obligations.</p></div>
+        <div class="section-heading"><p class="eyebrow">Your choices</p><h2>Access, correction, retention, and deletion requests</h2><p>Contact <a href="mailto:kevin@glorystarwears.com">kevin@glorystarwears.com</a> to ask about inquiry information, request a correction, or request deletion where applicable. Secure-form inquiry records are scheduled for deletion 365 days after receipt. A record may be removed sooner on a valid request or retained separately when reasonably required for an active quotation, ongoing business communication, security, dispute handling, or legal obligations.</p></div>
         <div class="keyword-grid">
-          <article><span>Third parties</span><p>WhatsApp, email providers, hosting services, a configured lead-delivery provider, and—only after analytics permission—Google Analytics may process data when their service is used.</p></article>
+          <article><span>Third parties</span><p>Vercel hosts the website and validates secure-form submissions. Cloudflare Workers and the dedicated Cloudflare D1 database receive and retain confirmed server-form inquiries. WhatsApp, email providers, and—only after analytics permission—Google Analytics may process data when their service is used.</p></article>
           <article><span>Analytics choice</span><p>The site stores <code>granted</code> or <code>denied</code> under <code>glorystarwear-analytics-consent-v1</code> in browser local storage. When granted, Google Analytics may use first-party identifiers such as <code>_ga</code>. Advertising storage, advertising user data, and ad personalization remain denied.</p><button class="button secondary" type="button" data-manage-analytics-consent>Manage Analytics Choice</button></article>
           <article><span>Updates</span><p>This notice will be updated when the legal entity, analytics platform, CRM, storage provider, retention period, or file-upload route changes.</p></article>
           <article><span>Contact</span><p>Privacy and inquiry questions can be sent to the same business contact email shown on the website.</p><a href="./contact.html">Open contact page</a></article>

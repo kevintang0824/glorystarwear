@@ -9,6 +9,9 @@ const isThankYouPage = window.location.pathname.endsWith("/thank-you.html");
 const inquirySourceKey = "glorystarwear-inquiry-source";
 const attributionStorageKey = "glorystarwear-attribution";
 const leadReceiptStorageKey = "glorystarwear-lead-receipt";
+const quoteSubmissionIds = new WeakMap();
+const turnstileStates = new WeakMap();
+let turnstileScriptPromise = null;
 const leadReceiptLifetimeMilliseconds = 15 * 60 * 1000;
 const googleAnalyticsMeasurementId = "G-3QHK9TGCHQ";
 const analyticsConsentStorageKey = "glorystarwear-analytics-consent-v1";
@@ -106,7 +109,7 @@ const saveAnalyticsConsent = (preference) => {
 };
 
 const setupAnalyticsConsentControls = () => {
-  const banner = document.createElement("aside");
+  const banner = document.createElement("div");
   banner.className = "analytics-consent-banner";
   banner.setAttribute("data-analytics-consent-banner", "");
   banner.setAttribute("role", "dialog");
@@ -684,13 +687,19 @@ const getShortPageTitle = (title) => title.split("|")[0].trim();
 
 const getProductInterestForPath = (path) => {
   const routes = [
+    ["Tech pack review and development", /\/(?:resources\/custom-sportswear-tech-pack|blog\/verify-ai-generated-tech-pack)\.html$/],
+    ["Artwork and decoration review", /\/(?:resources\/sportswear-logo-artwork-preparation-guide|blog\/(?:apparel-print-wash-test-logo-durability|sportswear-sublimation-color-matching-guide)|customization)\.html$/],
+    ["Fabric selection and performance testing", /\/(?:fabrics|blog\/(?:activewear-odor-resistance-antibacterial-test|moisture-wicking-quick-dry-activewear-test))\.html$/],
+    ["Packaging and label handoff", /\/(?:resources\/sportswear-packaging-label-handoff-checklist|blog\/(?:custom-apparel-packaging-moq-inventory-planning|us-clothing-label-requirements-private-label)|products\/private-label-sportswear-packaging)\.html$/],
+    ["Quality and inspection planning", /\/(?:quality|resources\/sportswear-aql-inspection-checklist|blog\/(?:clothing-sample-to-bulk-quality-control|activewear-leggings-quality-testing|running-shorts-chafing-ride-up-test|sports-bra-fit-support-wear-test|activewear-inclusive-sizing-fit-test))\.html$/],
+    ["Sampling and approval support", /\/(?:process|resources\/sportswear-sample-approval-checklist|blog\/clothing-sample-rounds-before-bulk-production)\.html$/],
+    ["Cost and lead-time review", /\/(?:quote-checklist|resources\/custom-sportswear-cost-lead-time|blog\/apparel-incoterms-exw-fob-ddp-landed-cost)\.html$/],
     ["Private label activewear program", /\/private-label-activewear-manufacturer\.html$/],
     ["Custom teamwear program", /\/custom-teamwear-uniforms\.html$/],
     ["Low MOQ launch planning", /\/low-moq-sportswear-manufacturer\.html$/],
     ["Supplier capability review", /\/sportswear-manufacturer\.html$/],
     ["Supplier verification and documents", /\/resources\/sportswear-manufacturer-due-diligence-checklist\.html$/],
     ["Supplier verification and documents", /\/(about-factory|certificates|factory-video)\.html$/],
-    ["Sampling and approval support", /\/process\.html$/],
     ["Yoga wear", /yoga|sports-bras|seamless-activewear|plus-size-activewear/],
     ["Athleisure", /athleisure|hoodies-sweatshirts|joggers-tracksuits|club-hoodies/],
     ["Training wear", /training-wear|gym-tshirts|training-shorts|private-label-gym|compression-base|outdoor-training/],
@@ -783,8 +792,15 @@ const getInquiryPayload = (form) => {
   const data = new FormData(form);
   const attribution = readAttribution() || pageAttribution;
   const trafficAttribution = classifyAttribution(attribution);
+  let submissionId = quoteSubmissionIds.get(form) || "";
+  if (!submissionId && typeof crypto.randomUUID === "function") {
+    submissionId = crypto.randomUUID();
+    quoteSubmissionIds.set(form, submissionId);
+  }
 
   return {
+    submissionId,
+    turnstileToken: turnstileStates.get(form)?.token || "",
     name: data.get("name"),
     email: data.get("email"),
     phone: data.get("phone"),
@@ -840,6 +856,68 @@ const fetchWithTimeout = (url, options = {}, timeoutMilliseconds = 8000) => {
     .finally(() => window.clearTimeout(timeout));
 };
 
+const loadTurnstile = () => {
+  if (window.turnstile) return Promise.resolve(window.turnstile);
+  if (turnstileScriptPromise) return turnstileScriptPromise;
+
+  turnstileScriptPromise = new Promise((resolve, reject) => {
+    const callbackName = "glorystarwearTurnstileReady";
+    const script = document.createElement("script");
+    const timeout = window.setTimeout(() => reject(new Error("turnstile_timeout")), 10000);
+    window[callbackName] = () => {
+      window.clearTimeout(timeout);
+      delete window[callbackName];
+      if (window.turnstile) resolve(window.turnstile);
+      else reject(new Error("turnstile_unavailable"));
+    };
+    script.src = `https://challenges.cloudflare.com/turnstile/v0/api.js?onload=${callbackName}&render=explicit`;
+    script.async = true;
+    script.defer = true;
+    script.addEventListener("error", () => {
+      window.clearTimeout(timeout);
+      delete window[callbackName];
+      reject(new Error("turnstile_load_failed"));
+    }, { once: true });
+    document.head.append(script);
+  });
+
+  return turnstileScriptPromise;
+};
+
+const setupTurnstile = async (form, siteKey) => {
+  const container = form.querySelector("[data-turnstile-container]");
+  const widget = form.querySelector("[data-turnstile-widget]");
+  if (!container || !widget || !siteKey) throw new Error("turnstile_not_configured");
+
+  const turnstile = await loadTurnstile();
+  const state = { token: "", widgetId: "" };
+  state.widgetId = turnstile.render(widget, {
+    sitekey: siteKey,
+    theme: "light",
+    size: "flexible",
+    callback: (token) => {
+      state.token = token;
+      setFormNote(form, "Human verification complete. You can submit the inquiry securely.", "success");
+    },
+    "expired-callback": () => {
+      state.token = "";
+      setFormNote(form, "Human verification expired. Please verify again before secure submission.", "error");
+    },
+    "error-callback": () => {
+      state.token = "";
+      setFormNote(form, "Human verification is unavailable. Please use WhatsApp or email.", "error");
+    },
+  });
+  turnstileStates.set(form, state);
+  container.hidden = false;
+};
+
+const resetTurnstile = (form) => {
+  const state = turnstileStates.get(form);
+  if (state) state.token = "";
+  if (state?.widgetId && window.turnstile) window.turnstile.reset(state.widgetId);
+};
+
 quoteForms.forEach((form) => {
   let hasStartedQuote = false;
   let serverSubmissionAvailable = false;
@@ -862,15 +940,12 @@ quoteForms.forEach((form) => {
       headers: { Accept: "application/json" },
     }, 4000)
       .then((response) => response.ok ? response.json() : { configured: false })
-      .then((status) => {
-        if (!status.configured) return;
+      .then(async (status) => {
+        if (!status.configured || !status.turnstileSiteKey) return;
+        await setupTurnstile(form, status.turnstileSiteKey);
         serverSubmissionAvailable = true;
         serverSubmitButton.hidden = false;
-        setFormNote(
-          form,
-          "Secure server submission is available. Success is shown only after the receiving service confirms delivery.",
-          "success",
-        );
+        setFormNote(form, "Secure server submission is available. Complete the human verification, then submit.", "success");
       })
       .catch(() => {
         // WhatsApp, email, and copy remain available when the server check cannot complete.
@@ -883,6 +958,11 @@ quoteForms.forEach((form) => {
 
     if (!serverSubmissionAvailable || !leadEndpoint || !serverSubmitButton) {
       form.querySelector("[data-whatsapp-inquiry]")?.click();
+      return;
+    }
+
+    if (!turnstileStates.get(form)?.token) {
+      setFormNote(form, "Complete the human verification before secure submission, or use WhatsApp or email.", "error");
       return;
     }
 
@@ -931,6 +1011,7 @@ quoteForms.forEach((form) => {
         product_interest: data.get("product") || "",
       });
       serverSubmitButton.disabled = false;
+      resetTurnstile(form);
     }
   });
 

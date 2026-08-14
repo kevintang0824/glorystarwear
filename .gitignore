@@ -9,6 +9,9 @@ build/
 .cache/
 .vercel/
 .wrangler/
+.dev.vars
+.dev.vars.*
+workers/**/worker-configuration.d.ts
 .netlify/
 .local-backups/
 /.tmp-odor-register/

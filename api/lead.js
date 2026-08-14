@@ -7,6 +7,13 @@ const allowedOrigins = new Set([
   "https://glorystarwear-glorystarpack-s-projects.vercel.app",
 ]);
 
+const allowedTurnstileHostnames = new Set([
+  "glorystarwears.com",
+  "www.glorystarwears.com",
+  "glorystarwear.vercel.app",
+  "glorystarwear-glorystarpack-s-projects.vercel.app",
+]);
+
 const isAllowedOrigin = (origin) => {
   if (!origin) return false;
   if (allowedOrigins.has(origin)) return true;
@@ -38,10 +45,39 @@ const cleanCampaign = (campaign) => {
   );
 };
 
+const isAllowedTurnstileHostname = (hostname) => {
+  if (allowedTurnstileHostnames.has(hostname)) return true;
+  return /^glorystarwear-[a-z0-9-]+-glorystarpack-s-projects\.vercel\.app$/.test(hostname);
+};
+
+const verifyTurnstile = async ({ token, secret, remoteIp, idempotencyKey }) => {
+  const formData = new URLSearchParams({
+    secret,
+    response: token,
+    idempotency_key: idempotencyKey,
+  });
+  if (remoteIp) formData.set("remoteip", remoteIp);
+
+  const verificationResponse = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: formData.toString(),
+    signal: AbortSignal.timeout(5000),
+  });
+  if (!verificationResponse.ok) return false;
+
+  const verification = await verificationResponse.json().catch(() => ({}));
+  return verification.success === true && isAllowedTurnstileHostname(cleanText(verification.hostname, 240));
+};
+
 module.exports = async function leadHandler(request, response) {
   const origin = cleanText(request.headers.origin, 240);
   const originAllowed = isAllowedOrigin(origin);
   const webhookUrl = process.env.LEAD_WEBHOOK_URL || "";
+  const webhookSecret = process.env.LEAD_WEBHOOK_SECRET || "";
+  const turnstileSecret = process.env.TURNSTILE_SECRET_KEY || "";
+  const turnstileSiteKey = process.env.TURNSTILE_SITE_KEY || "";
+  const receiverConfigured = Boolean(webhookUrl && webhookSecret && turnstileSecret && turnstileSiteKey);
 
   response.setHeader("Cache-Control", "no-store");
   response.setHeader("Vary", "Origin");
@@ -57,7 +93,10 @@ module.exports = async function leadHandler(request, response) {
   }
 
   if (request.method === "GET") {
-    return response.status(200).json({ configured: Boolean(webhookUrl) });
+    return response.status(200).json({
+      configured: receiverConfigured,
+      turnstileSiteKey: receiverConfigured ? turnstileSiteKey : "",
+    });
   }
 
   if (request.method !== "POST") {
@@ -69,7 +108,7 @@ module.exports = async function leadHandler(request, response) {
     return response.status(403).json({ ok: false, error: "origin_not_allowed" });
   }
 
-  if (!webhookUrl) {
+  if (!receiverConfigured) {
     return response.status(503).json({ ok: false, error: "lead_service_unconfigured" });
   }
 
@@ -90,7 +129,9 @@ module.exports = async function leadHandler(request, response) {
   }
 
   const lead = {
-    leadId: randomUUID(),
+    leadId: /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(cleanText(body.submissionId, 80))
+      ? cleanText(body.submissionId, 80)
+      : randomUUID(),
     receivedAt: new Date().toISOString(),
     name: cleanText(body.name, 120),
     email: cleanText(body.email, 180).toLowerCase(),
@@ -113,26 +154,52 @@ module.exports = async function leadHandler(request, response) {
     return response.status(400).json({ ok: false, error: "invalid_lead" });
   }
 
-  const webhookHeaders = { "Content-Type": "application/json" };
-  if (process.env.LEAD_WEBHOOK_SECRET) {
-    webhookHeaders.Authorization = `Bearer ${process.env.LEAD_WEBHOOK_SECRET}`;
+  const turnstileToken = cleanText(body.turnstileToken, 2400);
+  if (!turnstileToken) {
+    return response.status(400).json({ ok: false, error: "human_verification_required" });
+  }
+  const remoteIp = cleanText(request.headers["x-forwarded-for"], 240).split(",")[0].trim();
+  try {
+    const humanVerified = await verifyTurnstile({
+      token: turnstileToken,
+      secret: turnstileSecret,
+      remoteIp,
+      idempotencyKey: lead.leadId,
+    });
+    if (!humanVerified) {
+      return response.status(400).json({ ok: false, error: "human_verification_failed" });
+    }
+  } catch {
+    return response.status(502).json({ ok: false, error: "human_verification_unavailable" });
   }
 
-  try {
-    const webhookResponse = await fetch(parsedWebhookUrl, {
-      method: "POST",
-      headers: webhookHeaders,
-      body: JSON.stringify({
-        event: "lead.created",
-        source: "glorystarwears.com",
-        lead,
-      }),
-      signal: AbortSignal.timeout(8000),
-    });
+  const webhookHeaders = { "Content-Type": "application/json" };
+  webhookHeaders.Authorization = `Bearer ${webhookSecret}`;
 
-    if (!webhookResponse.ok) {
-      return response.status(502).json({ ok: false, error: "lead_delivery_failed" });
+  try {
+    const webhookBody = JSON.stringify({
+      event: "lead.created",
+      source: "glorystarwears.com",
+      lead,
+    });
+    let deliveryConfirmed = false;
+
+    for (let attempt = 0; attempt < 2 && !deliveryConfirmed; attempt += 1) {
+      try {
+        const webhookResponse = await fetch(parsedWebhookUrl, {
+          method: "POST",
+          headers: webhookHeaders,
+          body: webhookBody,
+          signal: AbortSignal.timeout(3500),
+        });
+        deliveryConfirmed = webhookResponse.ok;
+        if (!deliveryConfirmed && webhookResponse.status < 500) break;
+      } catch {
+        // Retry one transient network failure with the same idempotent lead ID.
+      }
     }
+
+    if (!deliveryConfirmed) return response.status(502).json({ ok: false, error: "lead_delivery_failed" });
   } catch {
     return response.status(502).json({ ok: false, error: "lead_delivery_failed" });
   }

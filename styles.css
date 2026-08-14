@@ -72,7 +72,7 @@ a {
 }
 
 @supports (content-visibility: auto) {
-  .home-page main > section:nth-of-type(n + 5):not(.keyword-section) {
+  .home-page main > section:nth-of-type(n + 5):not(.keyword-section):not(.resources-section) {
     content-visibility: auto;
     contain-intrinsic-size: auto 860px;
   }
@@ -1689,6 +1689,22 @@ h3 {
   color: var(--forest);
   font-size: 22px;
   line-height: 1.2;
+}
+
+.turnstile-field {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.turnstile-field > div {
+  max-width: 100%;
+}
+
+.turnstile-field small {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
 }
 
 .inquiry-context {
