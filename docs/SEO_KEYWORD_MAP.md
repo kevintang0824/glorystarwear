@@ -1,6 +1,6 @@
 # GloryStarWear Search Intent Map
 
-Last updated: 2026-08-13
+Last updated: 2026-08-21
 
 ## Page Ownership Rule
 
@@ -18,7 +18,7 @@ Last updated: 2026-08-13
 | `/sportswear-manufacturer.html` | `private label sportswear manufacturer` and OEM/ODM supplier evaluation | Development inputs, provider scope, sampling, branding, quality, packaging, and commercial handoff |
 | `/low-moq-sportswear-manufacturer.html` | `low MOQ sportswear manufacturer` and startup first-order planning | Light custom, focused capsule, team or event, full custom, component minimums, sample route, and quote inputs |
 | `/private-label-activewear-manufacturer.html` | `private label activewear manufacturer`, `activewear private label`, and activewear collection planning | Owns multi-style activewear architecture, development route, fit blocks, fabric and color systems, labels, packaging, sampling, launch priority, and reorders; garment and gym-specific pages own their narrower product decisions |
-| `/custom-teamwear-uniforms.html` | Teamwear-specific uniform program | Personalization, sublimation, roster control, player packing, and seasonal reorders |
+| `/custom-teamwear-uniforms.html` | `custom teamwear uniform manufacturer` and multi-sport uniform program planning | Owns product selection, roster sizing, decoration-route choice, player packing, replacements, reorders, and season continuity. The dedicated sublimation page owns full-color artwork, production-fabric color approval, and sublimation release controls. |
 | `/customization.html` | `custom sportswear printing` and private label decoration route selection | Sublimation, heat transfer, screen print, embroidery, badges, labels, trims, packaging, and approval evidence |
 | `/fabrics.html` | `sportswear fabrics and decoration methods` compatibility | Material construction, GSM, stretch, opacity, recovery, product use, decoration fit, sample approval, and bulk control |
 | `/one-stop-service.html` | `one-stop sportswear service` and cross-stage order handoff | Owns service scope, responsibilities, inputs, deliverables, packaging, and shipment handoff; links to the process page for sample revision and production-release control |
@@ -30,12 +30,13 @@ Last updated: 2026-08-13
 | `/products/private-label-gym-clothing.html` | `private label gym clothing` and `white label fitness clothing` | Existing-style white label route, private label collection development, OEM specifications, workout tops, bottoms, layers, labels, and packaging |
 | `/products/youth-sportswear.html` | `custom youth sportswear manufacturer`, junior teamwear, and school or club youth apparel programs | Owns match, training, travel, staff, camp, and retail assortment roles; youth and adult size demand; roster ownership; allocation; player packs; delivery; and reorders. The youth-order blog owns physical try-on and order-release validation. |
 | `/products/private-label-sportswear-packaging.html` | `private label sportswear packaging supplier` and custom activewear packaging sourcing | Owns component supply and quotation across garment labels, hangtags, stickers, bags, mailers, boxes, inserts, SKU sorting, inner packs, cartons, and ecommerce preparation. The packaging-MOQ blog owns commitment and inventory-risk decisions; the packaging handoff resource owns released files, data, samples, and shipment control. |
-| `/products/custom-sublimated-teamwear.html` | `custom sublimated teamwear manufacturer` and multi-sport sublimated uniform sourcing | Owns commercial product scope, sport routes, fabrics, artwork and roster inputs, player packing, and inquiry preparation. The sublimation-color blog owns target-to-output approval and bulk color control; sport pages own garment-specific specifications and program decisions. |
+| `/products/custom-sublimated-teamwear.html` | `sublimated teamwear manufacturer` and full-color uniform sourcing | Owns the sublimation-only route: vector and panel artwork, sponsor layouts, personalization data, intended production fabric, physical color approval, and release evidence. The broad teamwear page owns multi-route season programs; the sublimation-color blog owns the complete target-to-output method; sport pages own garment construction. |
 
 ## Priority Page Pairs
 
 | Broad page | Primary intent | Specific page | Primary intent |
 | --- | --- | --- | --- |
+| `/custom-teamwear-uniforms.html` | Multi-sport teamwear program covering product selection, roster sizing, decoration choice, player packing, replacements, reorders, and season continuity | `/products/custom-sublimated-teamwear.html` | Full-color sublimation route covering panel artwork, production-fabric color approval, personalization data, physical strike-off or sample evidence, and bulk release |
 | `/products/golf-apparel.html` | Custom golf apparel program for clubs, resorts, pro shops, layers, accessories, retail allocation, and reorders | `/products/golf-polo-shirts-skorts.html` | Golf polo and skort construction, collar, placket, liner, waistband, pocket, artwork, and sample specifications |
 | `/products/volleyball-teamwear.html` | Volleyball season program covering competition, practice, travel, staff, tournament, fan, replacement, allocation, delivery, and reorders | `/products/volleyball-uniforms.html` | Volleyball match garment specification covering jersey construction, libero versions, bottoms, names, numbers, fit routes, samples, labels, and roster packing |
 | `/products/swimwear-water-sports.html` | Swim training, resort retail, surf, youth, event, accessory, and packaging assortment | `/products/rash-guards-board-shorts.html` | Rash guard fit and seams plus board short waistband, closure, pockets, drainage, artwork, and claim evidence |

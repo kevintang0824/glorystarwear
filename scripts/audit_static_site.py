@@ -972,11 +972,23 @@ def main():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 
+        if relative_name == "custom-teamwear-uniforms.html":
+            required_teamwear_program_markers = {
+                "multi-sport programs, roster sizing, decoration choices": "broad teamwear program description",
+                "Full-Color Sublimation Route": "sublimation-route label",
+                "Review sublimation artwork and color controls": "descriptive narrow-route link",
+            }
+            for marker, label in required_teamwear_program_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
         if relative_name == "products/custom-sublimated-teamwear.html":
             required_sublimated_teamwear_markers = {
                 "sportswear-sublimation-color-matching-guide.html": "sublimation-color article link",
-                '"dateModified":"2026-08-12"': "current sublimated teamwear modification date",
                 "color code or screen mockup is an input": "visible physical color approval boundary",
+                "Use this page for full-color sublimation controls": "sublimation-only decision boundary",
+                "Compare All Teamwear Routes": "broad teamwear route link",
+                "production-fabric color approval": "fabric-specific approval scope",
             }
             for marker, label in required_sublimated_teamwear_markers.items():
                 if marker not in source:
