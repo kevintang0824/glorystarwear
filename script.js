@@ -514,7 +514,7 @@ if (mobileNav?.id) {
 }
 mobileNav?.setAttribute("aria-hidden", "true");
 
-const contactUrl = isContactPage ? "#quote-form" : new URL("/contact.html", window.location.href).href;
+const contactUrl = isContactPage ? "#quote-form" : new URL("/contact.html#quote-form", window.location.href).href;
 const currentPageTopic = document.title.split("|")[0].trim() || "custom sportswear";
 const contextualWhatsAppText = [
   `Hi GloryStarWear, I am interested in ${currentPageTopic}.`,

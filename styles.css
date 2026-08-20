@@ -1132,6 +1132,27 @@ h3 {
   text-decoration-color: currentColor;
 }
 
+.answer-grid p a,
+.product-system-grid p a,
+.section-heading p:not(.eyebrow) a {
+  color: var(--green-text);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: rgba(18, 107, 88, 0.42);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 3px;
+}
+
+.answer-grid p a:hover,
+.answer-grid p a:focus-visible,
+.product-system-grid p a:hover,
+.product-system-grid p a:focus-visible,
+.section-heading p:not(.eyebrow) a:hover,
+.section-heading p:not(.eyebrow) a:focus-visible {
+  color: var(--forest);
+  text-decoration-color: currentColor;
+}
+
 .quality-section {
   display: grid;
   grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);

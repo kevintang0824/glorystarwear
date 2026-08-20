@@ -15,8 +15,8 @@ from urllib.parse import unquote, urljoin, urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 PRODUCTION_ORIGIN = "https://glorystarwears.com"
-EXPECTED_SCRIPT_VERSION = "20260814-1"
-EXPECTED_FORM_STYLE_VERSION = "20260814-1"
+EXPECTED_SCRIPT_VERSION = "20260820-1"
+EXPECTED_FORM_STYLE_VERSION = "20260820-1"
 PRIORITY_LCP_PAGES = {
     "index.html",
     "sportswear-manufacturer.html",
@@ -76,6 +76,28 @@ PRIORITY_LCP_PAGES = {
     "blog/custom-apparel-packaging-moq-inventory-planning.html",
     "editorial-policy.html",
 }
+REQUIRED_MAIN_LINKS = {
+    "blog/clothing-sample-to-bulk-quality-control.html": {
+        "process.html",
+        "sportswear-manufacturer.html",
+    },
+    "blog/volleyball-uniform-rules-checklist.html": {
+        "custom-teamwear-uniforms.html",
+    },
+    "blog/youth-team-uniform-sizing-order-checklist.html": {
+        "custom-teamwear-uniforms.html",
+    },
+    "products/yoga-leggings.html": {
+        "blog/activewear-leggings-quality-testing.html",
+        "resources/activewear-fabric-selection-guide.html",
+        "resources/activewear-size-grading-guide.html",
+    },
+    "resources/custom-sportswear-cost-lead-time.html": {
+        "low-moq-sportswear-manufacturer.html",
+        "process.html",
+        "sportswear-manufacturer.html",
+    },
+}
 TITLE_LENGTH_RANGE = (30, 65)
 DESCRIPTION_LENGTH_RANGE = (100, 170)
 IMAGE_RE = re.compile(r"<img\b[^>]*>", re.IGNORECASE | re.DOTALL)
@@ -113,6 +135,9 @@ class PageParser(HTMLParser):
         self.twitter_image = ""
         self.ids = []
         self.links = []
+        self.main_depth = 0
+        self.main_links = []
+        self.primary_main_contact_links = []
         self.assets = []
         self.image_assets = []
         self.image_preloads = []
@@ -129,6 +154,9 @@ class PageParser(HTMLParser):
 
     def handle_starttag(self, tag, attrs):
         attributes = dict(attrs)
+
+        if tag == "main":
+            self.main_depth += 1
 
         if tag == "div":
             class_names = set(attributes.get("class", "").split())
@@ -193,9 +221,15 @@ class PageParser(HTMLParser):
                         self.assets.append(source)
                         self.image_assets.append(source)
         elif tag == "a" and attributes.get("href"):
-            self.links.append(attributes["href"])
+            href = attributes["href"]
+            self.links.append(href)
+            if self.main_depth:
+                self.main_links.append(href)
+                class_names = set(attributes.get("class", "").split())
+                if {"button", "primary"}.issubset(class_names):
+                    self.primary_main_contact_links.append(href)
             if self.article_meta_depth:
-                self.visible_article_links.append(attributes["href"])
+                self.visible_article_links.append(href)
         elif tag in {"img", "source"}:
             if tag == "img" and attributes.get("src"):
                 self.assets.append(attributes["src"])
@@ -231,6 +265,8 @@ class PageParser(HTMLParser):
             self.faq_list_depth -= 1
         if tag == "div" and self.article_meta_depth:
             self.article_meta_depth -= 1
+        if tag == "main" and self.main_depth:
+            self.main_depth -= 1
 
     def handle_data(self, data):
         if self.in_title:
@@ -288,6 +324,7 @@ def main():
     errors = []
     pages = {}
     page_internal_links = {}
+    main_internal_links = {}
     canonical_owners = {}
     title_owners = {}
     description_owners = {}
@@ -300,6 +337,7 @@ def main():
     faq_schema_pages = 0
     article_schema_pages = 0
     preferred_image_pages = 0
+    primary_ctas_bypassing_form_anchor = 0
 
     script_source = (ROOT / "script.js").read_text(encoding="utf-8")
     required_attribution_markers = {
@@ -323,6 +361,7 @@ def main():
         '"Quality and inspection planning"': "quality inquiry prefill route",
         "setupTurnstile": "Turnstile form protection",
         "turnstileToken": "Turnstile response delivery",
+        'new URL("/contact.html#quote-form"': "direct quote-form route",
     }
     for marker, label in required_attribution_markers.items():
         if marker not in script_source:
@@ -699,7 +738,6 @@ def main():
                 '"@type":"BlogPosting"': "blog posting structured data",
                 '"@type":"DigitalDocument"': "youth checklist document schema",
                 '"isAccessibleForFree":true': "free youth checklist disclosure",
-                '"dateModified":"2026-08-10"': "current article modification date",
                 "one child, one sample, or one age label cannot prove fit": "visible fit-scope limitation",
                 "iso.org/standard/61686.html": "anthropometric terminology reference",
                 "editorial-policy.html": "author methodology link",
@@ -734,7 +772,6 @@ def main():
                 '"@type":"BlogPosting"': "blog posting structured data",
                 '"@type":"DigitalDocument"': "sample-to-bulk checklist document schema",
                 '"isAccessibleForFree":true': "free sample-to-bulk checklist disclosure",
-                '"dateModified":"2026-08-10"': "current article modification date",
                 "No sealed sample, photograph, video call, or single inspection can guarantee": "visible production-control limitation",
                 "iso.org/standard/85464.html": "current ISO 2859-1 reference",
                 "iso.org/standard/57309.html": "dimensional-change preparation reference",
@@ -754,7 +791,6 @@ def main():
                 '"@type":"BlogPosting"': "blog posting structured data",
                 '"@type":"DigitalDocument"': "volleyball checklist document schema",
                 '"isAccessibleForFree":true': "free volleyball checklist disclosure",
-                '"dateModified":"2026-08-10"': "current article modification date",
                 "there is no universal volleyball uniform design": "visible universal-design limitation",
                 "usavolleyball.org/resources-for-officials/rulebooks-and-interpretations/": "current USA Volleyball rules source",
                 "nfhs.org/sports/volleyball/rules": "current NFHS volleyball rules source",
@@ -1011,7 +1047,6 @@ def main():
                 'data-resource-download="sportswear-supplier-quote-comparison"': "quote comparison download tracking",
                 '"@type":"DigitalDocument"': "quote comparison document schema",
                 '"isAccessibleForFree":true': "free quote comparison disclosure in schema",
-                '"dateModified":"2026-08-12"': "current cost and lead-time modification date",
                 "This worksheet does not calculate or guarantee price": "visible quote worksheet scope disclosure",
                 "Ask on WhatsApp": "direct WhatsApp inquiry route",
                 "apparel-incoterms-exw-fob-ddp-landed-cost.html": "apparel delivery-term comparison handoff",
@@ -1292,6 +1327,9 @@ def main():
                     f"{EXPECTED_FORM_STYLE_VERSION}"
                 )
 
+        if relative_name == "contact.html" and "quote-form" not in parser.ids:
+            errors.append("contact.html: missing quote-form anchor")
+
         for preload in parser.image_preloads:
             if preload.get("type", "").lower() != "image/avif":
                 errors.append(f"{relative_name}: image preload is not AVIF")
@@ -1319,7 +1357,15 @@ def main():
             avif_image_count += 1
 
         base_url = parser.canonical or urljoin(f"{PRODUCTION_ORIGIN}/", relative_name)
+        for href in parser.primary_main_contact_links:
+            target = urlparse(urljoin(base_url, href))
+            if target.path.endswith("/contact.html") and target.fragment != "quote-form":
+                primary_ctas_bypassing_form_anchor += 1
+                errors.append(
+                    f"{relative_name}: primary contact CTA bypasses #quote-form: {href}"
+                )
         page_internal_links[html_file.resolve()] = set()
+        main_internal_links[html_file.resolve()] = set()
         for href in parser.links:
             if href.startswith(("mailto:", "tel:", "javascript:", "data:")):
                 continue
@@ -1329,6 +1375,13 @@ def main():
                 resolved_target = target_file.resolve()
                 internal_targets.add(resolved_target)
                 page_internal_links[html_file.resolve()].add(resolved_target)
+
+        for href in parser.main_links:
+            if href.startswith(("mailto:", "tel:", "javascript:", "data:")):
+                continue
+            target_file = site_file_for_url(urljoin(base_url, href))
+            if target_file is not None:
+                main_internal_links[html_file.resolve()].add(target_file.resolve())
 
         for asset in parser.assets:
             if asset.startswith("data:"):
@@ -1345,6 +1398,19 @@ def main():
     for asset in sorted(local_assets):
         if not asset.exists():
             errors.append(f"missing local asset: {asset.relative_to(ROOT)}")
+
+    for source_name, target_names in sorted(REQUIRED_MAIN_LINKS.items()):
+        source_file = (ROOT / source_name).resolve()
+        if source_file not in pages:
+            errors.append(f"required main-link source is missing: {source_name}")
+            continue
+        source_links = main_internal_links.get(source_file, set())
+        for target_name in sorted(target_names):
+            target_file = (ROOT / target_name).resolve()
+            if target_file not in source_links:
+                errors.append(
+                    f"{source_name}: main content is missing link to {target_name}"
+                )
 
     sitemap_tree = ET.parse(ROOT / "sitemap.xml")
     sitemap_root = sitemap_tree.getroot()
@@ -1487,6 +1553,7 @@ def main():
         "faq_schema_pages": faq_schema_pages,
         "article_schema_pages": article_schema_pages,
         "preferred_image_pages": preferred_image_pages,
+        "primary_ctas_bypassing_form_anchor": primary_ctas_bypassing_form_anchor,
         "internal_targets": len(internal_targets),
         "local_assets": len(local_assets),
         "max_click_depth": max(click_depth.values(), default=0),
