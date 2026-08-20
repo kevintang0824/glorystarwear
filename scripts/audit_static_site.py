@@ -104,6 +104,13 @@ class PageParser(HTMLParser):
         self.description = ""
         self.robots = ""
         self.canonical = ""
+        self.og_title = ""
+        self.og_description = ""
+        self.og_type = ""
+        self.og_url = ""
+        self.og_image = ""
+        self.twitter_card = ""
+        self.twitter_image = ""
         self.ids = []
         self.links = []
         self.assets = []
@@ -111,9 +118,37 @@ class PageParser(HTMLParser):
         self.image_preloads = []
         self.json_ld_blocks = []
         self.current_json_ld = None
+        self.faq_list_depth = 0
+        self.in_faq_summary = False
+        self.current_faq_summary = []
+        self.visible_faq_questions = []
+        self.structured_modified_dates = set()
+        self.article_meta_depth = 0
+        self.visible_article_dates = set()
+        self.visible_article_links = []
 
     def handle_starttag(self, tag, attrs):
         attributes = dict(attrs)
+
+        if tag == "div":
+            class_names = set(attributes.get("class", "").split())
+            if self.faq_list_depth:
+                self.faq_list_depth += 1
+            elif "faq-list" in class_names:
+                self.faq_list_depth = 1
+            if self.article_meta_depth:
+                self.article_meta_depth += 1
+            elif "article-meta" in class_names:
+                self.article_meta_depth = 1
+
+        if tag == "time" and self.article_meta_depth:
+            visible_date = attributes.get("datetime", "")
+            if re.fullmatch(r"\d{4}-\d{2}-\d{2}", visible_date):
+                self.visible_article_dates.add(visible_date)
+
+        if tag == "summary" and self.faq_list_depth:
+            self.in_faq_summary = True
+            self.current_faq_summary = []
 
         if tag == "title":
             self.in_title = True
@@ -121,10 +156,25 @@ class PageParser(HTMLParser):
             self.h1_count += 1
         elif tag == "meta":
             meta_name = attributes.get("name", "").lower()
+            meta_property = attributes.get("property", "").lower()
             if meta_name == "description":
                 self.description = attributes.get("content", "").strip()
             elif meta_name == "robots":
                 self.robots = attributes.get("content", "").strip()
+            elif meta_name == "twitter:card":
+                self.twitter_card = attributes.get("content", "").strip()
+            elif meta_name == "twitter:image":
+                self.twitter_image = attributes.get("content", "").strip()
+            if meta_property == "og:title":
+                self.og_title = attributes.get("content", "").strip()
+            elif meta_property == "og:description":
+                self.og_description = attributes.get("content", "").strip()
+            elif meta_property == "og:type":
+                self.og_type = attributes.get("content", "").strip()
+            elif meta_property == "og:url":
+                self.og_url = attributes.get("content", "").strip()
+            elif meta_property == "og:image":
+                self.og_image = attributes.get("content", "").strip()
         elif tag == "link":
             relationships = set(attributes.get("rel", "").lower().split())
             href = attributes.get("href", "")
@@ -144,6 +194,8 @@ class PageParser(HTMLParser):
                         self.image_assets.append(source)
         elif tag == "a" and attributes.get("href"):
             self.links.append(attributes["href"])
+            if self.article_meta_depth:
+                self.visible_article_links.append(attributes["href"])
         elif tag in {"img", "source"}:
             if tag == "img" and attributes.get("src"):
                 self.assets.append(attributes["src"])
@@ -165,13 +217,26 @@ class PageParser(HTMLParser):
     def handle_endtag(self, tag):
         if tag == "title":
             self.in_title = False
+        elif tag == "summary" and self.in_faq_summary:
+            question = normalized_text("".join(self.current_faq_summary))
+            if question:
+                self.visible_faq_questions.append(question)
+            self.in_faq_summary = False
+            self.current_faq_summary = []
         elif tag == "script" and self.current_json_ld is not None:
             self.json_ld_blocks.append("".join(self.current_json_ld).strip())
             self.current_json_ld = None
 
+        if tag == "div" and self.faq_list_depth:
+            self.faq_list_depth -= 1
+        if tag == "div" and self.article_meta_depth:
+            self.article_meta_depth -= 1
+
     def handle_data(self, data):
         if self.in_title:
             self.title_parts.append(data)
+        if self.in_faq_summary:
+            self.current_faq_summary.append(data)
         if self.current_json_ld is not None:
             self.current_json_ld.append(data)
 
@@ -231,6 +296,10 @@ def main():
     json_ld_count = 0
     image_count = 0
     avif_image_count = 0
+    visible_faq_pages = 0
+    faq_schema_pages = 0
+    article_schema_pages = 0
+    preferred_image_pages = 0
 
     script_source = (ROOT / "script.js").read_text(encoding="utf-8")
     required_attribution_markers = {
@@ -345,6 +414,44 @@ def main():
         if parser.h1_count != 1:
             errors.append(f"{relative_name}: expected one H1, found {parser.h1_count}")
 
+        is_noindex = "noindex" in parser.robots.lower()
+        if not is_noindex:
+            preferred_image_fields = {
+                "Open Graph title": parser.og_title,
+                "Open Graph description": parser.og_description,
+                "Open Graph type": parser.og_type,
+                "Open Graph URL": parser.og_url,
+                "Open Graph image": parser.og_image,
+                "social card type": parser.twitter_card,
+                "social card image": parser.twitter_image,
+            }
+            for label, value in preferred_image_fields.items():
+                if not value:
+                    errors.append(f"{relative_name}: missing {label}")
+
+            if parser.og_url and parser.canonical and parser.og_url != parser.canonical:
+                errors.append(
+                    f"{relative_name}: Open Graph URL does not match canonical: "
+                    f"{parser.og_url} != {parser.canonical}"
+                )
+            if (
+                parser.og_image
+                and parser.twitter_image
+                and parser.og_image != parser.twitter_image
+            ):
+                errors.append(
+                    f"{relative_name}: preferred image metadata does not match: "
+                    f"{parser.og_image} != {parser.twitter_image}"
+                )
+            if parser.og_image:
+                preferred_image_pages += 1
+                preferred_image_file = site_file_for_url(parser.og_image)
+                if preferred_image_file is None or not preferred_image_file.exists():
+                    errors.append(
+                        f"{relative_name}: preferred image has no local file: "
+                        f"{parser.og_image}"
+                    )
+
         if relative_name == "process.html":
             required_process_markers = {
                 "sportswear-sampling-production-approval-register.csv": "sampling approval register link",
@@ -425,7 +532,6 @@ def main():
                 "epa.gov/pesticide-registration/prn-2000-1": "EPA treated-article source",
                 "epa.gov/safepestcontrol/consumer-products-treated-pesticides": "EPA consumer treated-product source",
                 "ftc.gov/business-guidance/resources/advertising-faqs": "FTC claim-substantiation source",
-                '"@type":"FAQPage"': "odor and antibacterial FAQ schema",
             }
             for marker, label in required_odor_markers.items():
                 if marker not in source:
@@ -448,7 +554,6 @@ def main():
                 "members.aatcc.org/store/tm200": "AATCC drying rate source",
                 "store.astm.org/d1776_d1776m-20r24.html": "ASTM conditioning source",
                 "ftc.gov/business-guidance/resources/advertising-faqs": "FTC claim substantiation source",
-                '"@type":"FAQPage"': "moisture-management FAQ schema",
             }
             for marker, label in required_moisture_markers.items():
                 if marker not in source:
@@ -468,7 +573,6 @@ def main():
                 "helpx.adobe.com/photoshop/using/proofing-colors.html": "Adobe soft-proof source",
                 "iso.org/standard/51385.html": "ISO color-difference source",
                 "There is no responsible universal value": "visible tolerance limitation",
-                '"@type":"FAQPage"': "sublimation color FAQ schema",
             }
             for marker, label in required_sublimation_color_markers.items():
                 if marker not in source:
@@ -489,7 +593,6 @@ def main():
                 "store.astm.org/d3938-18r23.html": "ASTM care instruction source",
                 "aatcc.org/testing/standards": "AATCC method directory source",
                 "ftc.gov/business-guidance/resources/clothes-captioning": "FTC care-label evidence source",
-                '"@type":"FAQPage"': "print wash-test FAQ schema",
             }
             for marker, label in required_print_wash_markers.items():
                 if marker not in source:
@@ -507,7 +610,6 @@ def main():
                 "ftc.gov/business-guidance/resources/clothes-captioning": "FTC care-label source",
                 "ftc.gov/business-guidance/industry/registered-identification-number-database": "FTC RN source",
                 "not legal advice, compliance certification": "visible legal and certification limitation",
-                '"@type":"FAQPage"': "U.S. label FAQ schema",
             }
             for marker, label in required_us_label_markers.items():
                 if marker not in source:
@@ -776,7 +878,6 @@ def main():
                 "Program architecture": "program route comparison",
                 "Six planning gates": "collection planning workflow",
                 "cycling-jerseys-bib-shorts.html": "specific jersey and bib page link",
-                '"@type":"FAQPage"': "cycling program FAQ schema",
             }
             for marker, label in required_cycling_program_markers.items():
                 if marker not in source:
@@ -790,7 +891,6 @@ def main():
                 '"isAccessibleForFree":true': "free cycling checklist disclosure",
                 "Approve cycling jerseys and bib shorts in riding posture": "garment-level direct answer",
                 "no chamois shape, thickness, gripper width": "visible universal-comfort limitation",
-                '"@type":"FAQPage"': "cycling garment FAQ schema",
             }
             for marker, label in required_cycling_detail_markers.items():
                 if marker not in source:
@@ -802,7 +902,6 @@ def main():
                 "Program routes": "program route comparison",
                 "Six planning gates": "collection planning workflow",
                 "golf-polo-shirts-skorts.html": "specific polo and skort page link",
-                '"@type":"FAQPage"': "golf program FAQ schema",
             }
             for marker, label in required_golf_program_markers.items():
                 if marker not in source:
@@ -816,7 +915,6 @@ def main():
                 '"isAccessibleForFree":true': "free golf checklist disclosure",
                 "Approve golf polos and skorts through swing": "garment-level direct answer",
                 "no fabric name, cooling or UV label": "visible performance-claim limitation",
-                '"@type":"FAQPage"': "golf garment FAQ schema",
             }
             for marker, label in required_golf_detail_markers.items():
                 if marker not in source:
@@ -951,6 +1049,7 @@ def main():
                 "Fabric selection and performance testing": "fabric inquiry option",
                 "Packaging and label handoff": "packaging inquiry option",
                 "Quality and inspection planning": "quality inquiry option",
+                '"@id": "https://glorystarwears.com/#organization"': "canonical organization entity reference",
             }
             for marker, label in required_contact_markers.items():
                 if marker not in source:
@@ -1008,6 +1107,9 @@ def main():
             owners[value] = relative_name
 
         structured_types = set()
+        structured_faq_questions = set()
+        structured_article_author_urls = set()
+        article_schema_nodes = 0
         for block in parser.json_ld_blocks:
             json_ld_count += 1
             try:
@@ -1018,6 +1120,11 @@ def main():
 
             for node in structured_nodes(structured_data):
                 node_type = node.get("@type")
+                modified_date = node.get("dateModified")
+                if isinstance(modified_date, str) and re.fullmatch(
+                    r"\d{4}-\d{2}-\d{2}", modified_date
+                ):
+                    parser.structured_modified_dates.add(modified_date)
                 if isinstance(node_type, str):
                     structured_types.add(node_type)
                 elif isinstance(node_type, list):
@@ -1025,10 +1132,59 @@ def main():
                         value for value in node_type if isinstance(value, str)
                     )
 
+                node_types = (
+                    {node_type}
+                    if isinstance(node_type, str)
+                    else {
+                        value
+                        for value in node_type
+                        if isinstance(value, str)
+                    }
+                    if isinstance(node_type, list)
+                    else set()
+                )
+                if node_types.intersection({"Article", "BlogPosting"}):
+                    article_schema_nodes += 1
+                    authors = node.get("author", [])
+                    if isinstance(authors, dict):
+                        authors = [authors]
+                    valid_authors = [
+                        author for author in authors if isinstance(author, dict)
+                    ]
+                    if not any(
+                        normalized_text(author.get("name", ""))
+                        for author in valid_authors
+                    ):
+                        errors.append(
+                            f"{relative_name}: Article/BlogPosting author is missing a name"
+                        )
+                    author_urls = {
+                        author.get("url", "").strip()
+                        for author in valid_authors
+                        if isinstance(author.get("url"), str)
+                        and author.get("url", "").strip()
+                    }
+                    if not author_urls:
+                        errors.append(
+                            f"{relative_name}: Article/BlogPosting author is missing a URL"
+                        )
+                    structured_article_author_urls.update(author_urls)
+
+                    publisher = node.get("publisher")
+                    if not isinstance(publisher, dict) or not (
+                        normalized_text(publisher.get("name", ""))
+                        or normalized_text(publisher.get("@id", ""))
+                    ):
+                        errors.append(
+                            f"{relative_name}: Article/BlogPosting is missing a publisher"
+                        )
+
                 if node_type != "FAQPage":
                     continue
                 for question in node.get("mainEntity", []):
                     question_text = normalized_text(question.get("name", ""))
+                    if question_text:
+                        structured_faq_questions.add(question_text)
                     answer_text = normalized_text(
                         question.get("acceptedAnswer", {}).get("text", "")
                     )
@@ -1042,6 +1198,52 @@ def main():
                             f"{relative_name}: FAQ answer is not visible for: "
                             f"{question_text}"
                         )
+
+        visible_faq_questions = set(parser.visible_faq_questions)
+        if visible_faq_questions:
+            visible_faq_pages += 1
+        if "FAQPage" in structured_types:
+            faq_schema_pages += 1
+            for question_text in sorted(
+                visible_faq_questions - structured_faq_questions
+            ):
+                errors.append(
+                    f"{relative_name}: visible FAQ question is missing from JSON-LD: "
+                    f"{question_text}"
+                )
+
+        if structured_types.intersection({"Article", "BlogPosting"}):
+            article_schema_pages += 1
+            expected_visible_date = max(
+                parser.structured_modified_dates,
+                default="",
+            )
+            if (
+                expected_visible_date
+                and expected_visible_date not in parser.visible_article_dates
+            ):
+                errors.append(
+                    f"{relative_name}: structured dateModified is not shown in "
+                    f"article metadata: {expected_visible_date}"
+                )
+
+            visible_article_urls = {
+                urljoin(parser.canonical, link)
+                for link in parser.visible_article_links
+            }
+            for author_url in sorted(
+                structured_article_author_urls - visible_article_urls
+            ):
+                errors.append(
+                    f"{relative_name}: structured author URL is not linked in "
+                    f"article metadata: {author_url}"
+                )
+
+            if article_schema_nodes != 1:
+                errors.append(
+                    f"{relative_name}: expected one Article/BlogPosting node, "
+                    f"found {article_schema_nodes}"
+                )
 
         if 'class="breadcrumb"' in source and "BreadcrumbList" not in structured_types:
             errors.append(
@@ -1158,6 +1360,12 @@ def main():
         sitemap_entries.append(
             {
                 "url": location_node.text.strip(),
+                "lastmod": (
+                    url_node.find("s:lastmod", namespace).text.strip()
+                    if url_node.find("s:lastmod", namespace) is not None
+                    and url_node.find("s:lastmod", namespace).text
+                    else ""
+                ),
                 "images": [
                     node.text.strip()
                     for node in url_node.findall("image:image/image:loc", namespace)
@@ -1235,6 +1443,14 @@ def main():
         elif page.canonical != url:
             errors.append(f"sitemap/canonical mismatch: {url} != {page.canonical}")
 
+        if page is not None and page.structured_modified_dates:
+            expected_lastmod = max(page.structured_modified_dates)
+            if entry["lastmod"] != expected_lastmod:
+                errors.append(
+                    f"sitemap lastmod mismatch: {url}: "
+                    f"{entry['lastmod'] or 'missing'} != {expected_lastmod}"
+                )
+
         duplicate_images = duplicate_values(entry["images"])
         if duplicate_images:
             errors.append(
@@ -1267,6 +1483,10 @@ def main():
         "json_ld_blocks": json_ld_count,
         "images": image_count,
         "avif_images": avif_image_count,
+        "visible_faq_pages": visible_faq_pages,
+        "faq_schema_pages": faq_schema_pages,
+        "article_schema_pages": article_schema_pages,
+        "preferred_image_pages": preferred_image_pages,
         "internal_targets": len(internal_targets),
         "local_assets": len(local_assets),
         "max_click_depth": max(click_depth.values(), default=0),

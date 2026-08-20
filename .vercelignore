@@ -4,6 +4,9 @@
 .wrangler/
 .env
 .env.*
+**/.dev.vars
+**/.dev.vars.*
+**/.wrangler/
 .DS_Store
 Thumbs.db
 *.log
@@ -11,5 +14,10 @@ node_modules/
 dist/
 build/
 .cache/
+.tmp-odor-register/
+outputs/
+docs/
+scripts/
+workers/
 assets/images/gym-tshirts-tank-tops-manufacturer-detail.png
 assets/images/training-shorts-joggers-manufacturer-detail.png
