@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import csv
 import json
 import re
 import shutil
@@ -338,6 +339,9 @@ def main():
     article_schema_pages = 0
     preferred_image_pages = 0
     primary_ctas_bypassing_form_anchor = 0
+    factory_media_register_fields = 0
+    undisclosed_factory_media_visuals = 0
+    unqualified_factory_video_availability_answers = 0
 
     script_source = (ROOT / "script.js").read_text(encoding="utf-8")
     required_attribution_markers = {
@@ -1022,6 +1026,121 @@ def main():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 
+        if relative_name == "factory-video.html":
+            required_factory_media_markers = {
+                "sportswear-factory-media-verification-register.csv": "factory media verification register link",
+                'data-resource-download="sportswear-factory-media-verification-register"': "factory media download tracking",
+                '"@type":"DigitalDocument"': "factory media document schema",
+                '"isAccessibleForFree":true': "free factory media register disclosure",
+                "No source-verified GloryStarWear factory footage is currently published": "current factory footage disclosure",
+                "Media verifies only the scene, time, and scope captured": "visible media evidence limitation",
+                "does not confirm or guarantee a live call": "conditional live-call availability boundary",
+                "about-factory.html": "supplier verification overview link",
+                "sportswear-manufacturer-due-diligence-checklist.html": "full due-diligence method link",
+            }
+            for marker, label in required_factory_media_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+            factory_image_alts = []
+            for image_tag in IMAGE_RE.findall(source):
+                alt_match = re.search(r'\balt="([^"]*)"', image_tag, re.IGNORECASE)
+                factory_image_alts.append(alt_match.group(1).strip() if alt_match else "")
+            undisclosed_factory_media_visuals = sum(
+                not alt.startswith("Illustrative ") for alt in factory_image_alts
+            )
+            if len(factory_image_alts) != 4:
+                errors.append(
+                    f"{relative_name}: expected 4 illustrative content images, "
+                    f"found {len(factory_image_alts)}"
+                )
+            if undisclosed_factory_media_visuals:
+                errors.append(
+                    f"{relative_name}: {undisclosed_factory_media_visuals} image alt values "
+                    "do not disclose illustrative status"
+                )
+
+            unqualified_factory_video_availability_answers = source.count(
+                "Yes. A video call"
+            )
+            if unqualified_factory_video_availability_answers:
+                errors.append(
+                    f"{relative_name}: contains "
+                    f"{unqualified_factory_video_availability_answers} unqualified "
+                    "video-call availability answers"
+                )
+
+            factory_register_path = (
+                ROOT
+                / "assets"
+                / "downloads"
+                / "sportswear-factory-media-verification-register.csv"
+            )
+            if not factory_register_path.exists():
+                errors.append(f"{relative_name}: missing factory media verification CSV")
+            else:
+                with factory_register_path.open(
+                    newline="", encoding="utf-8-sig"
+                ) as factory_register_file:
+                    factory_register_rows = list(csv.reader(factory_register_file))
+                if not factory_register_rows:
+                    errors.append(f"{relative_name}: factory media verification CSV is empty")
+                else:
+                    factory_register_header = factory_register_rows[0]
+                    factory_media_register_fields = len(factory_register_header)
+                    if factory_media_register_fields != 47:
+                        errors.append(
+                            f"{relative_name}: factory media verification CSV has "
+                            f"{factory_media_register_fields} fields instead of 47"
+                        )
+                    if len(set(factory_register_header)) != factory_media_register_fields:
+                        errors.append(
+                            f"{relative_name}: factory media verification CSV has "
+                            "duplicate headers"
+                        )
+                    malformed_factory_rows = [
+                        row_number
+                        for row_number, row in enumerate(factory_register_rows, start=1)
+                        if len(row) != factory_media_register_fields
+                    ]
+                    if malformed_factory_rows:
+                        errors.append(
+                            f"{relative_name}: factory media verification CSV has "
+                            f"malformed rows {malformed_factory_rows}"
+                        )
+                    required_factory_register_fields = {
+                        "contracting_entity",
+                        "facility_name",
+                        "facility_location_claim",
+                        "actual_capture_date",
+                        "continuous_or_edited_status",
+                        "observed_fact",
+                        "not_shown_or_not_verified",
+                        "confidentiality_or_redaction",
+                        "publication_permission",
+                        "decision_gate",
+                        "limitation_note",
+                    }
+                    missing_factory_register_fields = sorted(
+                        required_factory_register_fields - set(factory_register_header)
+                    )
+                    if missing_factory_register_fields:
+                        errors.append(
+                            f"{relative_name}: factory media verification CSV is missing "
+                            f"fields {', '.join(missing_factory_register_fields)}"
+                        )
+
+        if relative_name == "about-factory.html":
+            required_supplier_verification_markers = {
+                "Request and verify factory media": "descriptive factory media route link",
+                "confirm current media and call availability separately": "conditional media availability boundary",
+                'property="og:image:alt"': "Open Graph illustrative image disclosure",
+                'name="twitter:image:alt"': "Twitter illustrative image disclosure",
+            }
+            for marker, label in required_supplier_verification_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
         if relative_name == "certificates.html":
             required_compliance_markers = {
                 "sportswear-compliance-evidence-register.csv": "compliance evidence register link",
@@ -1566,6 +1685,9 @@ def main():
         "article_schema_pages": article_schema_pages,
         "preferred_image_pages": preferred_image_pages,
         "primary_ctas_bypassing_form_anchor": primary_ctas_bypassing_form_anchor,
+        "factory_media_register_fields": factory_media_register_fields,
+        "undisclosed_factory_media_visuals": undisclosed_factory_media_visuals,
+        "unqualified_factory_video_availability_answers": unqualified_factory_video_availability_answers,
         "internal_targets": len(internal_targets),
         "local_assets": len(local_assets),
         "max_click_depth": max(click_depth.values(), default=0),

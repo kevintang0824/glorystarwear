@@ -79,6 +79,8 @@ Keep these files and folders together in the GitHub repository:
 - `process.html`: production process.
 - `faq.html`: buyer questions covering development, ordering, quality, and delivery preparation.
 - `contact.html`: inquiry and contact page.
+- `about-factory.html`: current-project supplier verification overview, evidence request routes, and explicit illustrative-image disclosure.
+- `factory-video.html`: factory photo, video, and live-walkthrough request and verification workflow with a free 47-field CSV register; current page visuals are explicitly illustrative and no source-verified factory footage is published.
 - `resources/sportswear-sample-approval-checklist.html`: sample revision, fit, measurement, artwork, packing, and bulk sign-off guide.
 - `resources/sportswear-manufacturer-due-diligence-checklist.html`: evidence-based supplier identity, operating-scope, product-fit, material, quality, certificate, commercial-risk, and decision-gate guide.
 - `resources/sportswear-aql-inspection-checklist.html`: lot definition, sampling instructions, defect classes, product checks, evidence, and pre-shipment release guide.

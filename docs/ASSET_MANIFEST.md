@@ -11,6 +11,7 @@ Responsive derivatives with `-900.jpg` and `-1200.jpg` suffixes are performance 
 
 ## Downloadable Buyer Assets
 
+- `assets/downloads/sportswear-factory-media-verification-register.csv`: 47-field factory photo, clip, file-set, and live-walkthrough request record covering supplier and facility claims, capture scope, identity and date cues, continuity, product relevance, direct observations, unverified gaps, corroboration, confidentiality, decisions, and evidence limitations.
 - `assets/downloads/activewear-odor-control-claim-test-register.csv`: 67-field product, treatment, claim, beneficiary, mechanism, method, control, care-state, odor, antibacterial, wearer, variability, safety, market-review, evidence, limitation, and release-scope record.
 - `assets/downloads/activewear-moisture-management-test-register.csv`: 67-field activewear claim, textile, garment-zone, method, conditioning, liquid, environment, wicking, drying, sweat-visibility, wet-cling, wear-trial, criterion, evidence, limitation, and release-scope record.
 - `assets/downloads/apparel-print-wash-test-register.csv`: 59-field garment, decoration, production-route, care-protocol, cycle-gate, inspection-condition, defect, criterion, result, corrective-action, retest, evidence, and release-scope record.
