@@ -7,9 +7,10 @@ import shutil
 import subprocess
 import sys
 import xml.etree.ElementTree as ET
-from collections import deque
+from collections import Counter, deque
 from html import unescape
 from html.parser import HTMLParser
+from math import sqrt
 from pathlib import Path
 from urllib.parse import unquote, urljoin, urlparse
 
@@ -107,6 +108,23 @@ NON_VISIBLE_RE = re.compile(
     re.IGNORECASE,
 )
 TAG_RE = re.compile(r"<[^>]+>")
+MAIN_TEXT_TOKEN_RE = re.compile(r"[a-z0-9]+")
+MAIN_TEXT_STOPWORDS = set(
+    """
+    a about above after again against all am an and any are arent as at be because
+    been before being below between both but by can cannot could couldnt did didnt
+    do does doesnt doing dont down during each few for from further had hadnt has
+    hasnt have havent having he hed hell hes her here heres hers herself him himself
+    his how hows i id ill im ive if in into is isnt it its itself lets me more most
+    mustnt my myself no nor not of off on once only or other ought our ours ourselves
+    out over own same shant she shed shell shes should shouldnt so some such than that
+    thats the their theirs them themselves then there theres these they theyd theyll
+    theyre theyve this those through to too under until up very was wasnt we wed well
+    were weve werent what whats when whens where wheres which while who whos whom why
+    whys with wont would wouldnt you youd youll youre youve your yours yourself
+    yourselves
+    """.split()
+)
 IGNORED_PATH_PARTS = {
     ".git",
     ".local-backups",
@@ -282,6 +300,34 @@ class PageParser(HTMLParser):
         return "".join(self.title_parts).strip()
 
 
+class MainTextParser(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.main_depth = 0
+        self.skip_depth = 0
+        self.parts = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "main":
+            self.main_depth += 1
+        if self.main_depth and tag in {"script", "style", "svg", "noscript"}:
+            self.skip_depth += 1
+
+    def handle_endtag(self, tag):
+        if (
+            self.main_depth
+            and tag in {"script", "style", "svg", "noscript"}
+            and self.skip_depth
+        ):
+            self.skip_depth -= 1
+        if tag == "main" and self.main_depth:
+            self.main_depth -= 1
+
+    def handle_data(self, data):
+        if self.main_depth and not self.skip_depth:
+            self.parts.append(data)
+
+
 def site_file_for_url(url):
     parsed = urlparse(url)
     if parsed.scheme in {"http", "https"} and parsed.netloc != "glorystarwears.com":
@@ -307,6 +353,28 @@ def duplicate_values(values):
 
 def normalized_text(value):
     return re.sub(r"\s+", " ", unescape(value)).strip()
+
+
+def main_text_vector(path):
+    parser = MainTextParser()
+    parser.feed(path.read_text(encoding="utf-8"))
+    tokens = MAIN_TEXT_TOKEN_RE.findall(" ".join(parser.parts).lower())
+    return Counter(
+        token
+        for token in tokens
+        if len(token) > 1 and token not in MAIN_TEXT_STOPWORDS
+    )
+
+
+def cosine_similarity(left, right):
+    denominator = sqrt(
+        sum(value * value for value in left.values())
+        * sum(value * value for value in right.values())
+    )
+    if not denominator:
+        return 0.0
+    numerator = sum(left[token] * right[token] for token in left.keys() & right.keys())
+    return numerator / denominator
 
 
 def structured_nodes(value):
@@ -342,6 +410,7 @@ def main():
     factory_media_register_fields = 0
     undisclosed_factory_media_visuals = 0
     unqualified_factory_video_availability_answers = 0
+    homepage_manufacturer_main_text_cosine_similarity = 0.0
 
     script_source = (ROOT / "script.js").read_text(encoding="utf-8")
     required_attribution_markers = {
@@ -976,6 +1045,50 @@ def main():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 
+        if relative_name == "sportswear-manufacturer.html":
+            required_manufacturer_route_markers = {
+                'id="production-route-heading"': "route-selection section",
+                "proposed inquiry scopes, not pre-confirmed manufacturing routes": "project-specific route boundary",
+                'href="./resources/oem-vs-odm-sportswear.html"': "generic OEM-versus-ODM method handoff",
+                'id="supplier-evidence-heading"': "supplier-evidence section",
+                'href="#supplier-evidence-heading"': "hero supplier-evidence route",
+                "the hero image is an illustrative planning visual": "visible hero-image disclosure",
+                "not proof of factory identity, ownership, capacity": "visible supplier-claim boundary",
+                "illustrative planning visuals, not documentary evidence": "visible image disclosure",
+            }
+            for marker, label in required_manufacturer_route_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+            for image_tag in IMAGE_RE.findall(source):
+                alt_match = re.search(r'\balt="([^"]*)"', image_tag, re.IGNORECASE)
+                alt_text = alt_match.group(1).strip() if alt_match else ""
+                status_match = re.search(
+                    r'\bdata-evidence-status="([^"]*)"',
+                    image_tag,
+                    re.IGNORECASE,
+                )
+                evidence_status = (
+                    status_match.group(1).strip().lower() if status_match else ""
+                )
+                if evidence_status not in {"illustrative", "verified"}:
+                    errors.append(
+                        f"{relative_name}: image is missing a valid evidence status"
+                    )
+                elif (
+                    evidence_status == "illustrative"
+                    and "illustrative" not in alt_text.lower()
+                ):
+                    errors.append(
+                        f"{relative_name}: illustrative image alt does not disclose status"
+                    )
+                elif evidence_status == "verified" and not re.search(
+                    r'\bdata-evidence-source="[^"]+"', image_tag, re.IGNORECASE
+                ):
+                    errors.append(
+                        f"{relative_name}: verified image is missing its evidence source"
+                    )
+
         if relative_name == "custom-teamwear-uniforms.html":
             required_teamwear_program_markers = {
                 "multi-sport programs, roster sizing, decoration choices": "broad teamwear program description",
@@ -1543,6 +1656,14 @@ def main():
                     f"{source_name}: main content is missing link to {target_name}"
                 )
 
+    homepage_manufacturer_main_text_cosine_similarity = round(
+        cosine_similarity(
+            main_text_vector(ROOT / "index.html"),
+            main_text_vector(ROOT / "sportswear-manufacturer.html"),
+        ),
+        4,
+    )
+
     sitemap_tree = ET.parse(ROOT / "sitemap.xml")
     sitemap_root = sitemap_tree.getroot()
     namespace = {
@@ -1688,6 +1809,7 @@ def main():
         "factory_media_register_fields": factory_media_register_fields,
         "undisclosed_factory_media_visuals": undisclosed_factory_media_visuals,
         "unqualified_factory_video_availability_answers": unqualified_factory_video_availability_answers,
+        "homepage_manufacturer_main_text_cosine_similarity": homepage_manufacturer_main_text_cosine_similarity,
         "internal_targets": len(internal_targets),
         "local_assets": len(local_assets),
         "max_click_depth": max(click_depth.values(), default=0),

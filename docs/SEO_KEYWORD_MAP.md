@@ -15,7 +15,7 @@ Last updated: 2026-08-21
 | URL | Primary intent | Supporting intent |
 | --- | --- | --- |
 | `/` | Broad `custom sportswear manufacturer` discovery, product range, and route selection | Activewear, teamwear, niche sports, packaging, trust, and inquiry paths |
-| `/sportswear-manufacturer.html` | `private label sportswear manufacturer` and OEM/ODM supplier evaluation | Development inputs, provider scope, sampling, branding, quality, packaging, and commercial handoff |
+| `/sportswear-manufacturer.html` | `private label sportswear manufacturer` and proposed OEM/ODM supplier-route evaluation | Owns buyer inputs, development responsibilities, supplier handoffs, approval references, evidence limits, and comparable quote scope; the homepage owns broad discovery and product pages own garment-specific briefs |
 | `/low-moq-sportswear-manufacturer.html` | `low MOQ sportswear manufacturer` and startup first-order planning | Light custom, focused capsule, team or event, full custom, component minimums, sample route, and quote inputs |
 | `/private-label-activewear-manufacturer.html` | `private label activewear manufacturer`, `activewear private label`, and activewear collection planning | Owns multi-style activewear architecture, development route, fit blocks, fabric and color systems, labels, packaging, sampling, launch priority, and reorders; garment and gym-specific pages own their narrower product decisions |
 | `/custom-teamwear-uniforms.html` | `custom teamwear uniform manufacturer` and multi-sport uniform program planning | Owns product selection, roster sizing, decoration-route choice, player packing, replacements, reorders, and season continuity. The dedicated sublimation page owns full-color artwork, production-fabric color approval, and sublimation release controls. |
@@ -46,6 +46,7 @@ Last updated: 2026-08-21
 
 | Broad page | Primary intent | Specific page | Primary intent |
 | --- | --- | --- | --- |
+| `/` | Broad custom-sportswear discovery, product-family navigation, and route selection | `/sportswear-manufacturer.html` | Proposed OEM, ODM, light-custom, or hybrid route fit, responsibility handoffs, supplier evidence, and comparable quote scope |
 | `/custom-teamwear-uniforms.html` | Multi-sport teamwear program covering product selection, roster sizing, decoration choice, player packing, replacements, reorders, and season continuity | `/products/custom-sublimated-teamwear.html` | Full-color sublimation route covering panel artwork, production-fabric color approval, personalization data, physical strike-off or sample evidence, and bulk release |
 | `/products/golf-apparel.html` | Custom golf apparel program for clubs, resorts, pro shops, layers, accessories, retail allocation, and reorders | `/products/golf-polo-shirts-skorts.html` | Golf polo and skort construction, collar, placket, liner, waistband, pocket, artwork, and sample specifications |
 | `/products/volleyball-teamwear.html` | Volleyball season program covering competition, practice, travel, staff, tournament, fan, replacement, allocation, delivery, and reorders | `/products/volleyball-uniforms.html` | Volleyball match garment specification covering jersey construction, libero versions, bottoms, names, numbers, fit routes, samples, labels, and roster packing |

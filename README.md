@@ -41,6 +41,7 @@ Keep these files and folders together in the GitHub repository:
 ## Page Map
 
 - `index.html`: homepage with product range, customization, fabric, packaging, quality, FAQ, and inquiry sections.
+- `sportswear-manufacturer.html`: private-label OEM, ODM, light-custom, and hybrid route comparison covering buyer inputs, supplier handoffs, approval references, evidence limits, and comparable quote scope; its four planning visuals are explicitly illustrative.
 - `products/index.html`: product category overview.
 - `products/yoga-wear.html`: yoga wear, leggings, sports bras, matching sets.
 - `products/seamless-activewear.html`: seamless leggings, ribbed sports bras, crop tops, biker shorts, labels, and packaging.
