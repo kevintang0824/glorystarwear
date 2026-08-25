@@ -1,6 +1,6 @@
 # GloryStarWear Search Intent Map
 
-Last updated: 2026-08-21
+Last updated: 2026-08-25
 
 ## Page Ownership Rule
 
@@ -26,7 +26,7 @@ Last updated: 2026-08-21
 | `/products/new-products.html` | New sportswear product and collection development planning | Owns launch or reorder goals, assortment roles, development-route selection, style-level planning, sample approval, and launch handoff; garment-specific manufacturer intent remains with the relevant category page |
 | `/quality.html` | `sportswear quality control checklist` and factory QC workflow | Approved references, incoming material, in-line production, measurement, packing, evidence, and release decisions |
 | `/certificates.html` | `sportswear compliance checklist`, apparel compliance documents, and product evidence planning | Owns product, market, user, label, test, report, claim, corrective-action, approval, release, and retention evidence; supplier identity and certificate verification remain with the due-diligence pages, while AQL remains with pre-shipment lot inspection |
-| `/about-factory.html` | Current-project sportswear supplier verification and evidence request overview | Owns the site's evidence-status disclosure and routes buyers to media, certificates, project examples, quality, quote, and general due-diligence checks; it does not own the media verification protocol or the full multi-supplier risk method |
+| `/about-factory.html` | Current-project sportswear supplier verification and evidence request overview | Owns the site's evidence-status disclosure and routes buyers to media, certificates, hypothetical planning examples, quality, quote, and general due-diligence checks; it does not own the media verification protocol or the full multi-supplier risk method |
 | `/factory-video.html` | `sportswear factory media request checklist` and factory photo or video verification | Owns the request scope, named site, capture date, process and product relevance, continuity, authorization, observed facts, unverified gaps, and limitations for photos, clips, file sets, or live walkthroughs; it does not claim current media availability |
 | `/process.html` | `custom sportswear sampling process`, sample revisions, and production release | Owns sample-stage choice, sample IDs and revisions, approval evidence, open exceptions, the controlled bulk reference, production gates, QC, packing, and shipment |
 | `/products/private-label-gym-clothing.html` | `private label gym clothing` and `white label fitness clothing` | Existing-style white label route, private label collection development, OEM specifications, workout tops, bottoms, layers, labels, and packaging |
@@ -40,6 +40,7 @@ Last updated: 2026-08-21
 | --- | --- | --- |
 | `/about-factory.html` | See the site's current evidence status and choose the relevant verification route for a project | Does not provide a general supplier-comparison method or a factory-media authentication protocol |
 | `/factory-video.html` | Plan and review a scoped factory photo, video, file-set, or live-walkthrough request | Does not prove current media availability, legal identity, factory ownership, capacity, certificate validity, quality repeatability, or order conformity |
+| `/case-studies.html` | Organize a proposed sportswear project brief and understand the evidence needed for a verified public project story | Contains hypothetical planning examples only; it does not claim actual customers, orders, production, delivery results, testimonials, or reorders, and does not own verified case-study intent until authorized evidence is published |
 | `/resources/sportswear-manufacturer-due-diligence-checklist.html` | Compare supplier identity, operating model, product fit, materials, samples, quality, certificates, commercial assumptions, packing, risk, and decision gates | Treats media as one evidence type; it does not own the detailed media request and review record |
 
 ## Priority Page Pairs

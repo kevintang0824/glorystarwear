@@ -82,6 +82,7 @@ Keep these files and folders together in the GitHub repository:
 - `contact.html`: inquiry and contact page.
 - `about-factory.html`: current-project supplier verification overview, evidence request routes, and explicit illustrative-image disclosure.
 - `factory-video.html`: factory photo, video, and live-walkthrough request and verification workflow with a free 47-field CSV register; current page visuals are explicitly illustrative and no source-verified factory footage is published.
+- `case-studies.html`: clearly labeled hypothetical sportswear project briefs and the evidence requirements for a future verified project story; it does not claim completed customers, orders, delivery results, testimonials, or reorders.
 - `resources/sportswear-sample-approval-checklist.html`: sample revision, fit, measurement, artwork, packing, and bulk sign-off guide.
 - `resources/sportswear-manufacturer-due-diligence-checklist.html`: evidence-based supplier identity, operating-scope, product-fit, material, quality, certificate, commercial-risk, and decision-gate guide.
 - `resources/sportswear-aql-inspection-checklist.html`: lot definition, sampling instructions, defect classes, product checks, evidence, and pre-shipment release guide.
@@ -146,7 +147,7 @@ python3 scripts/generate_hero_avif.py --all-images
 python3 scripts/audit_static_site.py
 ```
 
-The audit validates canonicals, titles, descriptions, H1s, JSON-LD/visible FAQ parity, sitemap membership, local assets, internal targets, homepage reachability, click depth, and hero-image preload coverage for priority landing pages.
+The audit validates canonicals, titles, descriptions, H1s, JSON-LD/visible FAQ parity, sitemap membership, local assets, internal targets, homepage reachability, click depth, hero-image preload coverage, and evidence-status boundaries for factory media and hypothetical planning examples.
 
 After exporting a Search Console performance table, generate a prioritized opportunity report:
 

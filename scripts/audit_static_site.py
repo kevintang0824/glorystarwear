@@ -28,6 +28,7 @@ PRIORITY_LCP_PAGES = {
     "one-stop-service.html",
     "process.html",
     "certificates.html",
+    "case-studies.html",
     "contact.html",
     "products/yoga-wear.html",
     "products/new-products.html",
@@ -150,15 +151,21 @@ class PageParser(HTMLParser):
         self.og_type = ""
         self.og_url = ""
         self.og_image = ""
+        self.og_image_alt = ""
         self.twitter_card = ""
         self.twitter_image = ""
+        self.twitter_image_alt = ""
         self.ids = []
         self.links = []
+        self.current_link_href = None
+        self.current_link_text = []
+        self.case_study_link_texts = []
         self.main_depth = 0
         self.main_links = []
         self.primary_main_contact_links = []
         self.assets = []
         self.image_assets = []
+        self.images = []
         self.image_preloads = []
         self.json_ld_blocks = []
         self.current_json_ld = None
@@ -212,6 +219,8 @@ class PageParser(HTMLParser):
                 self.twitter_card = attributes.get("content", "").strip()
             elif meta_name == "twitter:image":
                 self.twitter_image = attributes.get("content", "").strip()
+            elif meta_name == "twitter:image:alt":
+                self.twitter_image_alt = attributes.get("content", "").strip()
             if meta_property == "og:title":
                 self.og_title = attributes.get("content", "").strip()
             elif meta_property == "og:description":
@@ -222,6 +231,8 @@ class PageParser(HTMLParser):
                 self.og_url = attributes.get("content", "").strip()
             elif meta_property == "og:image":
                 self.og_image = attributes.get("content", "").strip()
+            elif meta_property == "og:image:alt":
+                self.og_image_alt = attributes.get("content", "").strip()
         elif tag == "link":
             relationships = set(attributes.get("rel", "").lower().split())
             href = attributes.get("href", "")
@@ -242,6 +253,8 @@ class PageParser(HTMLParser):
         elif tag == "a" and attributes.get("href"):
             href = attributes["href"]
             self.links.append(href)
+            self.current_link_href = href
+            self.current_link_text = []
             if self.main_depth:
                 self.main_links.append(href)
                 class_names = set(attributes.get("class", "").split())
@@ -253,6 +266,7 @@ class PageParser(HTMLParser):
             if tag == "img" and attributes.get("src"):
                 self.assets.append(attributes["src"])
                 self.image_assets.append(attributes["src"])
+                self.images.append(attributes)
             for candidate in attributes.get("srcset", "").split(","):
                 source = candidate.strip().split(" ", 1)[0]
                 if source:
@@ -279,6 +293,16 @@ class PageParser(HTMLParser):
         elif tag == "script" and self.current_json_ld is not None:
             self.json_ld_blocks.append("".join(self.current_json_ld).strip())
             self.current_json_ld = None
+        elif tag == "a" and self.current_link_href is not None:
+            link_path = urlparse(self.current_link_href).path
+            if link_path == "case-studies.html" or link_path.endswith(
+                "/case-studies.html"
+            ):
+                self.case_study_link_texts.append(
+                    normalized_text(" ".join(self.current_link_text))
+                )
+            self.current_link_href = None
+            self.current_link_text = []
 
         if tag == "div" and self.faq_list_depth:
             self.faq_list_depth -= 1
@@ -292,6 +316,8 @@ class PageParser(HTMLParser):
             self.title_parts.append(data)
         if self.in_faq_summary:
             self.current_faq_summary.append(data)
+        if self.current_link_href is not None:
+            self.current_link_text.append(data)
         if self.current_json_ld is not None:
             self.current_json_ld.append(data)
 
@@ -410,7 +436,22 @@ def main():
     factory_media_register_fields = 0
     undisclosed_factory_media_visuals = 0
     unqualified_factory_video_availability_answers = 0
+    case_studies_target_links = 0
+    misleading_case_claim_anchors = 0
+    undisclosed_case_planning_visuals = 0
+    ambiguous_case_scenario_phrases = 0
     homepage_manufacturer_main_text_cosine_similarity = 0.0
+
+    llms_source = (ROOT / "llms.txt").read_text(encoding="utf-8")
+    if re.search(
+        r"\[[^\]]*case studies[^\]]*\]\(https://glorystarwears\.com/case-studies\.html\)",
+        llms_source,
+        re.IGNORECASE,
+    ):
+        ambiguous_case_scenario_phrases += 1
+        errors.append(
+            "llms.txt: case-studies URL is mislabeled as completed case studies"
+        )
 
     script_source = (ROOT / "script.js").read_text(encoding="utf-8")
     required_attribution_markers = {
@@ -506,6 +547,36 @@ def main():
         )
         relative_name = html_file.relative_to(ROOT).as_posix()
         pages[html_file.resolve()] = parser
+
+        for anchor_text in parser.case_study_link_texts:
+            case_studies_target_links += 1
+            label = normalized_text(anchor_text).lower()
+            forbidden_label = any(
+                phrase in label
+                for phrase in (
+                    "case studies",
+                    "customer case",
+                    "client case",
+                    "completed case",
+                    "delivered result",
+                    "project evidence",
+                    "comparable case",
+                )
+            )
+            compatible_label = not forbidden_label and (
+                label in {"planning", "planning examples"}
+                or "planning example" in label
+                or "hypothetical" in label
+                or "project brief" in label
+                or "evidence format" in label
+                or "evidence boundar" in label
+            )
+            if not compatible_label:
+                misleading_case_claim_anchors += 1
+                errors.append(
+                    f"{relative_name}: misleading case-studies anchor: "
+                    f"{anchor_text or '[empty]'}"
+                )
 
         if not parser.title:
             errors.append(f"{relative_name}: missing title")
@@ -1088,6 +1159,147 @@ def main():
                     errors.append(
                         f"{relative_name}: verified image is missing its evidence source"
                     )
+
+        if relative_name == "case-studies.html":
+            required_planning_markers = {
+                "every buyer type, product mix, action, visual, and proposed outcome on this page is hypothetical": "complete hypothetical-content disclosure",
+                "contains no actual buyer, order, production, delivery, reorder, testimonial, or outcome fact": "scenario fact boundary",
+                "What a verified public project story would require": "verified-story evidence requirements",
+                "The planning briefs above do not satisfy these requirements": "planning-versus-evidence boundary",
+            }
+            for marker, label in required_planning_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+            if not re.search(
+                r'"dateModified"\s*:\s*"\d{4}-\d{2}-\d{2}"', source
+            ):
+                errors.append(
+                    f"{relative_name}: CollectionPage is missing dateModified"
+                )
+
+            h1_match = re.search(
+                r"<h1\b[^>]*>(.*?)</h1>", source, re.IGNORECASE | re.DOTALL
+            )
+            h1_text = normalized_text(
+                TAG_RE.sub(" ", h1_match.group(1)) if h1_match else ""
+            )
+            for label, value in (
+                ("title", parser.title),
+                ("H1", h1_text),
+                ("meta description", parser.description),
+                ("Open Graph title", parser.og_title),
+            ):
+                if "planning" not in value.lower() or "case stud" in value.lower():
+                    errors.append(
+                        f"{relative_name}: {label} does not preserve planning-example intent"
+                    )
+
+            if not all(
+                term in parser.og_description.lower()
+                for term in ("illustrative", "planning")
+            ):
+                errors.append(
+                    f"{relative_name}: Open Graph description does not preserve "
+                    "the illustrative planning boundary"
+                )
+
+            collection_nodes = []
+            for block in parser.json_ld_blocks:
+                try:
+                    structured_data = json.loads(block)
+                except json.JSONDecodeError:
+                    continue
+                collection_nodes.extend(
+                    node
+                    for node in structured_nodes(structured_data)
+                    if node.get("@type") == "CollectionPage"
+                )
+            collection_descriptions = [
+                normalized_text(node.get("description", "")).lower()
+                for node in collection_nodes
+            ]
+            if not any(
+                "hypothetical" in description
+                and "not completed" in description
+                and "delivered results" in description
+                for description in collection_descriptions
+            ):
+                errors.append(
+                    f"{relative_name}: CollectionPage description does not preserve "
+                    "the hypothetical-content boundary"
+                )
+
+            for label, value in (
+                ("Open Graph image alt", parser.og_image_alt),
+                ("social image alt", parser.twitter_image_alt),
+            ):
+                if "illustrative" not in value.lower():
+                    errors.append(
+                        f"{relative_name}: {label} does not disclose illustrative status"
+                    )
+
+            for image in parser.images:
+                evidence_status = image.get("data-evidence-status", "").lower()
+                alt_text = image.get("alt", "").strip()
+                image_has_issue = False
+                if evidence_status not in {"illustrative", "verified"}:
+                    image_has_issue = True
+                    errors.append(
+                        f"{relative_name}: image is missing a valid evidence status"
+                    )
+                elif (
+                    evidence_status == "illustrative"
+                    and "illustrative" not in alt_text.lower()
+                ):
+                    image_has_issue = True
+                    errors.append(
+                        f"{relative_name}: illustrative image alt does not disclose status"
+                    )
+                elif evidence_status == "verified" and not image.get(
+                    "data-evidence-source", ""
+                ).strip():
+                    image_has_issue = True
+                    errors.append(
+                        f"{relative_name}: verified image is missing its evidence source"
+                    )
+                if image_has_issue:
+                    undisclosed_case_planning_visuals += 1
+
+            ambiguous_phrases = (
+                "a boutique activewear buyer planned",
+                "a fitness brand needed",
+                "a teamwear buyer requested",
+                "an ecommerce seller improved",
+            )
+            phrase_count = sum(
+                source.lower().count(phrase) for phrase in ambiguous_phrases
+            )
+            ambiguous_case_scenario_phrases += phrase_count
+            if phrase_count:
+                errors.append(
+                    f"{relative_name}: contains {phrase_count} ambiguous "
+                    "past-tense buyer scenario phrases"
+                )
+
+        if relative_name == "about-factory.html":
+            phrase_count = source.lower().count("anonymized buyer scenarios")
+            ambiguous_case_scenario_phrases += phrase_count
+            if phrase_count:
+                errors.append(
+                    f"{relative_name}: hypothetical briefs are described as anonymized buyers"
+                )
+
+        if relative_name == "resources/index.html" and "case-studies.html" in source:
+            phrase_count = sum(
+                source.lower().count(phrase)
+                for phrase in ("project evidence", "use comparable cases")
+            )
+            ambiguous_case_scenario_phrases += phrase_count
+            if phrase_count:
+                errors.append(
+                    f"{relative_name}: planning examples are described as project evidence"
+                )
 
         if relative_name == "custom-teamwear-uniforms.html":
             required_teamwear_program_markers = {
@@ -1809,6 +2021,10 @@ def main():
         "factory_media_register_fields": factory_media_register_fields,
         "undisclosed_factory_media_visuals": undisclosed_factory_media_visuals,
         "unqualified_factory_video_availability_answers": unqualified_factory_video_availability_answers,
+        "case_studies_target_links": case_studies_target_links,
+        "misleading_case_claim_anchors": misleading_case_claim_anchors,
+        "undisclosed_case_planning_visuals": undisclosed_case_planning_visuals,
+        "ambiguous_case_scenario_phrases": ambiguous_case_scenario_phrases,
         "homepage_manufacturer_main_text_cosine_similarity": homepage_manufacturer_main_text_cosine_similarity,
         "internal_targets": len(internal_targets),
         "local_assets": len(local_assets),
