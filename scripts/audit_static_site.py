@@ -19,8 +19,8 @@ from site_chrome import site_footer_markup, site_header_markup
 
 ROOT = Path(__file__).resolve().parent.parent
 PRODUCTION_ORIGIN = "https://glorystarwears.com"
-EXPECTED_SCRIPT_VERSION = "20260828-8"
-EXPECTED_FORM_STYLE_VERSION = "20260828-8"
+EXPECTED_SCRIPT_VERSION = "20260828-9"
+EXPECTED_FORM_STYLE_VERSION = "20260828-9"
 CATALOG_PATH = ROOT / "scripts" / "product_expansion_catalog.json"
 CATALOG_ITEMS = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
 CATALOG_SLUG_LIST = [item["slug"] for item in CATALOG_ITEMS]
@@ -723,6 +723,10 @@ def main():
         "is-section-current": "site-wide current-section navigation state",
         'trackEvent("navigation_select"': "desktop and mobile navigation analytics",
         "setDesktopNavDropdown": "accessible desktop navigation dropdown state",
+        "glorystarwear-product-shortlist": "session-scoped multi-product shortlist",
+        'trackEvent("product_shortlist_update"': "product shortlist analytics",
+        'trackEvent("product_shortlist_quote"': "multi-product quote analytics",
+        "Product Shortlist:": "product shortlist quote handoff",
     }
     for marker, label in required_attribution_markers.items():
         if marker not in script_source:
@@ -862,6 +866,14 @@ def main():
             and html_file.stem not in NON_CONCRETE_PRODUCT_SLUGS
         )
         if is_concrete_product_page:
+            if 'class="product-hero"' not in source:
+                errors.append(
+                    f"{relative_name}: missing product hero required by the product-detail explorer"
+                )
+            if 'class="sku-card"' not in source:
+                errors.append(
+                    f"{relative_name}: missing product directions required by the product shortlist"
+                )
             if "product-detail-disclosure" not in source:
                 errors.append(
                     f"{relative_name}: missing static product image and capability disclosure"

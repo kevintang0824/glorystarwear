@@ -9,6 +9,7 @@ const isThankYouPage = window.location.pathname.endsWith("/thank-you.html");
 const inquirySourceKey = "glorystarwear-inquiry-source";
 const buyerPathStorageKey = "glorystarwear-buyer-path";
 const productDirectionStorageKey = "glorystarwear-product-direction";
+const productShortlistStorageKey = "glorystarwear-product-shortlist";
 const fabricShortlistStorageKey = "glorystarwear-fabric-shortlist";
 const attributionStorageKey = "glorystarwear-attribution";
 const leadReceiptStorageKey = "glorystarwear-lead-receipt";
@@ -762,7 +763,7 @@ document.addEventListener("click", (event) => {
     }
 
     if (!isContactPage && target.pathname.endsWith("/contact.html")) {
-      if (!link.closest(".sku-card-actions, .product-detail-actions")) {
+      if (!link.closest(".sku-card-actions, .product-detail-actions, .product-detail-shortlist")) {
         sessionStorage.removeItem(productDirectionStorageKey);
       }
       sessionStorage.setItem(
@@ -900,6 +901,44 @@ const readStoredProductDirection = () => {
   return null;
 };
 
+const readStoredProductShortlist = () => {
+  try {
+    const stored = JSON.parse(sessionStorage.getItem(productShortlistStorageKey));
+    const isRecent = stored?.savedAt && Date.now() - stored.savedAt < 2 * 60 * 60 * 1000;
+    const items = [];
+    if (Array.isArray(stored?.items)) {
+      stored.items.slice(0, 4).forEach((item) => {
+        const slug = String(item?.slug || "").toLowerCase();
+        const label = String(item?.label || "").replace(/[\r\n\t]/g, " ").trim().slice(0, 100);
+        const path = String(item?.path || "");
+        const validSlug = /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug);
+        if (!validSlug || !label || path !== `/products/${slug}.html`) return;
+        if (!items.some((candidate) => candidate.slug === slug)) items.push({ slug, label, path });
+      });
+    }
+    if (items.length && isRecent) return items;
+    if (stored) sessionStorage.removeItem(productShortlistStorageKey);
+  } catch {
+    // Continue without a product shortlist when storage is unavailable or invalid.
+  }
+  return [];
+};
+
+const saveStoredProductShortlist = (items) => {
+  try {
+    if (!items.length) {
+      sessionStorage.removeItem(productShortlistStorageKey);
+      return;
+    }
+    sessionStorage.setItem(productShortlistStorageKey, JSON.stringify({
+      items: items.slice(0, 4),
+      savedAt: Date.now(),
+    }));
+  } catch {
+    // The visible shortlist still works when session storage is unavailable.
+  }
+};
+
 const readStoredFabricShortlist = () => {
   try {
     const stored = JSON.parse(sessionStorage.getItem(fabricShortlistStorageKey));
@@ -1033,9 +1072,10 @@ const getProductInterestForPath = (path) => {
 const inquiryContext = document.querySelector("[data-inquiry-context]");
 const storedInquirySource = isContactPage ? readInquirySource() : null;
 const storedProductDirection = isContactPage ? readStoredProductDirection() : null;
+const storedProductShortlist = isContactPage ? readStoredProductShortlist() : [];
 const storedFabricShortlist = isContactPage ? readStoredFabricShortlist() : [];
 
-if (inquiryContext && (storedInquirySource || storedProductDirection || storedFabricShortlist.length || inquiryPrefill.hasValues)) {
+if (inquiryContext && (storedInquirySource || storedProductDirection || storedProductShortlist.length || storedFabricShortlist.length || inquiryPrefill.hasValues)) {
   const contextTitle = inquiryContext.querySelector("[data-inquiry-context-title]");
   const contextLabel = inquiryContext.querySelector("span");
   const productSelect = document.querySelector('[data-quote-form] select[name="product"]');
@@ -1045,13 +1085,14 @@ if (inquiryContext && (storedInquirySource || storedProductDirection || storedFa
     inquiryPrefill.values.buyer || "",
     inquiryPrefill.values.product || "",
     storedProductDirection?.label || "",
+    storedProductShortlist.length ? `${storedProductShortlist.length} product direction${storedProductShortlist.length === 1 ? "" : "s"} shortlisted` : "",
     storedFabricShortlist.length ? `${storedFabricShortlist.length} fabric direction${storedFabricShortlist.length === 1 ? "" : "s"} shortlisted` : "",
   ].filter(Boolean);
 
   if (contextTitle) {
     contextTitle.textContent = contextParts.join(" · ");
   }
-  if (contextLabel && (inquiryPrefill.hasValues || storedProductDirection || storedFabricShortlist.length)) contextLabel.textContent = "Brief tailored for";
+  if (contextLabel && (inquiryPrefill.hasValues || storedProductDirection || storedProductShortlist.length || storedFabricShortlist.length)) contextLabel.textContent = "Brief tailored for";
   inquiryContext.hidden = false;
 
   if (productSelect && !productSelect.value && suggestedProduct) {
@@ -1064,6 +1105,7 @@ if (inquiryContext && (storedInquirySource || storedProductDirection || storedFa
       sessionStorage.removeItem(inquirySourceKey);
       sessionStorage.removeItem(buyerPathStorageKey);
       sessionStorage.removeItem(productDirectionStorageKey);
+      sessionStorage.removeItem(productShortlistStorageKey);
       sessionStorage.removeItem(fabricShortlistStorageKey);
     } catch {
       // The visual context can still be dismissed when storage is unavailable.
@@ -1112,6 +1154,9 @@ const getInquiryLines = (form) => {
     attribution?.referrer ? `Referrer: ${attribution.referrer}` : "",
   ].filter(Boolean);
   const productDirection = readStoredProductDirection();
+  const productShortlist = readStoredProductShortlist()
+    .map((item) => `${item.label} (${item.path})`)
+    .join(" | ");
   const fabricShortlist = readStoredFabricShortlist()
     .map((item) => `${item.id} — ${item.name}`)
     .join(" | ");
@@ -1124,6 +1169,7 @@ const getInquiryLines = (form) => {
     `Development Route: ${data.get("developmentRoute") || "Not sure yet"}`,
     `Product Interest: ${data.get("product")}`,
     `Product Direction: ${productDirection?.label || "Not specified"}`,
+    `Product Shortlist: ${productShortlist || "None"}`,
     `Fabric Shortlist: ${fabricShortlist || "None"}`,
     `Estimated Quantity: ${data.get("quantity") || "Not provided"}`,
     `Target Market: ${data.get("market") || "Not provided"}`,
@@ -1147,6 +1193,9 @@ const getInquiryPayload = (form) => {
     .map((file) => file.name.replace(/[\r\n\t]/g, " ").slice(0, 120))
     .join(", ");
   const productDirection = readStoredProductDirection();
+  const productShortlist = readStoredProductShortlist()
+    .map((item) => `${item.label} (${item.path})`)
+    .join(" | ");
   const fabricShortlist = readStoredFabricShortlist()
     .map((item) => `${item.id} — ${item.name}`)
     .join(" | ");
@@ -1156,6 +1205,7 @@ const getInquiryPayload = (form) => {
     `Preferred Contact: ${data.get("preferredContact") || "No preference"}`,
     `Call Request: ${data.get("callRequest") || "No call requested"}`,
     `Product Direction: ${productDirection?.label || "Not specified"}`,
+    `Product Shortlist: ${productShortlist || "None"}`,
     `Fabric Shortlist: ${fabricShortlist || "None"}`,
     `Reference Files Selected: ${referenceFileNames || "None"}`,
     `Reference File Link: ${data.get("referenceLink") || "None"}`,
@@ -1860,6 +1910,13 @@ const setupProductDetailExplorer = () => {
           <a class="button primary" href="../contact.html#quote-form"><i data-lucide="send"></i>Request Details &amp; Quote</a>
           <a class="button secondary" href="../fabrics.html"><i data-lucide="swatch-book"></i>Compare Fabrics</a>
           <a class="button secondary" href="${planningResource.href}" download data-resource-download="${planningResource.analytics}"><i data-lucide="download"></i>${planningResource.name}</a>
+          <button class="button secondary product-shortlist-toggle" type="button" aria-pressed="false" data-product-shortlist-toggle><i data-lucide="bookmark-plus"></i><span>Add to Shortlist</span></button>
+        </div>
+        <div class="product-detail-shortlist" data-product-shortlist-panel>
+          <div class="product-shortlist-heading"><div><span>Multi-product brief</span><strong>Project shortlist</strong></div><small data-product-shortlist-count>0 of 4 saved</small></div>
+          <p>Save up to four product directions, compare them while browsing, and carry the list into one structured inquiry.</p>
+          <div class="product-shortlist-items" data-product-shortlist-items></div>
+          <div class="product-shortlist-footer"><span data-product-shortlist-note role="status" aria-live="polite">Saved only in this browser tab for the current inquiry.</span><a href="../contact.html#quote-form" data-product-shortlist-quote hidden>Build a Multi-Product Brief <span aria-hidden="true">→</span></a></div>
         </div>
         <small class="product-detail-boundary">MOQ, sample cost, lead time, material availability, construction, decoration, testing, and reorder conditions are confirmed against the exact brief.</small>
       </div>
@@ -1870,6 +1927,105 @@ const setupProductDetailExplorer = () => {
   section.querySelector(".product-detail-intro").textContent = productSummary;
   hero.insertAdjacentElement("afterend", section);
   document.documentElement.classList.add("has-product-detail-explorer");
+
+  const shortlistToggle = section.querySelector("[data-product-shortlist-toggle]");
+  const shortlistToggleLabel = shortlistToggle?.querySelector("span");
+  const shortlistCount = section.querySelector("[data-product-shortlist-count]");
+  const shortlistItems = section.querySelector("[data-product-shortlist-items]");
+  const shortlistNote = section.querySelector("[data-product-shortlist-note]");
+  const shortlistQuote = section.querySelector("[data-product-shortlist-quote]");
+  const currentShortlistItem = {
+    slug: productSlug,
+    label: productName.replace(/[\r\n\t]/g, " ").trim().slice(0, 100),
+    path: window.location.pathname,
+  };
+  let productShortlist = readStoredProductShortlist();
+
+  const renderProductShortlist = (message = "") => {
+    const currentIsSelected = productShortlist.some((item) => item.slug === productSlug);
+    const shortlistIsFull = productShortlist.length >= 4;
+    if (shortlistToggle) {
+      shortlistToggle.setAttribute("aria-pressed", String(currentIsSelected));
+      shortlistToggle.classList.toggle("is-selected", currentIsSelected);
+      shortlistToggle.disabled = shortlistIsFull && !currentIsSelected;
+    }
+    if (shortlistToggleLabel) {
+      shortlistToggleLabel.textContent = currentIsSelected
+        ? "Remove from Shortlist"
+        : shortlistIsFull
+          ? "Shortlist Full"
+          : "Add to Shortlist";
+    }
+    if (shortlistCount) shortlistCount.textContent = `${productShortlist.length} of 4 saved`;
+    if (shortlistQuote) shortlistQuote.hidden = productShortlist.length === 0;
+    if (shortlistNote) {
+      shortlistNote.textContent = message || (shortlistIsFull && !currentIsSelected
+        ? "Four directions saved. Remove one before adding this product."
+        : "Saved only in this browser tab for the current inquiry.");
+    }
+    if (!shortlistItems) return;
+    shortlistItems.replaceChildren();
+    if (!productShortlist.length) {
+      const emptyState = document.createElement("span");
+      emptyState.className = "product-shortlist-empty";
+      emptyState.textContent = "No product directions saved yet.";
+      shortlistItems.append(emptyState);
+      return;
+    }
+    productShortlist.forEach((item) => {
+      const row = document.createElement("div");
+      row.className = "product-shortlist-item";
+      const link = document.createElement("a");
+      link.href = item.path;
+      link.textContent = item.label;
+      if (item.slug === productSlug) link.setAttribute("aria-current", "page");
+      const removeButton = document.createElement("button");
+      removeButton.type = "button";
+      removeButton.textContent = "×";
+      removeButton.setAttribute("aria-label", `Remove ${item.label} from the project shortlist`);
+      removeButton.addEventListener("click", () => {
+        productShortlist = productShortlist.filter((candidate) => candidate.slug !== item.slug);
+        saveStoredProductShortlist(productShortlist);
+        renderProductShortlist(`${item.label} removed from the project shortlist.`);
+        trackEvent("product_shortlist_update", {
+          action: "remove",
+          product_slug: item.slug,
+          selected_count: productShortlist.length,
+        });
+      });
+      row.append(link, removeButton);
+      shortlistItems.append(row);
+    });
+  };
+
+  shortlistToggle?.addEventListener("click", () => {
+    const currentIsSelected = productShortlist.some((item) => item.slug === productSlug);
+    if (!currentIsSelected && productShortlist.length >= 4) {
+      renderProductShortlist("Four directions are already saved. Remove one before adding this product.");
+      return;
+    }
+    if (currentIsSelected) {
+      productShortlist = productShortlist.filter((item) => item.slug !== productSlug);
+    } else if (productShortlist.length < 4) {
+      productShortlist.push(currentShortlistItem);
+    }
+    saveStoredProductShortlist(productShortlist);
+    renderProductShortlist(`${currentShortlistItem.label} ${currentIsSelected ? "removed from" : "added to"} the project shortlist.`);
+    trackEvent("product_shortlist_update", {
+      action: currentIsSelected ? "remove" : "add",
+      product_slug: productSlug,
+      selected_count: productShortlist.length,
+    });
+  });
+
+  shortlistQuote?.addEventListener("click", () => {
+    trackEvent("product_shortlist_quote", {
+      selected_count: productShortlist.length,
+      product_slugs: productShortlist.map((item) => item.slug).join("|").slice(0, 240),
+    });
+  });
+
+  renderProductShortlist();
 
   section.querySelectorAll("[data-product-buyer-route]").forEach((link) => {
     link.addEventListener("click", () => {
