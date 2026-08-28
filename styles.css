@@ -2550,6 +2550,173 @@ h3 {
   height: 18px;
 }
 
+.quote-product-shortlist {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid rgba(31, 138, 112, 0.24);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(210, 255, 85, 0.11), transparent 52%),
+    var(--white);
+}
+
+.quote-product-shortlist[hidden] {
+  display: none;
+}
+
+.quote-product-shortlist-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.quote-product-shortlist-heading div {
+  display: grid;
+  gap: 3px;
+}
+
+.quote-product-shortlist-heading span {
+  color: var(--green-text);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.quote-product-shortlist-heading strong {
+  color: var(--forest);
+  font-size: 17px;
+  line-height: 1.25;
+}
+
+.quote-product-shortlist-heading small {
+  flex: 0 0 auto;
+  padding: 6px 9px;
+  border-radius: 999px;
+  color: var(--green-text);
+  background: var(--mint);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.quote-product-shortlist > p {
+  margin: -4px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.quote-product-shortlist-items {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.quote-product-shortlist-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--paper);
+}
+
+.quote-product-shortlist-item div {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.quote-product-shortlist-item span {
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.quote-product-shortlist-item a {
+  overflow: hidden;
+  color: var(--forest);
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.quote-product-shortlist-item a:hover {
+  color: var(--green-text);
+}
+
+.quote-product-shortlist-item button,
+.quote-product-shortlist-footer button {
+  flex: 0 0 auto;
+  border: 0;
+  color: var(--coral-text);
+  background: transparent;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.quote-product-shortlist-item button {
+  padding: 7px 8px;
+  border-radius: 6px;
+}
+
+.quote-product-shortlist-item button:hover,
+.quote-product-shortlist-item button:focus-visible {
+  background: rgba(255, 111, 91, 0.1);
+}
+
+.quote-product-shortlist-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.quote-product-shortlist-footer > span {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.quote-product-shortlist-footer div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.quote-product-shortlist-footer a {
+  color: var(--green-text);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.quote-product-shortlist-footer a:hover {
+  color: var(--forest);
+}
+
+.quote-product-shortlist-footer button {
+  padding: 0;
+}
+
+.quote-product-shortlist-footer button:hover,
+.quote-product-shortlist-footer button:focus-visible {
+  color: var(--forest);
+}
+
 .quote-form-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -4296,6 +4463,21 @@ h3 {
 
   .quote-progress span {
     text-align: left;
+  }
+
+  .quote-product-shortlist-heading,
+  .quote-product-shortlist-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .quote-product-shortlist-items {
+    grid-template-columns: 1fr;
+  }
+
+  .quote-product-shortlist-footer div {
+    width: 100%;
+    justify-content: space-between;
   }
 
   .guide-steps li {

@@ -1072,14 +1072,14 @@ const getProductInterestForPath = (path) => {
 const inquiryContext = document.querySelector("[data-inquiry-context]");
 const storedInquirySource = isContactPage ? readInquirySource() : null;
 const storedProductDirection = isContactPage ? readStoredProductDirection() : null;
-const storedProductShortlist = isContactPage ? readStoredProductShortlist() : [];
+let storedProductShortlist = readStoredProductShortlist();
 const storedFabricShortlist = isContactPage ? readStoredFabricShortlist() : [];
+let inquiryContextDismissed = false;
 
-if (inquiryContext && (storedInquirySource || storedProductDirection || storedProductShortlist.length || storedFabricShortlist.length || inquiryPrefill.hasValues)) {
+const renderInquiryContextSummary = () => {
+  if (!inquiryContext) return;
   const contextTitle = inquiryContext.querySelector("[data-inquiry-context-title]");
   const contextLabel = inquiryContext.querySelector("span");
-  const productSelect = document.querySelector('[data-quote-form] select[name="product"]');
-  const suggestedProduct = storedInquirySource ? getProductInterestForPath(storedInquirySource.path) : "";
   const contextParts = [
     storedInquirySource ? getShortPageTitle(storedInquirySource.title) : "",
     inquiryPrefill.values.buyer || "",
@@ -1089,11 +1089,23 @@ if (inquiryContext && (storedInquirySource || storedProductDirection || storedPr
     storedFabricShortlist.length ? `${storedFabricShortlist.length} fabric direction${storedFabricShortlist.length === 1 ? "" : "s"} shortlisted` : "",
   ].filter(Boolean);
 
-  if (contextTitle) {
-    contextTitle.textContent = contextParts.join(" · ");
+  if (!contextParts.length || inquiryContextDismissed) {
+    inquiryContext.hidden = true;
+    return;
   }
-  if (contextLabel && (inquiryPrefill.hasValues || storedProductDirection || storedProductShortlist.length || storedFabricShortlist.length)) contextLabel.textContent = "Brief tailored for";
+  if (contextTitle) contextTitle.textContent = contextParts.join(" · ");
+  if (contextLabel) {
+    contextLabel.textContent = inquiryPrefill.hasValues || storedProductDirection || storedProductShortlist.length || storedFabricShortlist.length
+      ? "Brief tailored for"
+      : "Continuing from";
+  }
   inquiryContext.hidden = false;
+};
+
+if (inquiryContext) {
+  const productSelect = document.querySelector('[data-quote-form] select[name="product"]');
+  const suggestedProduct = storedInquirySource ? getProductInterestForPath(storedInquirySource.path) : "";
+  renderInquiryContextSummary();
 
   if (productSelect && !productSelect.value && suggestedProduct) {
     productSelect.value = suggestedProduct;
@@ -1110,6 +1122,8 @@ if (inquiryContext && (storedInquirySource || storedProductDirection || storedPr
     } catch {
       // The visual context can still be dismissed when storage is unavailable.
     }
+    storedProductShortlist = [];
+    inquiryContextDismissed = true;
     const fieldNames = { buyer: "buyerType", development: "developmentRoute", product: "product" };
     Object.values(fieldNames).forEach((fieldName) => {
       const field = document.querySelector(`[data-quote-form] [name="${fieldName}"]`);
@@ -1132,8 +1146,97 @@ if (inquiryContext && (storedInquirySource || storedProductDirection || storedPr
     if (productSelect) {
       delete productSelect.dataset.sourcePrefilled;
     }
+    renderQuoteProductShortlistPanels("Product shortlist cleared from this brief.");
   });
 }
+
+const quoteProductShortlistPanels = [...quoteForms].map((form, index) => {
+  const panel = document.createElement("section");
+  const titleId = `quote-product-shortlist-title-${index + 1}`;
+  panel.className = "quote-product-shortlist";
+  panel.dataset.quoteProductShortlist = "";
+  panel.hidden = true;
+  panel.setAttribute("aria-labelledby", titleId);
+  panel.innerHTML = `
+    <div class="quote-product-shortlist-heading">
+      <div><span>Multi-product brief</span><strong id="${titleId}">Selected product directions</strong></div>
+      <small data-quote-product-shortlist-count>0 of 4 selected</small>
+    </div>
+    <p>Review the exact products included in this inquiry. Every send method will carry the same list.</p>
+    <div class="quote-product-shortlist-items" data-quote-product-shortlist-items></div>
+    <div class="quote-product-shortlist-footer">
+      <span data-quote-product-shortlist-status role="status" aria-live="polite">Saved for this inquiry in the current browser tab.</span>
+      <div>
+        <a href="/products/" data-quote-product-shortlist-continue>Continue choosing products <span aria-hidden="true">→</span></a>
+        <button type="button" data-quote-product-shortlist-clear>Clear shortlist</button>
+      </div>
+    </div>
+  `;
+  const insertionPoint = form.querySelector("[data-inquiry-context]") || form.querySelector("[data-quote-progress]");
+  insertionPoint?.insertAdjacentElement("afterend", panel);
+  return {
+    panel,
+    count: panel.querySelector("[data-quote-product-shortlist-count]"),
+    items: panel.querySelector("[data-quote-product-shortlist-items]"),
+    status: panel.querySelector("[data-quote-product-shortlist-status]"),
+    clearButton: panel.querySelector("[data-quote-product-shortlist-clear]"),
+    continueLink: panel.querySelector("[data-quote-product-shortlist-continue]"),
+  };
+});
+
+const renderQuoteProductShortlistPanels = (message = "") => {
+  quoteProductShortlistPanels.forEach(({ panel, count, items, status }) => {
+    panel.hidden = storedProductShortlist.length === 0;
+    if (count) count.textContent = `${storedProductShortlist.length} of 4 selected`;
+    if (status) status.textContent = message || "Saved for this inquiry in the current browser tab.";
+    if (!items) return;
+    items.replaceChildren();
+    storedProductShortlist.forEach((item) => {
+      const row = document.createElement("article");
+      row.className = "quote-product-shortlist-item";
+      const copy = document.createElement("div");
+      const indexLabel = document.createElement("span");
+      indexLabel.textContent = `Product ${storedProductShortlist.indexOf(item) + 1}`;
+      const link = document.createElement("a");
+      link.href = item.path;
+      link.textContent = item.label;
+      copy.append(indexLabel, link);
+      const removeButton = document.createElement("button");
+      removeButton.type = "button";
+      removeButton.textContent = "Remove";
+      removeButton.setAttribute("aria-label", `Remove ${item.label} from this quote brief`);
+      removeButton.addEventListener("click", () => {
+        storedProductShortlist = storedProductShortlist.filter((candidate) => candidate.slug !== item.slug);
+        saveStoredProductShortlist(storedProductShortlist);
+        renderQuoteProductShortlistPanels(`${item.label} removed from this quote brief.`);
+        renderInquiryContextSummary();
+        trackEvent("quote_product_shortlist_edit", {
+          action: "remove",
+          product_slug: item.slug,
+          selected_count: storedProductShortlist.length,
+        });
+      });
+      row.append(copy, removeButton);
+      items.append(row);
+    });
+  });
+};
+
+quoteProductShortlistPanels.forEach(({ clearButton, continueLink }) => {
+  clearButton?.addEventListener("click", () => {
+    const previousCount = storedProductShortlist.length;
+    storedProductShortlist = [];
+    saveStoredProductShortlist(storedProductShortlist);
+    renderQuoteProductShortlistPanels("Product shortlist cleared from this brief.");
+    renderInquiryContextSummary();
+    trackEvent("quote_product_shortlist_clear", { previous_count: previousCount });
+  });
+  continueLink?.addEventListener("click", () => {
+    trackEvent("quote_product_shortlist_continue", { selected_count: storedProductShortlist.length });
+  });
+});
+
+renderQuoteProductShortlistPanels();
 
 const getInquiryLines = (form) => {
   const data = new FormData(form);
