@@ -559,6 +559,53 @@ resourcesNavigationLink?.classList.toggle(
   currentChromePath.startsWith("/resources/") || currentChromePath.startsWith("/blog/"),
 );
 
+const desktopNavDropdowns = [...document.querySelectorAll("[data-nav-dropdown]")];
+const desktopNavigationQuery = window.matchMedia("(min-width: 1041px)");
+const hoverNavigationQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+
+const setDesktopNavDropdown = (dropdown, isOpen, isDismissed = false) => {
+  dropdown.classList.toggle("is-open", isOpen);
+  dropdown.classList.toggle("is-dismissed", !isOpen && isDismissed);
+  dropdown.querySelector(".nav-trigger")?.setAttribute("aria-expanded", String(isOpen));
+};
+
+const closeDesktopNavDropdowns = (restoreFocus = false, isDismissed = false) => {
+  desktopNavDropdowns.forEach((dropdown) => {
+    const containedFocus = dropdown.contains(document.activeElement);
+    if (restoreFocus && containedFocus) {
+      dropdown.querySelector(".nav-trigger")?.focus();
+    }
+    setDesktopNavDropdown(dropdown, false, isDismissed);
+  });
+};
+
+desktopNavDropdowns.forEach((dropdown) => {
+  const trigger = dropdown.querySelector(".nav-trigger");
+  dropdown.addEventListener("mouseenter", () => setDesktopNavDropdown(dropdown, true));
+  dropdown.addEventListener("mouseleave", () => {
+    if (!dropdown.contains(document.activeElement)) setDesktopNavDropdown(dropdown, false);
+  });
+  dropdown.addEventListener("focusin", () => setDesktopNavDropdown(dropdown, true));
+  dropdown.addEventListener("focusout", () => {
+    window.requestAnimationFrame(() => {
+      if (!dropdown.contains(document.activeElement)) setDesktopNavDropdown(dropdown, false);
+    });
+  });
+  trigger?.addEventListener("click", (event) => {
+    const firstTouchOpen = desktopNavigationQuery.matches
+      && !hoverNavigationQuery.matches
+      && !dropdown.classList.contains("is-open");
+    if (!firstTouchOpen) return;
+    event.preventDefault();
+    closeDesktopNavDropdowns();
+    setDesktopNavDropdown(dropdown, true);
+  });
+});
+
+document.addEventListener("click", (event) => {
+  if (!event.target.closest("[data-nav-dropdown]")) closeDesktopNavDropdowns();
+});
+
 const contactUrl = isContactPage ? "#quote-form" : new URL("/contact.html#quote-form", window.location.href).href;
 const currentPageTopic = document.title.split("|")[0].trim() || "custom sportswear";
 const contextualWhatsAppText = [
@@ -663,9 +710,23 @@ mobileNav?.addEventListener("click", (event) => {
 document.addEventListener("click", (event) => {
   const link = event.target.closest("a[href]");
   if (!link) return;
+  if (event.defaultPrevented) return;
 
   try {
     const target = new URL(link.href, window.location.href);
+    const navigationArea = link.closest(".desktop-nav")
+      ? "desktop"
+      : link.closest("[data-mobile-nav]")
+        ? "mobile"
+        : "";
+    if (navigationArea) {
+      trackEvent("navigation_select", {
+        navigation_area: navigationArea,
+        navigation_group: link.closest(".nav-menu-group, .mobile-nav-group")?.querySelector("strong")?.textContent.trim().slice(0, 50) || "primary",
+        link_path: target.pathname,
+        link_text: link.textContent.trim().slice(0, 80),
+      });
+    }
     const ctaLocation = getCtaLocation(link);
     const contactMethod = target.protocol === "tel:"
       ? "phone"
@@ -720,6 +781,7 @@ document.addEventListener("click", (event) => {
 
 window.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
+    closeDesktopNavDropdowns(true, true);
     setMobileMenu(false);
   }
 });

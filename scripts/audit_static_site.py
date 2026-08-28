@@ -19,8 +19,8 @@ from site_chrome import site_footer_markup, site_header_markup
 
 ROOT = Path(__file__).resolve().parent.parent
 PRODUCTION_ORIGIN = "https://glorystarwears.com"
-EXPECTED_SCRIPT_VERSION = "20260828-7"
-EXPECTED_FORM_STYLE_VERSION = "20260828-7"
+EXPECTED_SCRIPT_VERSION = "20260828-8"
+EXPECTED_FORM_STYLE_VERSION = "20260828-8"
 CATALOG_PATH = ROOT / "scripts" / "product_expansion_catalog.json"
 CATALOG_ITEMS = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
 CATALOG_SLUG_LIST = [item["slug"] for item in CATALOG_ITEMS]
@@ -721,6 +721,8 @@ def main():
         "sportswear-collection-development-brief.csv": "product-level planning resource",
         "data-fabric-shortlist-remove": "shortlist item removal control",
         "is-section-current": "site-wide current-section navigation state",
+        'trackEvent("navigation_select"': "desktop and mobile navigation analytics",
+        "setDesktopNavDropdown": "accessible desktop navigation dropdown state",
     }
     for marker, label in required_attribution_markers.items():
         if marker not in script_source:
