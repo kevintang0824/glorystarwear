@@ -140,7 +140,7 @@ module.exports = async function leadHandler(request, response) {
     quantity: cleanText(body.quantity, 120),
     market: cleanText(body.market, 120),
     timeline: cleanText(body.timeline, 160),
-    message: cleanText(body.message, 4000),
+    message: cleanText(body.message, 12000),
     sourcePage: cleanText(body.sourcePage, 500),
     landingPage: cleanText(body.landingPage, 500),
     referrer: cleanText(body.referrer, 500),

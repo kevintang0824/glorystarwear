@@ -10,15 +10,52 @@ import xml.etree.ElementTree as ET
 from collections import Counter, deque
 from html import unescape
 from html.parser import HTMLParser
-from math import sqrt
+from math import log, sqrt
 from pathlib import Path
 from urllib.parse import unquote, urljoin, urlparse
 
 
 ROOT = Path(__file__).resolve().parent.parent
 PRODUCTION_ORIGIN = "https://glorystarwears.com"
-EXPECTED_SCRIPT_VERSION = "20260820-1"
-EXPECTED_FORM_STYLE_VERSION = "20260820-1"
+EXPECTED_SCRIPT_VERSION = "20260828-4"
+EXPECTED_FORM_STYLE_VERSION = "20260828-4"
+EXPANDED_PRODUCT_SLUGS = {
+    "custom-fishing-apparel",
+    "custom-rowing-uniforms",
+    "pilates-activewear",
+    "flag-football-uniforms",
+    "baseball-uniforms",
+    "softball-uniforms",
+    "rugby-uniforms",
+    "field-hockey-uniforms",
+    "custom-running-shorts",
+    "badminton-uniforms",
+    "private-label-gym-leggings",
+    "custom-boxing-apparel",
+    "custom-handball-uniforms",
+    "custom-padel-apparel",
+    "custom-futsal-uniforms",
+    "custom-table-tennis-uniforms",
+    "custom-bowling-shirts",
+    "custom-darts-shirts",
+    "custom-ultimate-jerseys",
+    "custom-weightlifting-singlets",
+}
+RULE_SOURCE_PRODUCT_SLUGS = {
+    "custom-running-shorts",
+    "badminton-uniforms",
+    "custom-boxing-apparel",
+    "custom-handball-uniforms",
+    "custom-padel-apparel",
+    "custom-futsal-uniforms",
+    "custom-table-tennis-uniforms",
+    "custom-bowling-shirts",
+    "custom-darts-shirts",
+    "custom-ultimate-jerseys",
+    "custom-weightlifting-singlets",
+}
+NON_CONCRETE_PRODUCT_SLUGS = {"index", "lookbook", "new-products", "more-sports"}
+EXPECTED_CONCRETE_PRODUCT_COUNT = 79
 PRIORITY_LCP_PAGES = {
     "index.html",
     "sportswear-manufacturer.html",
@@ -51,6 +88,7 @@ PRIORITY_LCP_PAGES = {
     "products/football-kits.html",
     "products/volleyball-teamwear.html",
     "products/volleyball-uniforms.html",
+    *{f"products/{slug}.html" for slug in EXPANDED_PRODUCT_SLUGS},
     "resources/index.html",
     "resources/sportswear-manufacturer-due-diligence-checklist.html",
     "resources/private-label-activewear-moq.html",
@@ -92,8 +130,40 @@ REQUIRED_MAIN_LINKS = {
     },
     "products/yoga-leggings.html": {
         "blog/activewear-leggings-quality-testing.html",
+        "products/private-label-gym-leggings.html",
         "resources/activewear-fabric-selection-guide.html",
         "resources/activewear-size-grading-guide.html",
+    },
+    "products/training-shorts-joggers.html": {
+        "products/custom-running-shorts.html",
+    },
+    "blog/running-shorts-chafing-ride-up-test.html": {
+        "products/custom-running-shorts.html",
+    },
+    "products/tennis-pickleball-apparel.html": {
+        "products/badminton-uniforms.html",
+        "products/custom-padel-apparel.html",
+    },
+    "products/mma-rash-guards-fight-shorts.html": {
+        "products/custom-boxing-apparel.html",
+    },
+    "custom-teamwear-uniforms.html": {
+        "products/badminton-uniforms.html",
+        "products/custom-handball-uniforms.html",
+    },
+    "products/football-kits.html": {
+        "products/custom-futsal-uniforms.html",
+    },
+    "products/racket-sports-apparel.html": {
+        "products/custom-table-tennis-uniforms.html",
+    },
+    "products/custom-sublimated-teamwear.html": {
+        "products/custom-bowling-shirts.html",
+        "products/custom-darts-shirts.html",
+        "products/custom-ultimate-jerseys.html",
+    },
+    "products/wrestling-singlets.html": {
+        "products/custom-weightlifting-singlets.html",
     },
     "resources/custom-sportswear-cost-lead-time.html": {
         "low-moq-sportswear-manufacturer.html",
@@ -132,6 +202,7 @@ IGNORED_PATH_PARTS = {
     ".vercel",
     ".wrangler",
     "build",
+    "docs",
     "dist",
     "node_modules",
 }
@@ -441,8 +512,42 @@ def main():
     undisclosed_case_planning_visuals = 0
     ambiguous_case_scenario_phrases = 0
     homepage_manufacturer_main_text_cosine_similarity = 0.0
+    expanded_product_max_cosine_similarity = 0.0
+    expanded_product_most_similar_pair = []
+    expanded_product_contextual_inlinks = {}
 
     llms_source = (ROOT / "llms.txt").read_text(encoding="utf-8")
+    concrete_product_files = sorted(
+        path
+        for path in (ROOT / "products").glob("*.html")
+        if path.stem not in NON_CONCRETE_PRODUCT_SLUGS
+    )
+    concrete_product_urls = {
+        f"{PRODUCTION_ORIGIN}/products/{path.name}"
+        for path in concrete_product_files
+    }
+    llms_product_urls = set(
+        re.findall(
+            rf"{re.escape(PRODUCTION_ORIGIN)}/products/[a-z0-9-]+\.html",
+            llms_source,
+        )
+    )
+    if len(concrete_product_files) != EXPECTED_CONCRETE_PRODUCT_COUNT:
+        errors.append(
+            "products: expected "
+            f"{EXPECTED_CONCRETE_PRODUCT_COUNT} concrete pages, found "
+            f"{len(concrete_product_files)}"
+        )
+    for missing_url in sorted(concrete_product_urls - llms_product_urls):
+        errors.append(f"llms.txt: missing concrete product URL: {missing_url}")
+    if "Last updated: 2026-08-28" not in llms_source:
+        errors.append("llms.txt: missing current update date")
+    for required_url in (
+        f"{PRODUCTION_ORIGIN}/low-moq-sportswear-manufacturer.html",
+        f"{PRODUCTION_ORIGIN}/faq.html",
+    ):
+        if required_url not in llms_source:
+            errors.append(f"llms.txt: missing GEO discovery URL: {required_url}")
     if re.search(
         r"\[[^\]]*case studies[^\]]*\]\(https://glorystarwears\.com/case-studies\.html\)",
         llms_source,
@@ -454,6 +559,9 @@ def main():
         )
 
     script_source = (ROOT / "script.js").read_text(encoding="utf-8")
+    for slug in sorted(EXPANDED_PRODUCT_SLUGS):
+        if f'"{slug}"' not in script_source:
+            errors.append(f"script.js: missing expanded product catalog entry: {slug}")
     required_attribution_markers = {
         '"ai_assistant"': "AI-assistant traffic classification",
         "traffic_channel": "traffic channel event field",
@@ -476,6 +584,52 @@ def main():
         "setupTurnstile": "Turnstile form protection",
         "turnstileToken": "Turnstile response delivery",
         'new URL("/contact.html#quote-form"': "direct quote-form route",
+        "buyerPathStorageKey": "buyer-path session handoff",
+        'trackEvent("buyer_quote_prefill"': "buyer-path quote prefill analytics",
+        'trackEvent("quote_progress"': "quote completion milestone analytics",
+        'trackEvent("quote_validation_error"': "quote validation analytics",
+        "initializeSecureSubmission": "near-viewport secure form initialization",
+        'skipLink.textContent = "Skip to main content"': "site-wide skip link",
+        "setupProductDetailExplorer": "product detail explorer",
+        "productDirectionStorageKey": "product-direction inquiry handoff",
+        'trackEvent("product_detail_view"': "product-detail view analytics",
+        'trackEvent("product_detail_image_select"': "product-detail image analytics",
+        'trackEvent("product_direction_quote_select"': "product-direction quote analytics",
+        'image.dataset.evidenceStatus = "illustrative"': "illustrative product-media status",
+        "Real style-specific image not yet provided": "honest five-view evidence placeholders",
+        'bar.setAttribute("aria-label", "Quick product actions")': "accessible mobile product actions",
+        "fabricShortlistStorageKey": "fabric-shortlist session handoff",
+        'trackEvent("fabric_shortlist_quote"': "fabric-shortlist quote analytics",
+        'trackEvent("quote_reference_link_added"': "reference-link analytics",
+        'mobileQuoteBar.classList.toggle("is-suppressed"': "mobile quote-bar form suppression",
+        'mobileQuoteBar.toggleAttribute("inert"': "mobile quote-bar focus suppression",
+        '"Custom fishing apparel"': "fishing product inquiry mapping",
+        '"Custom rowing uniforms"': "rowing product inquiry mapping",
+        '"Pilates activewear"': "Pilates product inquiry mapping",
+        '"Flag football uniforms"': "flag-football product inquiry mapping",
+        '"Baseball uniforms"': "baseball product inquiry mapping",
+        '"Softball uniforms"': "softball product inquiry mapping",
+        '"Rugby uniforms"': "rugby product inquiry mapping",
+        '"Field hockey uniforms"': "field-hockey product inquiry mapping",
+        '"Custom running shorts"': "running-shorts product inquiry mapping",
+        '"Badminton uniforms"': "badminton product inquiry mapping",
+        '"Private label gym leggings"': "gym-leggings product inquiry mapping",
+        '"Custom boxing apparel"': "boxing product inquiry mapping",
+        '"Custom handball uniforms"': "handball product inquiry mapping",
+        '"Custom padel apparel"': "padel product inquiry mapping",
+        '"Custom futsal uniforms"': "futsal product inquiry mapping",
+        '"Custom table tennis uniforms"': "table-tennis product inquiry mapping",
+        '"Custom bowling shirts"': "bowling product inquiry mapping",
+        '"Custom darts shirts"': "darts product inquiry mapping",
+        '"Custom ultimate jerseys"': "ultimate product inquiry mapping",
+        '"Custom weightlifting singlets"': "weightlifting product inquiry mapping",
+        '"Yoga leggings"': "yoga-leggings product inquiry mapping",
+        '"Seamless activewear"': "seamless-activewear product inquiry mapping",
+        '"Soccer uniforms"': "soccer-uniform product inquiry mapping",
+        "data-product-buyer-route": "product-detail buyer routing",
+        'trackEvent("product_buyer_route_select"': "product buyer-route analytics",
+        "sportswear-collection-development-brief.csv": "product-level planning resource",
+        "data-fabric-shortlist-remove": "shortlist item removal control",
     }
     for marker, label in required_attribution_markers.items():
         if marker not in script_source:
@@ -490,6 +644,7 @@ def main():
         "LEAD_WEBHOOK_SECRET": "authenticated downstream delivery",
         "for (let attempt = 0; attempt < 2": "idempotent transient delivery retry",
         "body.submissionId": "client submission idempotency key",
+        "cleanText(body.message, 12000)": "non-truncating structured inquiry allowance",
     }
     for marker, label in required_lead_api_markers.items():
         if marker not in lead_api_source:
@@ -520,6 +675,22 @@ def main():
     )
     if not www_redirect_present:
         errors.append("vercel.json: missing permanent www-to-apex host redirect")
+    expected_directory_redirects = {
+        "/products": "/products/",
+        "/resources": "/resources/",
+        "/blog": "/blog/",
+    }
+    configured_redirects = {
+        redirect.get("source"): redirect.get("destination")
+        for redirect in vercel_config.get("redirects", [])
+        if redirect.get("permanent") is True
+    }
+    for source_path, destination_path in expected_directory_redirects.items():
+        if configured_redirects.get(source_path) != destination_path:
+            errors.append(
+                f"vercel.json: missing canonical directory redirect "
+                f"{source_path} -> {destination_path}"
+            )
 
     node_binary = shutil.which("node")
     if node_binary:
@@ -547,6 +718,198 @@ def main():
         )
         relative_name = html_file.relative_to(ROOT).as_posix()
         pages[html_file.resolve()] = parser
+
+        if re.search(r'"@type"\s*:\s*"Product"', source):
+            errors.append(
+                f"{relative_name}: unsupported Product structured data; "
+                "use CollectionPage/ItemList until a verifiable SKU exists"
+            )
+
+        if relative_name == "index.html":
+            homepage_category_markers = {
+                '"@type": "ItemList"': "product category ItemList",
+                '"@id": "https://glorystarwears.com/#product-category-list"': "category-list entity ID",
+                '"numberOfItems": 8': "category-list item count",
+            }
+            for marker, label in homepage_category_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name in {"index.html", "contact.html"}:
+            quote_form_markers = {
+                'name="referenceLink"': "buyer-authorized reference-link field",
+                'name="message" rows="5" maxlength="3000"': "bounded project-details field",
+                "quote-order-grid": "visible quantity, market, and timing fields",
+                "quote-next-step": "post-inquiry expectation setting",
+                "Custom fishing apparel": "fishing inquiry option",
+                "Custom rowing uniforms": "rowing inquiry option",
+                "Pilates activewear": "Pilates inquiry option",
+                "Flag football uniforms": "flag-football inquiry option",
+                "Baseball uniforms": "baseball inquiry option",
+                "Softball uniforms": "softball inquiry option",
+                "Rugby uniforms": "rugby inquiry option",
+                "Field hockey uniforms": "field-hockey inquiry option",
+                "Custom running shorts": "running-shorts inquiry option",
+                "Badminton uniforms": "badminton inquiry option",
+                "Private label gym leggings": "gym-leggings inquiry option",
+                "Custom boxing apparel": "boxing inquiry option",
+                "Custom handball uniforms": "handball inquiry option",
+                "Custom padel apparel": "padel inquiry option",
+                "Custom futsal uniforms": "futsal inquiry option",
+                "Custom table tennis uniforms": "table-tennis inquiry option",
+                "Custom bowling shirts": "bowling inquiry option",
+                "Custom darts shirts": "darts inquiry option",
+                "Custom ultimate jerseys": "ultimate inquiry option",
+                "Custom weightlifting singlets": "weightlifting inquiry option",
+                "Yoga leggings": "yoga-leggings inquiry option",
+                "Seamless activewear": "seamless-activewear inquiry option",
+                "Soccer uniforms": "soccer-uniform inquiry option",
+            }
+            for marker, label in quote_form_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "fabrics.html":
+            fabric_library_markers = {
+                "Compare 16 material directions": "expanded fabric library heading",
+                "data-fabric-search": "fabric search input",
+                "data-fabric-structure": "construction filter",
+                "data-fabric-decoration": "decoration filter",
+                "data-fabric-shortlist-panel": "fabric shortlist builder",
+                "data-fabric-shortlist-copy": "fabric shortlist copy action",
+                'href="./contact.html?product=fabric#quote-form"': "fabric quote prefill route",
+                "Sportswear color library workflow": "color-control workflow",
+                "Does this page show currently stocked fabrics or colors?": "fabric-stock boundary answer",
+                '"@type": "FAQPage"': "fabric and color FAQ schema",
+            }
+            for marker, label in fabric_library_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+            fabric_direction_count = len(
+                re.findall(r'<article\s+data-fabric-id="FB-\d{2}"', source)
+            )
+            if fabric_direction_count != 16:
+                errors.append(
+                    f"{relative_name}: expected 16 fabric planning directions, "
+                    f"found {fabric_direction_count}"
+                )
+
+        if relative_name.startswith("products/") and html_file.stem in EXPANDED_PRODUCT_SLUGS:
+            expanded_page_markers = {
+                "Image and page scope:": "visible illustrative-media scope",
+                "Specification framework": "static specification framework",
+                "Sport-specific decision map": "sport-specific decision section",
+                "Direct buyer answers": "static direct-answer section",
+                "Feasibility is confirmed only after the submitted project brief is reviewed.": "project feasibility boundary",
+                "No universal figure on this page is a quotation or production commitment.": "commercial boundary",
+                '"@type": "CollectionPage"': "CollectionPage schema",
+                '"@type": "ItemList"': "ItemList schema",
+                '"@type": "FAQPage"': "FAQPage schema",
+            }
+            for marker, label in expanded_page_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+            if html_file.stem in RULE_SOURCE_PRODUCT_SLUGS:
+                rule_source_markers = {
+                    "Official rules and buyer verification": "visible official-source section",
+                    "These sources help identify questions for the brief": "source-scope boundary",
+                    '"citation"': "citation property in CollectionPage schema",
+                    '"mentions"': "referenced-entity property in CollectionPage schema",
+                }
+                for marker, label in rule_source_markers.items():
+                    if marker not in source:
+                        errors.append(f"{relative_name}: missing {label}")
+            if len(parser.main_links) < 7:
+                errors.append(
+                    f"{relative_name}: expanded page has too few contextual main links"
+                )
+            for image in parser.images:
+                if image.get("data-evidence-status", "").lower() != "illustrative":
+                    errors.append(
+                        f"{relative_name}: expanded-page image is not marked illustrative"
+                    )
+
+        if relative_name in {
+            "products/baseball-softball-teamwear.html",
+            "products/rugby-hockey-teamwear.html",
+        }:
+            hub_markers = {
+                "Image and capability scope:": "visible hub evidence boundary",
+                '"@type":"ImageObject"': "illustrative hub ImageObject schema",
+                "not current stock, a customer order, or production evidence": "schema image-evidence boundary",
+                "manufactured or coordinated": "manufacturing-route boundary",
+            }
+            for marker, label in hub_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+            if "illustrative" not in parser.og_image_alt.lower():
+                errors.append(
+                    f"{relative_name}: Open Graph image alt lacks illustrative status"
+                )
+            if "illustrative" not in parser.twitter_image_alt.lower():
+                errors.append(
+                    f"{relative_name}: social image alt lacks illustrative status"
+                )
+            for image in parser.images:
+                if image.get("data-evidence-status", "").lower() != "illustrative":
+                    errors.append(
+                        f"{relative_name}: hub image is not marked illustrative"
+                    )
+                if "illustrative" not in image.get("alt", "").lower():
+                    errors.append(
+                        f"{relative_name}: hub image alt lacks illustrative status"
+                    )
+
+        if relative_name == "products/baseball-softball-teamwear.html":
+            for forbidden in (
+                "Yes. We can produce",
+                "What to customize for baseball uniforms",
+            ):
+                if forbidden in source:
+                    errors.append(
+                        f"{relative_name}: parent hub retains child-product claim: {forbidden}"
+                    )
+
+        if relative_name == "products/rugby-hockey-teamwear.html":
+            for forbidden in (
+                "lacrosse",
+                "Rugby Hockey",
+                "rugby or hockey",
+                "OEM and ODM support",
+            ):
+                if forbidden.lower() in source.lower():
+                    errors.append(
+                        f"{relative_name}: parent hub retains conflicting intent: {forbidden}"
+                    )
+
+        if relative_name == "products/american-football-uniforms.html":
+            child_start = "<!-- PRODUCT_CLUSTER_AMERICAN_FOOTBALL_UNIFORMS_START -->"
+            child_end = "<!-- PRODUCT_CLUSTER_AMERICAN_FOOTBALL_UNIFORMS_END -->"
+            child_pattern = re.compile(
+                re.escape(child_start) + r"[\s\S]*?" + re.escape(child_end),
+                re.IGNORECASE,
+            )
+            child_match = child_pattern.search(source)
+            if not child_match:
+                errors.append(
+                    f"{relative_name}: missing dedicated flag-football child route"
+                )
+            source_without_child_route = child_pattern.sub("", source, count=1)
+            source_without_child_route = NON_VISIBLE_RE.sub(
+                " ", source_without_child_route
+            )
+            if re.search(
+                r"\b(?:flag football|7v7|7-on-7)\b",
+                source_without_child_route,
+                re.IGNORECASE,
+            ):
+                errors.append(
+                    f"{relative_name}: flag/7v7 intent appears outside the child route"
+                )
+            if "padded-gridiron" not in source.lower():
+                errors.append(
+                    f"{relative_name}: missing padded-gridiron intent boundary"
+                )
 
         for anchor_text in parser.case_study_link_texts:
             case_studies_target_links += 1
@@ -640,7 +1003,7 @@ def main():
                 "sportswear-sampling-production-approval-register.csv": "sampling approval register link",
                 'data-resource-download="sampling-production-approval-register"': "sampling approval download tracking",
                 '"@type": "DigitalDocument"': "sampling approval document schema",
-                '"dateModified": "2026-08-14"': "current process modification date",
+                '"dateModified": "2026-08-28"': "current process modification date",
                 "Coordinate the wider product-to-shipment workflow": "one-stop workflow handoff",
             }
             for marker, label in required_process_markers.items():
@@ -652,7 +1015,7 @@ def main():
                 "private-label-activewear-collection-planner.csv": "activewear collection planner link",
                 'data-resource-download="private-label-activewear-collection-planner"': "activewear planner download tracking",
                 '"@type": "DigitalDocument"': "activewear planner document schema",
-                '"dateModified": "2026-08-12"': "current activewear page modification date",
+                '"dateModified": "2026-08-27"': "current activewear page modification date",
                 "us-clothing-label-requirements-private-label.html": "U.S. clothing-label article link",
             }
             for marker, label in required_activewear_markers.items():
@@ -665,7 +1028,7 @@ def main():
                 'data-resource-download="sportswear-tech-pack-intake-template"': "tech pack download tracking",
                 '"@type":"DigitalDocument"': "tech pack document schema",
                 '"isAccessibleForFree":true': "free template disclosure in schema",
-                '"dateModified":"2026-08-14"': "current tech pack modification date",
+                '"dateModified":"2026-08-25"': "current tech pack modification date",
                 "us-clothing-label-requirements-private-label.html": "U.S. clothing-label article link",
                 "What it is not:": "visible template scope disclosure",
                 "Send Tech Pack for Review": "tech-pack conversion bridge",
@@ -1472,7 +1835,7 @@ def main():
                 'data-resource-download="sportswear-compliance-evidence-register"': "compliance download tracking",
                 '"@type":"DigitalDocument"': "compliance document schema",
                 '"isAccessibleForFree":true': "free compliance register disclosure in schema",
-                '"dateModified":"2026-08-12"': "current compliance checklist modification date",
+                '"dateModified":"2026-08-27"': "current compliance checklist modification date",
                 "us-clothing-label-requirements-private-label.html": "U.S. clothing-label article link",
                 "nist.gov/publications/guide-united-states-apparel": "authoritative U.S. apparel overview",
                 "ftc.gov/business-guidance/industry/clothing-and-textiles": "authoritative U.S. label reference",
@@ -1490,7 +1853,7 @@ def main():
                 'data-resource-download="sportswear-product-gallery-shortlist"': "gallery shortlist download tracking",
                 '"@type": "DigitalDocument"': "gallery shortlist document schema",
                 '"isAccessibleForFree": true': "free gallery shortlist disclosure in schema",
-                '"dateModified": "2026-08-02"': "current product gallery modification date",
+                '"dateModified": "2026-08-27"': "current product gallery modification date",
                 "A visual reference is not a production specification": "visible visual-reference scope disclosure",
             }
             for marker, label in required_gallery_markers.items():
@@ -1554,7 +1917,7 @@ def main():
                 "Send Gym Clothing Brief": "gym inquiry CTA",
                 '"@type":"Service"': "gym manufacturing Service schema",
                 '"isAccessibleForFree":true': "free gym planner disclosure",
-                '"dateModified":"2026-08-14"': "current gym program modification date",
+                '"dateModified":"2026-08-28"': "current gym program modification date",
             }
             for marker, label in required_gym_program_markers.items():
                 if marker not in source:
@@ -1566,7 +1929,7 @@ def main():
                 "Compare Cost &amp; Lead-Time Assumptions": "one-stop commercial handoff",
                 "WhatsApp the Product List": "one-stop WhatsApp CTA",
                 '"provider": { "@id": "https://glorystarwears.com/#organization" }': "organization reference in Service schema",
-                '"dateModified": "2026-08-14"': "current one-stop modification date",
+                '"dateModified": "2026-08-28"': "current one-stop modification date",
             }
             for marker, label in required_one_stop_markers.items():
                 if marker not in source:
@@ -1772,6 +2135,8 @@ def main():
                 "data-email-inquiry": "email fallback",
                 "data-copy-inquiry": "copy fallback",
                 "data-turnstile-container": "human verification container",
+                "data-quote-progress": "required-field completion progress",
+                'aria-label="Custom sportswear quote form"': "accessible form name",
                 'href="./privacy.html"': "privacy notice link",
             }
             for marker, label in required_form_markers.items():
@@ -1850,6 +2215,18 @@ def main():
     for target in sorted(internal_targets):
         if not target.exists():
             errors.append(f"broken internal target: {target.relative_to(ROOT)}")
+    for slug in sorted(EXPANDED_PRODUCT_SLUGS):
+        target_file = (ROOT / "products" / f"{slug}.html").resolve()
+        inlink_count = sum(
+            target_file in target_links
+            for target_links in main_internal_links.values()
+        )
+        expanded_product_contextual_inlinks[slug] = inlink_count
+        if inlink_count < 4:
+            errors.append(
+                f"products/{slug}.html: expected at least 4 contextual HTML inlinks, "
+                f"found {inlink_count}"
+            )
 
     for asset in sorted(local_assets):
         if not asset.exists():
@@ -1875,6 +2252,40 @@ def main():
         ),
         4,
     )
+    expanded_similarity_pairs = []
+    expanded_vectors = {
+        slug: main_text_vector(ROOT / "products" / f"{slug}.html")
+        for slug in sorted(EXPANDED_PRODUCT_SLUGS)
+    }
+    document_frequency = Counter(
+        token
+        for vector in expanded_vectors.values()
+        for token in vector
+    )
+    corpus_size = len(expanded_vectors)
+    expanded_tfidf_vectors = {
+        slug: {
+            token: count * (log((1 + corpus_size) / (1 + document_frequency[token])) + 1)
+            for token, count in vector.items()
+        }
+        for slug, vector in expanded_vectors.items()
+    }
+    for left_index, left_slug in enumerate(sorted(EXPANDED_PRODUCT_SLUGS)):
+        for right_slug in sorted(EXPANDED_PRODUCT_SLUGS)[left_index + 1 :]:
+            similarity = cosine_similarity(
+                expanded_tfidf_vectors[left_slug],
+                expanded_tfidf_vectors[right_slug],
+            )
+            expanded_similarity_pairs.append((similarity, left_slug, right_slug))
+    if expanded_similarity_pairs:
+        similarity, left_slug, right_slug = max(expanded_similarity_pairs)
+        expanded_product_max_cosine_similarity = round(similarity, 4)
+        expanded_product_most_similar_pair = [left_slug, right_slug]
+        if similarity > 0.82:
+            errors.append(
+                "expanded product pages are too similar: "
+                f"{left_slug} vs {right_slug} = {similarity:.4f}"
+            )
 
     sitemap_tree = ET.parse(ROOT / "sitemap.xml")
     sitemap_root = sitemap_tree.getroot()
@@ -1909,6 +2320,46 @@ def main():
         errors.append(f"duplicate sitemap URL: {duplicate}")
 
     sitemap_url_set = set(sitemap_urls)
+
+    product_index_source = (ROOT / "products" / "index.html").read_text(
+        encoding="utf-8"
+    )
+    product_card_count = len(
+        re.findall(r'class="product-card"', product_index_source)
+    )
+    expected_catalog_card_count = EXPECTED_CONCRETE_PRODUCT_COUNT + 2
+    if product_card_count != expected_catalog_card_count:
+        errors.append(
+            "products/index.html: expected "
+            f"{expected_catalog_card_count} catalogue cards, found "
+            f"{product_card_count}"
+        )
+    if f'"numberOfItems":{EXPECTED_CONCRETE_PRODUCT_COUNT}' not in re.sub(
+        r"\s+", "", product_index_source
+    ):
+        errors.append(
+            "products/index.html: product ItemList numberOfItems does not match "
+            f"{EXPECTED_CONCRETE_PRODUCT_COUNT}"
+        )
+    for slug in sorted(EXPANDED_PRODUCT_SLUGS):
+        product_url = f"{PRODUCTION_ORIGIN}/products/{slug}.html"
+        if f'./{slug}.html' not in product_index_source:
+            errors.append(
+                f"products/index.html: missing expanded product link: {slug}"
+            )
+        if product_url not in sitemap_url_set:
+            errors.append(f"sitemap.xml: missing expanded product URL: {product_url}")
+
+    for hub_name in ("more-sports", "new-products"):
+        hub_source = (ROOT / "products" / f"{hub_name}.html").read_text(
+            encoding="utf-8"
+        )
+        for slug in sorted(EXPANDED_PRODUCT_SLUGS):
+            product_url = f"{PRODUCTION_ORIGIN}/products/{slug}.html"
+            if product_url not in hub_source:
+                errors.append(
+                    f"products/{hub_name}.html: schema is missing expanded product URL: {slug}"
+                )
 
     indexable_files = {
         html_file
@@ -2007,6 +2458,15 @@ def main():
         "html_files": len(html_files),
         "sitemap_urls": len(sitemap_urls),
         "sitemap_images": sum(len(entry["images"]) for entry in sitemap_entries),
+        "concrete_product_pages": len(concrete_product_files),
+        "catalog_product_cards": product_card_count,
+        "llms_indexed_product_pages": len(
+            concrete_product_urls.intersection(llms_product_urls)
+        ),
+        "expanded_product_pages": len(EXPANDED_PRODUCT_SLUGS),
+        "expanded_product_max_cosine_similarity": expanded_product_max_cosine_similarity,
+        "expanded_product_most_similar_pair": expanded_product_most_similar_pair,
+        "expanded_product_contextual_inlinks": expanded_product_contextual_inlinks,
         "unique_canonicals": len(canonical_owners),
         "unique_titles": len(title_owners),
         "unique_descriptions": len(description_owners),

@@ -18,6 +18,21 @@
       "permanent": true
     },
     {
+      "source": "/products",
+      "destination": "/products/",
+      "permanent": true
+    },
+    {
+      "source": "/resources",
+      "destination": "/resources/",
+      "permanent": true
+    },
+    {
+      "source": "/blog",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
       "source": "/products/index.html",
       "destination": "/products/",
       "permanent": true

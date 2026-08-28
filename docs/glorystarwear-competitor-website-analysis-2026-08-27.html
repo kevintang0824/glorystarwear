@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GloryStarWear 同类网站竞争分析与改版路线图</title>
+  <style>
+    :root{--ink:#17201c;--muted:#5f6d66;--line:#dce4df;--paper:#f4f7f5;--card:#fff;--green:#166447;--green2:#e7f3ed;--amber:#9b5a08;--amber2:#fff2dc;--blue:#285f82;--blue2:#e9f3fa;--red:#8d3530;--red2:#faecea}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.65}
+    a{color:var(--green);text-decoration-thickness:1px;text-underline-offset:3px}main{max-width:1180px;margin:auto;padding:34px 22px 72px}
+    .hero{background:linear-gradient(135deg,#10281f,#176447);color:#fff;border-radius:24px;padding:48px;box-shadow:0 18px 55px rgba(18,65,48,.16)}
+    .eyebrow{letter-spacing:.12em;text-transform:uppercase;font-size:12px;font-weight:800;opacity:.78}.hero h1{font-size:clamp(32px,5vw,58px);line-height:1.08;margin:10px 0 16px;max-width:900px}.hero p{max-width:850px;font-size:18px;color:#dcebe4}.meta{display:flex;gap:18px;flex-wrap:wrap;margin-top:25px;font-size:13px;color:#c7dfd4}
+    nav{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}nav a{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 13px;text-decoration:none;font-size:13px;font-weight:700}
+    section{margin-top:28px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px}h2{font-size:30px;line-height:1.2;margin:0 0 14px}h3{line-height:1.3}.lead{font-size:18px;color:#394840;max-width:930px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{border:1px solid var(--line);border-radius:16px;padding:18px;background:#fff}.card h3{margin:5px 0 8px;font-size:18px}.card p{margin:0;color:var(--muted)}
+    .kpi{font-size:32px;font-weight:850;color:var(--green);line-height:1}.kpi small{font-size:13px;color:var(--muted);display:block;margin-top:7px;font-weight:600}.callout{border-left:5px solid var(--green);background:var(--green2);padding:18px 20px;border-radius:12px;margin:18px 0}.warning{border-left-color:var(--amber);background:var(--amber2)}
+    .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px}table{width:100%;border-collapse:collapse;min-width:850px}th,td{text-align:left;vertical-align:top;padding:13px;border-bottom:1px solid var(--line)}th{background:#edf3ef;font-size:13px}td{font-size:14px}tr:last-child td{border-bottom:0}.site{font-weight:800;font-size:15px}.tag{display:inline-block;border-radius:999px;padding:4px 9px;font-size:11px;font-weight:800;margin:2px 3px 2px 0;background:var(--blue2);color:var(--blue)}
+    .competitor{display:grid;grid-template-columns:220px 1fr;gap:22px;border-top:1px solid var(--line);padding:24px 0}.competitor:first-of-type{border-top:0}.competitor h3{margin:0 0 8px;font-size:22px}.competitor ul{margin:8px 0 0;padding-left:20px}.competitor .number{font-size:44px;font-weight:900;color:#c5d8ce;line-height:1}.verified{font-size:12px;color:var(--muted);margin-top:9px}
+    .priority{display:grid;grid-template-columns:90px 1fr 190px;gap:18px;align-items:start;border-top:1px solid var(--line);padding:20px 0}.priority:first-of-type{border-top:0}.p0,.p1,.p2{display:inline-block;text-align:center;border-radius:10px;padding:7px 9px;font-weight:900}.p0{background:var(--red2);color:var(--red)}.p1{background:var(--amber2);color:var(--amber)}.p2{background:var(--blue2);color:var(--blue)}.impact{font-size:13px;color:var(--muted)}
+    .roadmap{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.phase{border-radius:16px;padding:20px;background:#f8faf9;border:1px solid var(--line)}.phase b{color:var(--green)}
+    .source-list li{margin:9px 0}.foot{font-size:13px;color:var(--muted)}
+    @media(max-width:780px){.hero{padding:30px 24px}.grid,.roadmap{grid-template-columns:1fr}.competitor{grid-template-columns:1fr}.priority{grid-template-columns:70px 1fr}.priority .impact{grid-column:2}section{padding:22px}h2{font-size:25px}}
+  </style>
+</head>
+<body>
+<main>
+  <header class="hero">
+    <div class="eyebrow">Competitive website brief · 2026-08-27</div>
+    <h1>GloryStarWear 同类网站竞争分析与改版路线图</h1>
+    <p>对比 10 家定制运动服、私牌运动服与团队服制造商的网站强项，判断 GloryStarWear 下一阶段应当补什么、先做什么，以及哪些同行表达不能在缺少证据时照搬。</p>
+    <div class="meta"><span>范围：全球 B2B 运动服 OEM / ODM / Private Label</span><span>证据：企业官方公开网页</span><span>目标：自然流量、信任、询盘转化</span></div>
+  </header>
+
+  <nav aria-label="报告目录"><a href="#overview">总览</a><a href="#matrix">横向对比</a><a href="#competitors">10 家拆解</a><a href="#guidance">改版建议</a><a href="#roadmap">路线图</a><a href="#sources">来源</a></nav>
+
+  <section id="overview">
+    <div class="eyebrow">Overview</div><h2>结论先行</h2>
+    <p class="lead">GloryStarWear 的内容底盘已经很强：当前站点拥有 63 个产品页、13 个资源页、17 个博客页和 36 个下载工具，全站技术审计也已通过。与同行相比，短板集中在<strong>真实证据、真人与企业身份、真实产品视觉、商业参数透明度、在线询盘工具</strong>，而不是页面数量。</p>
+    <div class="grid">
+      <div class="card"><div class="kpi">强项<small>应继续保持</small></div><h3>内容深度与搜索覆盖</h3><p>细分产品、买家指南、质量检查与 CSV 工具远比多数同行完整，适合继续做主题集群而不是批量堆近义词页面。</p></div>
+      <div class="card"><div class="kpi">最大缺口<small>直接影响成交信任</small></div><h3>第一方可核验证据</h3><p>目前工厂图为明确标注的示意图，案例为假设规划，不足以替代真实设施、人员、证书、项目和客户授权证据。</p></div>
+      <div class="card"><div class="kpi">最快增长点<small>30 天内可见变化</small></div><h3>询盘路径产品化</h3><p>把现有表单升级为可上传技术包、可选择产品/数量/国家/交期、可预约通话的报价构建器。</p></div>
+    </div>
+    <div class="callout"><strong>战略判断：</strong>下一阶段应从“内容很多的网站”升级为“买家能迅速确认你是谁、做过什么、怎样合作、下一步点哪里的网站”。</div>
+  </section>
+
+  <section id="matrix">
+    <div class="eyebrow">Competitive landscape</div><h2>10 家网站的主要可借鉴点</h2>
+    <p class="foot">以下评价只针对公开网站的表达和用户体验，不代表对工厂实际能力、交付质量或所有自述数字的独立背书。</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>网站</th><th>最强的网站能力</th><th>值得借鉴</th><th>GloryStarWear 对应动作</th></tr></thead>
+      <tbody>
+        <tr><td class="site"><a href="https://thygesenapparel.com/custom-activewear-manufacturing">Thygesen Apparel</a></td><td><span class="tag">品牌证明</span><span class="tag">技术内容</span></td><td>客户品牌墙、技术型产品解释、OEM/ODM 对照、完整产品入口。</td><td>发布经授权客户/项目证明；让每个核心品类出现真实技术细节与证据。</td></tr>
+        <tr><td class="site"><a href="https://www.fush.rs/activewear-manufacturers/">FUSH</a></td><td><span class="tag">工厂透明</span><span class="tag">边界诚实</span></td><td>写明 MOQ、样品费、设备能力与不能做的工艺，并公开证书和工厂参观入口。</td><td>建立真实能力矩阵：能做、条件性可做、不能做、需外协，均附日期与证据。</td></tr>
+        <tr><td class="site"><a href="https://activewearbali.com/activewear-manufacturer/">Activewear Bali</a></td><td><span class="tag">视觉品牌</span><span class="tag">转化</span></td><td>自定义与现货开发两条路径、明确 MOQ、库存面料颜色、预约电话和报价入口。</td><td>将“轻定制 / ODM / OEM”做成交互式选路；加入预约、面料库和真实样品图。</td></tr>
+        <tr><td class="site"><a href="https://aelapparel.com/">AEL Apparel</a></td><td><span class="tag">产品发现</span><span class="tag">视觉分类</span></td><td>首页直接用图像分类展示服装范围，并把私牌、白牌、工艺和交付利益讲得简单。</td><td>首页减少文字密度，突出 8–12 个核心赚钱品类和清楚的下一步。</td></tr>
+        <tr><td class="site"><a href="https://appareify.com/legging-manufacturer/sports">Appareify</a></td><td><span class="tag">SEO</span><span class="tag">产品教育</span></td><td>围绕单品、用途和供应商选择构建内容集群，页面内持续承接询盘。</td><td>保留现有内容优势，增加产品页与指南之间的“决策下一步”模块和目录。</td></tr>
+        <tr><td class="site"><a href="https://www.hingto.com/pages/design-your-own-athletic-wear">Hingto</a></td><td><span class="tag">在线设计</span><span class="tag">路线选择</span></td><td>模板定制、全定制、批发三条路线；虚拟设计工具；FAQ 公开平均 MOQ 与样品逻辑。</td><td>先做简版产品配置器，不必一步做到 3D：产品、颜色、工艺、数量、国家即可。</td></tr>
+        <tr><td class="site"><a href="https://zegaapparel.com/">Zega Apparel</a></td><td><span class="tag">量化信任</span><span class="tag">质量流程</span></td><td>设施、客户、国家等数字化证明；公开 MOQ；FAQ 解释 AQL、技术包和包装。</td><td>只有在证据可核验时发布数字；将现有 QC 方法转成带真实记录样例的页面。</td></tr>
+        <tr><td class="site"><a href="https://seamapparel.com/sports-apparel-manufacturer/">Seam Apparel</a></td><td><span class="tag">询盘表单</span><span class="tag">商业 FAQ</span></td><td>报价表单支持上传参考文件、选择沟通方式；明确样品周期与 MOQ 范围。</td><td>表单支持技术包/图片上传、首选联系方式、预算或数量、目标交期和国家。</td></tr>
+        <tr><td class="site"><a href="https://www.berunwear.com/">Berunwear</a></td><td><span class="tag">受众分层</span><span class="tag">痛点文案</span></td><td>直接面向 Shopify、Amazon、小品牌和俱乐部，按成本、时间、供应链说明价值。</td><td>新增“适合谁”入口：初创品牌、成熟品牌、俱乐部、经销商，各自不同表单与证明。</td></tr>
+        <tr><td class="site"><a href="https://www.shaunzsports.com/">SHAUNZ SPORTS</a></td><td><span class="tag">现代首页</span><span class="tag">报价构建器</span></td><td>首屏商业信息紧凑、真实产品目录、买家类型分流、简版产品报价构建器。</td><td>把现有 CSV 思路升级成网页内报价构建器，并发布正反面/细节真实产品目录。</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="competitors">
+    <div class="eyebrow">Competitor dossiers</div><h2>逐站拆解：优点、买家价值与可借鉴动作</h2>
+
+    <article class="competitor"><div><div class="number">01</div><h3>Thygesen Apparel</h3><a href="https://thygesenapparel.com/custom-activewear-manufacturing">官方页面</a></div><div><ul><li><strong>公开优势：</strong>产品入口非常细，涵盖上装、压缩衣、运动内衣、夹克、慢跑裤、Polo 与短裤；同时把性能面料、技术设计和交付沟通写进页面。</li><li><strong>信任结构：</strong>展示客户品牌，并用对照表解释其全包服务与传统来料加工的差异。</li><li><strong>为什么有效：</strong>同时满足采购经理的能力验证和搜索用户的知识需求。</li><li><strong>可借鉴：</strong>核心产品页增加真实材料、设备、工艺、测试和交付证据，不只列产品名称。</li></ul><p class="verified">证据性质：企业官网自述；客户关系与能力范围仍需按项目核验。</p></div></article>
+
+    <article class="competitor"><div><div class="number">02</div><h3>FUSH</h3><a href="https://www.fush.rs/activewear-manufacturers/">官方页面</a></div><div><ul><li><strong>公开优势：</strong>明确说明 500 件/款色 MOQ、样品费用，以及其圆机能力不覆盖无缝服装。</li><li><strong>信任结构：</strong>公开专家姓名、工厂与面料制造信息、证书和参观/虚拟参观入口。</li><li><strong>为什么有效：</strong>“说清不能做什么”反而强化可信度，买家更容易判断适配性。</li><li><strong>可借鉴：</strong>把能力边界做成可审核矩阵，并为每项证书显示持有人、范围、地址、签发与有效期。</li></ul></div></article>
+
+    <article class="competitor"><div><div class="number">03</div><h3>Activewear Bali</h3><a href="https://activewearbali.com/activewear-manufacturer/">官方页面</a></div><div><ul><li><strong>公开优势：</strong>“自定义设计”和“Ready-to-Order”两条路径非常明确，并公开订单级 MOQ 和补单门槛。</li><li><strong>产品信息：</strong>公开库存面料名称、纤维比例、克重、手感/用途和约 85 种颜色。</li><li><strong>转化：</strong>报价、回电预约、入门指南、样品商店和启动包形成完整漏斗。</li><li><strong>可借鉴：</strong>创建可筛选面料/颜色库与“哪条开发路线适合我”向导。</li></ul></div></article>
+
+    <article class="competitor"><div><div class="number">04</div><h3>AEL Apparel</h3><a href="https://aelapparel.com/">官方页面</a></div><div><ul><li><strong>公开优势：</strong>产品分类与图片直接组成首页浏览路径，白牌/私牌解释简洁。</li><li><strong>利益表达：</strong>用快速交付、低 MOQ、专业支持、工艺技术四个模块回答买家最先问的问题。</li><li><strong>为什么有效：</strong>对第一次寻找工厂的用户理解成本低。</li><li><strong>可借鉴：</strong>首页突出最主要的 8–12 个产品家族；长尾品类继续放在目录页，不全部挤进首页。</li></ul></div></article>
+
+    <article class="competitor"><div><div class="number">05</div><h3>Appareify</h3><a href="https://appareify.com/legging-manufacturer/sports">官方页面</a></div><div><ul><li><strong>公开优势：</strong>产品页按款型、用途、功能、材料和制造选择逐层展开，内部链接密集。</li><li><strong>流量机制：</strong>配套“最佳制造商”“如何选择”“单品制造”等大量上中漏斗内容。</li><li><strong>为什么有效：</strong>能够同时争取高意向商业词和研究型信息词。</li><li><strong>可借鉴：</strong>你们无需照抄数量，应选择已经获得曝光的主题，继续补“对比、成本、规格、错误、选择”五类内容。</li></ul></div></article>
+
+    <article class="competitor"><div><div class="number">06</div><h3>Hingto</h3><a href="https://www.hingto.com/pages/design-your-own-athletic-wear">官方页面</a></div><div><ul><li><strong>公开优势：</strong>把模板定制、全定制和批发作为三条清晰合作方式。</li><li><strong>交互优势：</strong>提供虚拟设计工具，降低没有技术包的初创品牌进入门槛。</li><li><strong>商业透明：</strong>FAQ 提供平均 MOQ、样品和流程说明。</li><li><strong>可借鉴：</strong>开发简版“产品 Brief Builder”，生成可复制或发送的询盘摘要。</li></ul></div></article>
+
+    <article class="competitor"><div><div class="number">07</div><h3>Zega Apparel</h3><a href="https://zegaapparel.com/">官方页面</a></div><div><ul><li><strong>公开优势：</strong>用设施面积、服务品牌数、出口国家数等数字快速建立规模感。</li><li><strong>质量表达：</strong>FAQ 把来料四分制、生产中检查、AQL 2.5 与出货前影像复核讲得具体。</li><li><strong>商业透明：</strong>公开 200 件/款 MOQ、技术包支持、包装范围。</li><li><strong>可借鉴：</strong>把真实 QC 表单、匿名化检查记录、缺陷分级样例放在质量页面；所有数字必须有内部证据与更新时间。</li></ul></div></article>
+
+    <article class="competitor"><div><div class="number">08</div><h3>Seam Apparel</h3><a href="https://seamapparel.com/sports-apparel-manufacturer/">官方页面</a></div><div><ul><li><strong>公开优势：</strong>FAQ 直接回答 50–100 件起订、7–14 天样品等商业问题。</li><li><strong>转化优势：</strong>报价表单可上传草图、参考图或技术包，并让客户选择邮件或电话/短信沟通。</li><li><strong>为什么有效：</strong>买家提交的信息更完整，销售第一次回复就能进入有效判断。</li><li><strong>可借鉴：</strong>升级现有表单附件与字段，并在提交成功页说明预计回复时间和下一步。</li></ul></div></article>
+
+    <article class="competitor"><div><div class="number">09</div><h3>Berunwear</h3><a href="https://www.berunwear.com/">官方页面</a></div><div><ul><li><strong>公开优势：</strong>明确对 Shopify、Amazon、小型电商、社群与俱乐部说话。</li><li><strong>价值框架：</strong>围绕设计、供应链、成本、时间和物流讲业务结果，而非只讲缝制。</li><li><strong>为什么有效：</strong>访客更容易看到“这个供应商是否理解我的经营场景”。</li><li><strong>可借鉴：</strong>增加按买家类型的入口，但不要照搬未经验证的销售倍数、满意度或产能数字。</li></ul><p class="verified">注意：该站部分营销数字是企业自述，本报告不将其视为独立验证事实。</p></div></article>
+
+    <article class="competitor"><div><div class="number">10</div><h3>SHAUNZ SPORTS</h3><a href="https://www.shaunzsports.com/">官方页面</a></div><div><ul><li><strong>公开优势：</strong>现代首页将 MOQ、设计支持、质量、配送、私牌、真实目录和买家分层集中表达。</li><li><strong>转化优势：</strong>产品 Brief Builder 收集产品、颜色、面料、数量、工艺和目的国，再通过 WhatsApp 或邮件发送。</li><li><strong>目录优势：</strong>正反面和细节真实产品图比通用气氛图更利于询盘。</li><li><strong>可借鉴：</strong>优先建立真实产品目录和网页内报价构建器，这是 GloryStarWear 最容易形成差异的两项。</li></ul></div></article>
+  </section>
+
+  <section id="guidance">
+    <div class="eyebrow">Guidance</div><h2>GloryStarWear 应如何修改：按投入产出排序</h2>
+
+    <div class="priority"><div class="p0">P0</div><div><h3>建立“可核验信任中心”</h3><p>公开可披露的法律主体、城市/地址范围、业务联系人姓名与职务、合作工厂角色、最新真实工厂/样品/QC/包装照片、证书范围与有效期。每个资产显示日期、地点、拍摄主体、授权范围和限制。</p></div><div class="impact"><strong>影响：</strong>最高<br>信任、询盘质量、转化<br><strong>前提：</strong>必须有真实证据</div></div>
+    <div class="priority"><div class="p0">P0</div><div><h3>发布第一篇经授权的真实项目故事</h3><p>用“需求—关键决策—样品迭代—质量检查—交付范围—已知限制”的结构。可以匿名，但必须是真实项目、真实图片或文档片段，并获得客户授权。不要用虚构数字填充。</p></div><div class="impact"><strong>影响：</strong>最高<br>缩短买家验证路径</div></div>
+    <div class="priority"><div class="p0">P0</div><div><h3>把询盘表单升级为报价构建器</h3><p>增加文件上传（技术包、图片、Logo）、产品、路线、数量、尺码范围、国家、交期、包装、预算口径与首选联系方式。生成结构化摘要，可直接邮件或 WhatsApp 发送。</p></div><div class="impact"><strong>影响：</strong>高<br>提高表单完成率和线索质量</div></div>
+    <div class="priority"><div class="p0">P0</div><div><h3>首页做双重分流</h3><p>首屏下方只保留两个主入口：品牌私牌/OEM-ODM 与团队/俱乐部定制；随后再按初创品牌、成熟品牌、经销商、球队/学校分流。首页的长内容仍保留 SEO，但将核心决策前置。</p></div><div class="impact"><strong>影响：</strong>高<br>减少选择负担</div></div>
+    <div class="priority"><div class="p1">P1</div><div><h3>建设真实产品目录</h3><p>每个样品至少有正面、背面、面料/缝线/印花细节、可用工艺、面料代码、尺码/版型、可定制范围和询价按钮。没有真实照片时宁可少发，不用示意图冒充样品。</p></div><div class="impact"><strong>影响：</strong>高<br>产品信任与图片搜索</div></div>
+    <div class="priority"><div class="p1">P1</div><div><h3>公开经确认的商业参数与边界</h3><p>不是承诺一个万能 MOQ，而是展示决定 MOQ 的因素、可选路线、真实样品收费逻辑、常见开发区间、订单所需输入、补单条件和外协边界。每项标注“示例/典型/需确认”。</p></div><div class="impact"><strong>影响：</strong>中高<br>筛选无效询盘</div></div>
+    <div class="priority"><div class="p1">P1</div><div><h3>新增预约通话和明确回复 SLA</h3><p>在核心商业页与提交成功页提供 15–20 分钟项目评估预约；说明正常工作日回复时间。预约页面先收集产品、数量和文件，避免低质量空聊。</p></div><div class="impact"><strong>影响：</strong>中高<br>提高高意向访客转化</div></div>
+    <div class="priority"><div class="p1">P1</div><div><h3>把面料内容升级为可筛选资料库</h3><p>按产品、活动、组织结构、克重、伸展、回弹、手感、颜色、装饰兼容性和库存/定制状态筛选。只公布真实可供应或可开发的信息。</p></div><div class="impact"><strong>影响：</strong>中高<br>差异化与长尾搜索</div></div>
+    <div class="priority"><div class="p2">P2</div><div><h3>继续做内容，但从“更多”转向“更有证据”</h3><p>优先更新已在搜索结果中有曝光的页面；增加真实检测结果、表单样例、流程照片、专家署名、更新时间与外部权威来源。避免仅为了关键词再建同义页面。</p></div><div class="impact"><strong>影响：</strong>持续<br>提升排名与被引用概率</div></div>
+    <div class="priority"><div class="p2">P2</div><div><h3>连接 GA4/GTM 与线索接收</h3><p>把 organic、AI referral、资源下载、报价开始、附件上传、提交成功、WhatsApp、预约等行为连接到可持续分析中，按页面和国家查看合格询盘，而不是只看流量。</p></div><div class="impact"><strong>影响：</strong>长期关键<br>决定后续优化方向</div></div>
+
+    <div class="callout warning"><strong>不要照搬的做法：</strong>没有证据时不要发布客户 Logo、工厂自有、产能、成立年限、MOQ、交期、客户数量、出口国家、满意率或销量增长数字。你们目前对示意图和假设案例的披露是正确的，下一步应当用真实证据替换，而不是删除披露。</div>
+  </section>
+
+  <section id="roadmap">
+    <div class="eyebrow">90-day roadmap</div><h2>建议的三阶段执行顺序</h2>
+    <div class="roadmap">
+      <div class="phase"><b>第 1–30 天 · 信任与转化</b><h3>先解决“为什么相信你”</h3><ul><li>收集企业与工厂证据</li><li>上线真实团队/联系人</li><li>升级报价构建器与附件上传</li><li>增加预约与回复时间</li><li>重构首页买家分流</li></ul></div>
+      <div class="phase"><b>第 31–60 天 · 产品与案例</b><h3>解决“你到底能做什么”</h3><ul><li>拍摄首批 20–30 个真实样品</li><li>建立真实产品目录模板</li><li>发布 1–3 个授权项目故事</li><li>上线证书与能力边界矩阵</li><li>加入面料/工艺数据</li></ul></div>
+      <div class="phase"><b>第 61–90 天 · 数据与增长</b><h3>解决“哪些内容带来生意”</h3><ul><li>连接 GA4/GTM 与线索接收</li><li>按 GSC 真实查询升级页面</li><li>建立市场/买家类型落地页</li><li>上线产品路线选择器</li><li>复盘合格询盘与转化率</li></ul></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Positioning</div><h2>建议形成的独特定位</h2>
+    <p class="lead"><strong>“一个把运动服采购决策、样品证据和生产交接讲清楚的定制运动服合作方。”</strong></p>
+    <p>多数同行擅长展示产品或作出营销承诺；GloryStarWear 已经具备更强的决策工具和质量知识。真正的机会是把这种“严谨、透明、可追溯”与真实工厂、产品和客户证据连接起来。这样既能避免陷入最低价竞争，也更容易赢得认真做品牌、重视质量和复购的买家。</p>
+  </section>
+
+  <section id="sources">
+    <div class="eyebrow">Sources & limitations</div><h2>公开来源</h2>
+    <ol class="source-list">
+      <li><a href="https://thygesenapparel.com/custom-activewear-manufacturing">Thygesen Apparel — Custom Activewear Manufacturing</a>：产品范围、OEM/ODM、客户展示与技术内容。</li>
+      <li><a href="https://www.fush.rs/activewear-manufacturers/">FUSH — Activewear Manufacturers</a>：MOQ、样品费用、设备能力、边界与专家信息。</li>
+      <li><a href="https://activewearbali.com/activewear-manufacturer/">Activewear Bali — Activewear Manufacturer</a>：开发路线、MOQ、面料库、预约与报价流程。</li>
+      <li><a href="https://aelapparel.com/">AEL Apparel</a>：产品分类、私牌/白牌、交付与工艺表达。</li>
+      <li><a href="https://appareify.com/legging-manufacturer/sports">Appareify — Sports Leggings Manufacturer</a>：单品 SEO、功能分类、私牌/OEM 内容结构。</li>
+      <li><a href="https://www.hingto.com/pages/design-your-own-athletic-wear">Hingto — Design Your Own Athletic Wear</a>：三种合作方式、在线设计、样品与低 MOQ 表达。</li>
+      <li><a href="https://zegaapparel.com/">Zega Apparel</a>：量化证明、MOQ、QC、技术包与包装 FAQ。</li>
+      <li><a href="https://seamapparel.com/sports-apparel-manufacturer/">Seam Apparel — Sports Apparel Manufacturer</a>：样品周期、MOQ、生产流程与附件型询盘表单。</li>
+      <li><a href="https://www.berunwear.com/">Berunwear</a>：买家分层、供应链与小企业痛点表达。</li>
+      <li><a href="https://www.shaunzsports.com/">SHAUNZ SPORTS</a>：真实目录、买家分流、质量流程与网页报价构建器。</li>
+      <li><a href="https://glorystarwears.com/">GloryStarWear</a> 及本地站点清单：当前产品、资源、博客、下载工具、询盘与证据披露基线。</li>
+    </ol>
+    <p class="foot"><strong>证据限制：</strong>竞争对手信息主要来自各自官网，属于企业自述，未独立核验其客户关系、产能、认证状态、MOQ、交期或交付表现。本报告只评价“网站如何表达与转化”，不评价其实际制造质量。内部 CRM、客户访谈、销售通话和 GloryStarWear 的真实询盘数据未提供，因此优先级是基于公开网站与现有站点结构的策略判断。</p>
+  </section>
+</main>
+</body>
+</html>

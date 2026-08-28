@@ -33,9 +33,9 @@
 
     <title>Custom Sportswear Manufacturer | GloryStarWear</title>
     <link rel="preload" as="image" type="image/avif" fetchpriority="high" href="./assets/images/hero-brand-campaign.avif" imagesrcset="./assets/images/hero-brand-campaign-900.avif 900w, ./assets/images/hero-brand-campaign-1200.avif 1200w, ./assets/images/hero-brand-campaign.avif 1672w" imagesizes="100vw" />
-    <link rel="stylesheet" href="./styles.css?v=20260820-1" />
+    <link rel="stylesheet" href="./styles.css?v=20260828-4" />
     <script src="./assets/vendor/lucide.min.js?v=20260722-1" defer></script>
-    <script src="./script.js?v=20260820-1" defer></script>
+    <script src="./script.js?v=20260828-4" defer></script>
   </head>
   <body class="home-page">
     <header class="site-header" data-header>
@@ -164,36 +164,60 @@
 
       <section class="section decision-section" aria-labelledby="start-path-heading">
         <div class="section-heading">
-          <p class="eyebrow">Choose your production route</p>
-          <h2 id="start-path-heading">Start with the path closest to your order</h2>
+          <p class="eyebrow">Choose your buyer path</p>
+          <h2 id="start-path-heading">Start with the route built for your business stage</h2>
           <p>
-            Buyers usually need one of four routes: a lower-complexity branded capsule, team uniforms, niche sports apparel, or a complete product-to-packaging program.
+            A startup launch, repeat wholesale program, distributor assortment, and club roster do not need the same development route. Pick the closest buyer type to see the most relevant planning page.
           </p>
+        </div>
+        <div class="buyer-route-visual">
+          <picture>
+            <source type="image/avif" srcset="./assets/images/glorystarwear-buyer-brief-flatlay-900.avif 900w, ./assets/images/glorystarwear-buyer-brief-flatlay-1200.avif 1200w, ./assets/images/glorystarwear-buyer-brief-flatlay.avif 1536w" sizes="(max-width: 840px) calc(100vw - 40px), 48vw" />
+            <img src="./assets/images/glorystarwear-buyer-brief-flatlay.jpg" srcset="./assets/images/glorystarwear-buyer-brief-flatlay-900.jpg 900w, ./assets/images/glorystarwear-buyer-brief-flatlay-1200.jpg 1200w, ./assets/images/glorystarwear-buyer-brief-flatlay.jpg 1536w" sizes="(max-width: 840px) calc(100vw - 40px), 48vw" alt="Illustrative GloryStarWear product brief with apparel samples color cards fabric swatches and packaging references" width="1536" height="1024" loading="lazy" decoding="async" />
+          </picture>
+          <div>
+            <span>One brief, clearer routing</span>
+            <h3>Tell us who is buying, what is ready, and what still needs development</h3>
+            <p>Buyer type, product references, quantity, market, technical files, and timing help separate light customization from full OEM or ODM development.</p>
+            <small>Disclosure: this is an original illustrative planning image, not factory or customer-project evidence.</small>
+          </div>
         </div>
         <div class="decision-grid">
           <article class="decision-card decision-card-featured">
-            <span>Private label launch</span>
-            <h3>Activewear capsule for ecommerce brands</h3>
-            <p>Leggings, sports bras, gym tops, hoodies, labels, hangtags, polybags, and launch-ready SKU packing.</p>
-            <a href="./private-label-activewear-manufacturer.html">Plan a private label activewear collection</a>
+            <span>Startup brands</span>
+            <h3>Reduce first-order complexity before expanding the range</h3>
+            <p>Start with fewer styles and controlled colors, then confirm samples, branding, packaging, and a practical reorder path.</p>
+            <div class="decision-card-actions">
+              <a href="./low-moq-sportswear-manufacturer.html" data-buyer-path="startup_brand">Plan a lower-risk launch</a>
+              <a class="decision-quote-link" href="./contact.html?buyer=startup_brand&amp;product=low_moq#quote-form" data-buyer-quote="startup_brand">Start a startup quote</a>
+            </div>
           </article>
           <article class="decision-card">
-            <span>Team and club orders</span>
-            <h3>Uniforms with names, numbers, and roster packing</h3>
-            <p>Basketball, football, soccer, volleyball, lacrosse, esports, warm-ups, socks, sponsor marks, and carton sorting.</p>
-            <a href="./custom-teamwear-uniforms.html">Build teamwear</a>
+            <span>Established brands</span>
+            <h3>Control fit, materials, trims, labels, and repeatable approvals</h3>
+            <p>Develop private-label collections from a tech pack or controlled references with sampling, revision records, QC, and packing requirements.</p>
+            <div class="decision-card-actions">
+              <a href="./private-label-activewear-manufacturer.html" data-buyer-path="established_brand">Plan a private-label program</a>
+              <a class="decision-quote-link" href="./contact.html?buyer=established_brand&amp;product=private_label#quote-form" data-buyer-quote="established_brand">Start a brand quote</a>
+            </div>
           </article>
           <article class="decision-card">
-            <span>Specialty sports</span>
-            <h3>Extend into sport-specific categories</h3>
-            <p>Running, cycling, golf, swimwear, combat sports, outdoor layers, winter sports, youth sportswear, and fan merchandise.</p>
-            <a href="./products/more-sports.html">Browse more sports</a>
+            <span>Dealers and distributors</span>
+            <h3>Build a broader category and packaging assortment</h3>
+            <p>Compare product coverage, SKU structure, private labels, retail packing, replenishment inputs, and destination-market requirements.</p>
+            <div class="decision-card-actions">
+              <a href="./sportswear-manufacturer.html" data-buyer-path="dealer_distributor">Review supply capabilities</a>
+              <a class="decision-quote-link" href="./contact.html?buyer=dealer_distributor&amp;product=supplier_capability#quote-form" data-buyer-quote="dealer_distributor">Start a supply quote</a>
+            </div>
           </article>
           <article class="decision-card">
-            <span>One-stop support</span>
-            <h3>Product, packaging, QC, and shipment prep</h3>
-            <p>Coordinate fabric, trims, labels, retail packaging, barcode stickers, carton marks, quality checks, and delivery planning.</p>
-            <a href="./one-stop-service.html">Review the one-stop OEM/ODM workflow</a>
+            <span>Clubs, schools, and teams</span>
+            <h3>Manage graphics, names, numbers, sizes, and roster packing</h3>
+            <p>Prepare sport, roster, sponsor artwork, player customization, size collection, delivery event, and sorting requirements.</p>
+            <div class="decision-card-actions">
+              <a href="./custom-teamwear-uniforms.html" data-buyer-path="club_school_team">Build a teamwear brief</a>
+              <a class="decision-quote-link" href="./contact.html?buyer=club_school_team&amp;product=teamwear#quote-form" data-buyer-quote="club_school_team">Start a team quote</a>
+            </div>
           </article>
         </div>
         <nav class="product-shortcuts" aria-label="Buyer planning links">
@@ -515,6 +539,11 @@
             <span>Size grading</span>
             <span>Color matching</span>
           </div>
+          <nav class="product-shortcuts" aria-label="Custom sportswear development guides">
+            <a href="./resources/oem-vs-odm-sportswear.html">Compare OEM, ODM, light-custom, and hybrid routes</a>
+            <a href="./resources/custom-sportswear-tech-pack.html">Build a production-ready sportswear tech pack</a>
+            <a href="./fabrics.html">Explore fabric and color planning directions</a>
+          </nav>
         </div>
       </section>
 
@@ -593,6 +622,10 @@
             <p>Fabric defects, stitching, measurement, labeling, packing method, carton marks, and final appearance.</p>
           </article>
         </div>
+        <div class="section-actions">
+          <a class="button secondary" href="./quality.html">Review the sportswear quality control checklist</a>
+          <a class="button secondary" href="./resources/sportswear-aql-inspection-checklist.html">Plan a pre-shipment AQL inspection</a>
+        </div>
       </section>
 
       <section class="section" id="process">
@@ -621,6 +654,10 @@
             <h3>Bulk and Ship</h3>
             <p>Manufacturing, QC, packing, carton labeling, final inspection, and delivery coordination.</p>
           </article>
+        </div>
+        <div class="section-actions">
+          <a class="button secondary" href="./resources/sportswear-sample-approval-checklist.html">Review sample approval and bulk-release stages</a>
+          <a class="button secondary" href="./process.html">See the full development and production process</a>
         </div>
       </section>
 
@@ -704,10 +741,10 @@
             <a href="./factory-video.html">View factory media</a>
           </article>
           <article>
-            <span>Resources</span>
-            <h3>OEM ODM sportswear buyer guides</h3>
-            <p>Read guides about OEM vs ODM, fabric selection, activewear MOQ and sizing, tech packs, sample approval, team rosters, and supplier verification.</p>
-            <a href="./resources/">Open resource center</a>
+            <span>Development route</span>
+            <h3>OEM vs ODM sportswear guide</h3>
+            <p>Compare buyer-supplied specifications, supplier-led development, light customization, hybrid projects, ownership, approvals, and quote inputs.</p>
+            <a href="./resources/oem-vs-odm-sportswear.html">Compare OEM and ODM development routes</a>
           </article>
           <article>
             <span>Current questions</span>
@@ -752,10 +789,17 @@
             </a>
           </div>
         </div>
-        <form class="quote-form" data-quote-form data-lead-endpoint="/api/lead">
+        <form class="quote-form" data-quote-form data-lead-endpoint="/api/lead" aria-label="Custom sportswear quote form">
           <div class="quote-form-heading">
             <span>Project brief</span>
-            <strong>Start with four essentials</strong>
+            <strong>Complete the six required items</strong>
+          </div>
+          <div class="quote-progress" data-quote-progress>
+            <div>
+              <strong data-quote-progress-label>0 of 6 essentials ready</strong>
+              <span>Name, email, buyer type, product, brief, and consent</span>
+            </div>
+            <progress max="6" value="0" data-quote-progress-meter aria-label="Required inquiry fields completed"></progress>
           </div>
           <div class="quote-form-grid">
             <label>
@@ -767,6 +811,29 @@
               <input name="email" type="email" placeholder="you@brand.com" autocomplete="email" inputmode="email" required />
             </label>
           </div>
+          <div class="quote-form-grid">
+            <label>
+              Buyer Type
+              <select name="buyerType" required>
+                <option value="">Select your buyer type</option>
+                <option>Startup brand</option>
+                <option>Established brand</option>
+                <option>Dealer or distributor</option>
+                <option>Club, school, or team</option>
+                <option>Other organization</option>
+              </select>
+            </label>
+            <label>
+              Development Route
+              <select name="developmentRoute">
+                <option value="">Not sure yet</option>
+                <option>Light customization from an existing direction</option>
+                <option>OEM from our tech pack</option>
+                <option>ODM from references and requirements</option>
+                <option>Repeat or reorder of an approved style</option>
+              </select>
+            </label>
+          </div>
           <label>
             Product or Project Interest
             <select name="product" required>
@@ -774,6 +841,8 @@
               <option>Private label activewear program</option>
               <option>Custom teamwear program</option>
               <option>Low MOQ launch planning</option>
+              <option>Cost and lead-time review</option>
+              <option>Supplier quote comparison</option>
               <option>Supplier capability review</option>
               <option>Supplier verification and documents</option>
               <option>Sampling and approval support</option>
@@ -783,14 +852,37 @@
               <option>Packaging and label handoff</option>
               <option>Quality and inspection planning</option>
               <option>Yoga wear</option>
+              <option>Yoga leggings</option>
+              <option>Seamless activewear</option>
+              <option>Pilates activewear</option>
               <option>Athleisure</option>
               <option>Training wear</option>
               <option>Basketball wear</option>
               <option>Football kits</option>
+              <option>Soccer uniforms</option>
+              <option>Custom futsal uniforms</option>
+              <option>Flag football uniforms</option>
               <option>Running wear</option>
+              <option>Custom running shorts</option>
+              <option>Custom rowing uniforms</option>
+              <option>Custom fishing apparel</option>
               <option>Tennis and pickleball apparel</option>
+              <option>Custom table tennis uniforms</option>
+              <option>Badminton uniforms</option>
+              <option>Custom padel apparel</option>
+              <option>Private label gym leggings</option>
+              <option>Custom boxing apparel</option>
+              <option>Custom handball uniforms</option>
+              <option>Custom bowling shirts</option>
+              <option>Custom darts shirts</option>
+              <option>Custom ultimate jerseys</option>
+              <option>Custom weightlifting singlets</option>
               <option>Golf apparel</option>
               <option>Baseball and softball teamwear</option>
+              <option>Baseball uniforms</option>
+              <option>Softball uniforms</option>
+              <option>Rugby uniforms</option>
+              <option>Field hockey uniforms</option>
               <option>Swimwear and water sports</option>
               <option>Combat sports apparel</option>
               <option>Accessories</option>
@@ -798,9 +890,33 @@
               <option>Other custom sportswear</option>
             </select>
           </label>
+          <div class="quote-form-grid quote-order-grid">
+            <label>
+              Estimated Quantity
+              <input name="quantity" type="text" placeholder="100 pcs, 500 sets, sample first" />
+            </label>
+            <label>
+              Delivery Country or Target Market
+              <input name="market" type="text" placeholder="USA, UK, EU gym brand, school club" />
+            </label>
+            <label>
+              Target Sample or Delivery Date
+              <input name="timeline" type="text" placeholder="Sample in October, event on 15 December" />
+            </label>
+          </div>
           <label>
             Project Details
-            <textarea name="message" rows="5" placeholder="Quantity, logo, fabric, style references, packaging needs..." required></textarea>
+            <textarea name="message" rows="5" maxlength="3000" placeholder="Product list, logo, fit, fabric, colors, size range, packaging, and approval needs..." required></textarea>
+          </label>
+          <label class="quote-file-field">
+            Files for WhatsApp, email, or device sharing — optional
+            <input name="referenceFiles" type="file" accept=".pdf,.csv,.xlsx,.xls,.doc,.docx,.png,.jpg,.jpeg,.webp" multiple data-reference-files />
+            <small data-reference-file-status>Choose up to 5 files, 20 MB total. Secure submission records filenames only; supported devices can pass the selected files through the system share menu.</small>
+          </label>
+          <label class="quote-file-field">
+            Reference file link — optional
+            <input name="referenceLink" type="url" maxlength="500" placeholder="https://drive.google.com/... or another view-only link" inputmode="url" data-reference-link />
+            <small>Use a buyer-authorized, view-only Drive, Dropbox, OneDrive, or similar link and check its access settings before sending.</small>
           </label>
           <label class="form-honeypot" aria-hidden="true">
             Company website
@@ -808,8 +924,8 @@
           </label>
           <details class="quote-form-more">
             <summary>
-              <span><i data-lucide="list-plus"></i>Add order details</span>
-              <small>Quantity, market, timing, and WhatsApp</small>
+              <span><i data-lucide="list-plus"></i>Add contact preferences</span>
+              <small>WhatsApp, reply route, and call request</small>
             </summary>
             <div class="quote-form-grid">
               <label>
@@ -817,22 +933,35 @@
                 <input name="phone" type="tel" placeholder="+1 555 000 0000" autocomplete="tel" inputmode="tel" />
               </label>
               <label>
-                Estimated Quantity
-                <input name="quantity" type="text" placeholder="100 pcs, 500 sets, sample first" />
+                Preferred Contact
+                <select name="preferredContact">
+                  <option value="">No preference</option>
+                  <option>Email</option>
+                  <option>WhatsApp</option>
+                  <option>Phone call</option>
+                  <option>Video call</option>
+                </select>
               </label>
               <label>
-                Target Market
-                <input name="market" type="text" placeholder="USA gym brand, EU football club" />
-              </label>
-              <label>
-                Expected Timeline
-                <input name="timeline" type="text" placeholder="Sample this month, bulk in 45 days" />
+                Call Request
+                <select name="callRequest">
+                  <option value="">No call requested</option>
+                  <option>Request a 15-minute introduction</option>
+                  <option>Request a 30-minute project review</option>
+                  <option>Request a factory or evidence video call</option>
+                </select>
               </label>
             </div>
           </details>
           <div class="turnstile-field" data-turnstile-container hidden>
             <div data-turnstile-widget></div>
             <small>Human verification protects this inquiry form from automated spam. WhatsApp, email, and copy remain available.</small>
+          </div>
+          <div class="quote-next-step" aria-label="What happens after you send the brief">
+            <strong>What happens next</strong>
+            <span>1. We confirm receipt.</span>
+            <span>2. We identify missing inputs and project boundaries.</span>
+            <span>3. We reply with the appropriate review, sample, or quotation route; a call request is confirmed only after a response.</span>
           </div>
           <label class="quote-consent">
             <input name="consent" type="checkbox" required />
@@ -854,6 +983,10 @@
             <button class="button secondary" type="button" data-copy-inquiry>
               <i data-lucide="copy"></i>
               Copy Project Brief
+            </button>
+            <button class="button secondary" type="button" data-share-files hidden>
+              <i data-lucide="share-2"></i>
+              Share Brief + Files
             </button>
           </div>
           <p class="form-note" data-form-note role="status" aria-live="polite">WhatsApp opens a direct project discussion. Email requires a local email app. A secure submit button appears only when server receipt is available.</p>
@@ -927,7 +1060,7 @@
             "url": "https://glorystarwears.com/",
             "name": "GloryStarWear",
             "inLanguage": "en",
-            "dateModified": "2026-08-20",
+            "dateModified": "2026-08-28",
             "publisher": {
               "@id": "https://glorystarwears.com/#organization"
             }
@@ -939,77 +1072,23 @@
             "serviceType": "OEM and ODM sportswear manufacturing",
             "provider": {
               "@id": "https://glorystarwears.com/#organization"
-            },
-            "hasOfferCatalog": {
-              "@type": "OfferCatalog",
-              "name": "Custom sportswear product categories",
-              "itemListElement": [
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Product",
-                    "name": "Custom yoga wear",
-                    "url": "https://glorystarwears.com/products/yoga-wear.html"
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Product",
-                    "name": "Private label athleisure",
-                    "url": "https://glorystarwears.com/products/athleisure.html"
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Product",
-                    "name": "Custom training wear",
-                    "url": "https://glorystarwears.com/products/training-wear.html"
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Product",
-                    "name": "Basketball teamwear",
-                    "url": "https://glorystarwears.com/products/basketball-wear.html"
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Product",
-                    "name": "Football kit programs",
-                    "url": "https://glorystarwears.com/products/football-kits.html"
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Product",
-                    "name": "Sports accessories and packaging",
-                    "url": "https://glorystarwears.com/products/accessories.html"
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Product",
-                    "name": "Niche sports apparel",
-                    "url": "https://glorystarwears.com/products/more-sports.html"
-                  }
-                },
-                {
-                  "@type": "Offer",
-                  "itemOffered": {
-                    "@type": "Product",
-                    "name": "New sportswear product development",
-                    "url": "https://glorystarwears.com/products/new-products.html"
-                  }
-                }
-              ]
             }
+          },
+          {
+            "@type": "ItemList",
+            "@id": "https://glorystarwears.com/#product-category-list",
+            "name": "Custom sportswear product category pages",
+            "numberOfItems": 8,
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Custom yoga wear", "url": "https://glorystarwears.com/products/yoga-wear.html"},
+              {"@type": "ListItem", "position": 2, "name": "Private label athleisure", "url": "https://glorystarwears.com/products/athleisure.html"},
+              {"@type": "ListItem", "position": 3, "name": "Custom training wear", "url": "https://glorystarwears.com/products/training-wear.html"},
+              {"@type": "ListItem", "position": 4, "name": "Basketball teamwear", "url": "https://glorystarwears.com/products/basketball-wear.html"},
+              {"@type": "ListItem", "position": 5, "name": "Football kit programs", "url": "https://glorystarwears.com/products/football-kits.html"},
+              {"@type": "ListItem", "position": 6, "name": "Sports accessories and packaging", "url": "https://glorystarwears.com/products/accessories.html"},
+              {"@type": "ListItem", "position": 7, "name": "Niche sports apparel", "url": "https://glorystarwears.com/products/more-sports.html"},
+              {"@type": "ListItem", "position": 8, "name": "New sportswear product development", "url": "https://glorystarwears.com/products/new-products.html"}
+            ]
           },
           {
             "@type": "FAQPage",
