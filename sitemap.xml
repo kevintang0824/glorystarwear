@@ -1290,7 +1290,7 @@
       <image:loc>https://glorystarwears.com/assets/images/accessories-packaging-system-card.jpg</image:loc>
       <image:title>Retail packaging barcode labels and ecommerce prep for fan merchandise</image:title>
     </image:image>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
@@ -1434,7 +1434,7 @@
       <image:loc>https://glorystarwears.com/assets/images/performance-fabric-swatch-lab.jpg</image:loc>
       <image:title>Performance mesh and stretch fabrics for cycling apparel</image:title>
     </image:image>
-    <lastmod>2026-08-09</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
@@ -1452,7 +1452,7 @@
       <image:loc>https://glorystarwears.com/assets/images/teamwear-custom-showroom.jpg</image:loc>
       <image:title>Custom teamwear showroom for volleyball clubs schools and leagues</image:title>
     </image:image>
-    <lastmod>2026-08-10</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
@@ -1880,7 +1880,7 @@
       <image:loc>https://glorystarwears.com/assets/images/faq-buyer-consultation-desk.jpg</image:loc>
       <image:title>Custom sportswear FAQ quote input checklist</image:title>
     </image:image>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -2326,6 +2326,66 @@
     <image:image>
       <image:loc>https://glorystarwears.com/assets/images/wrestling-singlets-product-board.jpg</image:loc>
       <image:title>Illustrative custom weightlifting singlets product planning reference</image:title>
+    </image:image>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.72</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/custom-team-polo-shirts.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/club-fan-merchandise-apparel-range.jpg</image:loc>
+      <image:title>Illustrative custom team polo shirts product planning reference</image:title>
+    </image:image>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.72</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/custom-cycling-skinsuits.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/cycling-wear-product-range.jpg</image:loc>
+      <image:title>Illustrative custom cycling skinsuits product planning reference</image:title>
+    </image:image>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.72</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/custom-triathlon-suits.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/triathlon-endurance-apparel-range.jpg</image:loc>
+      <image:title>Illustrative custom triathlon suits product planning reference</image:title>
+    </image:image>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.72</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/custom-beach-volleyball-uniforms.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/volleyball-teamwear-product-range.jpg</image:loc>
+      <image:title>Illustrative custom beach volleyball uniforms product planning reference</image:title>
+    </image:image>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.72</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/custom-motocross-jerseys.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/cycling-wear-oem-detail.jpg</image:loc>
+      <image:title>Illustrative custom motocross jerseys product planning reference</image:title>
+    </image:image>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.72</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/products/custom-referee-uniforms.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/teamwear-custom-showroom.jpg</image:loc>
+      <image:title>Illustrative custom referee uniforms product planning reference</image:title>
     </image:image>
     <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>

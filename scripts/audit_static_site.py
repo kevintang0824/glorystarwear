@@ -17,45 +17,23 @@ from urllib.parse import unquote, urljoin, urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 PRODUCTION_ORIGIN = "https://glorystarwears.com"
-EXPECTED_SCRIPT_VERSION = "20260828-4"
-EXPECTED_FORM_STYLE_VERSION = "20260828-4"
-EXPANDED_PRODUCT_SLUGS = {
-    "custom-fishing-apparel",
-    "custom-rowing-uniforms",
-    "pilates-activewear",
-    "flag-football-uniforms",
-    "baseball-uniforms",
-    "softball-uniforms",
-    "rugby-uniforms",
-    "field-hockey-uniforms",
-    "custom-running-shorts",
-    "badminton-uniforms",
-    "private-label-gym-leggings",
-    "custom-boxing-apparel",
-    "custom-handball-uniforms",
-    "custom-padel-apparel",
-    "custom-futsal-uniforms",
-    "custom-table-tennis-uniforms",
-    "custom-bowling-shirts",
-    "custom-darts-shirts",
-    "custom-ultimate-jerseys",
-    "custom-weightlifting-singlets",
-}
-RULE_SOURCE_PRODUCT_SLUGS = {
-    "custom-running-shorts",
-    "badminton-uniforms",
-    "custom-boxing-apparel",
-    "custom-handball-uniforms",
-    "custom-padel-apparel",
-    "custom-futsal-uniforms",
-    "custom-table-tennis-uniforms",
-    "custom-bowling-shirts",
-    "custom-darts-shirts",
-    "custom-ultimate-jerseys",
-    "custom-weightlifting-singlets",
-}
+EXPECTED_SCRIPT_VERSION = "20260828-5"
+EXPECTED_FORM_STYLE_VERSION = "20260828-5"
+CATALOG_PATH = ROOT / "scripts" / "product_expansion_catalog.json"
+CATALOG_ITEMS = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
+CATALOG_SLUG_LIST = [item["slug"] for item in CATALOG_ITEMS]
+EXPANDED_PRODUCT_SLUGS = frozenset(CATALOG_SLUG_LIST)
+RULE_SOURCE_PRODUCT_SLUGS = frozenset(
+    item["slug"] for item in CATALOG_ITEMS if item.get("official_sources")
+)
 NON_CONCRETE_PRODUCT_SLUGS = {"index", "lookbook", "new-products", "more-sports"}
-EXPECTED_CONCRETE_PRODUCT_COUNT = 79
+BASE_CONCRETE_PRODUCT_COUNT = 59
+EXPECTED_CONCRETE_PRODUCT_COUNT = BASE_CONCRETE_PRODUCT_COUNT + len(EXPANDED_PRODUCT_SLUGS)
+BASE_QUOTE_PRODUCT_OPTION_COUNT = 31
+EXPECTED_QUOTE_PRODUCT_OPTION_COUNT = BASE_QUOTE_PRODUCT_OPTION_COUNT + len(EXPANDED_PRODUCT_SLUGS)
+GENERATED_PRODUCT_MARKER_RE = re.compile(
+    r"<!-- GENERATED_PRODUCT_PAGE:([a-z0-9]+(?:-[a-z0-9]+)*) -->"
+)
 PRIORITY_LCP_PAGES = {
     "index.html",
     "sportswear-manufacturer.html",
@@ -244,6 +222,12 @@ class PageParser(HTMLParser):
         self.in_faq_summary = False
         self.current_faq_summary = []
         self.visible_faq_questions = []
+        self.direct_answers = []
+        self.direct_answer_depth = 0
+        self.direct_answer_capture = ""
+        self.direct_answer_capture_tag = ""
+        self.direct_question_parts = []
+        self.direct_answer_parts = []
         self.structured_modified_dates = set()
         self.article_meta_depth = 0
         self.visible_article_dates = set()
@@ -251,6 +235,19 @@ class PageParser(HTMLParser):
 
     def handle_starttag(self, tag, attrs):
         attributes = dict(attrs)
+
+        if self.direct_answer_depth:
+            self.direct_answer_depth += 1
+        elif tag == "article" and "data-direct-answer" in attributes:
+            self.direct_answer_depth = 1
+            self.direct_question_parts = []
+            self.direct_answer_parts = []
+        if self.direct_answer_depth and "data-direct-answer-question" in attributes:
+            self.direct_answer_capture = "question"
+            self.direct_answer_capture_tag = tag
+        elif self.direct_answer_depth and "data-direct-answer-text" in attributes:
+            self.direct_answer_capture = "answer"
+            self.direct_answer_capture_tag = tag
 
         if tag == "main":
             self.main_depth += 1
@@ -353,6 +350,19 @@ class PageParser(HTMLParser):
             self.ids.append(attributes["id"])
 
     def handle_endtag(self, tag):
+        if self.direct_answer_capture_tag == tag:
+            self.direct_answer_capture = ""
+            self.direct_answer_capture_tag = ""
+        if self.direct_answer_depth:
+            if self.direct_answer_depth == 1 and tag == "article":
+                question = normalized_text("".join(self.direct_question_parts))
+                answer = normalized_text("".join(self.direct_answer_parts))
+                if question or answer:
+                    self.direct_answers.append((question, answer))
+                self.direct_answer_depth = 0
+            else:
+                self.direct_answer_depth -= 1
+
         if tag == "title":
             self.in_title = False
         elif tag == "summary" and self.in_faq_summary:
@@ -391,6 +401,10 @@ class PageParser(HTMLParser):
             self.current_link_text.append(data)
         if self.current_json_ld is not None:
             self.current_json_ld.append(data)
+        if self.direct_answer_capture == "question":
+            self.direct_question_parts.append(data)
+        elif self.direct_answer_capture == "answer":
+            self.direct_answer_parts.append(data)
 
     @property
     def title(self):
@@ -452,6 +466,28 @@ def normalized_text(value):
     return re.sub(r"\s+", " ", unescape(value)).strip()
 
 
+def extract_marked_block(source, start, end):
+    match = re.search(re.escape(start) + r"([\s\S]*?)" + re.escape(end), source)
+    return match.group(1) if match else ""
+
+
+def product_select_options(source):
+    select_match = re.search(
+        r'<select\s+name="product"[^>]*>([\s\S]*?)</select>', source
+    )
+    if not select_match:
+        return []
+    options = []
+    for match in re.finditer(
+        r"<option(?P<attributes>[^>]*)>(?P<text>[\s\S]*?)</option>",
+        select_match.group(1),
+    ):
+        value_match = re.search(r'value="([^"]*)"', match.group("attributes"))
+        text = normalized_text(TAG_RE.sub(" ", match.group("text")))
+        options.append(unescape(value_match.group(1)) if value_match else text)
+    return options
+
+
 def main_text_vector(path):
     parser = MainTextParser()
     parser.feed(path.read_text(encoding="utf-8"))
@@ -488,6 +524,12 @@ def structured_nodes(value):
 
 def main():
     errors = []
+    duplicate_catalog_slugs = duplicate_values(CATALOG_SLUG_LIST)
+    if duplicate_catalog_slugs:
+        errors.append(
+            "product catalog contains duplicate slugs: "
+            + ", ".join(duplicate_catalog_slugs)
+        )
     pages = {}
     page_internal_links = {}
     main_internal_links = {}
@@ -526,7 +568,47 @@ def main():
         f"{PRODUCTION_ORIGIN}/products/{path.name}"
         for path in concrete_product_files
     }
-    llms_product_urls = set(
+    disk_generated_slugs = set()
+    for path in concrete_product_files:
+        source = path.read_text(encoding="utf-8")
+        marker = GENERATED_PRODUCT_MARKER_RE.search(source)
+        if not marker:
+            continue
+        marker_slug = marker.group(1)
+        disk_generated_slugs.add(marker_slug)
+        if marker_slug != path.stem:
+            errors.append(
+                f"products/{path.name}: generated marker slug {marker_slug} "
+                "does not match the filename"
+            )
+    for slug in sorted(EXPANDED_PRODUCT_SLUGS - disk_generated_slugs):
+        errors.append(f"products/{slug}.html: missing generated-page identity marker")
+    for slug in sorted(disk_generated_slugs - EXPANDED_PRODUCT_SLUGS):
+        errors.append(f"products/{slug}.html: stale generated page is absent from catalog")
+
+    llms_complete_index = extract_marked_block(
+        llms_source,
+        "<!-- PRODUCT_EXPANSION_START -->",
+        "<!-- PRODUCT_EXPANSION_END -->",
+    )
+    if not llms_complete_index:
+        errors.append("llms.txt: missing complete product index marker block")
+    llms_product_url_list = re.findall(
+        rf"{re.escape(PRODUCTION_ORIGIN)}/products/[a-z0-9-]+\.html",
+        llms_complete_index,
+    )
+    llms_product_url_counts = Counter(llms_product_url_list)
+    llms_product_urls = set(llms_product_url_counts)
+    for url, count in sorted(llms_product_url_counts.items()):
+        if count != 1:
+            errors.append(
+                f"llms.txt: complete product index contains {url} {count} times"
+            )
+    for extra_url in sorted(llms_product_urls - concrete_product_urls):
+        errors.append(f"llms.txt: complete product index has extra product URL: {extra_url}")
+    for missing_url in sorted(concrete_product_urls - llms_product_urls):
+        errors.append(f"llms.txt: missing concrete product URL: {missing_url}")
+    all_llms_product_urls = set(
         re.findall(
             rf"{re.escape(PRODUCTION_ORIGIN)}/products/[a-z0-9-]+\.html",
             llms_source,
@@ -538,8 +620,8 @@ def main():
             f"{EXPECTED_CONCRETE_PRODUCT_COUNT} concrete pages, found "
             f"{len(concrete_product_files)}"
         )
-    for missing_url in sorted(concrete_product_urls - llms_product_urls):
-        errors.append(f"llms.txt: missing concrete product URL: {missing_url}")
+    if not concrete_product_urls.issubset(all_llms_product_urls):
+        errors.append("llms.txt: product URLs escaped the complete product index")
     if "Last updated: 2026-08-28" not in llms_source:
         errors.append("llms.txt: missing current update date")
     for required_url in (
@@ -623,6 +705,12 @@ def main():
         '"Custom darts shirts"': "darts product inquiry mapping",
         '"Custom ultimate jerseys"': "ultimate product inquiry mapping",
         '"Custom weightlifting singlets"': "weightlifting product inquiry mapping",
+        '"Custom team polo shirts"': "team-polo product inquiry mapping",
+        '"Custom cycling skinsuits"': "cycling-skinsuit product inquiry mapping",
+        '"Custom triathlon suits"': "triathlon-suit product inquiry mapping",
+        '"Custom beach volleyball uniforms"': "beach-volleyball product inquiry mapping",
+        '"Custom motocross jerseys"': "motocross product inquiry mapping",
+        '"Custom referee uniforms"': "referee product inquiry mapping",
         '"Yoga leggings"': "yoga-leggings product inquiry mapping",
         '"Seamless activewear"': "seamless-activewear product inquiry mapping",
         '"Soccer uniforms"': "soccer-uniform product inquiry mapping",
@@ -709,6 +797,42 @@ def main():
         for path in ROOT.rglob("*.html")
         if not IGNORED_PATH_PARTS.intersection(path.relative_to(ROOT).parts)
     )
+    quote_product_options = {
+        filename: product_select_options((ROOT / filename).read_text(encoding="utf-8"))
+        for filename in ("index.html", "contact.html")
+    }
+    if Counter(quote_product_options["index.html"]) != Counter(
+        quote_product_options["contact.html"]
+    ):
+        errors.append("homepage and contact product option sets differ")
+    def inquiry_label_key(value):
+        return re.sub(r"^custom\s+", "", normalized_text(value).lower())
+
+    expanded_inquiry_labels = {
+        inquiry_label_key(item["short_name"]): item["short_name"]
+        for item in CATALOG_ITEMS
+    }
+    for filename, options in quote_product_options.items():
+        if len(options) != EXPECTED_QUOTE_PRODUCT_OPTION_COUNT:
+            errors.append(
+                f"{filename}: expected {EXPECTED_QUOTE_PRODUCT_OPTION_COUNT} product options, "
+                f"found {len(options)}"
+            )
+        duplicates = duplicate_values(options)
+        if duplicates:
+            errors.append(
+                f"{filename}: duplicate product options: {', '.join(duplicates)}"
+            )
+        option_keys = {inquiry_label_key(option) for option in options}
+        missing_labels = sorted(
+            label
+            for key, label in expanded_inquiry_labels.items()
+            if key not in option_keys
+        )
+        if missing_labels:
+            errors.append(
+                f"{filename}: missing catalog inquiry options: {', '.join(missing_labels)}"
+            )
     for html_file in html_files:
         parser = PageParser()
         source = html_file.read_text(encoding="utf-8")
@@ -718,6 +842,44 @@ def main():
         )
         relative_name = html_file.relative_to(ROOT).as_posix()
         pages[html_file.resolve()] = parser
+
+        is_concrete_product_page = (
+            html_file.parent == ROOT / "products"
+            and html_file.stem not in NON_CONCRETE_PRODUCT_SLUGS
+        )
+        if is_concrete_product_page:
+            if "product-detail-disclosure" not in source:
+                errors.append(
+                    f"{relative_name}: missing static product image and capability disclosure"
+                )
+            for picture_tag in re.findall(r"<picture\b[^>]*>", source):
+                if 'data-evidence-status="illustrative"' not in picture_tag:
+                    errors.append(
+                        f"{relative_name}: picture is missing static illustrative status"
+                    )
+            for image in parser.images:
+                if image.get("data-evidence-status") != "illustrative":
+                    errors.append(
+                        f"{relative_name}: image is missing static illustrative status"
+                    )
+                if image.get("data-media-kind") != "product-planning-reference":
+                    errors.append(
+                        f"{relative_name}: image is missing product-planning media kind"
+                    )
+                if not image.get("alt", "").lower().startswith(
+                    "illustrative product-planning reference"
+                ):
+                    errors.append(
+                        f"{relative_name}: image alt does not disclose illustrative scope"
+                    )
+            if not parser.og_image_alt.lower().startswith("illustrative"):
+                errors.append(
+                    f"{relative_name}: Open Graph image alt does not disclose illustrative scope"
+                )
+            if not parser.twitter_image_alt.lower().startswith("illustrative"):
+                errors.append(
+                    f"{relative_name}: X image alt does not disclose illustrative scope"
+                )
 
         if re.search(r'"@type"\s*:\s*"Product"', source):
             errors.append(
@@ -761,6 +923,12 @@ def main():
                 "Custom darts shirts": "darts inquiry option",
                 "Custom ultimate jerseys": "ultimate inquiry option",
                 "Custom weightlifting singlets": "weightlifting inquiry option",
+                "Custom team polo shirts": "team-polo inquiry option",
+                "Custom cycling skinsuits": "cycling-skinsuit inquiry option",
+                "Custom triathlon suits": "triathlon-suit inquiry option",
+                "Custom beach volleyball uniforms": "beach-volleyball inquiry option",
+                "Custom motocross jerseys": "motocross inquiry option",
+                "Custom referee uniforms": "referee inquiry option",
                 "Yoga leggings": "yoga-leggings inquiry option",
                 "Seamless activewear": "seamless-activewear inquiry option",
                 "Soccer uniforms": "soccer-uniform inquiry option",
@@ -1314,7 +1482,7 @@ def main():
                 "volleyball-uniform-rules-checklist.html": "volleyball rules article link",
                 "Seven program roles": "program-role separation",
                 "Eight planning gates": "season planning workflow",
-                '"dateModified":"2026-08-10"': "current page modification date",
+                '"dateModified":"2026-08-28"': "current page modification date",
             }
             for marker, label in required_volleyball_program_markers.items():
                 if marker not in source:
@@ -1962,6 +2130,7 @@ def main():
 
         structured_types = set()
         structured_faq_questions = set()
+        structured_faq_pairs = []
         structured_article_author_urls = set()
         article_schema_nodes = 0
         for block in parser.json_ld_blocks:
@@ -2042,6 +2211,8 @@ def main():
                     answer_text = normalized_text(
                         question.get("acceptedAnswer", {}).get("text", "")
                     )
+                    if question_text or answer_text:
+                        structured_faq_pairs.append((question_text, answer_text))
                     if question_text and question_text not in visible_text:
                         errors.append(
                             f"{relative_name}: FAQ question is not visible: "
@@ -2054,7 +2225,7 @@ def main():
                         )
 
         visible_faq_questions = set(parser.visible_faq_questions)
-        if visible_faq_questions:
+        if visible_faq_questions or parser.direct_answers:
             visible_faq_pages += 1
         if "FAQPage" in structured_types:
             faq_schema_pages += 1
@@ -2064,6 +2235,17 @@ def main():
                 errors.append(
                     f"{relative_name}: visible FAQ question is missing from JSON-LD: "
                     f"{question_text}"
+                )
+        if html_file.stem in EXPANDED_PRODUCT_SLUGS:
+            visible_direct_answers = Counter(parser.direct_answers)
+            schema_direct_answers = Counter(structured_faq_pairs)
+            if sum(visible_direct_answers.values()) != 4:
+                errors.append(
+                    f"{relative_name}: expected exactly four visible direct-answer pairs"
+                )
+            if visible_direct_answers != schema_direct_answers:
+                errors.append(
+                    f"{relative_name}: visible direct answers and FAQ schema differ"
                 )
 
         if structured_types.intersection({"Article", "BlogPosting"}):

@@ -759,6 +759,12 @@ const inquiryPrefillOptions = {
     darts: "Custom darts shirts",
     ultimate: "Custom ultimate jerseys",
     weightlifting: "Custom weightlifting singlets",
+    team_polo: "Custom team polo shirts",
+    cycling_skinsuit: "Custom cycling skinsuits",
+    triathlon_suit: "Custom triathlon suits",
+    beach_volleyball: "Custom beach volleyball uniforms",
+    motocross: "Custom motocross jerseys",
+    referee_uniform: "Custom referee uniforms",
     yoga_leggings: "Yoga leggings",
     seamless_activewear: "Seamless activewear",
     soccer_uniforms: "Soccer uniforms",
@@ -900,6 +906,12 @@ const getProductInterestForPath = (path) => {
     ["Custom darts shirts", /custom-darts-shirts/],
     ["Custom ultimate jerseys", /custom-ultimate-jerseys/],
     ["Custom weightlifting singlets", /custom-weightlifting-singlets/],
+    ["Custom team polo shirts", /custom-team-polo-shirts/],
+    ["Custom cycling skinsuits", /custom-cycling-skinsuits/],
+    ["Custom triathlon suits", /custom-triathlon-suits/],
+    ["Custom beach volleyball uniforms", /custom-beach-volleyball-uniforms/],
+    ["Custom motocross jerseys", /custom-motocross-jerseys/],
+    ["Custom referee uniforms", /custom-referee-uniforms/],
     ["Yoga leggings", /\/products\/yoga-leggings\.html$/],
     ["Seamless activewear", /\/products\/seamless-activewear\.html$/],
     ["Soccer uniforms", /\/products\/soccer-uniforms\.html$/],
@@ -1680,7 +1692,7 @@ const setupProductDetailExplorer = () => {
   const evidenceSlotLabels = /accessories|caps|bags|packaging|socks/.test(productSlug)
     ? ["Exterior", "Interior", "Base or reverse", "Closure and construction", "Logo or decoration"]
     : ["Front", "Back", "Fabric macro", "Stitch or seam macro", "Print or decoration macro"];
-  const planningResource = /basketball|football|futsal|soccer|volleyball|baseball|softball|rugby|hockey|cricket|netball|lacrosse|teamwear|cheer|esports|wrestling|badminton|handball|table-tennis|bowling|darts|ultimate/.test(productSlug)
+  const planningResource = /basketball|football|futsal|soccer|volleyball|baseball|softball|rugby|hockey|cricket|netball|lacrosse|teamwear|team-polo|referee|cheer|esports|wrestling|badminton|handball|table-tennis|bowling|darts|ultimate/.test(productSlug)
     ? {
         href: "../assets/downloads/teamwear-roster-packing-template.csv",
         name: "Teamwear Roster Template",
@@ -2187,7 +2199,8 @@ if (catalogGrid) {
       "flag-football-uniforms", "baseball-uniforms", "softball-uniforms",
       "rugby-uniforms", "field-hockey-uniforms", "custom-handball-uniforms",
       "custom-futsal-uniforms", "custom-bowling-shirts", "custom-darts-shirts",
-      "custom-ultimate-jerseys",
+      "custom-ultimate-jerseys", "custom-team-polo-shirts",
+      "custom-beach-volleyball-uniforms", "custom-referee-uniforms",
     ]),
     specialty: new Set([
       "running-wear", "running-singlets-shirts", "tennis-pickleball-apparel", "cycling-wear",
@@ -2199,6 +2212,7 @@ if (catalogGrid) {
       "custom-fishing-apparel", "custom-rowing-uniforms", "custom-running-shorts",
       "custom-boxing-apparel", "custom-padel-apparel", "badminton-uniforms",
       "custom-table-tennis-uniforms", "custom-weightlifting-singlets",
+      "custom-cycling-skinsuits", "custom-triathlon-suits", "custom-motocross-jerseys",
     ]),
     accessories: new Set([
       "accessories", "custom-sports-socks", "custom-sports-caps-bags",

@@ -20,8 +20,10 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA_PATH = ROOT / "scripts" / "product_expansion_catalog.json"
 TODAY = "2026-08-28"
 ORIGIN = "https://glorystarwears.com"
-SCRIPT_VERSION = "20260828-4"
-STYLE_VERSION = "20260828-4"
+SCRIPT_VERSION = "20260828-5"
+STYLE_VERSION = "20260828-5"
+PRODUCT_HUB_FILENAMES = {"index.html", "lookbook.html", "more-sports.html", "new-products.html"}
+GENERATED_PRODUCT_MARKER = "GENERATED_PRODUCT_PAGE"
 UPDATED_EXISTING_PRODUCT_SLUGS = {
     "more-sports",
     "new-products",
@@ -44,6 +46,9 @@ UPDATED_EXISTING_PRODUCT_SLUGS = {
     "athleisure",
     "soccer-uniforms",
     "seamless-activewear",
+    "club-fan-merchandise",
+    "cycling-wear",
+    "volleyball-teamwear",
 }
 LLMS_GROUP_SLUGS = {
     "Activewear and Studio": {
@@ -68,7 +73,8 @@ LLMS_GROUP_SLUGS = {
         "softball-uniforms", "rugby-uniforms", "field-hockey-uniforms",
         "custom-handball-uniforms", "custom-futsal-uniforms",
         "custom-bowling-shirts", "custom-darts-shirts",
-        "custom-ultimate-jerseys",
+        "custom-ultimate-jerseys", "custom-team-polo-shirts",
+        "custom-beach-volleyball-uniforms", "custom-referee-uniforms",
     },
     "Endurance, Outdoor, and Water Sports": {
         "running-wear", "running-singlets-shirts", "cycling-wear",
@@ -78,7 +84,8 @@ LLMS_GROUP_SLUGS = {
         "winter-sports-apparel", "triathlon-endurance-apparel",
         "marathon-event-apparel", "custom-fishing-apparel",
         "custom-rowing-uniforms",
-        "custom-running-shorts",
+        "custom-running-shorts", "custom-cycling-skinsuits",
+        "custom-triathlon-suits", "custom-motocross-jerseys",
     },
     "Court, Combat, and Specialty Sports": {
         "tennis-pickleball-apparel", "racket-sports-apparel",
@@ -391,7 +398,7 @@ def render_page(item: dict) -> str:
         for index, (label, text) in enumerate(specifications, start=1)
     )
     answer_cards = "".join(
-        f'<article><h3>{escaped(question)}</h3><p>{escaped(answer)}</p></article>'
+        f'<article data-direct-answer><h3 data-direct-answer-question>{escaped(question)}</h3><p data-direct-answer-text>{escaped(answer)}</p></article>'
         for question, answer in answers
     )
     related_cards = "".join(
@@ -417,6 +424,7 @@ def render_page(item: dict) -> str:
     image_url = f"{ORIGIN}/assets/images/{item['hero_image']}.jpg"
 
     return f"""<!doctype html>
+<!-- {GENERATED_PRODUCT_MARKER}:{escaped(item['slug'])} -->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -475,7 +483,7 @@ def render_page(item: dict) -> str:
 
       <section class="section aeo-section" aria-labelledby="{escaped(item['slug'])}-answers">
         <div class="section-heading"><p class="eyebrow">Direct buyer answers</p><h2 id="{escaped(item['slug'])}-answers">{escaped(item['short_name'])} sourcing questions, answered clearly</h2><p>These short answers define what can be reviewed now, what the buyer should provide, and which terms still require project confirmation.</p></div>
-        <div class="answer-grid">{answer_cards}</div>
+        <div class="answer-grid" data-direct-answer-list>{answer_cards}</div>
       </section>
 
 {source_section}      <section class="section keyword-section" aria-labelledby="{escaped(item['slug'])}-related">
@@ -497,7 +505,7 @@ def replace_or_insert_block(path: Path, start: str, end: str, content: str, anch
     block = f"{start}\n{content.rstrip()}\n{end}"
     pattern = re.compile(re.escape(start) + r"[\s\S]*?" + re.escape(end))
     if pattern.search(source):
-        source = pattern.sub(block, source, count=1)
+        source = pattern.sub(lambda _match: block, source, count=1)
     elif anchor in source:
         source = source.replace(anchor, f"{block}\n{anchor}", 1)
     else:
@@ -890,6 +898,96 @@ def update_sitemap(items: list[dict]) -> None:
     path.write_text(source, encoding="utf-8")
 
 
+def insert_tag_attributes(tag: str, attributes: str) -> str:
+    """Add attributes before an HTML tag's closing bracket."""
+    if tag.endswith("/>"):
+        return f"{tag[:-2].rstrip()} {attributes} />"
+    return f"{tag[:-1].rstrip()} {attributes}>"
+
+
+def mark_product_media(source: str, product_name: str) -> str:
+    """Make illustrative product-media status visible without JavaScript."""
+
+    def mark_picture(match: re.Match[str]) -> str:
+        tag = match.group(0)
+        if "data-evidence-status=" in tag:
+            return tag
+        return insert_tag_attributes(tag, 'data-evidence-status="illustrative"')
+
+    def mark_image(match: re.Match[str]) -> str:
+        tag = match.group(0)
+        alt_match = re.search(r'alt="([^"]*)"', tag)
+        if alt_match and not alt_match.group(1).lower().startswith(
+            "illustrative product-planning reference"
+        ):
+            prefixed_alt = f"Illustrative product-planning reference: {alt_match.group(1)}"
+            tag = tag[: alt_match.start(1)] + prefixed_alt + tag[alt_match.end(1) :]
+        elif not alt_match:
+            tag = insert_tag_attributes(
+                tag,
+                f'alt="Illustrative product-planning reference for {escaped(product_name)}"',
+            )
+        missing_attributes = []
+        if "data-evidence-status=" not in tag:
+            missing_attributes.append('data-evidence-status="illustrative"')
+        if "data-media-kind=" not in tag:
+            missing_attributes.append('data-media-kind="product-planning-reference"')
+        if missing_attributes:
+            tag = insert_tag_attributes(tag, " ".join(missing_attributes))
+        return tag
+
+    source = re.sub(r"<picture\b[^>]*>", mark_picture, source)
+    source = re.sub(r"<img\b[^>]*>", mark_image, source)
+    return source
+
+
+def add_static_product_evidence() -> None:
+    """Expose image and capability boundaries to HTML-only crawlers."""
+    disclosure = (
+        '<p class="product-detail-disclosure"><strong>Image and page scope:</strong> '
+        "images are illustrative product-planning references, not photographs of available "
+        "stock, current production, customer orders, or approved specifications. Exact product "
+        "scope, materials, construction, decoration, MOQ, sampling, lead time, packing, and "
+        "reorder conditions require project-specific confirmation.</p>"
+    )
+    for path in sorted((ROOT / "products").glob("*.html")):
+        if path.name in PRODUCT_HUB_FILENAMES:
+            continue
+        source = path.read_text(encoding="utf-8")
+        heading_match = re.search(r"<h1[^>]*>([\s\S]*?)</h1>", source)
+        if not heading_match:
+            raise ValueError(f"Product page has no h1: {path}")
+        product_name = html.unescape(re.sub(r"<[^>]+>", "", heading_match.group(1))).strip()
+        source = mark_product_media(source, product_name)
+        if "product-detail-disclosure" not in source:
+            hero_summary = re.compile(
+                r'(<section class="product-hero"[\s\S]*?<h1[^>]*>[\s\S]*?</h1>\s*<p(?:\s[^>]*)?>[\s\S]*?</p>)'
+            )
+            source, replacements = hero_summary.subn(rf"\1{disclosure}", source, count=1)
+            if replacements != 1:
+                raise ValueError(f"Could not insert static product disclosure: {path}")
+        social_alt = f"Illustrative product-planning reference for {product_name}"
+        if 'property="og:image:alt"' not in source:
+            source, replacements = re.subn(
+                r'(<meta property="og:image"[^>]*>)',
+                rf'\1\n    <meta property="og:image:alt" content="{escaped(social_alt)}" />',
+                source,
+                count=1,
+            )
+            if replacements != 1:
+                raise ValueError(f"Could not insert Open Graph image alt: {path}")
+        if 'name="twitter:image:alt"' not in source:
+            source, replacements = re.subn(
+                r'(<meta name="twitter:image"[^>]*>)',
+                rf'\1\n    <meta name="twitter:image:alt" content="{escaped(social_alt)}" />',
+                source,
+                count=1,
+            )
+            if replacements != 1:
+                raise ValueError(f"Could not insert X image alt: {path}")
+        path.write_text(source, encoding="utf-8")
+
+
 def main() -> None:
     items = json.loads(DATA_PATH.read_text(encoding="utf-8"))
     slugs = [item["slug"] for item in items]
@@ -912,8 +1010,12 @@ def main() -> None:
         if not parent_path.exists():
             raise FileNotFoundError(f"Missing parent page for {item['slug']}: {parent_path}")
         target_path = ROOT / "products" / f"{item['slug']}.html"
-        if target_path.exists() and "Image and page scope:" not in target_path.read_text(encoding="utf-8"):
-            raise ValueError(f"Refusing to overwrite non-generated product page: {target_path}")
+        expected_marker = f"<!-- {GENERATED_PRODUCT_MARKER}:{item['slug']} -->"
+        if target_path.exists():
+            existing_source = target_path.read_text(encoding="utf-8")
+            is_legacy_generated = "Buyer-facing planning scope, not a fixed quotation." in existing_source
+            if expected_marker not in existing_source and not is_legacy_generated:
+                raise ValueError(f"Refusing to overwrite non-generated product page: {target_path}")
         if len(item["direction_images"]) != 3:
             raise ValueError(f"{item['slug']} must define exactly three direction images")
         if len(item["decision_focus"]) != 4:
@@ -921,6 +1023,7 @@ def main() -> None:
         rendered_pages[item["slug"]] = render_page(item)
     for slug, rendered in rendered_pages.items():
         (ROOT / "products" / f"{slug}.html").write_text(rendered, encoding="utf-8")
+    add_static_product_evidence()
     update_product_index(items)
     update_parent_clusters(items)
     update_discovery_hubs(items)
