@@ -529,6 +529,36 @@ if (mobileNav?.id) {
 }
 mobileNav?.setAttribute("aria-hidden", "true");
 
+const normalizeChromePath = (href) => {
+  try {
+    const target = new URL(href, window.location.href);
+    if (target.origin !== window.location.origin) return "";
+    const normalized = target.pathname.replace(/\/index\.html$/, "/");
+    return normalized.length > 1 ? normalized.replace(/\/$/, "/") : normalized;
+  } catch {
+    return "";
+  }
+};
+
+const currentChromePath = normalizeChromePath(window.location.href);
+document.querySelectorAll("[data-site-chrome] a[href]").forEach((link) => {
+  const linkPath = normalizeChromePath(link.href);
+  if (linkPath && linkPath === currentChromePath) {
+    link.setAttribute("aria-current", "page");
+  }
+});
+
+const productsNavigationLink = document.querySelector('.nav-trigger[href="/products/"]');
+productsNavigationLink?.classList.toggle(
+  "is-section-current",
+  currentChromePath.startsWith("/products/"),
+);
+const resourcesNavigationLink = document.querySelector('.desktop-nav > a[href="/resources/"]');
+resourcesNavigationLink?.classList.toggle(
+  "is-section-current",
+  currentChromePath.startsWith("/resources/") || currentChromePath.startsWith("/blog/"),
+);
+
 const contactUrl = isContactPage ? "#quote-form" : new URL("/contact.html#quote-form", window.location.href).href;
 const currentPageTopic = document.title.split("|")[0].trim() || "custom sportswear";
 const contextualWhatsAppText = [

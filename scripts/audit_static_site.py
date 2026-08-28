@@ -14,11 +14,13 @@ from math import log, sqrt
 from pathlib import Path
 from urllib.parse import unquote, urljoin, urlparse
 
+from site_chrome import site_footer_markup, site_header_markup
+
 
 ROOT = Path(__file__).resolve().parent.parent
 PRODUCTION_ORIGIN = "https://glorystarwears.com"
-EXPECTED_SCRIPT_VERSION = "20260828-5"
-EXPECTED_FORM_STYLE_VERSION = "20260828-5"
+EXPECTED_SCRIPT_VERSION = "20260828-6"
+EXPECTED_FORM_STYLE_VERSION = "20260828-6"
 CATALOG_PATH = ROOT / "scripts" / "product_expansion_catalog.json"
 CATALOG_ITEMS = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
 CATALOG_SLUG_LIST = [item["slug"] for item in CATALOG_ITEMS]
@@ -718,6 +720,7 @@ def main():
         'trackEvent("product_buyer_route_select"': "product buyer-route analytics",
         "sportswear-collection-development-brief.csv": "product-level planning resource",
         "data-fabric-shortlist-remove": "shortlist item removal control",
+        "is-section-current": "site-wide current-section navigation state",
     }
     for marker, label in required_attribution_markers.items():
         if marker not in script_source:
@@ -842,6 +845,15 @@ def main():
         )
         relative_name = html_file.relative_to(ROOT).as_posix()
         pages[html_file.resolve()] = parser
+
+        if site_header_markup() not in source:
+            errors.append(f"{relative_name}: site header differs from shared chrome")
+        if site_footer_markup() not in source:
+            errors.append(f"{relative_name}: site footer differs from shared chrome")
+        if source.count("data-site-chrome") != 3:
+            errors.append(
+                f"{relative_name}: expected shared desktop, mobile, and footer chrome markers"
+            )
 
         is_concrete_product_page = (
             html_file.parent == ROOT / "products"

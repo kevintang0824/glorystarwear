@@ -1,19 +1,14 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Page not found. Return to GloryStarWear custom sportswear products, OEM and ODM services, private label activewear, teamwear, and quote contact." />
-    <meta name="robots" content="noindex, follow" />
-    <link rel="canonical" href="https://glorystarwears.com/404.html" />
-    <link rel="icon" type="image/svg+xml" href="./assets/logo-mark.svg" />
-    <title>Page Not Found | GloryStarWear</title>
-    <link rel="stylesheet" href="./styles.css?v=20260828-6" />
-    <script src="./assets/vendor/lucide.min.js?v=20260722-1" defer></script>
-    <script src="./script.js?v=20260828-6" defer></script>
-  </head>
-  <body>
-    <header class="site-header" data-header data-site-chrome>
+#!/usr/bin/env python3
+
+"""Shared, site-wide header and footer markup.
+
+All links are root-relative so the same chrome can be used on root pages and
+inside product, resource, and editorial directories without per-page forks.
+"""
+
+
+def site_header_markup() -> str:
+    return """    <header class="site-header" data-header data-site-chrome>
       <a class="brand" href="/" aria-label="GloryStarWear home"><span class="brand-mark" aria-hidden="true">GS</span><span class="brand-name">GloryStarWear<small>Custom sportswear programs</small></span></a>
       <nav class="desktop-nav" aria-label="Primary navigation">
         <div class="nav-dropdown"><a class="nav-trigger" href="/products/" aria-haspopup="true">Products <i data-lucide="chevron-down"></i></a><div class="nav-menu"><a href="/products/">All Products</a><a href="/products/new-products.html">New Products</a><a href="/products/lookbook.html">Product Gallery</a><a href="/products/private-label-gym-clothing.html">Private Label Activewear</a><a href="/custom-teamwear-uniforms.html">Custom Teamwear</a><a href="/products/running-wear.html">Running &amp; Endurance</a><a href="/products/cycling-wear.html">Cycling Wear</a><a href="/products/racket-sports-apparel.html">Racket Sports</a><a href="/products/accessories.html">Accessories &amp; Packaging</a><a href="/products/more-sports.html">More Sports</a></div></div>
@@ -22,24 +17,11 @@
       <a class="header-cta" href="/contact.html#quote-form"><i data-lucide="send"></i><span>Build Your Brief</span></a>
       <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle><i data-lucide="menu"></i></button>
     </header>
-    <nav class="mobile-nav" aria-label="Mobile navigation" data-mobile-nav data-site-chrome aria-hidden="true"><div class="mobile-nav-actions"><a class="button primary" href="/contact.html#quote-form"><i data-lucide="send"></i>Build Your Brief</a><a class="button whatsapp" href="https://wa.me/8618020755949" target="_blank" rel="noreferrer"><i data-lucide="message-circle"></i>WhatsApp</a></div><a href="/products/">Products</a><a href="/sportswear-manufacturer.html">Manufacturing</a><a href="/customization.html">Customization</a><a href="/fabrics.html">Fabrics &amp; Colors</a><a href="/process.html">Process</a><a href="/quality.html">Quality</a><a href="/resources/">Buyer Resources</a><a href="/faq.html">FAQ</a><a href="/contact.html#quote-form">Contact</a></nav>
-    <main>
-      <section class="product-hero">
-        <picture><source type="image/avif" srcset="./assets/images/hero-brand-campaign-900.avif 900w, ./assets/images/hero-brand-campaign-1200.avif 1200w, ./assets/images/hero-brand-campaign.avif 1672w" sizes="100vw" /><img src="./assets/images/hero-brand-campaign.jpg" srcset="./assets/images/hero-brand-campaign-900.jpg 900w, ./assets/images/hero-brand-campaign-1200.jpg 1200w, ./assets/images/hero-brand-campaign.jpg 1672w" sizes="100vw" alt="GloryStarWear custom sportswear showroom and product development display" width="1672" height="941" fetchpriority="high" decoding="async" /></picture>
-        <div class="product-hero-content">
-          <p class="eyebrow">404</p>
-          <h1>Page Not Found</h1>
-          <p>The page may have moved. Explore our custom sportswear catalog or send us your project details for OEM and ODM support.</p>
-          <div class="hero-actions">
-            <a class="button primary" href="./products/"><i data-lucide="shopping-bag"></i>View Products</a>
-            <a class="button secondary" href="./private-label-activewear-manufacturer.html"><i data-lucide="sparkles"></i>Activewear Manufacturer</a>
-            <a class="button secondary" href="./custom-teamwear-uniforms.html"><i data-lucide="shield"></i>Teamwear Manufacturer</a>
-            <a class="button secondary" href="./contact.html"><i data-lucide="send"></i>Contact Us</a>
-          </div>
-        </div>
-      </section>
-    </main>
-    <footer class="site-footer" data-site-chrome>
+    <nav class="mobile-nav" aria-label="Mobile navigation" data-mobile-nav data-site-chrome aria-hidden="true"><div class="mobile-nav-actions"><a class="button primary" href="/contact.html#quote-form"><i data-lucide="send"></i>Build Your Brief</a><a class="button whatsapp" href="https://wa.me/8618020755949" target="_blank" rel="noreferrer"><i data-lucide="message-circle"></i>WhatsApp</a></div><a href="/products/">Products</a><a href="/sportswear-manufacturer.html">Manufacturing</a><a href="/customization.html">Customization</a><a href="/fabrics.html">Fabrics &amp; Colors</a><a href="/process.html">Process</a><a href="/quality.html">Quality</a><a href="/resources/">Buyer Resources</a><a href="/faq.html">FAQ</a><a href="/contact.html#quote-form">Contact</a></nav>"""
+
+
+def site_footer_markup() -> str:
+    return """    <footer class="site-footer" data-site-chrome>
       <div class="site-footer-shell">
         <div class="footer-brand"><a class="brand" href="/" aria-label="GloryStarWear home"><span class="brand-mark" aria-hidden="true">GS</span><span class="brand-name">GloryStarWear<small>Custom sportswear programs</small></span></a><p>Plan activewear, teamwear, specialist sports apparel, labels, packaging, samples, and repeat orders through one controlled buyer brief.</p><a class="footer-brief-link" href="/contact.html#quote-form">Start a project brief <span aria-hidden="true">→</span></a></div>
         <nav class="footer-links" aria-label="Footer navigation">
@@ -49,6 +31,4 @@
           <div class="footer-link-group footer-legal"><strong>Site</strong><a href="/editorial-policy.html">Editorial Policy</a><a href="/privacy.html">Privacy</a><button class="footer-choice-link" type="button" data-manage-analytics-consent>Analytics Choices</button><span>© 2026 GloryStarWear</span></div>
         </nav>
       </div>
-    </footer>
-  </body>
-</html>
+    </footer>"""

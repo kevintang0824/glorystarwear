@@ -15,13 +15,15 @@ import re
 import struct
 from pathlib import Path
 
+from site_chrome import site_footer_markup, site_header_markup
+
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_PATH = ROOT / "scripts" / "product_expansion_catalog.json"
 TODAY = "2026-08-28"
 ORIGIN = "https://glorystarwears.com"
-SCRIPT_VERSION = "20260828-5"
-STYLE_VERSION = "20260828-5"
+SCRIPT_VERSION = "20260828-6"
+STYLE_VERSION = "20260828-6"
 PRODUCT_HUB_FILENAMES = {"index.html", "lookbook.html", "more-sports.html", "new-products.html"}
 GENERATED_PRODUCT_MARKER = "GENERATED_PRODUCT_PAGE"
 UPDATED_EXISTING_PRODUCT_SLUGS = {
@@ -209,25 +211,12 @@ def preload_markup(image_name: str) -> str:
 
 
 def navigation(current_slug: str) -> str:
-    return f"""
-    <header class="site-header" data-header>
-      <a class="brand" href="../#top"><span class="brand-mark">GS</span><span>GloryStarWear</span></a>
-      <nav class="desktop-nav" aria-label="Primary navigation">
-        <div class="nav-dropdown"><a class="nav-trigger" href="./" aria-haspopup="true">Products <i data-lucide="chevron-down"></i></a><div class="nav-menu"><a href="./">All Products</a><a href="./new-products.html">New Products</a><a href="./lookbook.html">Product Gallery</a><a href="./yoga-wear.html">Yoga Wear</a><a href="./training-wear.html">Training Wear</a><a href="./basketball-wear.html">Basketball Wear</a><a href="./football-kits.html">Football Kits</a><a href="./accessories.html">Accessories &amp; Packaging</a><a href="./more-sports.html">More Sports</a></div></div>
-        <a href="../customization.html">Customization</a><a href="../fabrics.html">Fabrics</a><a href="../one-stop-service.html">One-Stop Service</a><a href="../quality.html">Quality</a><a href="../process.html">Process</a><a href="../contact.html">Contact</a>
-      </nav>
-      <a class="header-cta" href="../contact.html#quote-form"><i data-lucide="mail"></i>Get Quote</a>
-      <button class="menu-toggle" type="button" aria-label="Open menu" data-menu-toggle><i data-lucide="menu"></i></button>
-    </header>
-    <nav class="mobile-nav" aria-label="Mobile navigation" data-mobile-nav><a href="./">All Products</a><a href="./{escaped(current_slug)}.html" aria-current="page">{escaped(current_slug.replace('-', ' ').title())}</a><a href="../fabrics.html">Fabrics</a><a href="../quality.html">Quality</a><a href="../contact.html#quote-form">Get Quote</a></nav>"""
+    del current_slug
+    return "\n" + site_header_markup()
 
 
 def footer_markup() -> str:
-    return """
-    <footer class="site-footer">
-      <div><a class="brand" href="../#top"><span class="brand-mark">GS</span><span>GloryStarWear</span></a><p>Custom activewear, teamwear, private label production, and packaging services.</p></div>
-      <div class="footer-links"><a href="./">Products</a><a href="./lookbook.html">Product Gallery</a><a href="./training-wear.html">Training Wear</a><a href="./accessories.html">Accessories</a><a href="./more-sports.html">More Sports</a><a href="../sportswear-manufacturer.html">Manufacturing Routes</a><a href="../fabrics.html">Fabrics</a><a href="../quality.html">Quality</a><a href="../process.html">Process</a><a href="../resources/">Buyer Resources</a><a href="../quote-checklist.html">Quote Checklist</a><a href="../contact.html#quote-form">Contact</a></div>
-    </footer>"""
+    return site_footer_markup()
 
 
 def schema_for(item: dict) -> dict:
