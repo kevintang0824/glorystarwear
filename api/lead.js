@@ -45,6 +45,18 @@ const cleanCampaign = (campaign) => {
   );
 };
 
+const cleanBriefReadiness = (readiness) => {
+  if (!readiness || typeof readiness !== "object" || Array.isArray(readiness)) return null;
+  const completed = Number(readiness.completed);
+  const total = Number(readiness.total);
+  const level = cleanText(readiness.level, 40);
+  const allowedLevels = new Set(["starting", "good-start", "review-ready", "well-scoped", "unavailable"]);
+  if (Number(readiness.version) !== 1 || !Number.isInteger(completed) || total !== 7 || completed < 0 || completed > total || !allowedLevels.has(level)) {
+    return null;
+  }
+  return { version: 1, completed, total, level };
+};
+
 const isAllowedTurnstileHostname = (hostname) => {
   if (allowedTurnstileHostnames.has(hostname)) return true;
   return /^glorystarwear-[a-z0-9-]+-glorystarpack-s-projects\.vercel\.app$/.test(hostname);
@@ -129,6 +141,9 @@ module.exports = async function leadHandler(request, response) {
   }
 
   const lead = {
+    payloadVersion: body.payloadVersion === undefined || body.payloadVersion === null || body.payloadVersion === ""
+      ? 1
+      : Number(body.payloadVersion),
     leadId: /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(cleanText(body.submissionId, 80))
       ? cleanText(body.submissionId, 80)
       : randomUUID(),
@@ -136,10 +151,14 @@ module.exports = async function leadHandler(request, response) {
     name: cleanText(body.name, 120),
     email: cleanText(body.email, 180).toLowerCase(),
     phone: cleanText(body.phone, 80),
+    buyerType: cleanText(body.buyerType, 120),
+    developmentRoute: cleanText(body.developmentRoute, 180),
+    briefReadiness: cleanBriefReadiness(body.briefReadiness),
     product: cleanText(body.product, 120),
     quantity: cleanText(body.quantity, 120),
     market: cleanText(body.market, 120),
     timeline: cleanText(body.timeline, 160),
+    projectDetails: cleanText(body.projectDetails, 3000),
     message: cleanText(body.message, 12000),
     sourcePage: cleanText(body.sourcePage, 500),
     landingPage: cleanText(body.landingPage, 500),
@@ -150,7 +169,9 @@ module.exports = async function leadHandler(request, response) {
   };
 
   const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(lead.email);
-  if (!lead.name || !validEmail || !lead.product || !lead.message || body.consent !== true) {
+  const supportedPayloadVersion = lead.payloadVersion === 1 || lead.payloadVersion === 2;
+  const versionedRequiredFieldsPresent = lead.payloadVersion < 2 || (lead.buyerType && lead.projectDetails);
+  if (!supportedPayloadVersion || !lead.name || !validEmail || !versionedRequiredFieldsPresent || !lead.product || !lead.message || body.consent !== true) {
     return response.status(400).json({ ok: false, error: "invalid_lead" });
   }
 

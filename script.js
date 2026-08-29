@@ -1238,6 +1238,96 @@ quoteProductShortlistPanels.forEach(({ clearButton, continueLink }) => {
 
 renderQuoteProductShortlistPanels();
 
+const calculateQuoteReadiness = (form) => {
+  const data = new FormData(form);
+  const projectDetails = String(data.get("message") || "").trim();
+  const referenceLinkField = form.querySelector("[data-reference-link]");
+  const hasValidReferenceLink = Boolean(referenceLinkField?.value && referenceLinkField.checkValidity());
+  const hasReferenceFiles = getReferenceFiles(form).length > 0;
+  const items = [
+    {
+      key: "product",
+      label: "Choose a product category",
+      fieldName: "product",
+      complete: Boolean(String(data.get("product") || "").trim()),
+    },
+    {
+      key: "quantity",
+      label: "Add estimated quantity",
+      fieldName: "quantity",
+      complete: Boolean(String(data.get("quantity") || "").trim()),
+    },
+    {
+      key: "project_details",
+      label: "Add more product detail",
+      fieldName: "message",
+      complete: projectDetails.length >= 60,
+    },
+    {
+      key: "market",
+      label: "Add delivery market",
+      fieldName: "market",
+      complete: Boolean(String(data.get("market") || "").trim()),
+    },
+    {
+      key: "timeline",
+      label: "Add a target date",
+      fieldName: "timeline",
+      complete: Boolean(String(data.get("timeline") || "").trim()),
+    },
+    {
+      key: "development_route",
+      label: "Choose a development route",
+      fieldName: "developmentRoute",
+      complete: Boolean(String(data.get("developmentRoute") || "").trim()),
+    },
+    {
+      key: "references",
+      label: "Add a view-only reference link",
+      fieldName: hasReferenceFiles ? "referenceFiles" : "referenceLink",
+      complete: hasReferenceFiles || hasValidReferenceLink,
+    },
+  ];
+  const completedCount = items.filter((item) => item.complete).length;
+  const totalCount = items.length;
+  const missingItems = items.filter((item) => !item.complete);
+  const coreInputsComplete = ["product", "quantity", "project_details"]
+    .every((key) => items.find((item) => item.key === key)?.complete);
+  const level = completedCount === totalCount
+    ? { key: "well-scoped", label: "Complete project context" }
+    : completedCount >= 5 && coreInputsComplete
+      ? { key: "review-ready", label: "Strong project context" }
+      : completedCount >= 3
+        ? { key: "good-start", label: "Useful project context" }
+        : { key: "starting", label: "Starting project context" };
+  const summary = completedCount === totalCount
+    ? "All seven optional planning inputs are prepared for an initial project review."
+    : level.key === "review-ready"
+      ? "Strong project context is ready. Adding the remaining optional inputs can reduce follow-up questions."
+      : completedCount >= 5
+        ? "Add the missing product, quantity, or project-detail input to make the scope easier to review."
+        : "Optional commercial and technical context helps us identify the appropriate review, sample, or quotation route.";
+
+  return { available: true, items, missingItems, completedCount, totalCount, coreInputsComplete, level, summary };
+};
+
+const getQuoteReadiness = (form) => {
+  try {
+    return calculateQuoteReadiness(form);
+  } catch {
+    return {
+      available: false,
+      items: [],
+      missingItems: [],
+      completedCount: 0,
+      totalCount: 7,
+      coreInputsComplete: false,
+      level: { key: "unavailable", label: "Optional guidance unavailable" },
+      summary: "You can still complete and send the required inquiry fields.",
+    };
+  }
+};
+
 const getInquiryLines = (form) => {
   const data = new FormData(form);
   const referenceFiles = [...(form.querySelector("[data-reference-files]")?.files || [])];
@@ -1256,11 +1346,11 @@ const getInquiryLines = (form) => {
     attribution?.landingPage ? `Landing Page: ${attribution.landingPage}` : "",
     attribution?.referrer ? `Referrer: ${attribution.referrer}` : "",
   ].filter(Boolean);
-  const productDirection = readStoredProductDirection();
+  const productDirection = isContactPage ? readStoredProductDirection() : null;
   const productShortlist = readStoredProductShortlist()
     .map((item) => `${item.label} (${item.path})`)
     .join(" | ");
-  const fabricShortlist = readStoredFabricShortlist()
+  const fabricShortlist = (isContactPage ? readStoredFabricShortlist() : [])
     .map((item) => `${item.id} — ${item.name}`)
     .join(" | ");
 
@@ -1280,6 +1370,7 @@ const getInquiryLines = (form) => {
     `Preferred Contact: ${data.get("preferredContact") || "No preference"}`,
     `Call Request: ${data.get("callRequest") || "No call requested"}`,
     `Reference Files Selected: ${referenceFileNames || "None"}`,
+    `Reference File Transfer: ${referenceFileNames ? "Attach selected local files through the chosen send method" : "No local files selected"}`,
     `Reference File Link: ${data.get("referenceLink") || "None"}`,
     `Source Page: ${getInquirySource()}`,
     ...attributionLines,
@@ -1295,13 +1386,14 @@ const getInquiryPayload = (form) => {
   const referenceFileNames = referenceFiles
     .map((file) => file.name.replace(/[\r\n\t]/g, " ").slice(0, 120))
     .join(", ");
-  const productDirection = readStoredProductDirection();
+  const productDirection = isContactPage ? readStoredProductDirection() : null;
   const productShortlist = readStoredProductShortlist()
     .map((item) => `${item.label} (${item.path})`)
     .join(" | ");
-  const fabricShortlist = readStoredFabricShortlist()
+  const fabricShortlist = (isContactPage ? readStoredFabricShortlist() : [])
     .map((item) => `${item.id} — ${item.name}`)
     .join(" | ");
+  const quoteReadiness = getQuoteReadiness(form);
   const projectMessage = [
     `Buyer Type: ${data.get("buyerType") || "Not provided"}`,
     `Development Route: ${data.get("developmentRoute") || "Not sure yet"}`,
@@ -1311,6 +1403,7 @@ const getInquiryPayload = (form) => {
     `Product Shortlist: ${productShortlist || "None"}`,
     `Fabric Shortlist: ${fabricShortlist || "None"}`,
     `Reference Files Selected: ${referenceFileNames || "None"}`,
+    `Reference File Transfer: ${referenceFileNames ? "Attach selected local files through the chosen send method" : "No local files selected"}`,
     `Reference File Link: ${data.get("referenceLink") || "None"}`,
     "",
     String(data.get("message") || ""),
@@ -1324,15 +1417,25 @@ const getInquiryPayload = (form) => {
   }
 
   return {
+    payloadVersion: 2,
     submissionId,
     turnstileToken: turnstileStates.get(form)?.token || "",
     name: data.get("name"),
     email: data.get("email"),
     phone: data.get("phone"),
+    buyerType: data.get("buyerType"),
+    developmentRoute: data.get("developmentRoute"),
+    briefReadiness: {
+      version: 1,
+      completed: quoteReadiness.completedCount,
+      total: quoteReadiness.totalCount,
+      level: quoteReadiness.level.key,
+    },
     product: data.get("product"),
     quantity: data.get("quantity"),
     market: data.get("market"),
     timeline: data.get("timeline"),
+    projectDetails: data.get("message"),
     message: projectMessage,
     companyWebsite: data.get("companyWebsite"),
     consent: data.get("consent") === "on",
@@ -1478,9 +1581,11 @@ const canShareReferenceFiles = (files) => {
   }
 };
 
-quoteForms.forEach((form) => {
+quoteForms.forEach((form, formIndex) => {
   let hasStartedQuote = false;
   let highestProgressMilestone = 0;
+  let highestReadinessMilestone = 0;
+  let lastReadinessSignature = "";
   let serverSubmissionAvailable = false;
   let secureSubmissionStarted = false;
   const leadEndpoint = form.dataset.leadEndpoint || "";
@@ -1489,6 +1594,26 @@ quoteForms.forEach((form) => {
   const quoteProgressLabel = form.querySelector("[data-quote-progress-label]");
   const quoteProgressMeter = form.querySelector("[data-quote-progress-meter]");
   const requiredFields = [...form.querySelectorAll("input[required], select[required], textarea[required]")];
+  const quoteReadiness = document.createElement("section");
+  const quoteReadinessTitleId = `quote-readiness-title-${formIndex + 1}`;
+  quoteReadiness.className = "quote-readiness";
+  quoteReadiness.dataset.quoteReadiness = "";
+  quoteReadiness.setAttribute("aria-labelledby", quoteReadinessTitleId);
+  quoteReadiness.innerHTML = `
+    <div class="quote-readiness-heading">
+      <div><span>Optional planning guidance</span><strong id="${quoteReadinessTitleId}">Improve your project brief</strong></div>
+      <small data-quote-readiness-status role="status" aria-live="polite" aria-atomic="true">Starting project context · 0 of 7</small>
+    </div>
+    <p data-quote-readiness-summary>Optional commercial and technical context helps us identify the appropriate review, sample, or quotation route.</p>
+    <div class="quote-readiness-prompts" data-quote-readiness-prompts role="group" aria-label="Useful next inputs"></div>
+    <small class="quote-readiness-boundary">These inputs are optional and do not block sending. MOQ, feasibility, sample scope, price, and timing are confirmed after review. Selected local files still need to be attached through the chosen send method; shared links must be viewable.</small>
+  `;
+  const quoteReadinessInsertionPoint = form.querySelector("[data-reference-link]")?.closest("label")
+    || form.querySelector('[name="message"]')?.closest("label");
+  quoteReadinessInsertionPoint?.insertAdjacentElement("afterend", quoteReadiness);
+  const quoteReadinessStatus = quoteReadiness.querySelector("[data-quote-readiness-status]");
+  const quoteReadinessSummary = quoteReadiness.querySelector("[data-quote-readiness-summary]");
+  const quoteReadinessPrompts = quoteReadiness.querySelector("[data-quote-readiness-prompts]");
   const trackQuoteStart = () => {
     if (hasStartedQuote) return;
     hasStartedQuote = true;
@@ -1528,9 +1653,93 @@ quoteForms.forEach((form) => {
     });
   };
 
-  const handleQuoteUpdate = () => {
+  const renderQuoteReadiness = (shouldTrack = false) => {
+    const readiness = getQuoteReadiness(form);
+    if (!readiness.available) {
+      quoteReadiness.hidden = true;
+      return;
+    }
+    const readinessSignature = readiness.items.map((item) => Number(item.complete)).join("");
+    if (readinessSignature !== lastReadinessSignature) {
+      quoteReadiness.dataset.level = readiness.level.key;
+      if (quoteReadinessStatus) {
+        quoteReadinessStatus.textContent = `${readiness.level.label} · ${readiness.completedCount} of ${readiness.totalCount}`;
+      }
+      if (quoteReadinessSummary) quoteReadinessSummary.textContent = readiness.summary;
+    }
+
+    if (quoteReadinessPrompts && readinessSignature !== lastReadinessSignature) {
+      quoteReadinessPrompts.replaceChildren();
+      if (!readiness.missingItems.length) {
+        const completeNote = document.createElement("span");
+        completeNote.className = "quote-readiness-complete";
+        completeNote.textContent = "All optional planning inputs are prepared for initial review.";
+        quoteReadinessPrompts.append(completeNote);
+      } else {
+        const promptLabel = document.createElement("span");
+        promptLabel.className = "quote-readiness-prompt-label";
+        promptLabel.textContent = "Useful next inputs";
+        quoteReadinessPrompts.append(promptLabel);
+        readiness.missingItems.slice(0, 3).forEach((item) => {
+          const prompt = document.createElement("button");
+          prompt.type = "button";
+          prompt.textContent = item.label;
+          prompt.dataset.quoteReadinessTarget = item.fieldName;
+          prompt.addEventListener("click", () => {
+            const targetField = form.querySelector(`[name="${item.fieldName}"]`);
+            if (!targetField) return;
+            const reducedMotion = typeof window.matchMedia === "function"
+              && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            targetField.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "center" });
+            targetField.focus({ preventScroll: true });
+            trackEvent("quote_readiness_prompt_select", {
+              prompt_key: item.key,
+              completed_inputs: readiness.completedCount,
+              form_location: window.location.pathname,
+            });
+          });
+          quoteReadinessPrompts.append(prompt);
+        });
+        if (readiness.missingItems.length > 3) {
+          const remainingNote = document.createElement("small");
+          remainingNote.className = "quote-readiness-more";
+          remainingNote.textContent = `+${readiness.missingItems.length - 3} more after these`;
+          quoteReadinessPrompts.append(remainingNote);
+        }
+      }
+      lastReadinessSignature = readinessSignature;
+    }
+
+    if (!shouldTrack || !readiness.totalCount) return;
+    const readinessPercent = Math.round((readiness.completedCount / readiness.totalCount) * 100);
+    const reachedMilestone = [100, 75, 50, 25]
+      .find((milestone) => readinessPercent >= milestone) || 0;
+    if (reachedMilestone <= highestReadinessMilestone) return;
+    highestReadinessMilestone = reachedMilestone;
+    trackEvent("quote_readiness_progress", {
+      form_location: window.location.pathname,
+      progress_percent: reachedMilestone,
+      completed_inputs: readiness.completedCount,
+      missing_inputs: readiness.missingItems.map((item) => item.key).join("|").slice(0, 180),
+    });
+  };
+
+  const updateQuoteReadiness = (shouldTrack = false) => {
+    try {
+      renderQuoteReadiness(shouldTrack);
+    } catch {
+      quoteReadiness.hidden = true;
+    }
+  };
+
+  const handleQuoteUpdate = (event) => {
+    const updatedField = event.target;
+    if (updatedField?.matches?.("input, select, textarea") && updatedField.checkValidity()) {
+      updatedField.removeAttribute("aria-invalid");
+    }
     trackQuoteStart();
     updateQuoteProgress(true);
+    updateQuoteReadiness(true);
   };
 
   form.addEventListener("input", handleQuoteUpdate);
@@ -1556,11 +1765,14 @@ quoteForms.forEach((form) => {
     }
   });
   updateQuoteProgress();
+  updateQuoteReadiness();
 
   const validateQuoteForm = (sendMethod) => {
     if (form.checkValidity()) return true;
-    const invalidFields = [...form.querySelectorAll("input, select, textarea")]
-      .filter((field) => !field.checkValidity())
+    const invalidFieldElements = [...form.querySelectorAll("input, select, textarea")]
+      .filter((field) => !field.checkValidity());
+    invalidFieldElements.forEach((field) => field.setAttribute("aria-invalid", "true"));
+    const invalidFields = invalidFieldElements
       .map((field) => field.name)
       .filter(Boolean);
     setFormNote(
@@ -1688,7 +1900,7 @@ quoteForms.forEach((form) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(getInquiryPayload(form)),
-      }, 12000);
+      }, 18000);
 
       const result = await response.json().catch(() => ({}));
       if (!response.ok || !result.ok) {

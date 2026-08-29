@@ -19,8 +19,8 @@ from site_chrome import site_footer_markup, site_header_markup
 
 ROOT = Path(__file__).resolve().parent.parent
 PRODUCTION_ORIGIN = "https://glorystarwears.com"
-EXPECTED_SCRIPT_VERSION = "20260829-1"
-EXPECTED_FORM_STYLE_VERSION = "20260829-1"
+EXPECTED_SCRIPT_VERSION = "20260829-2"
+EXPECTED_FORM_STYLE_VERSION = "20260829-2"
 CATALOG_PATH = ROOT / "scripts" / "product_expansion_catalog.json"
 CATALOG_ITEMS = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
 CATALOG_SLUG_LIST = [item["slug"] for item in CATALOG_ITEMS]
@@ -730,6 +730,12 @@ def main():
         "data-quote-product-shortlist": "visible quote product shortlist",
         'trackEvent("quote_product_shortlist_edit"': "quote shortlist editing analytics",
         'trackEvent("quote_product_shortlist_clear"': "quote shortlist clear analytics",
+        "data-quote-readiness": "optional project-detail guidance",
+        'trackEvent("quote_readiness_progress"': "project-detail progress analytics",
+        'trackEvent("quote_readiness_prompt_select"': "project-detail prompt analytics",
+        "briefReadiness:": "structured project-detail readiness metadata",
+        "payloadVersion: 2": "versioned quote payload contract",
+        "}, 18000);": "secure submission timeout allowance",
     }
     for marker, label in required_attribution_markers.items():
         if marker not in script_source:
@@ -745,6 +751,11 @@ def main():
         "for (let attempt = 0; attempt < 2": "idempotent transient delivery retry",
         "body.submissionId": "client submission idempotency key",
         "cleanText(body.message, 12000)": "non-truncating structured inquiry allowance",
+        "cleanText(body.buyerType, 120)": "server-side buyer type capture",
+        "cleanText(body.projectDetails, 3000)": "server-side raw project-detail validation",
+        "cleanBriefReadiness(body.briefReadiness)": "validated project-detail readiness metadata",
+        "versionedRequiredFieldsPresent": "legacy quote payload compatibility",
+        "supportedPayloadVersion": "unsupported quote payload rejection",
     }
     for marker, label in required_lead_api_markers.items():
         if marker not in lead_api_source:
@@ -2349,6 +2360,7 @@ def main():
                 "data-quote-progress": "required-field completion progress",
                 'aria-label="Custom sportswear quote form"': "accessible form name",
                 'href="./privacy.html"': "privacy notice link",
+                "Not sure yet — recommend a route": "explicit undecided development route",
             }
             for marker, label in required_form_markers.items():
                 if marker not in source:

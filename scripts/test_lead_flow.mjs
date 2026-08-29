@@ -38,15 +38,20 @@ const request = (method, body = {}, origin = "https://glorystarwears.com") => ({
 });
 
 const validLead = {
+  payloadVersion: 2,
   submissionId: "d5163dbe-7f62-4abf-9a31-2e7be64f4c35",
   turnstileToken: "synthetic-turnstile-token",
   name: "Flow Test",
   email: "flow-test@example.com",
   phone: "",
+  buyerType: "Established brand",
+  developmentRoute: "OEM from our tech pack",
+  briefReadiness: { version: 1, completed: 6, total: 7, level: "review-ready" },
   product: "Tech pack review and development",
   quantity: "100 pcs",
   market: "USA",
   timeline: "Sample first",
+  projectDetails: "Synthetic CI project detail. Do not contact or process this request.",
   message: "Synthetic CI request. Do not contact.",
   companyWebsite: "",
   consent: true,
@@ -102,6 +107,16 @@ try {
   const deliveredEvent = JSON.parse(deliveryCalls[0].options.body);
   assert.equal(deliveredEvent.event, "lead.created");
   assert.equal(deliveredEvent.lead.leadId, validLead.submissionId);
+  assert.deepEqual(deliveredEvent.lead.briefReadiness, validLead.briefReadiness);
+
+  const legacyLead = { ...validLead };
+  delete legacyLead.payloadVersion;
+  delete legacyLead.buyerType;
+  delete legacyLead.projectDetails;
+  const legacyResponse = new MockResponse();
+  await leadHandler(request("POST", legacyLead), legacyResponse);
+  assert.equal(legacyResponse.statusCode, 201);
+  assert.equal(legacyResponse.body.ok, true);
 
   let retryCount = 0;
   globalThis.fetch = async (url) => {
@@ -127,6 +142,18 @@ try {
   const invalidLeadResponse = new MockResponse();
   await leadHandler(request("POST", { ...validLead, consent: false }), invalidLeadResponse);
   assert.equal(invalidLeadResponse.statusCode, 400);
+
+  for (const requiredField of ["buyerType", "projectDetails"]) {
+    const missingFieldResponse = new MockResponse();
+    await leadHandler(request("POST", { ...validLead, [requiredField]: "" }), missingFieldResponse);
+    assert.equal(missingFieldResponse.statusCode, 400);
+    assert.equal(missingFieldResponse.body.error, "invalid_lead");
+  }
+
+  const unsupportedVersionResponse = new MockResponse();
+  await leadHandler(request("POST", { ...validLead, payloadVersion: 3 }), unsupportedVersionResponse);
+  assert.equal(unsupportedVersionResponse.statusCode, 400);
+  assert.equal(unsupportedVersionResponse.body.error, "invalid_lead");
 
   console.log("Lead flow contract tests passed.");
 } finally {
