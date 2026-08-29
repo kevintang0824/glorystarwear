@@ -9,6 +9,7 @@ use CollectionPage and ItemList markup, never Product or Offer markup.
 
 from __future__ import annotations
 
+import argparse
 import html
 import json
 import re
@@ -324,35 +325,24 @@ def item_directions(item: dict) -> list[dict]:
     ]
 
 
-def item_specifications(item: dict) -> list[tuple[str, str]]:
-    return [
-        ("Range and intended use", f"{sentence(item['range'])} Define the buyer and use case: {item['buyers']}."),
-        ("Movement and wear conditions", item["movement"]),
-        ("Fit and size system", item["fit"]),
-        ("Material target", item["fabric"]),
-        ("Construction and reinforcement", item["construction"]),
-        ("Branding, order, and approval", f"{item['branding']} {sentence(item['order'])} {item['evidence']}"),
-    ]
-
-
 def item_answers(item: dict) -> list[tuple[str, str]]:
     name = contextual_name(item["short_name"])
     return [
         (
-            f"Can the {name} project be quoted from a reference image alone?",
-            f"No. A reference image can identify a {name} direction, but a useful review also needs the requested garments, intended use, buyer market, quantity and size split, material and branding goals, packing, delivery country, and target date. Feasibility is confirmed only after the submitted project brief is reviewed.",
+            f"What should the {name} brief define before sampling?",
+            f"{sentence(item['scope'])} For the {name} brief, a reference image alone is not an approved specification. Feasibility is confirmed only after the submitted project brief is reviewed.",
         ),
         (
-            "How are fit, material, and construction routes approved?",
-            "Convert the intended movement and fit into measurable requirements, approve coded material swatches, and review the proposed construction on an identified project sample. The suggestions on this page are planning inputs, not approved specifications or universal performance claims.",
+            f"Which movement and use conditions should be tested for {name}?",
+            f"{sentence(item['movement'])} For the {name} sample, record the intended wearer, test conditions, sample identity, observations, and acceptance decision; the planning notes on this page are not universal performance claims.",
         ),
         (
-            "How are MOQ, samples, and lead time confirmed?",
-            f"MOQ, sample cost, sample rounds, and lead time are confirmed after reviewing {item['order']} No universal figure on this page is a quotation or production commitment.",
+            f"How are {name} MOQ, samples, and lead time confirmed?",
+            f"Confirm {item['order']} For {name}, MOQ, sample cost, sample rounds, and lead time are then confirmed for that brief. No universal figure on this page is a quotation or production commitment.",
         ),
         (
-            "What evidence should be checked before bulk release?",
-            f"Bulk-release evidence: {item['evidence']} Branding handoff: {item['branding']}",
+            f"What {name} evidence should be checked before bulk release?",
+            f"{sentence(item['evidence'])} Keep the approved {name} evidence linked to the final specification, purchase order, and release decision.",
         ),
     ]
 
@@ -368,7 +358,6 @@ def render_page(item: dict) -> str:
     hero_alt = f"Illustrative product-planning reference: {item['hero_alt']}"
     hero_picture = picture_markup(item["hero_image"], hero_alt, sizes="100vw", priority=True)
     directions = item_directions(item)
-    specifications = item_specifications(item)
     answers = item_answers(item)
     direction_cards = []
     for direction in directions:
@@ -382,10 +371,6 @@ def render_page(item: dict) -> str:
             f'<article class="sku-card">{direction_picture}<div><h3>{escaped(direction["title"])}</h3><ul>{bullets}</ul></div></article>'
         )
 
-    spec_cards = "".join(
-        f'<article><span>{str(index).zfill(2)}</span><h3>{escaped(label)}</h3><p>{escaped(text)}</p></article>'
-        for index, (label, text) in enumerate(specifications, start=1)
-    )
     answer_cards = "".join(
         f'<article data-direct-answer><h3 data-direct-answer-question>{escaped(question)}</h3><p data-direct-answer-text>{escaped(answer)}</p></article>'
         for question, answer in answers
@@ -458,11 +443,6 @@ def render_page(item: dict) -> str:
       <section class="section product-listing" aria-labelledby="{escaped(item['slug'])}-directions">
         <div class="section-heading"><p class="eyebrow">Product directions</p><h2 id="{escaped(item['slug'])}-directions">Define the exact {escaped(contextual_name(item['short_name']))} range before sampling</h2><p>{escaped(item['scope'])}</p></div>
         <div class="sku-grid">{''.join(direction_cards)}</div>
-      </section>
-
-      <section class="section product-system" aria-labelledby="{escaped(item['slug'])}-specification">
-        <div class="section-heading"><p class="eyebrow">Specification framework</p><h2 id="{escaped(item['slug'])}-specification">Six decisions that make the quotation and sample review more reliable</h2><p>Use these fields to turn a visual reference into a controlled product brief. Values remain proposed until the exact material, pattern, artwork, sample, and order route are approved.</p></div>
-        <div class="product-system-grid">{spec_cards}</div>
       </section>
 
       <section class="section product-system" aria-labelledby="{escaped(item['slug'])}-decision-map">
@@ -977,7 +957,7 @@ def add_static_product_evidence() -> None:
         path.write_text(source, encoding="utf-8")
 
 
-def main() -> None:
+def main(*, pages_only: bool = False) -> None:
     items = json.loads(DATA_PATH.read_text(encoding="utf-8"))
     slugs = [item["slug"] for item in items]
     if len(slugs) != len(set(slugs)):
@@ -1012,6 +992,9 @@ def main() -> None:
         rendered_pages[item["slug"]] = render_page(item)
     for slug, rendered in rendered_pages.items():
         (ROOT / "products" / f"{slug}.html").write_text(rendered, encoding="utf-8")
+    if pages_only:
+        print(f"Generated {len(items)} product pages without updating discovery surfaces.")
+        return
     add_static_product_evidence()
     update_product_index(items)
     update_parent_clusters(items)
@@ -1023,4 +1006,11 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--pages-only",
+        action="store_true",
+        help="regenerate the catalog product pages without changing indexes, hubs, llms.txt, or sitemap.xml",
+    )
+    args = parser.parse_args()
+    main(pages_only=args.pages_only)

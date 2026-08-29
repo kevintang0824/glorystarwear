@@ -1,0 +1,15 @@
+Stage,Decision ID,Style or Program,Decision or Requirement,Buyer Input,Evidence or Reference,Owner,Target Date,Status,Open Question,Approval Note
+Commercial brief,01,Delete this example row,Target customer activity market position and price architecture,Describe the wearer use channel and intended market,Customer research or approved brand brief,,,Open,,Replace this row with project-specific information
+Range architecture,02,,Hero style supporting styles and role of each SKU,List the smallest coherent range and why each style exists,Approved range map,,,Open,,
+Development route,03,,Stock light-custom ODM OEM or hybrid route by style,State which inputs are controlled and where supplier development is requested,Route comparison and supplier response,,,Open,,
+Quantity plan,04,,Quantity by style color size and delivery wave,Provide demand assumptions size split and acceptable consolidation,Forecast preorder history or trial plan,,,Open,,
+Commercial boundary,05,,Target product cost and landed-cost components,State target market currency destination and required inclusions,Supplier quote comparison and logistics estimate,,,Open,,
+Material,06,,Main fabric lining mesh elastic and trim direction,Provide coded swatches or measurable performance priorities,Fabric specification and approved physical swatch,,,Open,,
+Fit and sizing,07,,Base size points of measure tolerances grade logic and representative sizes,Provide fit block wearer profile size range and measurement method,Pattern measurement chart and fit records,,,Open,,
+Construction,08,,Panels seams stitches reinforcements edges pockets and closures,Provide technical views callouts and use conditions,Tech pack construction review and approved sample,,,Open,,
+Branding,09,,Logo artwork labels colors placements and decoration methods,Provide rights-cleared production files and physical color references,Artwork register strike-off or decorated sample,,,Open,,
+Packaging,10,,Folding individual pack SKU barcode insert and carton rules,Provide channel requirements stable data and variable data,Packaging handoff register and packed sample,,,Open,,
+Sampling,11,,Purpose and acceptance rule for each sample round,Name the decisions each sample must close,Sample comments measurement report and revision history,,,Open,,
+Quality,12,,Material construction fit decoration label packing and inspection checks,Define evidence method responsibility and release authority,Approved sample test records and inspection plan,,,Open,,
+Timeline,13,,Dependent gates from brief through shipment,Provide target launch date and decision availability,Back-planned milestone register with assumptions,,,Open,,
+Reorder,14,,Retained references replenishment rules and change control,State expected reorder pattern color or roster changes and stock policy,Approved specification retained sample and version log,,,Open,,

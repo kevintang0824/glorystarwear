@@ -1,0 +1,6 @@
+Style Code,Garment Area,Seam Purpose,Body Contact Zone,Fabric Code,Stretch Direction,Seam Type,Stitch Type or Class,Thread Specification,Needle Specification,Stitch Density Method,Seam Allowance,Reinforcement,Sample Check,Test or Wear Condition,Acceptance Rule,Approved Sample ID,Bulk Check,Owner,Status,Notes
+Delete this example row,Inseam,Join panels under repeated extension,High skin contact,Enter coded fabric and revision,Record direction and condition,Specify seam construction,Specify stitch reference or class,Specify thread type size color and source,Specify needle system size and point,Define how density is stated and measured,Enter controlled value and unit,State start end and stress-point reinforcement,Inspect appearance extension recovery and skin comfort,Define movement wash and test condition,Write measurable or comparative pass rule,Link dated approved sample,Define first-output in-line and final check,,Open,Do not copy example values into production
+,,Finish an edge,,,,,,,,,,,,,,,,,Open,
+,,Attach elastic or binding,,,,,,,,,,,,,,,,,Open,
+,,Secure a pocket or opening,,,,,,,,,,,,,,,,,Open,
+,,Join lining mesh or contrast panels,,,,,,,,,,,,,,,,,Open,

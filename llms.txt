@@ -5,7 +5,7 @@
 Canonical site: [https://glorystarwears.com/](https://glorystarwears.com/)
 Contact: kevin@glorystarwears.com
 Phone and WhatsApp: +86 18020755949
-Last updated: 2026-08-28
+Last updated: 2026-08-29
 
 ## Direct Answer Summary
 
@@ -49,6 +49,8 @@ Last updated: 2026-08-28
 - [Sportswear packaging handoff register (CSV)](https://glorystarwears.com/assets/downloads/sportswear-packaging-handoff-register.csv)
 - [Sportswear compliance evidence register (CSV)](https://glorystarwears.com/assets/downloads/sportswear-compliance-evidence-register.csv)
 - [Activewear fabric selection and specification guide](https://glorystarwears.com/resources/activewear-fabric-selection-guide.html)
+- [Activewear seam and stitch construction guide](https://glorystarwears.com/resources/activewear-seam-stitch-construction-guide.html)
+- [Activewear seam and stitch specification (CSV)](https://glorystarwears.com/assets/downloads/activewear-seam-stitch-specification.csv)
 - [Sportswear sample approval checklist and CSV register](https://glorystarwears.com/resources/sportswear-sample-approval-checklist.html)
 - [Sportswear sampling and production approval register (CSV)](https://glorystarwears.com/assets/downloads/sportswear-sampling-production-approval-register.csv)
 - [Sportswear AQL and pre-shipment inspection checklist](https://glorystarwears.com/resources/sportswear-aql-inspection-checklist.html)
@@ -61,6 +63,8 @@ Last updated: 2026-08-28
 - [Sportswear manufacturing blog](https://glorystarwears.com/blog/)
 - [Blog RSS feed](https://glorystarwears.com/blog/feed.xml)
 - [Editorial and product-testing policy](https://glorystarwears.com/editorial-policy.html)
+- [First activewear collection manufacturing checklist](https://glorystarwears.com/blog/first-activewear-collection-manufacturing-checklist.html)
+- [First activewear collection plan (CSV)](https://glorystarwears.com/assets/downloads/first-activewear-collection-plan.csv)
 - [Activewear odor-resistance, odor rebloom, and antibacterial claim test workflow](https://glorystarwears.com/blog/activewear-odor-resistance-antibacterial-test.html)
 - [Activewear odor-control claim-test register (CSV)](https://glorystarwears.com/assets/downloads/activewear-odor-control-claim-test-register.csv)
 - [Moisture-wicking, quick-dry, sweat-visibility, and activewear claim test workflow](https://glorystarwears.com/blog/moisture-wicking-quick-dry-activewear-test.html)

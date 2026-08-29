@@ -24,6 +24,7 @@ EXPECTED_FORM_STYLE_VERSION = "20260829-2"
 CATALOG_PATH = ROOT / "scripts" / "product_expansion_catalog.json"
 CATALOG_ITEMS = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
 CATALOG_SLUG_LIST = [item["slug"] for item in CATALOG_ITEMS]
+CATALOG_ITEMS_BY_SLUG = {item["slug"]: item for item in CATALOG_ITEMS}
 EXPANDED_PRODUCT_SLUGS = frozenset(CATALOG_SLUG_LIST)
 RULE_SOURCE_PRODUCT_SLUGS = frozenset(
     item["slug"] for item in CATALOG_ITEMS if item.get("official_sources")
@@ -78,7 +79,9 @@ PRIORITY_LCP_PAGES = {
     "resources/sportswear-packaging-label-handoff-checklist.html",
     "resources/sportswear-aql-inspection-checklist.html",
     "resources/teamwear-roster-packing-guide.html",
+    "resources/activewear-seam-stitch-construction-guide.html",
     "blog/index.html",
+    "blog/first-activewear-collection-manufacturing-checklist.html",
     "blog/activewear-odor-resistance-antibacterial-test.html",
     "blog/moisture-wicking-quick-dry-activewear-test.html",
     "blog/apparel-print-wash-test-logo-durability.html",
@@ -559,6 +562,8 @@ def main():
     expanded_product_max_cosine_similarity = 0.0
     expanded_product_most_similar_pair = []
     expanded_product_contextual_inlinks = {}
+    expanded_faq_question_owners = {}
+    expanded_faq_answer_owners = {}
 
     llms_source = (ROOT / "llms.txt").read_text(encoding="utf-8")
     concrete_product_files = sorted(
@@ -624,7 +629,7 @@ def main():
         )
     if not concrete_product_urls.issubset(all_llms_product_urls):
         errors.append("llms.txt: product URLs escaped the complete product index")
-    if "Last updated: 2026-08-28" not in llms_source:
+    if "Last updated: 2026-08-29" not in llms_source:
         errors.append("llms.txt: missing current update date")
     for required_url in (
         f"{PRODUCTION_ORIGIN}/low-moq-sportswear-manufacturer.html",
@@ -1005,7 +1010,6 @@ def main():
         if relative_name.startswith("products/") and html_file.stem in EXPANDED_PRODUCT_SLUGS:
             expanded_page_markers = {
                 "Image and page scope:": "visible illustrative-media scope",
-                "Specification framework": "static specification framework",
                 "Sport-specific decision map": "sport-specific decision section",
                 "Direct buyer answers": "static direct-answer section",
                 "Feasibility is confirmed only after the submitted project brief is reviewed.": "project feasibility boundary",
@@ -1017,6 +1021,10 @@ def main():
             for marker, label in expanded_page_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
+            if "Specification framework" in source:
+                errors.append(
+                    f"{relative_name}: retained the duplicated specification framework"
+                )
             if html_file.stem in RULE_SOURCE_PRODUCT_SLUGS:
                 rule_source_markers = {
                     "Official rules and buyer verification": "visible official-source section",
@@ -1245,6 +1253,16 @@ def main():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 
+        if relative_name == "resources/index.html":
+            required_resource_index_markers = {
+                "activewear-seam-stitch-construction-guide.html": "seam and stitch guide discovery link",
+                "first-activewear-collection-manufacturing-checklist.html": "first collection guide discovery link",
+                '"dateModified":"2026-08-29"': "current resource library modification date",
+            }
+            for marker, label in required_resource_index_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
         if relative_name == "blog/index.html":
             required_blog_markers = {
                 "activewear-odor-resistance-antibacterial-test.html": "odor-control claim-test article link",
@@ -1262,12 +1280,48 @@ def main():
                 "us-clothing-label-requirements-private-label.html": "U.S. clothing-label article link",
                 "sportswear-sublimation-color-matching-guide.html": "sublimation-color article link",
                 "apparel-print-wash-test-logo-durability.html": "decoration wash-test article link",
+                "first-activewear-collection-manufacturing-checklist.html": "first collection article link",
+                "activewear-seam-stitch-construction-guide.html": "seam and stitch guide link",
                 "feed.xml": "RSS feed discovery link",
                 "editorial-policy.html": "editorial policy link",
                 '"@type":"Blog"': "blog structured data",
-                '"dateModified":"2026-08-13"': "current blog modification date",
+                '"dateModified":"2026-08-29"': "current blog modification date",
             }
             for marker, label in required_blog_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "blog/first-activewear-collection-manufacturing-checklist.html":
+            required_first_collection_markers = {
+                "first-activewear-collection-plan.csv": "first collection planner link",
+                'data-resource-download="first-activewear-collection-plan"': "first collection download tracking",
+                '"@type":"BlogPosting"': "first collection BlogPosting schema",
+                '"@type":"DigitalDocument"': "first collection planner document schema",
+                '"isAccessibleForFree":true': "free first collection planner disclosure",
+                '"dateModified":"2026-08-29"': "current first collection modification date",
+                "There is no universal number": "visible universal style-count limitation",
+                "activewear-seam-stitch-construction-guide.html": "seam construction handoff",
+                "feed.xml": "RSS feed discovery",
+            }
+            for marker, label in required_first_collection_markers.items():
+                if marker not in source:
+                    errors.append(f"{relative_name}: missing {label}")
+
+        if relative_name == "resources/activewear-seam-stitch-construction-guide.html":
+            required_seam_guide_markers = {
+                "activewear-seam-stitch-specification.csv": "seam specification worksheet link",
+                'data-resource-download="activewear-seam-stitch-specification"': "seam worksheet download tracking",
+                '"@type":"Article"': "seam guide Article schema",
+                '"@type":"DigitalDocument"': "seam worksheet document schema",
+                '"isAccessibleForFree":true': "free seam worksheet disclosure",
+                '"dateModified":"2026-08-29"': "current seam guide modification date",
+                "There is no universal best seam": "visible universal seam limitation",
+                "iso.org/standard/10932.html": "ISO 4915 stitch terminology source",
+                "iso.org/standard/10934.html": "ISO 4916 seam terminology source",
+                "store.astm.org/d1683_d1683m-22.html": "ASTM seam failure source",
+                "Soft_and_Secure_Seams.pdf": "Coats technical bulletin source",
+            }
+            for marker, label in required_seam_guide_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
 
@@ -2287,6 +2341,56 @@ def main():
                 errors.append(
                     f"{relative_name}: visible direct answers and FAQ schema differ"
                 )
+            catalog_item = CATALOG_ITEMS_BY_SLUG[html_file.stem]
+            product_name = catalog_item["short_name"].casefold()
+            expected_answer_fragments = (
+                catalog_item["scope"],
+                catalog_item["movement"],
+                catalog_item["order"],
+                catalog_item["evidence"],
+            )
+            for answer_index, (question, answer) in enumerate(parser.direct_answers):
+                if product_name not in question.casefold():
+                    errors.append(
+                        f"{relative_name}: direct-answer question is not product-specific: "
+                        f"{question}"
+                    )
+                if product_name not in answer.casefold():
+                    errors.append(
+                        f"{relative_name}: direct-answer text is not product-specific for: "
+                        f"{question}"
+                    )
+                if (
+                    answer_index >= len(expected_answer_fragments)
+                    or expected_answer_fragments[answer_index].casefold()
+                    not in answer.casefold()
+                ):
+                    errors.append(
+                        f"{relative_name}: direct-answer text lacks its "
+                        f"product-specific catalog evidence for: {question}"
+                    )
+                normalized_question = question.casefold()
+                previous_question_owner = expanded_faq_question_owners.get(
+                    normalized_question
+                )
+                if previous_question_owner:
+                    errors.append(
+                        f"{relative_name}: direct-answer question duplicates "
+                        f"{previous_question_owner}: {question}"
+                    )
+                else:
+                    expanded_faq_question_owners[normalized_question] = relative_name
+                normalized_answer = answer.casefold()
+                previous_answer_owner = expanded_faq_answer_owners.get(
+                    normalized_answer
+                )
+                if previous_answer_owner:
+                    errors.append(
+                        f"{relative_name}: direct-answer text duplicates "
+                        f"{previous_answer_owner}: {question}"
+                    )
+                else:
+                    expanded_faq_answer_owners[normalized_answer] = relative_name
 
         if structured_types.intersection({"Article", "BlogPosting"}):
             article_schema_pages += 1
@@ -2690,6 +2794,8 @@ def main():
         "expanded_product_max_cosine_similarity": expanded_product_max_cosine_similarity,
         "expanded_product_most_similar_pair": expanded_product_most_similar_pair,
         "expanded_product_contextual_inlinks": expanded_product_contextual_inlinks,
+        "expanded_unique_faq_questions": len(expanded_faq_question_owners),
+        "expanded_unique_faq_answers": len(expanded_faq_answer_owners),
         "unique_canonicals": len(canonical_owners),
         "unique_titles": len(title_owners),
         "unique_descriptions": len(description_owners),

@@ -180,7 +180,7 @@
       <image:loc>https://glorystarwears.com/assets/images/faq-buyer-consultation-desk.jpg</image:loc>
       <image:title>Custom sportswear buyer resources and guides</image:title>
     </image:image>
-    <lastmod>2026-08-09</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.82</priority>
   </url>
@@ -1956,7 +1956,7 @@
       <image:loc>https://glorystarwears.com/assets/images/custom-sportswear-consultation.jpg</image:loc>
       <image:title>Sportswear manufacturing blog for product development and quality decisions</image:title>
     </image:image>
-    <lastmod>2026-08-13</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.78</priority>
   </url>
@@ -2129,6 +2129,26 @@
     <lastmod>2026-08-09</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/resources/activewear-seam-stitch-construction-guide.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/custom-design-studio.jpg</image:loc>
+      <image:title>Activewear seam and stitch construction specification guide</image:title>
+    </image:image>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.77</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/blog/first-activewear-collection-manufacturing-checklist.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/custom-sportswear-consultation.jpg</image:loc>
+      <image:title>First activewear collection manufacturing checklist and launch plan</image:title>
+    </image:image>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.77</priority>
   </url>
   <!-- PRODUCT_EXPANSION_START -->
   <url>
