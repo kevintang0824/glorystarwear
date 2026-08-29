@@ -37,6 +37,97 @@ EXPECTED_QUOTE_PRODUCT_OPTION_COUNT = BASE_QUOTE_PRODUCT_OPTION_COUNT + len(EXPA
 GENERATED_PRODUCT_MARKER_RE = re.compile(
     r"<!-- GENERATED_PRODUCT_PAGE:([a-z0-9]+(?:-[a-z0-9]+)*) -->"
 )
+NEW_BUYER_CONTENT_RULES = {
+    "resources/grs-recycled-activewear-certification-evidence-guide.html": {
+        "schema_type": "Article",
+        "download_path": "assets/downloads/recycled-activewear-certification-evidence-register.csv",
+        "download_id": "recycled-activewear-certification-evidence-register",
+        "unique_markers": (
+            "What evidence should a buyer request for GRS activewear?",
+            "This page does not claim that GloryStarWear is GRS certified",
+            "textileexchange.org/certificate-authentication/",
+        ),
+        "hub_pages": ("resources/index.html", "blog/index.html"),
+        "rss": False,
+        "main_links": (
+            "certificates.html",
+            "fabrics.html",
+            "resources/apparel-purchase-order-checklist.html",
+        ),
+        "csv_headers": (
+            "Evidence Stage", "Record ID", "Order or Style",
+            "Material or Component", "Claim Intent", "Standard and Version",
+            "Certified Organization", "TE-ID or Certificate Number",
+            "Facility or Site", "Scope Certificate Status",
+            "Product Listed on Scope", "Transaction Certificate Number",
+            "Seller", "Buyer", "Shipment or Invoice Reference",
+            "Certified Content Basis", "Chain-of-Custody Gap Check",
+            "Claim or Label Route", "Certification Body Approval Reference",
+            "Authentication Source", "Valid From", "Valid To",
+            "Change or Substitution", "Owner", "Status", "Open Question",
+            "Approval Note",
+        ),
+    },
+    "resources/apparel-purchase-order-checklist.html": {
+        "schema_type": "Article",
+        "download_path": "assets/downloads/apparel-purchase-order-release-checklist.csv",
+        "download_id": "apparel-purchase-order-release-checklist",
+        "unique_markers": (
+            "Apparel Purchase Order Checklist Before Bulk Production",
+            "Make the PO, PI, files and samples agree",
+            "Do not let the amendment live only in a message thread",
+        ),
+        "hub_pages": ("resources/index.html", "blog/index.html"),
+        "rss": False,
+        "main_links": (
+            "quote-checklist.html",
+            "resources/custom-sportswear-tech-pack.html",
+            "resources/sportswear-sample-approval-checklist.html",
+            "resources/sportswear-aql-inspection-checklist.html",
+            "blog/garment-inspection-failed-rework-reinspection.html",
+            "blog/apparel-incoterms-exw-fob-ddp-landed-cost.html",
+        ),
+        "csv_headers": (
+            "Control Area", "Record ID", "PO Number", "Style or SKU",
+            "Buyer Requirement", "Supplier Confirmation",
+            "Controlled File or Sample", "Revision", "Quantity or Allocation",
+            "Price or Charge", "Currency", "Delivery Term and Named Place",
+            "Payment Gate", "Acceptance Rule", "Owner", "Due Date", "Status",
+            "Change Reference", "Exception or Open Question", "Approval Note",
+        ),
+    },
+    "blog/garment-inspection-failed-rework-reinspection.html": {
+        "schema_type": "BlogPosting",
+        "download_path": "assets/downloads/garment-inspection-failure-response-register.csv",
+        "download_id": "garment-inspection-failure-response-register",
+        "unique_markers": (
+            "What to Do When a Garment Inspection Fails",
+            "Choose the response by defect, scope and verifiability",
+            "Do not turn a sampled result into an unstated population estimate",
+        ),
+        "hub_pages": ("blog/index.html", "resources/index.html"),
+        "rss": True,
+        "main_links": (
+            "resources/sportswear-aql-inspection-checklist.html",
+            "blog/clothing-sample-to-bulk-quality-control.html",
+            "resources/sportswear-sample-approval-checklist.html",
+            "resources/custom-sportswear-tech-pack.html",
+            "resources/apparel-purchase-order-checklist.html",
+            "quality.html",
+        ),
+        "csv_headers": (
+            "Incident ID", "Order or PO", "Inspection Report", "Lot or Shipment",
+            "Style Color Size", "Defect Class", "Defect Description",
+            "Sample Count", "Affected Count or Estimate", "Containment Status",
+            "Production or Carton Scope", "Root Cause Status",
+            "Disposition Option", "Rework or Sorting Instruction",
+            "Replacement Quantity", "Verification Method", "Reinspection Plan",
+            "Acceptance Rule", "Corrective Evidence", "Owner", "Due Date",
+            "Release Authority", "Final Status", "Shipment Impact",
+            "Commercial or Contract Question", "Notes",
+        ),
+    },
+}
 PRIORITY_LCP_PAGES = {
     "index.html",
     "sportswear-manufacturer.html",
@@ -99,6 +190,7 @@ PRIORITY_LCP_PAGES = {
     "blog/youth-team-uniform-sizing-order-checklist.html",
     "blog/custom-apparel-packaging-moq-inventory-planning.html",
     "editorial-policy.html",
+    *NEW_BUYER_CONTENT_RULES,
 }
 REQUIRED_MAIN_LINKS = {
     "blog/clothing-sample-to-bulk-quality-control.html": {
@@ -154,6 +246,12 @@ REQUIRED_MAIN_LINKS = {
         "sportswear-manufacturer.html",
     },
 }
+REQUIRED_MAIN_LINKS.update(
+    {
+        page_path: set(rule["main_links"])
+        for page_path, rule in NEW_BUYER_CONTENT_RULES.items()
+    }
+)
 TITLE_LENGTH_RANGE = (30, 65)
 DESCRIPTION_LENGTH_RANGE = (100, 170)
 IMAGE_RE = re.compile(r"<img\b[^>]*>", re.IGNORECASE | re.DOTALL)
@@ -529,6 +627,37 @@ def structured_nodes(value):
 
 def main():
     errors = []
+    for page_path, rule in NEW_BUYER_CONTENT_RULES.items():
+        download_path = ROOT / rule["download_path"]
+        if not download_path.exists():
+            errors.append(
+                f"{rule['download_path']}: missing CSV required by {page_path}"
+            )
+            continue
+        with download_path.open(encoding="utf-8", newline="") as csv_file:
+            rows = list(csv.reader(csv_file))
+        expected_headers = list(rule["csv_headers"])
+        if not rows:
+            errors.append(f"{rule['download_path']}: CSV is empty")
+            continue
+        if rows[0] != expected_headers:
+            errors.append(
+                f"{rule['download_path']}: header does not match the controlled schema"
+            )
+        if len(rows) < 2:
+            errors.append(
+                f"{rule['download_path']}: missing removable illustrative row"
+            )
+        elif not rows[1] or rows[1][0] != "DELETE THIS ILLUSTRATIVE ROW":
+            errors.append(
+                f"{rule['download_path']}: first data row must disclose its illustrative status"
+            )
+        for row_number, row in enumerate(rows[1:], start=2):
+            if len(row) != len(expected_headers):
+                errors.append(
+                    f"{rule['download_path']}:{row_number}: expected "
+                    f"{len(expected_headers)} columns, found {len(row)}"
+                )
     duplicate_catalog_slugs = duplicate_values(CATALOG_SLUG_LIST)
     if duplicate_catalog_slugs:
         errors.append(
@@ -559,6 +688,9 @@ def main():
     undisclosed_case_planning_visuals = 0
     ambiguous_case_scenario_phrases = 0
     homepage_manufacturer_main_text_cosine_similarity = 0.0
+    concrete_product_max_cosine_similarity = 0.0
+    concrete_product_most_similar_pairs = []
+    concrete_product_pairs_over_similarity_limit = []
     expanded_product_max_cosine_similarity = 0.0
     expanded_product_most_similar_pair = []
     expanded_product_contextual_inlinks = {}
@@ -637,6 +769,13 @@ def main():
     ):
         if required_url not in llms_source:
             errors.append(f"llms.txt: missing GEO discovery URL: {required_url}")
+    for page_path, rule in NEW_BUYER_CONTENT_RULES.items():
+        page_url = f"{PRODUCTION_ORIGIN}/{page_path}"
+        download_url = f"{PRODUCTION_ORIGIN}/{rule['download_path']}"
+        if page_url not in llms_source:
+            errors.append(f"llms.txt: missing buyer-content URL: {page_url}")
+        if download_url not in llms_source:
+            errors.append(f"llms.txt: missing buyer-resource CSV URL: {download_url}")
     if re.search(
         r"\[[^\]]*case studies[^\]]*\]\(https://glorystarwears\.com/case-studies\.html\)",
         llms_source,
@@ -870,6 +1009,29 @@ def main():
         )
         relative_name = html_file.relative_to(ROOT).as_posix()
         pages[html_file.resolve()] = parser
+
+        new_content_rule = NEW_BUYER_CONTENT_RULES.get(relative_name)
+        if new_content_rule:
+            for marker in new_content_rule["unique_markers"]:
+                if marker not in source:
+                    errors.append(
+                        f"{relative_name}: missing content identity marker: {marker}"
+                    )
+            download_filename = Path(new_content_rule["download_path"]).name
+            download_tracking = (
+                f'data-resource-download="{new_content_rule["download_id"]}"'
+            )
+            if download_filename not in source:
+                errors.append(
+                    f"{relative_name}: missing controlled CSV link: {download_filename}"
+                )
+            if download_tracking not in source:
+                errors.append(
+                    f"{relative_name}: missing CSV download tracking: "
+                    f"{new_content_rule['download_id']}"
+                )
+            if new_content_rule["rss"] and "feed.xml" not in source:
+                errors.append(f"{relative_name}: missing RSS discovery link")
 
         if site_header_markup() not in source:
             errors.append(f"{relative_name}: site header differs from shared chrome")
@@ -2226,6 +2388,7 @@ def main():
         structured_faq_questions = set()
         structured_faq_pairs = []
         structured_article_author_urls = set()
+        structured_digital_documents = []
         article_schema_nodes = 0
         for block in parser.json_ld_blocks:
             json_ld_count += 1
@@ -2260,6 +2423,8 @@ def main():
                     if isinstance(node_type, list)
                     else set()
                 )
+                if "DigitalDocument" in node_types:
+                    structured_digital_documents.append(node)
                 if node_types.intersection({"Article", "BlogPosting"}):
                     article_schema_nodes += 1
                     authors = node.get("author", [])
@@ -2425,6 +2590,43 @@ def main():
                     f"found {article_schema_nodes}"
                 )
 
+        if new_content_rule:
+            expected_schema_type = new_content_rule["schema_type"]
+            alternate_schema_type = (
+                "BlogPosting" if expected_schema_type == "Article" else "Article"
+            )
+            if expected_schema_type not in structured_types:
+                errors.append(
+                    f"{relative_name}: missing expected {expected_schema_type} schema"
+                )
+            if alternate_schema_type in structured_types:
+                errors.append(
+                    f"{relative_name}: contains unexpected {alternate_schema_type} schema"
+                )
+            expected_document_url = (
+                f"{PRODUCTION_ORIGIN}/{new_content_rule['download_path']}"
+            )
+            matching_documents = [
+                document
+                for document in structured_digital_documents
+                if document.get("url") == expected_document_url
+            ]
+            if len(matching_documents) != 1:
+                errors.append(
+                    f"{relative_name}: expected one DigitalDocument for "
+                    f"{expected_document_url}, found {len(matching_documents)}"
+                )
+            else:
+                document = matching_documents[0]
+                if document.get("encodingFormat") != "text/csv":
+                    errors.append(
+                        f"{relative_name}: CSV DigitalDocument encodingFormat is not text/csv"
+                    )
+                if document.get("isAccessibleForFree") is not True:
+                    errors.append(
+                        f"{relative_name}: CSV DigitalDocument is not marked free"
+                    )
+
         if 'class="breadcrumb"' in source and "BreadcrumbList" not in structured_types:
             errors.append(
                 f"{relative_name}: visible breadcrumb is missing BreadcrumbList JSON-LD"
@@ -2559,6 +2761,36 @@ def main():
         if not asset.exists():
             errors.append(f"missing local asset: {asset.relative_to(ROOT)}")
 
+    for page_path, rule in NEW_BUYER_CONTENT_RULES.items():
+        target_file = (ROOT / page_path).resolve()
+        for hub_path in rule["hub_pages"]:
+            hub_file = (ROOT / hub_path).resolve()
+            if hub_file not in pages:
+                errors.append(f"buyer-content discovery hub is missing: {hub_path}")
+                continue
+            if target_file not in main_internal_links.get(hub_file, set()):
+                errors.append(
+                    f"{hub_path}: main content is missing discovery link to {page_path}"
+                )
+
+    resource_index_source = (ROOT / "resources" / "index.html").read_text(
+        encoding="utf-8"
+    )
+    for page_path in NEW_BUYER_CONTENT_RULES:
+        page_url = f"{PRODUCTION_ORIGIN}/{page_path}"
+        if page_url not in resource_index_source:
+            errors.append(
+                f"resources/index.html: resource ItemList is missing {page_url}"
+            )
+
+    blog_index_source = (ROOT / "blog" / "index.html").read_text(encoding="utf-8")
+    for page_path, rule in NEW_BUYER_CONTENT_RULES.items():
+        if not rule["rss"]:
+            continue
+        article_id = f"{PRODUCTION_ORIGIN}/{page_path}#article"
+        if article_id not in blog_index_source:
+            errors.append(f"blog/index.html: Blog schema is missing {article_id}")
+
     for source_name, target_names in sorted(REQUIRED_MAIN_LINKS.items()):
         source_file = (ROOT / source_name).resolve()
         if source_file not in pages:
@@ -2614,6 +2846,70 @@ def main():
                 f"{left_slug} vs {right_slug} = {similarity:.4f}"
             )
 
+    concrete_vectors = {
+        path.stem: main_text_vector(path)
+        for path in concrete_product_files
+    }
+    concrete_document_frequency = Counter(
+        token
+        for vector in concrete_vectors.values()
+        for token in vector
+    )
+    concrete_corpus_size = len(concrete_vectors)
+    concrete_tfidf_vectors = {
+        slug: {
+            token: count
+            * (
+                log(
+                    (1 + concrete_corpus_size)
+                    / (1 + concrete_document_frequency[token])
+                )
+                + 1
+            )
+            for token, count in vector.items()
+        }
+        for slug, vector in concrete_vectors.items()
+    }
+    concrete_similarity_pairs = []
+    concrete_slugs = sorted(concrete_tfidf_vectors)
+    for left_index, left_slug in enumerate(concrete_slugs):
+        for right_slug in concrete_slugs[left_index + 1 :]:
+            similarity = cosine_similarity(
+                concrete_tfidf_vectors[left_slug],
+                concrete_tfidf_vectors[right_slug],
+            )
+            concrete_similarity_pairs.append((similarity, left_slug, right_slug))
+    concrete_similarity_pairs.sort(
+        key=lambda entry: (-entry[0], entry[1], entry[2])
+    )
+    if concrete_similarity_pairs:
+        concrete_product_max_cosine_similarity = round(
+            concrete_similarity_pairs[0][0], 4
+        )
+    concrete_product_most_similar_pairs = [
+        {
+            "left": left_slug,
+            "right": right_slug,
+            "cosine_similarity": round(similarity, 4),
+        }
+        for similarity, left_slug, right_slug in concrete_similarity_pairs[:10]
+    ]
+    concrete_product_pairs_over_similarity_limit = [
+        {
+            "left": left_slug,
+            "right": right_slug,
+            "cosine_similarity": round(similarity, 4),
+        }
+        for similarity, left_slug, right_slug in concrete_similarity_pairs
+        if similarity > 0.82
+    ]
+    for pair in concrete_product_pairs_over_similarity_limit:
+        errors.append(
+            "concrete product pages are too similar: "
+            f"{pair['left']} vs {pair['right']} = "
+            f"{pair['cosine_similarity']:.4f}"
+        )
+
     sitemap_tree = ET.parse(ROOT / "sitemap.xml")
     sitemap_root = sitemap_tree.getroot()
     namespace = {
@@ -2647,6 +2943,49 @@ def main():
         errors.append(f"duplicate sitemap URL: {duplicate}")
 
     sitemap_url_set = set(sitemap_urls)
+
+    rss_tree = ET.parse(ROOT / "blog" / "feed.xml")
+    rss_items = rss_tree.findall("./channel/item")
+    rss_links = Counter(
+        link_node.text.strip()
+        for item in rss_items
+        for link_node in item.findall("link")
+        if link_node.text
+    )
+    rss_guids = Counter(
+        guid_node.text.strip()
+        for item in rss_items
+        for guid_node in item.findall("guid")
+        if guid_node.text
+    )
+    for page_path, rule in NEW_BUYER_CONTENT_RULES.items():
+        page_url = f"{PRODUCTION_ORIGIN}/{page_path}"
+        download_url = f"{PRODUCTION_ORIGIN}/{rule['download_path']}"
+        if page_url not in sitemap_url_set:
+            errors.append(f"sitemap.xml: missing buyer-content URL: {page_url}")
+        if download_url in sitemap_url_set:
+            errors.append(
+                f"sitemap.xml: downloadable CSV should not be indexed as a page: {download_url}"
+            )
+        if rule["rss"]:
+            if rss_links[page_url] != 1:
+                errors.append(
+                    f"blog/feed.xml: expected one item link for {page_url}, "
+                    f"found {rss_links[page_url]}"
+                )
+            if rss_guids[page_url] != 1:
+                errors.append(
+                    f"blog/feed.xml: expected one item GUID for {page_url}, "
+                    f"found {rss_guids[page_url]}"
+                )
+        elif rss_links[page_url] or rss_guids[page_url]:
+            errors.append(
+                f"blog/feed.xml: non-blog resource must not appear as an RSS item: {page_url}"
+            )
+        if rss_links[download_url] or rss_guids[download_url]:
+            errors.append(
+                f"blog/feed.xml: downloadable CSV must not appear as an RSS item: {download_url}"
+            )
 
     product_index_source = (ROOT / "products" / "index.html").read_text(
         encoding="utf-8"
@@ -2790,6 +3129,9 @@ def main():
         "llms_indexed_product_pages": len(
             concrete_product_urls.intersection(llms_product_urls)
         ),
+        "concrete_product_max_cosine_similarity": concrete_product_max_cosine_similarity,
+        "concrete_product_most_similar_pairs": concrete_product_most_similar_pairs,
+        "concrete_product_pairs_over_similarity_limit": concrete_product_pairs_over_similarity_limit,
         "expanded_product_pages": len(EXPANDED_PRODUCT_SLUGS),
         "expanded_product_max_cosine_similarity": expanded_product_max_cosine_similarity,
         "expanded_product_most_similar_pair": expanded_product_most_similar_pair,

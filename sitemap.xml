@@ -2150,6 +2150,36 @@
     <changefreq>monthly</changefreq>
     <priority>0.77</priority>
   </url>
+  <url>
+    <loc>https://glorystarwears.com/resources/grs-recycled-activewear-certification-evidence-guide.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/performance-fabric-swatch-lab.jpg</image:loc>
+      <image:title>Understanding GRS-certified recycled activewear scope transaction and claim evidence</image:title>
+    </image:image>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/resources/apparel-purchase-order-checklist.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/custom-sportswear-consultation.jpg</image:loc>
+      <image:title>Apparel purchase order checklist before bulk production</image:title>
+    </image:image>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/blog/garment-inspection-failed-rework-reinspection.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/quality-inspection-workflow.jpg</image:loc>
+      <image:title>Garment inspection failure hold rework reinspection and release guide</image:title>
+    </image:image>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+  </url>
   <!-- PRODUCT_EXPANSION_START -->
   <url>
     <loc>https://glorystarwears.com/products/custom-fishing-apparel.html</loc>
