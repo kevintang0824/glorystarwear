@@ -18,6 +18,11 @@ IGNORED_PARTS = {
     "dist",
     "docs",
     "node_modules",
+    "fr",
+    "es",
+    "pt",
+    "ru",
+    "zh-cn",
 }
 HEADER_RE = re.compile(
     r'\s*<header\b[^>]*class="[^"]*\bsite-header\b[^"]*"[\s\S]*?</header>'
@@ -35,11 +40,28 @@ def main() -> None:
             continue
         source = path.read_text(encoding="utf-8")
         source, header_count = HEADER_RE.subn(
-            "\n" + site_header_markup(), source, count=1
+            "\n" + site_header_markup("/" + path.relative_to(ROOT).as_posix()), source, count=1
         )
         source, footer_count = FOOTER_RE.subn(
             "\n" + site_footer_markup(), source, count=1
         )
+        # Keep new pages on the same native-language navigation entry point.
+        if not re.search(r'<script\b[^>]*src="[^"]*assets/language\.js', source):
+            source, script_count = re.subn(
+                r'(<script src="([^"]*)script\.js\?v=[^"]+" defer></script>)',
+                r'\1\n    <script src="\2assets/language.js?v=20260903-2" defer></script>',
+                source,
+                count=1,
+            )
+            if script_count != 1:
+                raise ValueError(f"Expected one shared script in {path}")
+        else:
+            source = re.sub(
+                r'(assets/language\.js\?v=)[^"]+',
+                r'\g<1>20260903-2',
+                source,
+                count=1,
+            )
         if header_count != 1 or footer_count != 1:
             raise ValueError(
                 f"Expected one header/mobile-nav/footer pair in {path}: "

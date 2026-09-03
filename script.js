@@ -561,7 +561,7 @@ resourcesNavigationLink?.classList.toggle(
 );
 
 const desktopNavDropdowns = [...document.querySelectorAll("[data-nav-dropdown]")];
-const desktopNavigationQuery = window.matchMedia("(min-width: 1041px)");
+const desktopNavigationQuery = window.matchMedia("(min-width: 1281px)");
 const hoverNavigationQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
 
 const setDesktopNavDropdown = (dropdown, isOpen, isDismissed = false) => {

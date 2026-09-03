@@ -124,6 +124,28 @@ Current public-facing settings used across the site:
 
 If the domain, phone, email, or brand spelling changes, update all HTML files, `robots.txt`, `sitemap.xml`, and JSON-LD blocks.
 
+## Website languages
+
+Native language editions live at `/fr/`, `/es/`, `/pt/`, `/ru/`, and `/zh-cn/`.
+English stays at the existing URLs. Pages are generated at authoring time from
+`scripts/locales/` and `scripts/build_locales.py`; no online translation widget,
+translation API, or runtime text replacement is used. The language menu links to
+the same page in each edition and works without JavaScript. Localized pages have
+native page copy, navigation, forms, metadata, canonicals and reciprocal hreflang.
+
+Regenerate and validate after content changes:
+
+```bash
+python3 scripts/unify_site_chrome.py
+python3 scripts/build_locales.py
+python3 scripts/audit_static_site.py
+python3 scripts/audit_locales.py
+```
+
+The language editions use focused, authored product and purchasing content.
+Long-form English technical articles remain accessible as explicitly labeled
+source references; existing English download files retain their language label.
+
 ## Local Preview
 
 From the project root:

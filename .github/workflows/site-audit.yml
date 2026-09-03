@@ -21,6 +21,12 @@ jobs:
           cache-dependency-path: workers/lead-receiver/package-lock.json
       - name: Audit static site
         run: python3 scripts/audit_static_site.py
+      - name: Regenerate native language editions
+        run: python3 scripts/build_locales.py
+      - name: Audit native language editions
+        run: python3 scripts/audit_locales.py
+      - name: Check generated language pages are current
+        run: git diff --exit-code
       - name: Test Vercel lead contract
         run: node scripts/test_lead_flow.mjs
       - name: Install Worker dependencies

@@ -8,3 +8,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://glorystarwears.com/sitemap.xml
+Sitemap: https://glorystarwears.com/sitemap-languages.xml

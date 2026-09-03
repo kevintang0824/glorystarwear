@@ -7,8 +7,8 @@ inside product, resource, and editorial directories without per-page forks.
 """
 
 
-def site_header_markup() -> str:
-    return """    <header class="site-header" data-header data-site-chrome>
+def site_header_markup(page_path="/") -> str:
+    markup = """    <header class="site-header" data-header data-site-chrome>
       <div class="site-header-shell">
         <a class="brand" href="/" aria-label="GloryStarWear home"><span class="brand-mark" aria-hidden="true">GS</span><span class="brand-name">GloryStarWear<small>Custom sportswear programs</small></span></a>
         <nav class="desktop-nav" aria-label="Primary navigation">
@@ -26,8 +26,24 @@ def site_header_markup() -> str:
           </div>
           <a href="/sportswear-manufacturer.html">Manufacturing</a><a href="/customization.html">Customization</a><a href="/fabrics.html">Fabrics</a><a href="/process.html">Process</a><a href="/resources/">Resources</a>
         </nav>
-        <a class="header-cta" href="/contact.html#quote-form"><i data-lucide="send"></i><span>Build Your Brief</span></a>
-        <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle><i data-lucide="menu"></i></button>
+        <div class="header-actions">
+          <details class="language-switcher" data-language-switcher>
+            <summary class="language-trigger" aria-label="Select website language" aria-controls="site-language-menu"><span data-language-flag aria-hidden="true">🇺🇸</span><span class="language-current-name" data-language-name>English</span><span class="language-current-code" data-language-code aria-hidden="true">EN</span><i data-lucide="chevron-down" aria-hidden="true"></i></summary>
+            <div class="language-menu" id="site-language-menu">
+              <p class="language-menu-title">Language / 语言</p>
+              <div class="language-options">
+                <a href="?lang=en" data-site-language="en" lang="en" aria-current="true"><span aria-hidden="true">🇺🇸</span><span>English</span><span class="language-check" aria-hidden="true">✓</span></a>
+                <a href="?lang=fr" data-site-language="fr" lang="fr"><span aria-hidden="true">🇫🇷</span><span>Français<small>French</small></span><span class="language-check" aria-hidden="true">✓</span></a>
+                <a href="?lang=es" data-site-language="es" lang="es"><span aria-hidden="true">🇪🇸</span><span>Español<small>Spanish</small></span><span class="language-check" aria-hidden="true">✓</span></a>
+                <a href="?lang=pt" data-site-language="pt" lang="pt"><span aria-hidden="true">🇵🇹</span><span>Português<small>Portuguese</small></span><span class="language-check" aria-hidden="true">✓</span></a>
+                <a href="?lang=ru" data-site-language="ru" lang="ru"><span aria-hidden="true">🇷🇺</span><span>Русский<small>Russian</small></span><span class="language-check" aria-hidden="true">✓</span></a>
+                <a href="?lang=zh-CN" data-site-language="zh-CN" lang="zh-CN"><span aria-hidden="true">🇨🇳</span><span>简体中文<small>Chinese (Simplified)</small></span><span class="language-check" aria-hidden="true">✓</span></a>
+              </div>
+            </div>
+          </details>
+          <a class="header-cta" href="/contact.html#quote-form"><i data-lucide="send"></i><span>Build Your Brief</span></a>
+          <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle><i data-lucide="menu"></i></button>
+        </div>
       </div>
     </header>
     <nav class="mobile-nav" aria-label="Mobile navigation" data-mobile-nav data-site-chrome aria-hidden="true">
@@ -38,6 +54,14 @@ def site_header_markup() -> str:
         <div class="mobile-nav-group"><strong>Plan &amp; verify</strong><a href="/process.html">Process</a><a href="/quality.html">Quality</a><a href="/resources/">Buyer Resources</a><a href="/faq.html">FAQ</a><a href="/contact.html#quote-form">Contact</a></div>
       </div>
     </nav>"""
+    return language_links(markup, page_path)
+
+
+def language_links(markup, page_path):
+    path = page_path.replace("/index.html", "/")
+    for code, prefix in [("en", ""), ("fr", "/fr"), ("es", "/es"), ("pt", "/pt"), ("ru", "/ru"), ("zh-CN", "/zh-cn")]:
+        markup = markup.replace(f'href="?lang={code}"', f'href="{prefix}{path}"')
+    return markup
 
 
 def site_footer_markup() -> str:

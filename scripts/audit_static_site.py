@@ -19,8 +19,8 @@ from site_chrome import site_footer_markup, site_header_markup
 
 ROOT = Path(__file__).resolve().parent.parent
 PRODUCTION_ORIGIN = "https://glorystarwears.com"
-EXPECTED_SCRIPT_VERSION = "20260829-2"
-EXPECTED_FORM_STYLE_VERSION = "20260829-2"
+EXPECTED_SCRIPT_VERSION = "20260903-1"
+EXPECTED_FORM_STYLE_VERSION = "20260903-1"
 CATALOG_PATH = ROOT / "scripts" / "product_expansion_catalog.json"
 CATALOG_ITEMS = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
 CATALOG_SLUG_LIST = [item["slug"] for item in CATALOG_ITEMS]
@@ -286,6 +286,11 @@ IGNORED_PATH_PARTS = {
     "docs",
     "dist",
     "node_modules",
+    "fr",
+    "es",
+    "pt",
+    "ru",
+    "zh-cn",
 }
 
 
@@ -1033,7 +1038,7 @@ def main():
             if new_content_rule["rss"] and "feed.xml" not in source:
                 errors.append(f"{relative_name}: missing RSS discovery link")
 
-        if site_header_markup() not in source:
+        if site_header_markup("/" + html_file.relative_to(ROOT).as_posix()) not in source:
             errors.append(f"{relative_name}: site header differs from shared chrome")
         if site_footer_markup() not in source:
             errors.append(f"{relative_name}: site footer differs from shared chrome")
@@ -1304,14 +1309,18 @@ def main():
                     "comparable case",
                 )
             )
-            compatible_label = not forbidden_label and (
+            is_language_selector = any(
+                language in label
+                for language in ("english", "français", "español", "português", "русский", "简体中文")
+            )
+            compatible_label = is_language_selector or (not forbidden_label and (
                 label in {"planning", "planning examples"}
                 or "planning example" in label
                 or "hypothetical" in label
                 or "project brief" in label
                 or "evidence format" in label
                 or "evidence boundar" in label
-            )
+            ))
             if not compatible_label:
                 misleading_case_claim_anchors += 1
                 errors.append(
