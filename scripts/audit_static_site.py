@@ -19,7 +19,7 @@ from site_chrome import site_footer_markup, site_header_markup
 
 ROOT = Path(__file__).resolve().parent.parent
 PRODUCTION_ORIGIN = "https://glorystarwears.com"
-EXPECTED_SCRIPT_VERSION = "20260903-1"
+EXPECTED_SCRIPT_VERSION = "20260904-1"
 EXPECTED_FORM_STYLE_VERSION = "20260903-1"
 CATALOG_PATH = ROOT / "scripts" / "product_expansion_catalog.json"
 CATALOG_ITEMS = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
@@ -816,7 +816,7 @@ def main():
         '"Quality and inspection planning"': "quality inquiry prefill route",
         "setupTurnstile": "Turnstile form protection",
         "turnstileToken": "Turnstile response delivery",
-        'new URL("/contact.html#quote-form"': "direct quote-form route",
+        'localizedSitePath("/contact.html#quote-form")': "direct quote-form route",
         "buyerPathStorageKey": "buyer-path session handoff",
         'trackEvent("buyer_quote_prefill"': "buyer-path quote prefill analytics",
         'trackEvent("quote_progress"': "quote completion milestone analytics",

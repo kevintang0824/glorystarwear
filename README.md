@@ -127,24 +127,25 @@ If the domain, phone, email, or brand spelling changes, update all HTML files, `
 ## Website languages
 
 Native language editions live at `/fr/`, `/es/`, `/pt/`, `/ru/`, and `/zh-cn/`.
-English stays at the existing URLs. Pages are generated at authoring time from
-`scripts/locales/` and `scripts/build_locales.py`; no online translation widget,
-translation API, or runtime text replacement is used. The language menu links to
-the same page in each edition and works without JavaScript. Localized pages have
-native page copy, navigation, forms, metadata, canonicals and reciprocal hreflang.
+English stays at the existing URLs. Every edition is generated from the complete
+English HTML structure by `scripts/build_full_locales.py`, using checked-in static
+content maps; no online translation widget, translation API, or runtime text
+replacement is used. The language menu links to the same page in each edition and
+works without JavaScript. Localized pages keep the complete product, resource,
+blog, form, metadata, canonical and reciprocal hreflang content.
 
 Regenerate and validate after content changes:
 
 ```bash
 python3 scripts/unify_site_chrome.py
-python3 scripts/build_locales.py
+python3 scripts/build_full_locales.py
 python3 scripts/audit_static_site.py
 python3 scripts/audit_locales.py
 ```
 
-The language editions use focused, authored product and purchasing content.
-Long-form English technical articles remain accessible as explicitly labeled
-source references; existing English download files retain their language label.
+The language editions preserve every source page section and translate the visible
+copy into each selected language. Existing English download files retain their
+language label where the source file itself is English.
 
 ## Local Preview
 

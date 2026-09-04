@@ -6,6 +6,12 @@ const catalogGrid = document.querySelector("[data-catalog-grid]");
 const whatsappNumber = "8618020755949";
 const isContactPage = window.location.pathname.endsWith("/contact.html");
 const isThankYouPage = window.location.pathname.endsWith("/thank-you.html");
+const localePrefix = window.location.pathname.match(/^\/(fr|es|pt|ru|zh-cn)(?=\/|$)/)?.[1] || "";
+const localizedSitePath = (path) => `${localePrefix ? `/${localePrefix}` : ""}${path}`;
+const localeUi = (() => {
+  try { return JSON.parse(document.getElementById("locale-ui")?.textContent || "{}"); } catch { return {}; }
+})();
+const localeText = (key, fallback) => localeUi[key] || fallback;
 const inquirySourceKey = "glorystarwear-inquiry-source";
 const buyerPathStorageKey = "glorystarwear-buyer-path";
 const productDirectionStorageKey = "glorystarwear-product-direction";
@@ -122,14 +128,14 @@ const setupAnalyticsConsentControls = () => {
   banner.hidden = true;
   banner.innerHTML = `
     <div>
-      <p class="eyebrow">Optional analytics</p>
-      <h2 id="analytics-consent-title">Help us understand which pages are useful</h2>
+      <p class="eyebrow">${localeText("analytics_optional", "Optional analytics")}</p>
+      <h2 id="analytics-consent-title">${localeText("analytics_heading", "Help us understand which pages are useful")}</h2>
       <p>With your permission, Google Analytics measures page visits and actions such as quote starts, confirmed inquiries, contact clicks, and checklist downloads. We do not send contact names, email addresses, phone numbers, or message text to Analytics.</p>
-      <a href="${new URL("/privacy.html", window.location.href).href}">Read the privacy details</a>
+      <a href="${new URL(localizedSitePath("/privacy.html"), window.location.href).href}">${localeText("nav_privacy", "Read the privacy details")}</a>
     </div>
     <div class="analytics-consent-actions">
-      <button class="button primary" type="button" data-analytics-accept>Allow analytics</button>
-      <button class="button secondary" type="button" data-analytics-decline>Decline</button>
+      <button class="button primary" type="button" data-analytics-accept>${localeText("analytics_allow", "Allow analytics")}</button>
+      <button class="button secondary" type="button" data-analytics-decline>${localeText("analytics_decline", "Decline")}</button>
     </div>
   `;
   document.body.append(banner);
@@ -607,7 +613,7 @@ document.addEventListener("click", (event) => {
   if (!event.target.closest("[data-nav-dropdown]")) closeDesktopNavDropdowns();
 });
 
-const contactUrl = isContactPage ? "#quote-form" : new URL("/contact.html#quote-form", window.location.href).href;
+const contactUrl = isContactPage ? "#quote-form" : new URL(localizedSitePath("/contact.html#quote-form"), window.location.href).href;
 const currentPageTopic = document.title.split("|")[0].trim() || "custom sportswear";
 const contextualWhatsAppText = [
   `Hi GloryStarWear, I am interested in ${currentPageTopic}.`,
@@ -629,7 +635,7 @@ if (mobileNav && !mobileNav.querySelector(".mobile-nav-actions")) {
   const actions = document.createElement("div");
   actions.className = "mobile-nav-actions";
   actions.innerHTML = `
-    <a class="button primary" href="${contactUrl}"><i data-lucide="send"></i>Get Quote</a>
+    <a class="button primary" href="${contactUrl}"><i data-lucide="send"></i>${localeText("quote", "Get Quote")}</a>
     <a class="button whatsapp" href="https://wa.me/${whatsappNumber}?text=${defaultWhatsAppText}" target="_blank" rel="noreferrer"><i data-lucide="message-circle"></i>WhatsApp</a>
   `;
   mobileNav.prepend(actions);
@@ -641,7 +647,7 @@ if (!document.querySelector("[data-mobile-quote-bar]")) {
   bar.setAttribute("data-mobile-quote-bar", "");
   bar.setAttribute("aria-label", "Quick product actions");
   bar.innerHTML = `
-    <a href="${contactUrl}"><i data-lucide="send"></i><span>Get Quote</span></a>
+    <a href="${contactUrl}"><i data-lucide="send"></i><span>${localeText("quote", "Get Quote")}</span></a>
     <a href="https://wa.me/${whatsappNumber}?text=${defaultWhatsAppText}" target="_blank" rel="noreferrer"><i data-lucide="message-circle"></i><span>WhatsApp</span></a>
   `;
   document.body.append(bar);
@@ -666,8 +672,8 @@ if (mobileQuoteBar && quoteForms.length && "IntersectionObserver" in window) {
 document.querySelectorAll(".footer-links").forEach((footerLinks) => {
   if (!footerLinks.querySelector('a[href$="/privacy.html"], a[href="./privacy.html"]')) {
     const privacyLink = document.createElement("a");
-    privacyLink.href = new URL("/privacy.html", window.location.href).href;
-    privacyLink.textContent = "Privacy";
+    privacyLink.href = new URL(localizedSitePath("/privacy.html"), window.location.href).href;
+    privacyLink.textContent = localeText("nav_privacy", "Privacy");
     footerLinks.append(privacyLink);
   }
 
@@ -676,7 +682,7 @@ document.querySelectorAll(".footer-links").forEach((footerLinks) => {
     analyticsChoiceButton.className = "footer-choice-link";
     analyticsChoiceButton.type = "button";
     analyticsChoiceButton.setAttribute("data-manage-analytics-consent", "");
-    analyticsChoiceButton.textContent = "Analytics Choices";
+    analyticsChoiceButton.textContent = localeText("analytics_choices", "Analytics Choices");
     footerLinks.append(analyticsChoiceButton);
   }
 });
@@ -1525,15 +1531,15 @@ const setupTurnstile = async (form, siteKey) => {
     size: "flexible",
     callback: (token) => {
       state.token = token;
-      setFormNote(form, "Human verification complete. You can submit the inquiry securely.", "success");
+      setFormNote(form, localeText("verify_complete", "Human verification complete. You can submit the inquiry securely."), "success");
     },
     "expired-callback": () => {
       state.token = "";
-      setFormNote(form, "Human verification expired. Please verify again before secure submission.", "error");
+      setFormNote(form, localeText("verify_expired", "Human verification expired. Please verify again before secure submission."), "error");
     },
     "error-callback": () => {
       state.token = "";
-      setFormNote(form, "Human verification is unavailable. Please use WhatsApp or email.", "error");
+      setFormNote(form, localeText("verify_unavailable", "Human verification is unavailable. Please use WhatsApp or email."), "error");
     },
   });
   turnstileStates.set(form, state);
@@ -1851,7 +1857,7 @@ quoteForms.forEach((form, formIndex) => {
         await setupTurnstile(form, status.turnstileSiteKey);
         serverSubmissionAvailable = true;
         serverSubmitButton.hidden = false;
-        setFormNote(form, "Secure server submission is available. Complete the human verification, then submit.", "success");
+        setFormNote(form, localeText("verify", "Secure server submission is available. Complete the human verification, then submit."), "success");
       })
       .catch(() => {
         // WhatsApp, email, and copy remain available when the server check cannot complete.
@@ -1882,13 +1888,13 @@ quoteForms.forEach((form, formIndex) => {
     }
 
     if (!turnstileStates.get(form)?.token) {
-      setFormNote(form, "Complete the human verification before secure submission, or use WhatsApp or email.", "error");
+      setFormNote(form, localeText("verify", "Complete the human verification before secure submission, or use WhatsApp or email."), "error");
       return;
     }
 
     const data = new FormData(form);
     serverSubmitButton.disabled = true;
-    setFormNote(form, "Sending your inquiry securely...", "opening");
+    setFormNote(form, localeText("sending", "Sending your inquiry securely..."), "opening");
 
     try {
       const response = await fetchWithTimeout(leadEndpoint, {
@@ -1912,7 +1918,7 @@ quoteForms.forEach((form, formIndex) => {
         product_interest: data.get("product") || "",
       });
       if (storeLeadReceipt()) {
-        window.location.assign(new URL("/thank-you.html", window.location.href).href);
+        window.location.assign(new URL(localizedSitePath("/thank-you.html"), window.location.href).href);
       } else {
         setFormNote(
           form,
@@ -2009,7 +2015,7 @@ quoteForms.forEach((form, formIndex) => {
       );
       trackEvent("quote_copy_brief", { product_interest: data.get("product") || "" });
     } catch {
-      setFormNote(form, "Copy failed. Please use Email Inquiry or WhatsApp instead.", "error");
+      setFormNote(form, localeText("copy_error", "Copy failed. Please use Email Inquiry or WhatsApp instead."), "error");
     } finally {
       button.disabled = false;
     }
@@ -2021,7 +2027,7 @@ quoteForms.forEach((form, formIndex) => {
     const files = getReferenceFiles(form);
     const validation = validateReferenceFiles(files);
     if (!validation.valid || !canShareReferenceFiles(files)) {
-      setFormNote(form, "File sharing is unavailable on this device. Use WhatsApp or email and attach the files manually.", "error");
+      setFormNote(form, localeText("file_error", "File sharing is unavailable on this device. Use WhatsApp or email and attach the files manually."), "error");
       return;
     }
 

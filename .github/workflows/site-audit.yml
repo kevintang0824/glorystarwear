@@ -22,7 +22,7 @@ jobs:
       - name: Audit static site
         run: python3 scripts/audit_static_site.py
       - name: Regenerate native language editions
-        run: python3 scripts/build_locales.py
+        run: python3 scripts/build_full_locales.py
       - name: Audit native language editions
         run: python3 scripts/audit_locales.py
       - name: Check generated language pages are current
