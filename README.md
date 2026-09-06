@@ -114,6 +114,7 @@ Keep these files and folders together in the GitHub repository:
 Current public-facing settings used across the site:
 
 - Brand name: `GloryStarWear`
+- Legal entity: `Xiamen Glorystar Import and Export Co., Ltd.`
 - Website domain: `https://glorystarwears.com/`
 - GitHub Pages custom domain file: `CNAME`
 - Email: `kevin@glorystarwears.com`

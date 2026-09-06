@@ -21,11 +21,11 @@ Use these values consistently wherever a real company or partner account is crea
 | Primary category | Custom sportswear manufacturing |
 | Core services | OEM, ODM, private label development, sampling, production coordination, quality control, labels, packaging, and shipment preparation |
 | Core product groups | Activewear, gym wear, teamwear, sport-specific apparel, accessories, and private label packaging |
-| Legal entity | Not yet approved for public use |
+| Legal entity | Xiamen Glorystar Import and Export Co., Ltd. |
 | Public address | Not yet approved for public use |
 | Founding year | Not yet approved for public use |
 
-When the legal entity and address are verified, update the website, Search Console ownership records, organization markup, external profiles, and this document together.
+When the public address is verified, update the website, Search Console ownership records, organization markup, external profiles, and this document together.
 
 ## Reusable profile copy
 

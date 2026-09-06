@@ -29,6 +29,107 @@ LOCALES = {
 }
 LOCALE_ORDER = list(LOCALES)
 
+# Company identity and introduction copy are maintained here so the legal name
+# stays exact across every static language edition, even when the offline
+# content maps are refreshed from a changed English source page.
+COMPANY_TEXT = {
+    "fr": {
+        "About": "À propos",
+        "About GloryStarWear": "À propos de GloryStarWear",
+        "Grow your business with a one-stop sportswear solution": "Développez votre activité avec une solution de vêtements de sport tout-en-un",
+        "Xiamen Glorystar Import and Export Co., Ltd.": "Xiamen Glorystar Import and Export Co., Ltd.",
+        "GloryStarWear is operated by Xiamen Glorystar Import and Export Co., Ltd., based in Xiamen, Fujian, China. We support private-label and custom activewear projects through OEM and ODM services.": "GloryStarWear est exploité par Xiamen Glorystar Import and Export Co., Ltd., basé à Xiamen, dans le Fujian, en Chine. Nous accompagnons les projets de vêtements de sport personnalisés et sous marque privée grâce à des services OEM et ODM.",
+        "Our product scope includes": "Notre gamme comprend",
+        "yoga wear": "vêtements de yoga",
+        "gym wear": "vêtements de fitness",
+        "sports bras": "soutiens-gorge de sport",
+        "leggings": "leggings",
+        ", and": " et",
+        "coordinated sets": "ensembles coordonnés",
+        ". Buyers can review our published manufacturing workflow, fabric options, and quality-control framework before discussing a project.": ". Les acheteurs peuvent consulter notre flux de fabrication publié, nos options de tissus et notre cadre de contrôle qualité avant de discuter d’un projet.",
+        "Review supplier evidence": "Consulter les éléments de preuve fournisseur",
+        "Discuss your activewear project": "Discuter de votre projet de vêtements actifs",
+        "Illustrative GloryStarWear project-support team concept, not a staff photograph": "Concept illustratif de l’équipe de soutien aux projets GloryStarWear, et non une photo du personnel",
+        "Illustrative project-support concept. Confirm current team, facility, capacity, and project responsibilities directly for each order.": "Concept illustratif de soutien au projet. Confirmez directement pour chaque commande l’équipe, le site, la capacité et les responsabilités actuelles.",
+    },
+    "es": {
+        "About": "Acerca de",
+        "About GloryStarWear": "Acerca de GloryStarWear",
+        "Grow your business with a one-stop sportswear solution": "Haga crecer su negocio con una solución deportiva integral",
+        "Xiamen Glorystar Import and Export Co., Ltd.": "Xiamen Glorystar Import and Export Co., Ltd.",
+        "GloryStarWear is operated by Xiamen Glorystar Import and Export Co., Ltd., based in Xiamen, Fujian, China. We support private-label and custom activewear projects through OEM and ODM services.": "GloryStarWear está operado por Xiamen Glorystar Import and Export Co., Ltd., con sede en Xiamen, Fujian, China. Apoyamos proyectos de ropa deportiva personalizada y de marca privada mediante servicios OEM y ODM.",
+        "Our product scope includes": "Nuestra gama de productos incluye",
+        "yoga wear": "ropa de yoga",
+        "gym wear": "ropa de gimnasio",
+        "sports bras": "sujetadores deportivos",
+        "leggings": "leggings",
+        ", and": " y",
+        "coordinated sets": "conjuntos coordinados",
+        ". Buyers can review our published manufacturing workflow, fabric options, and quality-control framework before discussing a project.": ". Los compradores pueden consultar nuestro flujo de fabricación publicado, las opciones de tejido y el marco de control de calidad antes de hablar de un proyecto.",
+        "Review supplier evidence": "Revisar las pruebas del proveedor",
+        "Discuss your activewear project": "Hablar sobre su proyecto de ropa deportiva",
+        "Illustrative GloryStarWear project-support team concept, not a staff photograph": "Concepto ilustrativo del equipo de apoyo a proyectos de GloryStarWear, no una fotografía del personal",
+        "Illustrative project-support concept. Confirm current team, facility, capacity, and project responsibilities directly for each order.": "Concepto ilustrativo de apoyo al proyecto. Confirme directamente en cada pedido el equipo, las instalaciones, la capacidad y las responsabilidades actuales.",
+    },
+    "pt": {
+        "About": "Sobre",
+        "About GloryStarWear": "Sobre a GloryStarWear",
+        "Grow your business with a one-stop sportswear solution": "Faça seu negócio crescer com uma solução esportiva completa",
+        "Xiamen Glorystar Import and Export Co., Ltd.": "Xiamen Glorystar Import and Export Co., Ltd.",
+        "GloryStarWear is operated by Xiamen Glorystar Import and Export Co., Ltd., based in Xiamen, Fujian, China. We support private-label and custom activewear projects through OEM and ODM services.": "A GloryStarWear é operada pela Xiamen Glorystar Import and Export Co., Ltd., sediada em Xiamen, Fujian, China. Apoiamos projetos de roupa desportiva personalizada e de marca própria através de serviços OEM e ODM.",
+        "Our product scope includes": "A nossa gama de produtos inclui",
+        "yoga wear": "roupa de ioga",
+        "gym wear": "roupa de ginásio",
+        "sports bras": "soutiens desportivos",
+        "leggings": "leggings",
+        ", and": " e",
+        "coordinated sets": "conjuntos coordenados",
+        ". Buyers can review our published manufacturing workflow, fabric options, and quality-control framework before discussing a project.": ". Os compradores podem consultar o nosso fluxo de fabrico publicado, as opções de tecido e o quadro de controlo de qualidade antes de discutir um projeto.",
+        "Review supplier evidence": "Consultar as evidências do fornecedor",
+        "Discuss your activewear project": "Falar sobre o seu projeto de roupa desportiva",
+        "Illustrative GloryStarWear project-support team concept, not a staff photograph": "Conceito ilustrativo da equipa de apoio a projetos da GloryStarWear, não uma fotografia da equipa",
+        "Illustrative project-support concept. Confirm current team, facility, capacity, and project responsibilities directly for each order.": "Conceito ilustrativo de apoio ao projeto. Confirme diretamente em cada encomenda a equipa, as instalações, a capacidade e as responsabilidades atuais.",
+    },
+    "ru": {
+        "About": "О компании",
+        "About GloryStarWear": "О GloryStarWear",
+        "Grow your business with a one-stop sportswear solution": "Развивайте бизнес с универсальным решением для спортивной одежды",
+        "Xiamen Glorystar Import and Export Co., Ltd.": "Xiamen Glorystar Import and Export Co., Ltd.",
+        "GloryStarWear is operated by Xiamen Glorystar Import and Export Co., Ltd., based in Xiamen, Fujian, China. We support private-label and custom activewear projects through OEM and ODM services.": "GloryStarWear управляется компанией Xiamen Glorystar Import and Export Co., Ltd., расположенной в Сямыне, провинция Фуцзянь, Китай. Мы поддерживаем проекты по спортивной одежде под собственной маркой и на заказ с помощью услуг OEM и ODM.",
+        "Our product scope includes": "В нашу линейку входят",
+        "yoga wear": "одежда для йоги",
+        "gym wear": "одежда для тренировок",
+        "sports bras": "спортивные бюстгальтеры",
+        "leggings": "леггинсы",
+        ", and": " и",
+        "coordinated sets": "согласованные комплекты",
+        ". Buyers can review our published manufacturing workflow, fabric options, and quality-control framework before discussing a project.": ". Перед обсуждением проекта покупатели могут изучить опубликованный производственный процесс, варианты тканей и систему контроля качества.",
+        "Review supplier evidence": "Изучить подтверждающие материалы поставщика",
+        "Discuss your activewear project": "Обсудить проект спортивной одежды",
+        "Illustrative GloryStarWear project-support team concept, not a staff photograph": "Иллюстративная концепция команды поддержки проектов GloryStarWear, а не фотография сотрудников",
+        "Illustrative project-support concept. Confirm current team, facility, capacity, and project responsibilities directly for each order.": "Иллюстративная концепция поддержки проекта. Для каждого заказа напрямую подтвердите текущую команду, площадку, мощности и зоны ответственности.",
+    },
+    "zh-cn": {
+        "About": "关于我们",
+        "About GloryStarWear": "关于 GloryStarWear",
+        "Grow your business with a one-stop sportswear solution": "用一站式运动服装解决方案助力业务增长",
+        "Xiamen Glorystar Import and Export Co., Ltd.": "Xiamen Glorystar Import and Export Co., Ltd.",
+        "GloryStarWear is operated by Xiamen Glorystar Import and Export Co., Ltd., based in Xiamen, Fujian, China. We support private-label and custom activewear projects through OEM and ODM services.": "GloryStarWear 由 Xiamen Glorystar Import and Export Co., Ltd. 运营，公司位于中国福建省厦门市。我们通过 OEM 和 ODM 服务支持自有品牌及定制运动服装项目。",
+        "Our product scope includes": "我们的产品范围包括",
+        "yoga wear": "瑜伽服",
+        "gym wear": "健身服",
+        "sports bras": "运动内衣",
+        "leggings": "紧身裤",
+        ", and": "和",
+        "coordinated sets": "配套套装",
+        ". Buyers can review our published manufacturing workflow, fabric options, and quality-control framework before discussing a project.": "。买家可以在洽谈项目之前查看我们公开的生产流程、面料选项和质量控制框架。",
+        "Review supplier evidence": "查看供应商资料",
+        "Discuss your activewear project": "洽谈您的运动服装项目",
+        "Illustrative GloryStarWear project-support team concept, not a staff photograph": "GloryStarWear 项目支持团队示意图，并非员工照片",
+        "Illustrative project-support concept. Confirm current team, facility, capacity, and project responsibilities directly for each order.": "项目支持示意图。每个订单的当前团队、场地、产能和项目职责请直接确认。",
+    },
+}
+
 
 def load_table(name: str) -> dict[str, list[str]]:
     table: dict[str, list[str]] = {}
@@ -256,6 +357,10 @@ def language_menu_block(locale: str, key: str, content: dict[str, str]) -> str:
 
 
 def replace_html(source: str, key: str, locale: str, content: dict[str, str]) -> str:
+    if "About" in COMPANY_TEXT.get(locale, {}):
+        content = {**content, "About": COMPANY_TEXT[locale]["About"]}
+    if key == "index":
+        content = {**content, **COMPANY_TEXT.get(locale, {})}
     translated_h1 = old_h1(locale, key)
     text_nodes = 0
 

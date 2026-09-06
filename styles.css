@@ -1098,6 +1098,62 @@ h3 {
   background: var(--white);
 }
 
+.company-intro-section {
+  background: var(--mint);
+}
+
+.company-intro-section .split-copy {
+  max-width: 700px;
+}
+
+.company-intro-section .split-copy h2 {
+  max-width: 680px;
+}
+
+.company-legal-name {
+  display: inline-flex;
+  margin: 0 0 18px;
+  padding: 10px 14px;
+  border-left: 4px solid var(--coral);
+  color: var(--forest) !important;
+  background: rgba(255, 255, 255, 0.72);
+  font-size: 17px !important;
+  font-weight: 900;
+  line-height: 1.35 !important;
+}
+
+.company-intro-section .split-copy > p:not(.eyebrow):not(.company-legal-name) {
+  max-width: 680px;
+}
+
+.company-intro-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.company-intro-media {
+  position: relative;
+}
+
+.company-intro-media picture {
+  display: block;
+}
+
+.company-intro-media img {
+  min-height: 0;
+  aspect-ratio: 3 / 2;
+}
+
+.company-intro-disclosure {
+  display: block;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
 .split-media img {
   width: 100%;
   min-height: 560px;
