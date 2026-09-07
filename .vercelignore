@@ -16,6 +16,7 @@ build/
 .cache/
 .tmp-odor-register/
 outputs/
+**/* 2.html
 docs/
 scripts/
 workers/

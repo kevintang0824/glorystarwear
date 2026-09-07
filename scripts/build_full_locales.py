@@ -19,7 +19,7 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parent.parent
 ORIGIN = "https://glorystarwears.com"
-VERSION = "20260904-1"
+VERSION = "20260907-1"
 LOCALES = {
     "fr": ("fr", "Français", "🇫🇷", "FR"),
     "es": ("es", "Español", "🇪🇸", "ES"),
@@ -127,6 +127,47 @@ COMPANY_TEXT = {
         "Discuss your activewear project": "洽谈您的运动服装项目",
         "Illustrative GloryStarWear project-support team concept, not a staff photograph": "GloryStarWear 项目支持团队示意图，并非员工照片",
         "Illustrative project-support concept. Confirm current team, facility, capacity, and project responsibilities directly for each order.": "项目支持示意图。每个订单的当前团队、场地、产能和项目职责请直接确认。",
+    },
+}
+
+# Keep the homepage search and social metadata as deliberate native copy. The
+# broader offline content maps cover every page, but a few long metadata
+# strings contain awkward literal translations that can weaken click-through.
+LOCALE_META = {
+    "fr": {
+        "description": "Fabricant OEM et ODM de vêtements de sport personnalisés pour marques privées, vêtements actifs, uniformes d’équipe, échantillons, emballages et contrôle qualité.",
+        "og:title": "Fabricant de vêtements de sport personnalisés | GloryStarWear",
+        "og:description": "Développez votre collection avec un partenaire OEM et ODM pour vêtements actifs, tenues d’équipe, échantillons, emballages et contrôle qualité.",
+        "twitter:title": "Fabricant de vêtements de sport personnalisés | GloryStarWear",
+        "twitter:description": "Vêtements actifs, tenues d’équipe, échantillons, emballages et contrôle qualité pour les marques qui se développent.",
+    },
+    "es": {
+        "description": "Fabricante OEM y ODM de ropa deportiva personalizada para marcas privadas, ropa activa, uniformes de equipo, muestras, embalaje y control de calidad.",
+        "og:title": "Fabricante de ropa deportiva personalizada | GloryStarWear",
+        "og:description": "Desarrolle su colección con un socio OEM y ODM para ropa activa, uniformes de equipo, muestras, embalaje y control de calidad.",
+        "twitter:title": "Fabricante de ropa deportiva personalizada | GloryStarWear",
+        "twitter:description": "Ropa activa, uniformes de equipo, muestras, embalaje y control de calidad para marcas en crecimiento.",
+    },
+    "pt": {
+        "description": "Fabricante OEM e ODM de roupa desportiva personalizada para marcas próprias, activewear, equipamentos de equipa, amostras, embalagem e controlo de qualidade.",
+        "og:title": "Fabricante de roupa desportiva personalizada | GloryStarWear",
+        "og:description": "Desenvolva a sua coleção com um parceiro OEM e ODM para activewear, equipamentos de equipa, amostras, embalagem e controlo de qualidade.",
+        "twitter:title": "Fabricante de roupa desportiva personalizada | GloryStarWear",
+        "twitter:description": "Activewear, equipamentos de equipa, amostras, embalagem e controlo de qualidade para marcas em crescimento.",
+    },
+    "ru": {
+        "description": "Производитель спортивной одежды OEM и ODM на заказ для собственных брендов: activewear, командная форма, образцы, упаковка и контроль качества.",
+        "og:title": "Производитель спортивной одежды на заказ | GloryStarWear",
+        "og:description": "Разрабатывайте коллекции с OEM- и ODM-партнёром по activewear, командной форме, образцам, упаковке и контролю качества.",
+        "twitter:title": "Производитель спортивной одежды на заказ | GloryStarWear",
+        "twitter:description": "Activewear, командная форма, образцы, упаковка и контроль качества для растущих брендов.",
+    },
+    "zh-cn": {
+        "description": "OEM 和 ODM 定制运动服装制造商，支持自有品牌运动服、团队队服、打样、品牌包装和质量控制。",
+        "og:title": "定制运动服装制造商 | GloryStarWear",
+        "og:description": "为成长中的品牌提供运动服、团队队服、打样、品牌包装和质量控制服务。",
+        "twitter:title": "定制运动服装制造商 | GloryStarWear",
+        "twitter:description": "支持运动服、团队队服、打样、品牌包装和质量控制的 OEM 与 ODM 服务。",
     },
 }
 
@@ -340,6 +381,33 @@ def localized_alternates(key: str) -> str:
     return "\n".join(f'    <link rel="alternate" hreflang="{lang}" href="{href}">' for lang, href in items)
 
 
+def override_meta(markup: str, overrides: dict[str, str]) -> str:
+    """Replace selected name/property meta content after locale rendering."""
+    if not overrides:
+        return markup
+
+    def replace_tag(match: re.Match[str]) -> str:
+        tag = match.group(0)
+        key_match = re.search(r'\b(?:name|property)=["\']([^"\']+)["\']', tag, flags=re.I)
+        if not key_match:
+            return tag
+        value = overrides.get(key_match.group(1).lower())
+        if value is None:
+            return tag
+        return re.sub(
+            r'(\bcontent=)(["\'])[^"\']*\2',
+            lambda content_match: (
+                f'{content_match.group(1)}{content_match.group(2)}'
+                f'{escape(value, quote=True)}{content_match.group(2)}'
+            ),
+            tag,
+            count=1,
+            flags=re.I,
+        )
+
+    return re.sub(r'<meta\b[^>]*>', replace_tag, markup, flags=re.I)
+
+
 def language_menu_block(locale: str, key: str, content: dict[str, str]) -> str:
     current_name = LOCALES[locale][1]
     current_flag = LOCALES[locale][2]
@@ -408,6 +476,8 @@ def replace_html(source: str, key: str, locale: str, content: dict[str, str]) ->
     rendered = re.sub(r'<script\b[^>]*id="locale-ui"[^>]*>[\s\S]*?</script>', marker, rendered, count=1, flags=re.I)
     if 'id="locale-ui"' not in rendered:
         rendered = rendered.replace("</head>", marker + "</head>", 1)
+    if key == "index":
+        rendered = override_meta(rendered, LOCALE_META.get(locale, {}))
     return rendered
 
 
