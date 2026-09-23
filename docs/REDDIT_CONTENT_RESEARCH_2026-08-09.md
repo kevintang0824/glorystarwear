@@ -460,3 +460,29 @@ Content decision:
 Separation rule: the moisture-management article owns liquid transport, wicking, drying, sweat visibility, wet cling, and moisture claim evidence. The fabric guide owns the full material specification. Commercial product pages own garment sourcing. The new article alone owns claim-to-mechanism fit across odor, bacterial odor, antibacterial activity, care states, product-preservation versus public-health boundaries, and released wording.
 
 Editorial safeguard: Reddit establishes demand language and use variables only. The article does not diagnose a garment, wearer, microorganism, detergent, fiber, treatment, or manufacturing cause; prescribe a laundering chemical or antimicrobial treatment; reproduce proprietary laboratory procedures; promise freshness, skin safety, or health protection; convert antibacterial activity into odor performance; or determine legal status. Current methods, qualified laboratories, treatment safety records, production-intent samples, controls, prewritten criteria, destination-market rules, and authorized claim reviewers control the decision.
+
+## Round 18 research update — 2026-09-23
+
+### Reference garment versus tech pack: turning one physical sample into controlled production instructions
+
+Recent founder and manufacturer discussions repeatedly ask whether an existing garment is enough to begin custom production, whether the factory should work from the physical item or a tech pack, and how a buyer can test a supplier with one product.
+
+- [Clothing manufacturer AMA](https://www.reddit.com/r/ClothingStartups/comments/1wlkeql/ama_ive_been_a_clothing_manufacturer_for_5_years/) (September 20, 2026) includes direct questions about sending an existing sample versus a tech pack, testing a manufacturer with one product, coded fabric swatches, GSM, and what makes an inquiry actionable.
+- [Finding manufacturers for a custom fit](https://www.reddit.com/r/ClothingStartups/comments/1w964wf/finding_manufacturers_for_my_brand/) (September 6, 2026; 13 post votes when researched) asks how to preserve a specific fit and pattern direction rather than accept a generic base.
+- [New-designer production mistakes](https://www.reddit.com/r/fashiondesigner/comments/1w73fgu/whats_the_one_mistake_you_made_as_a_new_designer/) (September 4, 2026) discusses the risk of leaving points of measure, grading, materials, and construction assumptions unstated.
+
+Authoritative sources checked:
+
+- [ISO 8559-1:2017](https://committee.iso.org/standard/61686.html?browse=tc), confirmed current in 2026, for anthropometric body-measurement definitions and the distinction between controlled body dimensions and project-specific garment measurements.
+- [ASTM D6193-16(2025)](https://store.astm.org/d6193-16r25.html) for the current standard practice covering stitch and seam classifications and general characteristics.
+- [WIPO intellectual property in fashion](https://www.wipo.int/en/web/fashion) for the current first-party overview of design rights, trademarks, copyright, patents, licensing, and fashion assets.
+
+Content decision:
+
+- Publish `/blog/reference-garment-vs-tech-pack-manufacturing.html` to own the decision between a physical reference garment and a tech pack, including permission, reference identity, keep-change-propose-unknown mapping, measurement method, coded material replacement, construction and artwork handoff, development-sample comparison, ownership, return instructions, and production release.
+- Add `/assets/downloads/reference-garment-tech-pack-handoff.csv` as the controlled reference-to-specification record.
+- Link the article from the blog hub and keep the core tech-pack, sample-round, sample-approval, size-grading, fabric-selection, and supplier-due-diligence pages on their existing intents.
+
+Separation rule: the new article owns conversion of a physical reference into a controlled brief and released record. `/resources/custom-sportswear-tech-pack.html` owns the complete specification contents and blank intake template. `/blog/clothing-sample-rounds-before-bulk-production.html` owns stage selection. `/resources/sportswear-sample-approval-checklist.html` owns physical inspection and issue closure. `/resources/sportswear-manufacturer-due-diligence-checklist.html` owns supplier verification.
+
+Editorial safeguard: Reddit provides question language only. The article does not treat one garment as proof of its original specification, all sizes, all colors, material identity, supply continuity, test performance, legal rights, or exact repeatability. Current coded materials, measurement methods, written permissions, qualified rights review, development samples, released files, and named approval authority control the project.
