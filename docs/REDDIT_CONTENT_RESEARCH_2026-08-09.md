@@ -486,3 +486,31 @@ Content decision:
 Separation rule: the new article owns conversion of a physical reference into a controlled brief and released record. `/resources/custom-sportswear-tech-pack.html` owns the complete specification contents and blank intake template. `/blog/clothing-sample-rounds-before-bulk-production.html` owns stage selection. `/resources/sportswear-sample-approval-checklist.html` owns physical inspection and issue closure. `/resources/sportswear-manufacturer-due-diligence-checklist.html` owns supplier verification.
 
 Editorial safeguard: Reddit provides question language only. The article does not treat one garment as proof of its original specification, all sizes, all colors, material identity, supply continuity, test performance, legal rights, or exact repeatability. Current coded materials, measurement methods, written permissions, qualified rights review, development samples, released files, and named approval authority control the project.
+
+## Round 19 research update — 2026-09-24
+
+### Clothing shrinkage wash testing: specimen identity, care procedure, dimensions, twist, appearance, and release
+
+Recent founder and wearer discussions repeatedly connect a sample that looks acceptable before care with shrinkage, fit change, twisting, seam movement, surface change, and dissatisfaction after washing. The actionable search intent is not “which fabric never shrinks”; it is how a brand should control a dimensional-change wash test before bulk production.
+
+- [Questions on production and manufacturers](https://www.reddit.com/r/ClothingStartups/comments/1sr1x96/questions_on_productionmanufacturers/) (April 20, 2026; 3 post votes when researched) asks how a first-time loungewear brand should source cotton and work from a tech pack. The discussion surfaces that nominally similar cotton fabrics can behave differently after washing through shrinkage, softness, or twisting.
+- [Your fabric choice affects your returns more than your design](https://www.reddit.com/r/ClothingStartups/comments/1sf6isu/your_fabric_choice_affects_your_returns_more_than/) (April 7, 2026) frames shrinkage, stiffness, recovery, and post-wash handfeel as product-return questions rather than first-touch quality.
+- [A current activewear frustration discussion](https://www.reddit.com/r/Activewear/comments/1w5dbym/removed/) (September 2, 2026) includes repeated comments about seams chafing after washing, inconsistent fit, sliding garments, coverage, and construction stability. The removed post itself is not used as evidence; the discussion only confirms current customer language.
+- [Long-term wash and wear discussion](https://www.reddit.com/r/femalefashionadvice/comments/1s7bkd7/i_spent_three_months_tracking_down_owners_of/) (March 30, 2026; 3,182 post votes when researched) shows strong interest in how garments change after repeated care. Its reported dataset and brand conclusions are not treated as verified technical evidence.
+
+Authoritative sources checked:
+
+- [ISO 3759:2011](https://committee.iso.org/standard/57309.html?browse=ics), confirmed current in 2022, for preparation, marking, and measuring of fabrics, garments, and assemblies used in dimensional-change tests.
+- [ISO 5077:2007](https://www.iso.org/standard/41877.html), confirmed current in 2022, for determination of dimensional change after an appropriate specified washing-and-drying combination.
+- [ISO 6330:2021](https://www.iso.org/standard/75934.html) for controlled domestic washing and drying procedures and the explicit warning that machine, detergent, and dryer parameters can affect results.
+- [AATCC's 2025 methods announcement](https://www.aatcc.org/news-read/insights/announcing-the-101st-edition-of-the-aatcc-manual-of-international-test-methods-and-procedures) and current method pages for [TM135-2025](https://members.aatcc.org/store/tm135/543/) and [TM150-2025](https://members.aatcc.org/store/tm150/556/) for fabric and garment dimensional change; the current manual also includes 2025 revisions for skew and seam twist.
+
+Content decision:
+
+- Publish `/blog/clothing-shrinkage-wash-test-before-production.html` to own clothing and garment dimensional-change wash-test planning before bulk: decision and criteria, specimen identity, preparation and measurement method, washing and drying procedure, cycle gates, direction- and location-specific results, seam twist or skew, appearance, affected scope, corrective action, retest, exception, and production release.
+- Add `/assets/downloads/clothing-shrinkage-wash-test-register.csv` as the controlled record for raw readings, method variables, criteria, evidence, disposition, and released scope.
+- Link the article from the blog hub and keep material specification, size grading, decoration wash durability, sample-to-bulk control, sample approval, and factory quality on their existing intents.
+
+Separation rule: the new article owns dimensional change after a controlled care procedure and its release decision. `/blog/apparel-print-wash-test-logo-durability.html` owns print, transfer, patch, label, and embroidery wash durability. `/resources/activewear-size-grading-guide.html` owns body and garment measurement systems, base fit, grade rules, and tolerances. `/blog/clothing-sample-to-bulk-quality-control.html` owns whole-product sample-to-bulk drift. `/resources/activewear-fabric-selection-guide.html` owns complete material specification.
+
+Editorial safeguard: Reddit is used only to identify current problem language. The article does not diagnose a fiber, finish, process, pattern, care, or factory cause from an anecdote; prescribe a universal wash count or shrinkage percentage; reproduce proprietary methods; or claim one specimen represents every size, color, material lot, care route, household practice, bulk lot, or reorder. The selected current standard, permitted options, qualified laboratory, prewritten criteria, production-intent specimen, traceable lot, destination requirements, and named approver control the decision.

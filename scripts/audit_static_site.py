@@ -1452,12 +1452,13 @@ def main():
                 "sportswear-sublimation-color-matching-guide.html": "sublimation-color article link",
                 "apparel-print-wash-test-logo-durability.html": "decoration wash-test article link",
                 "first-activewear-collection-manufacturing-checklist.html": "first collection article link",
+                "clothing-shrinkage-wash-test-before-production.html": "clothing shrinkage article link",
                 "reference-garment-vs-tech-pack-manufacturing.html": "reference garment article link",
                 "activewear-seam-stitch-construction-guide.html": "seam and stitch guide link",
                 "feed.xml": "RSS feed discovery link",
                 "editorial-policy.html": "editorial policy link",
                 '"@type":"Blog"': "blog structured data",
-                '"dateModified":"2026-09-23"': "current blog modification date",
+                '"dateModified":"2026-09-24"': "current blog modification date",
             }
             for marker, label in required_blog_markers.items():
                 if marker not in source:

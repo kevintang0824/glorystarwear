@@ -1956,8 +1956,18 @@
       <image:loc>https://glorystarwears.com/assets/images/custom-sportswear-consultation.jpg</image:loc>
       <image:title>Sportswear manufacturing blog for product development and quality decisions</image:title>
     </image:image>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://glorystarwears.com/blog/clothing-shrinkage-wash-test-before-production.html</loc>
+    <image:image>
+      <image:loc>https://glorystarwears.com/assets/images/quality-control.jpg</image:loc>
+      <image:title>Clothing shrinkage wash test before bulk production</image:title>
+    </image:image>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
   <url>
