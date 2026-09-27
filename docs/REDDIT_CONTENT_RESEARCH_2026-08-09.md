@@ -514,3 +514,29 @@ Content decision:
 Separation rule: the new article owns dimensional change after a controlled care procedure and its release decision. `/blog/apparel-print-wash-test-logo-durability.html` owns print, transfer, patch, label, and embroidery wash durability. `/resources/activewear-size-grading-guide.html` owns body and garment measurement systems, base fit, grade rules, and tolerances. `/blog/clothing-sample-to-bulk-quality-control.html` owns whole-product sample-to-bulk drift. `/resources/activewear-fabric-selection-guide.html` owns complete material specification.
 
 Editorial safeguard: Reddit is used only to identify current problem language. The article does not diagnose a fiber, finish, process, pattern, care, or factory cause from an anecdote; prescribe a universal wash count or shrinkage percentage; reproduce proprietary methods; or claim one specimen represents every size, color, material lot, care route, household practice, bulk lot, or reorder. The selected current standard, permitted options, qualified laboratory, prewritten criteria, production-intent specimen, traceable lot, destination requirements, and named approver control the decision.
+
+## Round 20 research update — 2026-09-27
+
+### Activewear colorfastness: laundering, rubbing, perspiration, water, pool, and storage transfer
+
+Recent discussions show that buyers and wearers use “bleeding,” “fading,” “transfer,” and “colorfast” for several different failure paths. The useful search task is not to name one universal pass rating; it is to match the product risk to the correct exposure, specimen, adjacent material, evaluation, criteria, and release scope.
+
+- [Swimwear colors bleeding?](https://www.reddit.com/r/poshmark/comments/1vzzz2m/swimwear_colors_bleeding/) (August 27, 2026) describes a dark contrast section appearing to transfer onto a light section before use and comments about swimwear staining pale laundry. It supports questions about water, care, storage contact, and contrast construction, but does not prove a cause.
+- [Colors transfer?](https://www.reddit.com/r/Figsscrubs/comments/1vai14i/colors_transfer/) (July 30, 2026) asks whether a bright garment will stain other items and includes a report of a pale sports bra being tinted in laundering.
+- [Is separating colors still a thing?](https://www.reddit.com/r/memes/comments/1tv91ry/is_separating_colors_still_a_thing/) (June 3, 2026; more than 34,000 post votes when researched) contains conflicting assumptions about modern colorfastness and repeated examples of pale garments changing in mixed loads. Its popularity signals current consumer uncertainty; no technical claim in the discussion is treated as evidence.
+
+Authoritative sources checked:
+
+- [AATCC standards directory](https://www.aatcc.org/testing/standards) and current method pages for [TM8 crocking](https://members.aatcc.org/store/tm8/481/), [TM15 perspiration](https://members.aatcc.org/store/tm15/482/), [TM61 accelerated laundering](https://members.aatcc.org/store/tm61/495/), [TM107 water](https://members.aatcc.org/store/tm107/519/), [TM162 chlorinated-pool water](https://members.aatcc.org/store/tm162/562/), and [TM163 storage dye transfer](https://members.aatcc.org/store/tm163/563/) for distinct exposure and transfer questions.
+- [ISO 105-X12:2016](https://www.iso.org/standard/65207.html) for dry and wet rubbing, and [ISO 105-E01:2013](https://www.iso.org/standard/57962.html), confirmed current in 2023, for resistance to water immersion.
+- [FTC Advertising FAQs](https://www.ftc.gov/business-guidance/resources/advertising-faqs-guide-small-business) for the requirement that objective express and implied product claims have a reasonable evidence basis before publication.
+
+Content decision:
+
+- Publish `/blog/activewear-colorfastness-test-before-production.html` to own exposure-specific activewear colorfastness planning: color and lot identity, laundering, dry and wet rubbing, perspiration, water, chlorinated pool, storage contact, adjacent materials, color change, staining, criteria, affected scope, corrective action, retest, exception, and release.
+- Add `/assets/downloads/activewear-colorfastness-test-register.csv` as the controlled record for method options, raw ratings, observations, evidence, disposition, and released scope.
+- Link the article from the blog hub and keep fabric specification, sublimation color matching, decoration wash durability, garment dimensional change, and commercial swimwear sourcing on their existing intents.
+
+Separation rule: the new article owns retention and transfer after a named exposure. `/blog/sportswear-sublimation-color-matching-guide.html` owns target-to-output color accuracy before and through production. `/blog/apparel-print-wash-test-logo-durability.html` owns physical decoration failure through care. `/blog/clothing-shrinkage-wash-test-before-production.html` owns dimensional change. `/resources/activewear-fabric-selection-guide.html` owns the full material specification. `/products/swimwear-water-sports.html` owns commercial product and assortment planning.
+
+Editorial safeguard: Reddit supplies current question language only. The article does not diagnose a dye, fiber, print, finish, care, packaging, storage, or factory cause from an anecdote; prescribe a universal method, grade, shade sampling plan, or retest rule; reproduce proprietary procedures; or claim one result proves every color, lot, component, exposure, consumer practice, market, safety requirement, bulk lot, or reorder. Current standards, selected options, competent laboratories, production-intent specimens, adjacent materials, prewritten criteria, destination requirements, and named approvers control the decision.
