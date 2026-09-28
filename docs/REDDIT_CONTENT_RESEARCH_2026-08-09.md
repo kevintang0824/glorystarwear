@@ -540,3 +540,28 @@ Content decision:
 Separation rule: the new article owns retention and transfer after a named exposure. `/blog/sportswear-sublimation-color-matching-guide.html` owns target-to-output color accuracy before and through production. `/blog/apparel-print-wash-test-logo-durability.html` owns physical decoration failure through care. `/blog/clothing-shrinkage-wash-test-before-production.html` owns dimensional change. `/resources/activewear-fabric-selection-guide.html` owns the full material specification. `/products/swimwear-water-sports.html` owns commercial product and assortment planning.
 
 Editorial safeguard: Reddit supplies current question language only. The article does not diagnose a dye, fiber, print, finish, care, packaging, storage, or factory cause from an anecdote; prescribe a universal method, grade, shade sampling plan, or retest rule; reproduce proprietary procedures; or claim one result proves every color, lot, component, exposure, consumer practice, market, safety requirement, bulk lot, or reorder. Current standards, selected options, competent laboratories, production-intent specimens, adjacent materials, prewritten criteria, destination requirements, and named approvers control the decision.
+
+## Round 21 research update — 2026-09-28
+
+### EU clothing textile labels: fibre composition, components, official languages, and ecommerce display
+
+A current clothing-startup question shows that founders still struggle to turn one garment composition into label versions for several EU destinations:
+
+- [Care and material tags EU](https://www.reddit.com/r/ClothingStartups/comments/1rv6qsf/care_and_material_tags_eu/) (March 16, 2026; revisited September 9, 2026) asks whether fibre names such as viscose, polyester, and elastane must be translated for every intended EU market. The post identifies the operational question only; its replies are not legal evidence.
+
+Authoritative sources checked:
+
+- [Regulation (EU) No 1007/2011](https://eur-lex.europa.eu/eli/reg/2011/1007/oj/eng), in force, for authorised Annex I fibre names; pure-fibre wording; percentages by weight; multi-component garments; non-textile parts of animal origin; physical label characteristics; economic-operator duties; official-language requirements; and composition visibility before electronic purchase.
+- The European Commission's [Textile Label guide](https://europa.eu/youreurope/business/product-rules-compliance/textiles-and-footwear/textile-label/index_en.htm), checked July 13, 2026, for the current business-facing summary of textile scope, mandatory composition labels, descending percentages, separation from other information, destination-language versions, and ecommerce use.
+- The Commission's [textile-labelling FAQ](https://ec.europa.eu/docsroom/documents/9808/attachments/1/translations/en/renditions/native) for the boundary that care labelling is outside the harmonised fibre-composition rule and can be compulsory in some Member States.
+- The EU's [General Product Safety Regulation summary](https://eur-lex.europa.eu/EN/legal-content/summary/general-product-safety-regulation-2023.html) for separate product-safety, traceability, EU responsible-economic-operator, contact-information, technical-documentation, warning, and distance-sale duties that must not be collapsed into the textile-composition label.
+
+Content decision:
+
+- Publish `/blog/eu-clothing-textile-label-requirements.html` to own EU clothing textile-label planning across destination countries, authorised fibre names, percentages, component mapping, animal-origin wording, official-language versions, physical attachment and legibility, pre-purchase ecommerce display, separate compliance workstreams, evidence, change control, and production release.
+- Add `/assets/downloads/eu-clothing-textile-label-checklist.csv` as a controlled destination-product-component-language record.
+- Link the article from the blog hub and keep U.S. legal-market labeling, packaging operations, commercial label sourcing, and the general compliance evidence file on their existing intents.
+
+Separation rule: the new article owns the EU Regulation 1007/2011 fibre-composition and language workflow. `/blog/us-clothing-label-requirements-private-label.html` owns the FTC baseline for U.S. fibre, country of origin, responsible-business identity or RN, and care instructions. `/resources/sportswear-packaging-label-handoff-checklist.html` owns the full operational handoff across labels, hangtags, SKU data, packs, and cartons. `/certificates.html` owns the broader product-and-market compliance evidence file.
+
+Editorial safeguard: Reddit provides current question language only. The article does not treat a comment as law; present one multilingual label as suitable for every Member State; decide a fibre name, component exception, care requirement, origin claim, GPSR duty, chemical obligation, or product claim without current qualified review; or imply that a textile label certifies full EU compliance. The current law, actual destination, sellable product, component and composition evidence, controlled translations, responsible economic operators, physical proof, ecommerce record, and named approver control the decision.

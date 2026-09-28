@@ -175,6 +175,7 @@ PRIORITY_LCP_PAGES = {
     "blog/first-activewear-collection-manufacturing-checklist.html",
     "blog/activewear-odor-resistance-antibacterial-test.html",
     "blog/activewear-colorfastness-test-before-production.html",
+    "blog/eu-clothing-textile-label-requirements.html",
     "blog/moisture-wicking-quick-dry-activewear-test.html",
     "blog/apparel-print-wash-test-logo-durability.html",
     "blog/apparel-incoterms-exw-fob-ddp-landed-cost.html",
@@ -1439,6 +1440,7 @@ def main():
             required_blog_markers = {
                 "activewear-odor-resistance-antibacterial-test.html": "odor-control claim-test article link",
                 "activewear-colorfastness-test-before-production.html": "colorfastness article link",
+                "eu-clothing-textile-label-requirements.html": "EU clothing-label article link",
                 "moisture-wicking-quick-dry-activewear-test.html": "moisture-management article link",
                 "clothing-sample-rounds-before-bulk-production.html": "sample-round article link",
                 "activewear-leggings-quality-testing.html": "leggings-test article link",
@@ -1460,7 +1462,7 @@ def main():
                 "feed.xml": "RSS feed discovery link",
                 "editorial-policy.html": "editorial policy link",
                 '"@type":"Blog"': "blog structured data",
-                '"dateModified":"2026-09-27"': "current blog modification date",
+                '"dateModified":"2026-09-28"': "current blog modification date",
             }
             for marker, label in required_blog_markers.items():
                 if marker not in source:
