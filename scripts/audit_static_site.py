@@ -1462,7 +1462,7 @@ def main():
                 "feed.xml": "RSS feed discovery link",
                 "editorial-policy.html": "editorial policy link",
                 '"@type":"Blog"': "blog structured data",
-                '"dateModified":"2026-09-28"': "current blog modification date",
+                '"dateModified":"2026-09-30"': "current blog modification date",
             }
             for marker, label in required_blog_markers.items():
                 if marker not in source:

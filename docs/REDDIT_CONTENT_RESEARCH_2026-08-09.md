@@ -565,3 +565,30 @@ Content decision:
 Separation rule: the new article owns the EU Regulation 1007/2011 fibre-composition and language workflow. `/blog/us-clothing-label-requirements-private-label.html` owns the FTC baseline for U.S. fibre, country of origin, responsible-business identity or RN, and care instructions. `/resources/sportswear-packaging-label-handoff-checklist.html` owns the full operational handoff across labels, hangtags, SKU data, packs, and cartons. `/certificates.html` owns the broader product-and-market compliance evidence file.
 
 Editorial safeguard: Reddit provides current question language only. The article does not treat a comment as law; present one multilingual label as suitable for every Member State; decide a fibre name, component exception, care requirement, origin claim, GPSR duty, chemical obligation, or product claim without current qualified review; or imply that a textile label certifies full EU compliance. The current law, actual destination, sellable product, component and composition evidence, controlled translations, responsible economic operators, physical proof, ecommerce record, and named approver control the decision.
+
+## Round 22 research update — 2026-09-30
+
+### Activewear fabric stretch and recovery: direction, growth, care state, and garment validation
+
+Recent activewear discussions continue to describe leggings that need repeated adjustment, waistbands that roll, and compression that seems to decline. These complaints have real product-development value, but they do not identify whether the cause is the material, pattern, grading, seams, elastics, size selection, care, activity, or wearer proportions:
+
+- [Girlies who weightlift — do you have this problem with leggings too?](https://www.reddit.com/r/Activewear/comments/1vu0z9p/girlies_who_weightlift_do_you_have_this_problem/) (August 21, 2026; 15 post votes) contrasts a waist-fitting size that restricts the thighs and glutes with a lower-body-fitting size whose waistband becomes loose or rolls.
+- [I'm looking for good quality leggings with pockets that stay up](https://www.reddit.com/r/Activewear/comments/1umc7g4/im_looking_for_good_quality_leggings_with_pockets/) (July 3, 2026; 10 post votes) describes perceived compression loss and frequent garment adjustment.
+- [Activewear that actually stays put during Lagree?](https://www.reddit.com/r/LagreeMethod/comments/1wa24qd/activewear_that_actually_stays_put_during_lagree/) (September 7, 2026; 13 post votes) repeats roll, fold, and ride-up language across tops and leggings.
+
+Authoritative sources checked:
+
+- [ISO 20932-1:2018](https://www.iso.org/standard/69489.html), confirmed in 2024 and amended in 2021, for straight-strip and loop methods covering fabric elasticity and related properties, excluding narrow fabrics.
+- [ISO 20932-2:2018](https://www.iso.org/standard/69490.html) for multiaxial elasticity tests and [ISO 20932-3:2018](https://www.iso.org/standard/69491.html), with its 2025 amendment, for narrow fabrics.
+- [ASTM D2594/D2594M-21](https://store.astm.org/d2594_d2594m-21.html) for stretch and growth of low-power knitted fabrics and its stated boundary that support or other applications may require other methods.
+- [ISO 6330:2021](https://www.iso.org/standard/75934.html) for controlled domestic washing and drying procedures and the warning that machine, detergent, and dryer parameters can affect results.
+
+Content decision:
+
+- Publish `/blog/activewear-fabric-stretch-recovery-test.html` to own activewear material-level testing across fabric identity, lot, direction, specimen history, method edition and options, load or extension, cycles, growth, recovery timing, initial and post-care states, prewritten criteria, garment-validation handoff, evidence limits, and released scope.
+- Add `/assets/downloads/activewear-fabric-stretch-recovery-test-register.csv` as a controlled material-test and garment-validation index.
+- Link the article from the blog hub and keep complete fabric specification, leggings product testing, inclusive fit-range validation, garment shrinkage, and commercial collection development on their existing intents.
+
+Separation rule: the new article owns fabric-level stretch, growth, recovery, care-state comparison, and the handoff to garment validation. `/resources/activewear-fabric-selection-guide.html` owns the complete material specification and coded-swatch system. `/blog/activewear-leggings-quality-testing.html` owns leggings opacity, waistband, pilling, pocket, moisture, and wear validation. `/blog/activewear-inclusive-sizing-fit-test.html` owns size, height, proportion, landmarks, and representative wearer scope. `/blog/clothing-shrinkage-wash-test-before-production.html` owns garment dimensional change through care.
+
+Editorial safeguard: Reddit provides current question language only. The article does not diagnose a root cause from an anecdote; treat elastane percentage, GSM, “four-way stretch,” a hand pull, or one laboratory result as proof of finished-garment performance; prescribe proprietary procedure details or one universal pass value; or claim one material, lot, direction, care state, size, activity, or wearer represents every production configuration. The current selected standard, controlled specimen, competent laboratory, prewritten product-specific criteria, production-intent garment trial, evidence limits, and named approver control the decision.
