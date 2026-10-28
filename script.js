@@ -175,6 +175,10 @@ const attributionHostGroups = {
     ["copilot", ["copilot.microsoft.com"]],
     ["claude", ["claude.ai"]],
     ["you.com", ["you.com"]],
+    ["meta_ai", ["meta.ai"]],
+    ["deepseek", ["chat.deepseek.com", "deepseek.com"]],
+    ["qwen", ["qwen.ai", "tongyi.aliyun.com"]],
+    ["kimi", ["kimi.com", "moonshot.cn"]],
   ],
   organic_search: [
     ["google", ["google.com", "google.co.uk", "google.ca", "google.com.au", "google.de", "google.fr"]],
@@ -451,6 +455,13 @@ if (isNewAttributionSession) {
     campaign_medium: pageAttribution.campaign.utm_medium || "",
     campaign_name: pageAttribution.campaign.utm_campaign || "",
   });
+
+  if (pageTrafficAttribution.channel === "ai_assistant") {
+    trackEvent("ai_assistant_landing", {
+      ai_source: pageTrafficAttribution.source,
+      ai_referrer_host: pageTrafficAttribution.referrerHost,
+    });
+  }
 }
 
 if (isThankYouPage) {

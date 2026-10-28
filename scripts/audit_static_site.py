@@ -19,7 +19,7 @@ from site_chrome import site_footer_markup, site_header_markup
 
 ROOT = Path(__file__).resolve().parent.parent
 PRODUCTION_ORIGIN = "https://glorystarwears.com"
-EXPECTED_SCRIPT_VERSION = "20260904-1"
+EXPECTED_SCRIPT_VERSION = "20260907-1"
 EXPECTED_FORM_STYLE_VERSION = "20260903-1"
 CATALOG_PATH = ROOT / "scripts" / "product_expansion_catalog.json"
 CATALOG_ITEMS = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
@@ -29,7 +29,8 @@ EXPANDED_PRODUCT_SLUGS = frozenset(CATALOG_SLUG_LIST)
 RULE_SOURCE_PRODUCT_SLUGS = frozenset(
     item["slug"] for item in CATALOG_ITEMS if item.get("official_sources")
 )
-NON_CONCRETE_PRODUCT_SLUGS = {"index", "lookbook", "new-products", "more-sports"}
+# The supplier image catalog is a noindex browsing utility, not a concrete SEO product page.
+NON_CONCRETE_PRODUCT_SLUGS = {"index", "lookbook", "new-products", "more-sports", "catalog"}
 BASE_CONCRETE_PRODUCT_COUNT = 59
 EXPECTED_CONCRETE_PRODUCT_COUNT = BASE_CONCRETE_PRODUCT_COUNT + len(EXPANDED_PRODUCT_SLUGS)
 BASE_QUOTE_PRODUCT_OPTION_COUNT = 31
@@ -766,7 +767,7 @@ def main():
         )
     if not concrete_product_urls.issubset(all_llms_product_urls):
         errors.append("llms.txt: product URLs escaped the complete product index")
-    if "Last updated: 2026-08-29" not in llms_source:
+    if "Last updated: 2026-09-09" not in llms_source:
         errors.append("llms.txt: missing current update date")
     for required_url in (
         f"{PRODUCTION_ORIGIN}/low-moq-sportswear-manufacturer.html",
@@ -1428,7 +1429,7 @@ def main():
             required_resource_index_markers = {
                 "activewear-seam-stitch-construction-guide.html": "seam and stitch guide discovery link",
                 "first-activewear-collection-manufacturing-checklist.html": "first collection guide discovery link",
-                '"dateModified":"2026-08-29"': "current resource library modification date",
+                '"dateModified":"2026-09-09"': "current resource library modification date",
             }
             for marker, label in required_resource_index_markers.items():
                 if marker not in source:
@@ -2122,7 +2123,7 @@ def main():
         if relative_name == "customization.html":
             required_customization_markers = {
                 "sportswear-sublimation-color-matching-guide.html": "sublimation-color article link",
-                '"dateModified": "2026-08-13"': "current customization modification date",
+                '"dateModified": "2026-09-09"': "current customization modification date",
                 "Sublimation Color Approval": "sublimation color workflow card",
                 "Decoration Wash Testing": "decoration wash-test workflow card",
                 "apparel-print-wash-test-logo-durability.html": "decoration wash-test article link",
@@ -2268,7 +2269,7 @@ def main():
                 'data-resource-download="sportswear-compliance-evidence-register"': "compliance download tracking",
                 '"@type":"DigitalDocument"': "compliance document schema",
                 '"isAccessibleForFree":true': "free compliance register disclosure in schema",
-                '"dateModified":"2026-08-27"': "current compliance checklist modification date",
+                '"dateModified":"2026-09-09"': "current compliance checklist modification date",
                 "us-clothing-label-requirements-private-label.html": "U.S. clothing-label article link",
                 "nist.gov/publications/guide-united-states-apparel": "authoritative U.S. apparel overview",
                 "ftc.gov/business-guidance/industry/clothing-and-textiles": "authoritative U.S. label reference",

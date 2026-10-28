@@ -4,6 +4,7 @@ Thumbs.db
 *.log
 .env
 .env.*
+.catalog-clean.env
 node_modules/
 dist/
 build/
@@ -19,3 +20,9 @@ workers/**/worker-configuration.d.ts
 /outputs/
 assets/images/gym-tshirts-tank-tops-manufacturer-detail.png
 assets/images/training-shorts-joggers-manufacturer-detail.png
+assets/catalog/ai-clean-preview/
+assets/catalog/cleaned/
+assets/catalog/covers/
+assets/catalog/catalog-clean/
+assets/catalog/watermark-clean-v2/
+assets/catalog/watermark-clean-v3/

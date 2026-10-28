@@ -71,17 +71,27 @@ def local_file(current_key, href):
     return target if target.exists() else None
 
 
+GSC_CAMPAIGN_BLOCK_RE = re.compile(
+    r"<!-- GSC_[A-Z0-9_]+_START -->[\s\S]*?<!-- GSC_[A-Z0-9_]+_END -->"
+)
+
+
+def comparable_markup(source):
+    """Ignore explicitly marked English discovery campaign blocks in parity checks."""
+    return GSC_CAMPAIGN_BLOCK_RE.sub("", source)
+
+
 errors = []
 source_pages = {}
 for key in PAGES:
     path = ROOT / (key + ".html")
-    page = Page(); page.feed(path.read_text()); source_pages[key] = page
+    page = Page(); page.feed(comparable_markup(path.read_text())); source_pages[key] = page
 
 for locale, language in LOCALES.items():
     for key, values in PAGES.items():
         path = ROOT / locale / (key + ".html")
         if not path.exists(): errors.append(f"{path}: missing"); continue
-        source = source_pages[key]; page = Page(); page.feed(path.read_text())
+        source = source_pages[key]; page = Page(); page.feed(comparable_markup(path.read_text()))
         expected_title = values[list(LOCALES).index(locale) + 1] + " | GloryStarWear"
         expected_alt = [("en", ORIGIN + route(key))] + [(lang, ORIGIN + f"/{loc}{route(key)}") for loc, lang in LOCALES.items()] + [("x-default", ORIGIN + route(key))]
         if page.lang != language: errors.append(f"{path}: lang mismatch")
