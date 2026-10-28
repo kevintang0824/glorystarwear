@@ -60,7 +60,12 @@ def site_header_markup(page_path="/") -> str:
 def language_links(markup, page_path):
     path = page_path.replace("/index.html", "/")
     for code, prefix in [("en", ""), ("fr", "/fr"), ("es", "/es"), ("pt", "/pt"), ("ru", "/ru"), ("zh-CN", "/zh-cn")]:
-        markup = markup.replace(f'href="?lang={code}"', f'href="{prefix}{path}"')
+        target_path = path
+        if path == "/products/catalog.html" and code != "en":
+            # The catalog is currently English-only; route alternate-language visitors
+            # to the corresponding translated product hub instead of a broken URL.
+            target_path = "/products/"
+        markup = markup.replace(f'href="?lang={code}"', f'href="{prefix}{target_path}"')
     return markup
 
 
