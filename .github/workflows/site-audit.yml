@@ -23,12 +23,16 @@ jobs:
         run: python3 scripts/audit_static_site.py
       - name: Regenerate native language editions
         run: python3 scripts/build_full_locales.py
+      - name: Check localized structured data
+        run: python3 scripts/test_locale_schema.py
       - name: Audit native language editions
         run: python3 scripts/audit_locales.py
       - name: Check generated language pages are current
         run: git diff --exit-code
       - name: Test Vercel lead contract
         run: node scripts/test_lead_flow.mjs
+      - name: Test consent and traffic attribution
+        run: node scripts/test_traffic_attribution.mjs
       - name: Install Worker dependencies
         run: npm ci --prefix workers/lead-receiver
       - name: Type-check and dry-run Worker build

@@ -424,6 +424,129 @@ def language_menu_block(locale: str, key: str, content: dict[str, str]) -> str:
     return f'<details class="language-switcher" data-language-switcher><summary class="language-trigger" aria-label="{escape(label)}" aria-controls="site-language-menu"><span data-language-flag aria-hidden="true">{current_flag}</span><span class="language-current-name" data-language-name>{escape(current_name)}</span><span class="language-current-code" data-language-code aria-hidden="true">{LOCALES[locale][3]}</span><i data-lucide="chevron-down" aria-hidden="true"></i></summary><div class="language-menu" id="site-language-menu"><p class="language-menu-title">{escape(menu_title)}</p><div class="language-options">{"".join(links)}</div></div></details>'
 
 
+class FaqText(HTMLParser):
+    """Read complete visible answers, including text split by inline links."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.pairs: list[tuple[str, str]] = []
+        self.details_depth = 0
+        self.direct_answer = False
+        self.question: list[str] = []
+        self.answer: list[str] = []
+        self.capture = ""
+        self.capture_tag = ""
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if tag == "details":
+            if not self.details_depth:
+                self.question, self.answer = [], []
+            self.details_depth += 1
+        if tag == "article":
+            self.direct_answer = True
+            self.question, self.answer = [], []
+        if (self.details_depth and tag == "summary") or (self.direct_answer and tag in {"h2", "h3"}) or "data-direct-answer-question" in attrs:
+            self.capture, self.capture_tag = "question", tag
+        elif ((self.details_depth or self.direct_answer) and tag == "p") or "data-direct-answer-text" in attrs:
+            if self.answer:
+                self.answer.append(" ")
+            self.capture, self.capture_tag = "answer", tag
+
+    def handle_endtag(self, tag):
+        if tag == self.capture_tag:
+            self.capture, self.capture_tag = "", ""
+        completed = False
+        if tag == "details" and self.details_depth:
+            self.details_depth -= 1
+            completed = not self.details_depth
+        elif tag == "article" and self.direct_answer:
+            self.direct_answer = False
+            completed = True
+        if completed and self.question and self.answer:
+            self.pairs.append((" ".join("".join(self.question).split()), " ".join("".join(self.answer).split())))
+            self.question, self.answer = [], []
+
+    def handle_data(self, data):
+        if self.capture == "question":
+            self.question.append(data)
+        elif self.capture == "answer":
+            self.answer.append(data)
+
+
+SCHEMA_TEXT_FIELDS = {"name", "description", "text", "headline", "alternativeHeadline", "caption"}
+SCHEMA_PAGE_TYPES = {
+    "WebPage", "CollectionPage", "AboutPage", "ContactPage", "FAQPage", "ItemPage",
+    "ProfilePage", "SearchResultsPage", "Article", "BlogPosting", "Blog", "HowTo",
+}
+SHARED_SCHEMA_IDS = {ORIGIN + "/#organization", ORIGIN + "/#website"}
+
+
+def localized_schema_url(value: str, key: str, locale: str) -> str:
+    """Localize only known HTML routes, keeping shared entities and files intact."""
+    if value in SHARED_SCHEMA_IDS:
+        return value
+    parsed = urlsplit(value)
+    if parsed.scheme not in ("", "http", "https") or parsed.netloc and parsed.netloc != urlsplit(ORIGIN).netloc:
+        return value
+    absolute = urlsplit(urljoin(ORIGIN + route_for(key), value))
+    target = source_key_from_url(key, urlunsplit(absolute))
+    if target is None:
+        return value
+    return urlunsplit(("https", urlsplit(ORIGIN).netloc, locale_route(target, locale), absolute.query, absolute.fragment))
+
+
+def localize_schema(value, key: str, locale: str, content: dict[str, str], faq_pairs: dict[str, tuple[str, str]], field: str = ""):
+    if isinstance(value, list):
+        return [localize_schema(item, key, locale, content, faq_pairs, field) for item in value]
+    if isinstance(value, dict):
+        types = value.get("@type", [])
+        types = {types} if isinstance(types, str) else set(types)
+        # These definitions describe the same company and website in every edition.
+        if types.intersection({"Organization", "WebSite"}):
+            return value
+        result = {name: localize_schema(item, key, locale, content, faq_pairs, name) for name, item in value.items()}
+        if types.intersection(SCHEMA_PAGE_TYPES):
+            result["inLanguage"] = LOCALES[locale][0]
+            if value.get("name") == SOURCES[key].h1:
+                result["name"] = old_h1(locale, key) or translate_text(SOURCES[key].h1, content)
+        if "Question" in types:
+            pair = faq_pairs.get(" ".join(str(value.get("name", "")).split()))
+            if pair:
+                result["name"] = pair[0]
+                answer = result.get("acceptedAnswer")
+                if isinstance(answer, dict):
+                    result["acceptedAnswer"] = {**answer, "text": pair[1]}
+        return result
+    if isinstance(value, str):
+        if value.startswith(("https://", "http://", "/", "#")) and field != "@context":
+            return localized_schema_url(value, key, locale)
+        if field in SCHEMA_TEXT_FIELDS:
+            return translate_text(value, content)
+    return value
+
+
+def localize_schema_blocks(source: str, rendered: str, key: str, locale: str, content: dict[str, str]) -> str:
+    original_faq, translated_faq = FaqText(), FaqText()
+    original_faq.feed(source)
+    translated_faq.feed(rendered)
+    if len(original_faq.pairs) != len(translated_faq.pairs):
+        raise ValueError(f"FAQ structure changed while localizing {locale}/{key}")
+    faq_pairs = {original[0]: translated for original, translated in zip(original_faq.pairs, translated_faq.pairs)}
+
+    def replace_block(match):
+        data = json.loads(match.group(2))
+        localized = localize_schema(data, key, locale, content, faq_pairs)
+        # Prevent a translated string from ending the containing script element.
+        encoded = json.dumps(localized, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+        return match.group(1) + encoded + match.group(3)
+
+    return re.sub(
+        r'(<script\b[^>]*\btype=["\']application/ld\+json["\'][^>]*>)([\s\S]*?)(</script\s*>)',
+        replace_block, rendered, flags=re.I,
+    )
+
+
 def replace_html(source: str, key: str, locale: str, content: dict[str, str]) -> str:
     if "About" in COMPANY_TEXT.get(locale, {}):
         content = {**content, "About": COMPANY_TEXT[locale]["About"]}
@@ -478,7 +601,7 @@ def replace_html(source: str, key: str, locale: str, content: dict[str, str]) ->
         rendered = rendered.replace("</head>", marker + "</head>", 1)
     if key == "index":
         rendered = override_meta(rendered, LOCALE_META.get(locale, {}))
-    return rendered
+    return localize_schema_blocks(source, rendered, key, locale, content)
 
 
 def build() -> None:

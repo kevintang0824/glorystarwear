@@ -221,13 +221,15 @@ The site does not include placeholder Google verification or analytics IDs. Add 
 1. Verify `https://glorystarwears.com/` in the production Search Console property.
 2. Submit `https://glorystarwears.com/sitemap.xml`.
 3. Inspect the homepage and newly published guide URLs after deployment.
-4. Use Search Console performance reports to review queries, pages, countries, indexing, and generative AI visibility.
+4. Use Search Console performance reports to review queries, pages, countries, and indexing. Google AI-feature traffic is included in Web search performance; do not report it as a separately measured AI recommendation count.
 
 ### Analytics Hook
 
-`script.js` initializes `window.dataLayer` without loading an analytics vendor. A future Google Tag Manager or analytics integration can consume these events:
+`script.js` loads the configured GA4 property only after analytics consent. It also maintains a separate vendor-neutral `window.siteDataLayer`. Key events include:
 
 - `session_landing`
+- `ai_assistant_landing`
+- `lead_submit_success` and the GA4 `generate_lead` event after server confirmation
 - `contact_click`
 - `quote_start`
 - `quote_submit_email`
@@ -237,7 +239,9 @@ The site does not include placeholder Google verification or analytics IDs. Add 
 - `catalog_filter`
 - `catalog_search`
 
-Campaign attribution keeps the initial landing URL, referrer, `utm_*`, `gclid`, and `msclkid` values in session storage. It also adds the attribution context to the prepared email or WhatsApp inquiry. Do not send names, email addresses, phone numbers, or free-text project details into analytics.
+Campaign attribution keeps the initial landing URL, referrer (including an empty direct-visit referrer), `utm_*`, `gclid`, and `msclkid` values in session storage. Later internal links or campaign parameters do not overwrite that first touch. Landing events are sent once per session after consent, even if consent is granted on a later page. It also adds attribution context to the prepared inquiry. Do not send names, email addresses, phone numbers, or free-text project details into analytics. AI referral classification measures identifiable visits, not every AI citation or recommendation; absent referrers cannot reliably be inferred.
+
+Run `node scripts/test_traffic_attribution.mjs` to check consent and source attribution, and `python3 scripts/test_locale_schema.py` to check localized structured data against visible page content. The locale generator preserves global company/website identities while localizing page URLs, breadcrumbs and FAQ answers.
 
 ### IndexNow
 

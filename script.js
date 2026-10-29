@@ -111,6 +111,7 @@ const saveAnalyticsConsent = (preference) => {
 
   if (analyticsConsentPreference === "granted") {
     loadGoogleAnalytics();
+    trackSessionLanding();
     window.gtag("event", "analytics_consent_update", {
       consent_state: "granted",
       page_path: window.location.pathname,
@@ -322,10 +323,11 @@ const captureAttribution = () => {
       .map((name) => [name, searchParameters.get(name).slice(0, 160)]),
   );
   const attribution = {
-    landingPage: storedAttribution?.landingPage || window.location.href,
-    referrer: storedAttribution?.referrer || document.referrer || "",
-    firstSeenAt: storedAttribution?.firstSeenAt || new Date().toISOString(),
-    campaign: Object.keys(campaign).length ? campaign : storedAttribution?.campaign || {},
+    landingPage: storedAttribution?.landingPage ?? window.location.href,
+    referrer: storedAttribution?.referrer ?? document.referrer ?? "",
+    firstSeenAt: storedAttribution?.firstSeenAt ?? new Date().toISOString(),
+    campaign: storedAttribution?.campaign ?? campaign,
+    analyticsLandingSent: storedAttribution?.analyticsLandingSent === true,
   };
 
   try {
@@ -340,8 +342,8 @@ const captureAttribution = () => {
 const { attribution: pageAttribution, isNewSession: isNewAttributionSession } = captureAttribution();
 const pageTrafficAttribution = classifyAttribution(pageAttribution);
 
-const getPageContext = () => {
-  const path = window.location.pathname.toLowerCase();
+const getPageContext = (pathname = window.location.pathname) => {
+  const path = pathname.toLowerCase().replace(/^\/(fr|es|pt|ru|zh-cn)(?=\/|$)/, "") || "/";
   if (path === "/" || path.endsWith("/index.html") && !path.includes("/blog/") && !path.includes("/products/") && !path.includes("/resources/")) {
     return { pageType: "home", contentGroup: "home" };
   }
@@ -449,8 +451,20 @@ const consumeLeadReceipt = () => {
   }
 };
 
-if (isNewAttributionSession) {
+// Record the first landing once, after consent, including when consent is
+// granted on a later page. Keep its original source and page context together.
+const trackSessionLanding = () => {
+  if (analyticsConsentPreference !== "granted" || pageAttribution.analyticsLandingSent) return;
+  let landingPath = window.location.pathname;
+  try { landingPath = new URL(pageAttribution.landingPage).pathname; } catch { /* Use the current path. */ }
+  const landingContext = getPageContext(landingPath);
+  const landingDetails = {
+    page_path: landingPath,
+    page_type: landingContext.pageType,
+    content_group: landingContext.contentGroup,
+  };
   trackEvent("session_landing", {
+    ...landingDetails,
     campaign_source: pageAttribution.campaign.utm_source || "",
     campaign_medium: pageAttribution.campaign.utm_medium || "",
     campaign_name: pageAttribution.campaign.utm_campaign || "",
@@ -458,11 +472,20 @@ if (isNewAttributionSession) {
 
   if (pageTrafficAttribution.channel === "ai_assistant") {
     trackEvent("ai_assistant_landing", {
+      ...landingDetails,
       ai_source: pageTrafficAttribution.source,
       ai_referrer_host: pageTrafficAttribution.referrerHost,
     });
   }
-}
+  pageAttribution.analyticsLandingSent = true;
+  try {
+    sessionStorage.setItem(attributionStorageKey, JSON.stringify(pageAttribution));
+  } catch {
+    // The in-memory flag still prevents duplicates on this page.
+  }
+};
+
+trackSessionLanding();
 
 if (isThankYouPage) {
   const leadReceipt = consumeLeadReceipt();

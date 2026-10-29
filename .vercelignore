@@ -1,7 +1,10 @@
 .git/
+.github/
 .local-backups/
 .vercel/
 .wrangler/
+.wrangler
+.catalog-clean.env*
 .env
 .env.*
 **/.dev.vars
@@ -15,6 +18,8 @@ dist/
 build/
 .cache/
 .tmp-odor-register/
+.tmp-odor-register
+README.md
 outputs/
 **/* 2.html
 docs/
