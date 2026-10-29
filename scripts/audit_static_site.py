@@ -769,7 +769,7 @@ def main():
         )
     if not concrete_product_urls.issubset(all_llms_product_urls):
         errors.append("llms.txt: product URLs escaped the complete product index")
-    if "Last updated: 2026-10-29" not in llms_source:
+    if "Last updated: 2026-10-30" not in llms_source:
         errors.append("llms.txt: missing current update date")
     for required_url in (
         f"{PRODUCTION_ORIGIN}/low-moq-sportswear-manufacturer.html",
@@ -1407,7 +1407,7 @@ def main():
                 "private-label-activewear-collection-planner.csv": "activewear collection planner link",
                 'data-resource-download="private-label-activewear-collection-planner"': "activewear planner download tracking",
                 '"@type": "DigitalDocument"': "activewear planner document schema",
-                '"dateModified": "2026-10-29"': "current activewear page modification date",
+                '"dateModified": "2026-10-30"': "current activewear page modification date",
                 "us-clothing-label-requirements-private-label.html": "U.S. clothing-label article link",
             }
             for marker, label in required_activewear_markers.items():
