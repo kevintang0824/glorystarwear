@@ -143,12 +143,23 @@ try {
   await leadHandler(request("POST", { ...validLead, consent: false }), invalidLeadResponse);
   assert.equal(invalidLeadResponse.statusCode, 400);
 
-  for (const requiredField of ["buyerType", "projectDetails"]) {
+  for (const buyerType of ["", undefined]) {
+    const optionalBuyerResponse = new MockResponse();
+    await leadHandler(request("POST", { ...validLead, buyerType }), optionalBuyerResponse);
+    assert.equal(optionalBuyerResponse.statusCode, 201, "Buyer type is optional for an initial inquiry");
+  }
+
+  for (const requiredField of ["name", "email", "product", "message", "projectDetails"]) {
     const missingFieldResponse = new MockResponse();
     await leadHandler(request("POST", { ...validLead, [requiredField]: "" }), missingFieldResponse);
     assert.equal(missingFieldResponse.statusCode, 400);
     assert.equal(missingFieldResponse.body.error, "invalid_lead");
   }
+
+  const missingVerificationResponse = new MockResponse();
+  await leadHandler(request("POST", { ...validLead, buyerType: "", turnstileToken: "" }), missingVerificationResponse);
+  assert.equal(missingVerificationResponse.statusCode, 400);
+  assert.equal(missingVerificationResponse.body.error, "human_verification_required");
 
   const unsupportedVersionResponse = new MockResponse();
   await leadHandler(request("POST", { ...validLead, payloadVersion: 3 }), unsupportedVersionResponse);

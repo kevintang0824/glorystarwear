@@ -869,6 +869,8 @@ const inquiryPrefillOptions = {
   product: {
     private_label: "Private label activewear program",
     teamwear: "Custom teamwear program",
+    gym_clothing: "Private label gym clothing",
+    sublimated_teamwear: "Custom sublimated teamwear",
     low_moq: "Low MOQ launch planning",
     supplier_capability: "Supplier capability review",
     fabric: "Fabric selection and performance testing",
@@ -923,11 +925,17 @@ const readStoredBuyerPath = () => {
   return "";
 };
 
+const parseProductPagePath = (path) => {
+  if (typeof path !== "string") return null;
+  const match = path.match(/^\/(?:(fr|es|pt|ru|zh-cn)\/)?products\/([a-z0-9]+(?:-[a-z0-9]+)*)\.html$/);
+  return match ? { path, locale: match[1] || "", slug: match[2] } : null;
+};
+
 const readStoredProductDirection = () => {
   try {
     const stored = JSON.parse(sessionStorage.getItem(productDirectionStorageKey));
     const isRecent = stored?.savedAt && Date.now() - stored.savedAt < 2 * 60 * 60 * 1000;
-    const hasValidSource = typeof stored?.sourcePath === "string" && stored.sourcePath.startsWith("/products/");
+    const hasValidSource = Boolean(parseProductPagePath(stored?.sourcePath));
     if (stored?.label && hasValidSource && isRecent) {
       return {
         label: String(stored.label).replace(/[\r\n\t]/g, " ").slice(0, 100),
@@ -952,7 +960,7 @@ const readStoredProductShortlist = () => {
         const label = String(item?.label || "").replace(/[\r\n\t]/g, " ").trim().slice(0, 100);
         const path = String(item?.path || "");
         const validSlug = /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug);
-        if (!validSlug || !label || path !== `/products/${slug}.html`) return;
+        if (!validSlug || !label || parseProductPagePath(path)?.slug !== slug) return;
         if (!items.some((candidate) => candidate.slug === slug)) items.push({ slug, label, path });
       });
     }
@@ -1015,7 +1023,13 @@ const readInquiryPrefill = () => {
       })
       .filter(([, value]) => value),
   );
-  const source = queryBuyerPath ? "buyer_quote_link" : storedBuyerPath ? "buyer_path" : "";
+  const source = queryBuyerPath && values.buyer
+    ? "buyer_quote_link"
+    : values.product
+      ? "product_quote_link"
+      : values.development
+        ? "development_quote_link"
+        : storedBuyerPath && values.buyer ? "buyer_path" : "";
   return { values, hasValues: Object.keys(values).length > 0, source };
 };
 
@@ -1086,6 +1100,8 @@ const getProductInterestForPath = (path) => {
     ["Yoga leggings", /\/products\/yoga-leggings\.html$/],
     ["Seamless activewear", /\/products\/seamless-activewear\.html$/],
     ["Soccer uniforms", /\/products\/soccer-uniforms\.html$/],
+    ["Private label gym clothing", /\/products\/private-label-gym-clothing\.html$/],
+    ["Custom sublimated teamwear", /\/products\/custom-sublimated-teamwear\.html$/],
     ["Yoga wear", /yoga|sports-bras|seamless-activewear|plus-size-activewear/],
     ["Athleisure", /athleisure|hoodies-sweatshirts|joggers-tracksuits|club-hoodies/],
     ["Training wear", /training-wear|gym-tshirts|training-shorts|private-label-gym|compression-base|outdoor-training/],
@@ -1109,6 +1125,18 @@ const getProductInterestForPath = (path) => {
   return isSpecificProductPage ? "Other custom sportswear" : "";
 };
 
+const getProductQuoteHref = (path, buyer = "") => {
+  const page = parseProductPagePath(path);
+  const product = page
+    ? Object.entries(inquiryPrefillOptions.product).find(([, label]) => label === getProductInterestForPath(path))?.[0]
+    : "";
+  const parameters = new URLSearchParams();
+  if (product) parameters.set("product", product);
+  if (inquiryPrefillOptions.buyer[buyer]) parameters.set("buyer", buyer);
+  const query = parameters.toString();
+  return `${page?.locale ? `/${page.locale}` : ""}/contact.html${query ? `?${query}` : ""}#quote-form`;
+};
+
 const inquiryContext = document.querySelector("[data-inquiry-context]");
 const storedInquirySource = isContactPage ? readInquirySource() : null;
 const storedProductDirection = isContactPage ? readStoredProductDirection() : null;
@@ -1120,10 +1148,14 @@ const renderInquiryContextSummary = () => {
   if (!inquiryContext) return;
   const contextTitle = inquiryContext.querySelector("[data-inquiry-context-title]");
   const contextLabel = inquiryContext.querySelector("span");
+  const prefillLabel = (field, value) => {
+    const options = document.querySelector(`[data-quote-form] select[name="${field}"]`)?.options;
+    return [...(options || [])].find((option) => option.value === value)?.textContent || value || "";
+  };
   const contextParts = [
     storedInquirySource ? getShortPageTitle(storedInquirySource.title) : "",
-    inquiryPrefill.values.buyer || "",
-    inquiryPrefill.values.product || "",
+    prefillLabel("buyerType", inquiryPrefill.values.buyer),
+    prefillLabel("product", inquiryPrefill.values.product),
     storedProductDirection?.label || "",
     storedProductShortlist.length ? `${storedProductShortlist.length} product direction${storedProductShortlist.length === 1 ? "" : "s"} shortlisted` : "",
     storedFabricShortlist.length ? `${storedFabricShortlist.length} fabric direction${storedFabricShortlist.length === 1 ? "" : "s"} shortlisted` : "",
@@ -1136,8 +1168,8 @@ const renderInquiryContextSummary = () => {
   if (contextTitle) contextTitle.textContent = contextParts.join(" · ");
   if (contextLabel) {
     contextLabel.textContent = inquiryPrefill.hasValues || storedProductDirection || storedProductShortlist.length || storedFabricShortlist.length
-      ? "Brief tailored for"
-      : "Continuing from";
+      ? localeText("quote_context_tailored", "Brief tailored for")
+      : localeText("quote_context_continuing", "Continuing from");
   }
   inquiryContext.hidden = false;
 };
@@ -1207,7 +1239,7 @@ const quoteProductShortlistPanels = [...quoteForms].map((form, index) => {
     <div class="quote-product-shortlist-footer">
       <span data-quote-product-shortlist-status role="status" aria-live="polite">Saved for this inquiry in the current browser tab.</span>
       <div>
-        <a href="/products/" data-quote-product-shortlist-continue>Continue choosing products <span aria-hidden="true">→</span></a>
+        <a href="${localizedSitePath("/products/")}" data-quote-product-shortlist-continue>${localeText("quote_continue_products", "Continue choosing products")} <span aria-hidden="true">→</span></a>
         <button type="button" data-quote-product-shortlist-clear>Clear shortlist</button>
       </div>
     </div>
@@ -1621,6 +1653,14 @@ const canShareReferenceFiles = (files) => {
   }
 };
 
+const revealQuoteField = (field) => {
+  let details = field?.closest?.("details");
+  while (details) {
+    details.open = true;
+    details = details.parentElement?.closest("details");
+  }
+};
+
 quoteForms.forEach((form, formIndex) => {
   let hasStartedQuote = false;
   let highestProgressMilestone = 0;
@@ -1634,6 +1674,12 @@ quoteForms.forEach((form, formIndex) => {
   const quoteProgressLabel = form.querySelector("[data-quote-progress-label]");
   const quoteProgressMeter = form.querySelector("[data-quote-progress-meter]");
   const requiredFields = [...form.querySelectorAll("input[required], select[required], textarea[required]")];
+  // Native validation runs before the submit handler. Reveal invalid optional
+  // controls too, so the browser can focus a URL or file inside a closed group.
+  form.addEventListener("invalid", (event) => {
+    revealQuoteField(event.target);
+    event.target.setAttribute("aria-invalid", "true");
+  }, true);
   const quoteReadiness = document.createElement("section");
   const quoteReadinessTitleId = `quote-readiness-title-${formIndex + 1}`;
   quoteReadiness.className = "quote-readiness";
@@ -1669,9 +1715,11 @@ quoteForms.forEach((form, formIndex) => {
     const isComplete = totalFields > 0 && completedFields === totalFields;
 
     if (quoteProgressLabel) {
-      quoteProgressLabel.textContent = isComplete
-        ? `${completedFields} of ${totalFields} essentials ready — choose how to send`
-        : `${completedFields} of ${totalFields} essentials ready`;
+      const progressTemplate = isComplete
+        ? localeText("quote_progress_ready", "{completed} of {total} essentials ready — choose how to send")
+        : localeText("quote_progress", "{completed} of {total} essentials ready");
+      quoteProgressLabel.textContent = progressTemplate
+        .replace("{completed}", completedFields).replace("{total}", totalFields);
     }
     if (quoteProgressMeter) {
       quoteProgressMeter.max = totalFields || 1;
@@ -1728,6 +1776,7 @@ quoteForms.forEach((form, formIndex) => {
           prompt.addEventListener("click", () => {
             const targetField = form.querySelector(`[name="${item.fieldName}"]`);
             if (!targetField) return;
+            revealQuoteField(targetField);
             const reducedMotion = typeof window.matchMedia === "function"
               && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
             targetField.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "center" });
@@ -1817,7 +1866,7 @@ quoteForms.forEach((form, formIndex) => {
       .filter(Boolean);
     setFormNote(
       form,
-      `Complete or correct the ${invalidFields.length === 1 ? "field" : "fields"} highlighted above before sending.`,
+      localeText("quote_correct_fields", "Complete or correct the highlighted fields before sending."),
       "error",
     );
     trackEvent("quote_validation_error", {
@@ -2121,6 +2170,7 @@ const setupProductDetailExplorer = () => {
   const excludedProductPages = new Set(["index", "lookbook", "new-products", "more-sports"]);
   const productSlug = productPathMatch?.[1] || "";
   if (!productSlug || excludedProductPages.has(productSlug)) return;
+  const productQuoteHref = getProductQuoteHref(window.location.pathname);
 
   const hero = document.querySelector("main > .product-hero");
   const skuCards = [...document.querySelectorAll(".sku-card")];
@@ -2141,7 +2191,7 @@ const setupProductDetailExplorer = () => {
     if (existingDetailLink) actions.append(existingDetailLink);
     const quoteLink = document.createElement("a");
     quoteLink.className = "detail-link sku-quote-link";
-    quoteLink.href = "../contact.html#quote-form";
+    quoteLink.href = productQuoteHref;
     quoteLink.textContent = "Ask about this direction";
     quoteLink.addEventListener("click", () => {
       try {
@@ -2255,14 +2305,14 @@ const setupProductDetailExplorer = () => {
         <div class="product-detail-buyer-route">
           <strong>Who is buying this product?</strong>
           <nav aria-label="Choose a buyer route for this product">
-            <a href="../contact.html?buyer=startup_brand#quote-form" data-product-buyer-route="startup_brand">Startup</a>
-            <a href="../contact.html?buyer=established_brand#quote-form" data-product-buyer-route="established_brand">Established brand</a>
-            <a href="../contact.html?buyer=dealer_distributor#quote-form" data-product-buyer-route="dealer_distributor">Distributor</a>
-            <a href="../contact.html?buyer=club_school_team#quote-form" data-product-buyer-route="club_school_team">Club or school</a>
+            <a href="${getProductQuoteHref(window.location.pathname, "startup_brand")}" data-product-buyer-route="startup_brand">Startup</a>
+            <a href="${getProductQuoteHref(window.location.pathname, "established_brand")}" data-product-buyer-route="established_brand">Established brand</a>
+            <a href="${getProductQuoteHref(window.location.pathname, "dealer_distributor")}" data-product-buyer-route="dealer_distributor">Distributor</a>
+            <a href="${getProductQuoteHref(window.location.pathname, "club_school_team")}" data-product-buyer-route="club_school_team">Club or school</a>
           </nav>
         </div>
         <div class="product-detail-actions">
-          <a class="button primary" href="../contact.html#quote-form"><i data-lucide="send"></i>Request Details &amp; Quote</a>
+          <a class="button primary" href="${productQuoteHref}"><i data-lucide="send"></i>Request Details &amp; Quote</a>
           <a class="button secondary" href="../fabrics.html"><i data-lucide="swatch-book"></i>Compare Fabrics</a>
           <a class="button secondary" href="${planningResource.href}" download data-resource-download="${planningResource.analytics}"><i data-lucide="download"></i>${planningResource.name}</a>
           <button class="button secondary product-shortlist-toggle" type="button" aria-pressed="false" data-product-shortlist-toggle><i data-lucide="bookmark-plus"></i><span>Add to Shortlist</span></button>

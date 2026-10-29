@@ -170,7 +170,7 @@ module.exports = async function leadHandler(request, response) {
 
   const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(lead.email);
   const supportedPayloadVersion = lead.payloadVersion === 1 || lead.payloadVersion === 2;
-  const versionedRequiredFieldsPresent = lead.payloadVersion < 2 || (lead.buyerType && lead.projectDetails);
+  const versionedRequiredFieldsPresent = lead.payloadVersion < 2 || Boolean(lead.projectDetails);
   if (!supportedPayloadVersion || !lead.name || !validEmail || !versionedRequiredFieldsPresent || !lead.product || !lead.message || body.consent !== true) {
     return response.status(400).json({ ok: false, error: "invalid_lead" });
   }

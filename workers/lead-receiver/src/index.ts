@@ -23,6 +23,38 @@ type LeadEvent = {
   lead: Lead;
 };
 
+// Match the public API's composed-message limit. The byte limit also allows
+// UTF-8 project text and JSON escaping without trusting Content-Length alone.
+const MAX_MESSAGE_LENGTH = 12_000;
+const MAX_REQUEST_BYTES = 128 * 1024;
+
+class RequestBodyTooLarge extends Error {}
+
+const readBoundedJson = async (request: Request): Promise<unknown> => {
+  const reader = request.body?.getReader();
+  if (!reader) throw new SyntaxError("Missing request body");
+  const decoder = new TextDecoder("utf-8", { fatal: true, ignoreBOM: false });
+  let totalBytes = 0;
+  let text = "";
+
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      totalBytes += value.byteLength;
+      if (totalBytes > MAX_REQUEST_BYTES) {
+        await reader.cancel();
+        throw new RequestBodyTooLarge("Request body exceeds the byte limit");
+      }
+      text += decoder.decode(value, { stream: true });
+    }
+    text += decoder.decode();
+    return JSON.parse(text);
+  } finally {
+    reader.releaseLock();
+  }
+};
+
 const json = (body: Record<string, unknown>, status = 200) => Response.json(body, {
   status,
   headers: {
@@ -76,7 +108,7 @@ const readLeadEvent = (value: unknown): LeadEvent | null => {
     quantity: cleanText(input.quantity, 120),
     market: cleanText(input.market, 120),
     timeline: cleanText(input.timeline, 160),
-    message: cleanText(input.message, 4000),
+    message: cleanText(input.message, MAX_MESSAGE_LENGTH),
     sourcePage: cleanText(input.sourcePage, 500),
     landingPage: cleanText(input.landingPage, 500),
     referrer: cleanText(input.referrer, 500),
@@ -156,14 +188,20 @@ const handleRequest = async (request: Request, env: Env) => {
   }
 
   const contentLength = Number(request.headers.get("Content-Length") || 0);
-  if (contentLength > 32_768 || !request.headers.get("Content-Type")?.toLowerCase().startsWith("application/json")) {
+  if (contentLength > MAX_REQUEST_BYTES) {
+    return json({ ok: false, error: "request_too_large" }, 413);
+  }
+  if (request.headers.get("Content-Type")?.split(";", 1)[0].trim().toLowerCase() !== "application/json") {
     return json({ ok: false, error: "invalid_request" }, 400);
   }
 
   let input: unknown;
   try {
-    input = await request.json();
-  } catch {
+    input = await readBoundedJson(request);
+  } catch (error) {
+    if (error instanceof RequestBodyTooLarge) {
+      return json({ ok: false, error: "request_too_large" }, 413);
+    }
     return json({ ok: false, error: "invalid_json" }, 400);
   }
 

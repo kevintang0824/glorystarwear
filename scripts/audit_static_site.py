@@ -19,8 +19,8 @@ from site_chrome import site_footer_markup, site_header_markup
 
 ROOT = Path(__file__).resolve().parent.parent
 PRODUCTION_ORIGIN = "https://glorystarwears.com"
-EXPECTED_SCRIPT_VERSION = "20261029-1"
-EXPECTED_FORM_STYLE_VERSION = "20260903-1"
+EXPECTED_SCRIPT_VERSION = "20261030-1"
+EXPECTED_FORM_STYLE_VERSION = "20261030-1"
 CATALOG_PATH = ROOT / "scripts" / "product_expansion_catalog.json"
 CATALOG_ITEMS = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
 CATALOG_SLUG_LIST = [item["slug"] for item in CATALOG_ITEMS]
@@ -33,7 +33,7 @@ RULE_SOURCE_PRODUCT_SLUGS = frozenset(
 NON_CONCRETE_PRODUCT_SLUGS = {"index", "lookbook", "new-products", "more-sports", "catalog"}
 BASE_CONCRETE_PRODUCT_COUNT = 59
 EXPECTED_CONCRETE_PRODUCT_COUNT = BASE_CONCRETE_PRODUCT_COUNT + len(EXPANDED_PRODUCT_SLUGS)
-BASE_QUOTE_PRODUCT_OPTION_COUNT = 31
+BASE_QUOTE_PRODUCT_OPTION_COUNT = 33
 EXPECTED_QUOTE_PRODUCT_OPTION_COUNT = BASE_QUOTE_PRODUCT_OPTION_COUNT + len(EXPANDED_PRODUCT_SLUGS)
 GENERATED_PRODUCT_MARKER_RE = re.compile(
     r"<!-- GENERATED_PRODUCT_PAGE:([a-z0-9]+(?:-[a-z0-9]+)*) -->"
@@ -1115,7 +1115,7 @@ def main():
         if relative_name in {"index.html", "contact.html"}:
             quote_form_markers = {
                 'name="referenceLink"': "buyer-authorized reference-link field",
-                'name="message" rows="5" maxlength="3000"': "bounded project-details field",
+                'name="message"': "project-details field",
                 "quote-order-grid": "visible quantity, market, and timing fields",
                 "quote-next-step": "post-inquiry expectation setting",
                 "Custom fishing apparel": "fishing inquiry option",
@@ -1151,6 +1151,8 @@ def main():
             for marker, label in quote_form_markers.items():
                 if marker not in source:
                     errors.append(f"{relative_name}: missing {label}")
+            if not re.search(r'<textarea\b(?=[^>]*\bname="message")(?=[^>]*\bmaxlength="3000")[^>]*>', source):
+                errors.append(f"{relative_name}: project details must be bounded to 3000 characters")
 
         if relative_name == "fabrics.html":
             fabric_library_markers = {
@@ -2335,7 +2337,7 @@ def main():
         if relative_name == "contact.html":
             required_contact_markers = {
                 'data-lead-endpoint="/api/lead"': "same-origin lead endpoint",
-                "Complete once, then send by WhatsApp or email": "working inquiry-route explanation",
+                "Send a secure inquiry, or continue by WhatsApp or email": "working inquiry-route explanation",
                 "Cost and lead-time review": "commercial planning inquiry option",
                 "sportswear-supplier-quote-comparison.csv": "supplier comparison handoff",
                 "Tech pack review and development": "tech-pack inquiry option",

@@ -33,6 +33,7 @@ class Page(HTMLParser):
         super().__init__()
         self.lang = ""; self.title = ""; self.description = ""; self.canonical = ""; self.alternates = []
         self.main = False; self.skip = 0; self.tags = []; self.text = []; self.images = 0; self.forms = 0; self.controls = 0; self.links = []; self.scripts = []; self.in_title = False
+        self.option_values = []; self.required_fields = []
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
@@ -47,6 +48,8 @@ class Page(HTMLParser):
             if tag == "img": self.images += 1
             if tag == "form": self.forms += 1
             if tag in ("input", "select", "textarea", "button"): self.controls += 1
+            if tag == "option": self.option_values.append(attrs.get("value"))
+            if tag in ("input", "select", "textarea") and "required" in attrs: self.required_fields.append(attrs.get("name"))
             if tag == "a" and attrs.get("href"): self.links.append(attrs["href"])
         if tag == "script" and attrs.get("src"): self.scripts.append(attrs["src"])
         if tag in ("script", "style", "svg"): self.skip += 1
@@ -86,6 +89,7 @@ source_pages = {}
 for key in PAGES:
     path = ROOT / (key + ".html")
     page = Page(); page.feed(comparable_markup(path.read_text())); source_pages[key] = page
+    if None in page.option_values: errors.append(f"{path}: options need explicit values to preserve localized form behavior")
 
 for locale, language in LOCALES.items():
     for key, values in PAGES.items():
@@ -102,6 +106,8 @@ for locale, language in LOCALES.items():
         if page.tags != source.tags: errors.append(f"{path}: main DOM structure differs from English")
         if len(page.text) != len(source.text): errors.append(f"{path}: visible content nodes differ from English")
         if (page.images, page.forms, page.controls, len(page.links)) != (source.images, source.forms, source.controls, len(source.links)): errors.append(f"{path}: controls or links differ from English")
+        if page.option_values != source.option_values: errors.append(f"{path}: translated option values break form routing")
+        if page.required_fields != source.required_fields: errors.append(f"{path}: required form fields differ from English")
         source_html = path.read_text()
         menu = re.findall(r'<a href="([^"]+)" data-site-language="([^"]+)"', source_html)
         expected_menu = [(route(key), "en")] + [(f"/{loc}{route(key)}", lang) for loc, lang in LOCALES.items()]

@@ -2294,6 +2294,16 @@ h3 {
   background: var(--white);
 }
 
+.contact-page .product-hero {
+  min-height: 0;
+  padding-top: 124px;
+  padding-bottom: 40px;
+}
+
+.contact-page .contact-section {
+  padding-top: 40px;
+}
+
 .contact-methods {
   display: grid;
   gap: 12px;
@@ -3070,6 +3080,29 @@ h3 {
 
 .quote-form-more .quote-form-grid {
   padding-bottom: 18px;
+}
+
+.quote-details-fields {
+  display: grid;
+  gap: 16px;
+  padding-bottom: 18px;
+}
+
+.quote-details-fields .quote-form-grid:not(.quote-order-grid) {
+  padding-bottom: 0;
+}
+
+.quote-form label > small {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.quote-form-more summary:focus-visible {
+  outline: 3px solid var(--green);
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
 .quote-form-actions {

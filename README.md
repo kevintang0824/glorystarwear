@@ -243,6 +243,8 @@ Campaign attribution keeps the initial landing URL, referrer (including an empty
 
 Run `node scripts/test_traffic_attribution.mjs` to check consent and source attribution, and `python3 scripts/test_locale_schema.py` to check localized structured data against visible page content. The locale generator preserves global company/website identities while localizing page URLs, breadcrumbs and FAQ answers.
 
+The inquiry form requires name, email, product, project details and consent; buyer type and order planning are optional. Explicit option values preserve product routing across all six languages. Run `node scripts/test_lead_flow.mjs`, `node scripts/test_product_routing.mjs` and `node scripts/test_lead_receiver.mjs` to verify the lead contract, localized product context and complete receiver storage within the 12,000-character message limit.
+
 ### IndexNow
 
 Deploy the public key file before submitting URLs:

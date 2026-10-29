@@ -34,9 +34,9 @@
 
     <title>Custom Sportswear Manufacturer | GloryStarWear</title>
     <link rel="preload" as="image" type="image/avif" fetchpriority="high" href="./assets/images/hero-brand-campaign.avif" imagesrcset="./assets/images/hero-brand-campaign-900.avif 900w, ./assets/images/hero-brand-campaign-1200.avif 1200w, ./assets/images/hero-brand-campaign.avif 1672w" imagesizes="100vw" />
-    <link rel="stylesheet" href="./styles.css?v=20260903-1" />
+    <link rel="stylesheet" href="./styles.css?v=20261030-1" />
     <script src="./assets/vendor/lucide.min.js?v=20260722-1" defer></script>
-    <script src="./script.js?v=20261029-1" defer></script>
+    <script src="./script.js?v=20261030-1" defer></script>
     <script src="./assets/language.js?v=20260903-2" defer></script>
     <!-- LOCALE_ALTERNATES_START -->
     <link rel="alternate" hreflang="en" href="https://glorystarwears.com/">
@@ -825,14 +825,14 @@
         <form class="quote-form" data-quote-form data-lead-endpoint="/api/lead" aria-label="Custom sportswear quote form">
           <div class="quote-form-heading">
             <span>Project brief</span>
-            <strong>Complete the six required items</strong>
+            <strong>Start with five essentials</strong>
           </div>
           <div class="quote-progress" data-quote-progress>
             <div>
-              <strong data-quote-progress-label>0 of 6 essentials ready</strong>
-              <span>Name, email, buyer type, product, brief, and consent</span>
+              <strong data-quote-progress-label>0 of 5 essentials ready</strong>
+              <span>Name, email, product, brief, and consent</span>
             </div>
-            <progress max="6" value="0" data-quote-progress-meter aria-label="Required inquiry fields completed"></progress>
+            <progress max="5" value="0" data-quote-progress-meter aria-label="Required inquiry fields completed"></progress>
           </div>
           <div class="quote-form-grid">
             <label>
@@ -846,25 +846,25 @@
           </div>
           <div class="quote-form-grid">
             <label>
-              Buyer Type
-              <select name="buyerType" required>
+              Buyer Type — optional
+              <select name="buyerType">
                 <option value="">Select your buyer type</option>
-                <option>Startup brand</option>
-                <option>Established brand</option>
-                <option>Dealer or distributor</option>
-                <option>Club, school, or team</option>
-                <option>Other organization</option>
+                <option value="Startup brand">Startup brand</option>
+                <option value="Established brand">Established brand</option>
+                <option value="Dealer or distributor">Dealer or distributor</option>
+                <option value="Club, school, or team">Club, school, or team</option>
+                <option value="Other organization">Other organization</option>
               </select>
             </label>
             <label>
               Development Route
               <select name="developmentRoute">
                 <option value="">Select or confirm a route</option>
-                <option>Not sure yet — recommend a route</option>
-                <option>Light customization from an existing direction</option>
-                <option>OEM from our tech pack</option>
-                <option>ODM from references and requirements</option>
-                <option>Repeat or reorder of an approved style</option>
+                <option value="Not sure yet — recommend a route">Not sure yet — recommend a route</option>
+                <option value="Light customization from an existing direction">Light customization from an existing direction</option>
+                <option value="OEM from our tech pack">OEM from our tech pack</option>
+                <option value="ODM from references and requirements">ODM from references and requirements</option>
+                <option value="Repeat or reorder of an approved style">Repeat or reorder of an approved style</option>
               </select>
             </label>
           </div>
@@ -872,62 +872,64 @@
             Product or Project Interest
             <select name="product" required>
               <option value="">Select a category</option>
-              <option>Private label activewear program</option>
-              <option>Custom teamwear program</option>
-              <option>Low MOQ launch planning</option>
-              <option>Cost and lead-time review</option>
-              <option>Supplier quote comparison</option>
-              <option>Supplier capability review</option>
-              <option>Supplier verification and documents</option>
-              <option>Sampling and approval support</option>
-              <option>Tech pack review and development</option>
-              <option>Artwork and decoration review</option>
-              <option>Fabric selection and performance testing</option>
-              <option>Packaging and label handoff</option>
-              <option>Quality and inspection planning</option>
-              <option>Yoga wear</option>
-              <option>Yoga leggings</option>
-              <option>Seamless activewear</option>
-              <option>Pilates activewear</option>
-              <option>Athleisure</option>
-              <option>Training wear</option>
-              <option>Basketball wear</option>
-              <option>Football kits</option>
-              <option>Soccer uniforms</option>
-              <option>Custom futsal uniforms</option>
-              <option>Flag football uniforms</option>
-              <option>Custom team polo shirts</option>
-              <option>Custom beach volleyball uniforms</option>
-              <option>Custom referee uniforms</option>
-              <option>Running wear</option>
-              <option>Custom running shorts</option>
-              <option>Custom rowing uniforms</option>
-              <option>Custom cycling skinsuits</option>
-              <option>Custom triathlon suits</option>
-              <option>Custom motocross jerseys</option>
-              <option>Custom fishing apparel</option>
-              <option>Tennis and pickleball apparel</option>
-              <option>Custom table tennis uniforms</option>
-              <option>Badminton uniforms</option>
-              <option>Custom padel apparel</option>
-              <option>Private label gym leggings</option>
-              <option>Custom boxing apparel</option>
-              <option>Custom handball uniforms</option>
-              <option>Custom bowling shirts</option>
-              <option>Custom darts shirts</option>
-              <option>Custom ultimate jerseys</option>
-              <option>Custom weightlifting singlets</option>
-              <option>Golf apparel</option>
-              <option>Baseball and softball teamwear</option>
-              <option>Baseball uniforms</option>
-              <option>Softball uniforms</option>
-              <option>Rugby uniforms</option>
-              <option>Field hockey uniforms</option>
-              <option>Swimwear and water sports</option>
-              <option>Combat sports apparel</option>
-              <option>Accessories</option>
-              <option>Packaging and one-stop service</option>
-              <option>Other custom sportswear</option>
+              <option value="Private label activewear program">Private label activewear program</option>
+              <option value="Private label gym clothing">Private label gym clothing</option>
+              <option value="Custom teamwear program">Custom teamwear program</option>
+              <option value="Custom sublimated teamwear">Custom sublimated teamwear</option>
+              <option value="Low MOQ launch planning">Low MOQ launch planning</option>
+              <option value="Cost and lead-time review">Cost and lead-time review</option>
+              <option value="Supplier quote comparison">Supplier quote comparison</option>
+              <option value="Supplier capability review">Supplier capability review</option>
+              <option value="Supplier verification and documents">Supplier verification and documents</option>
+              <option value="Sampling and approval support">Sampling and approval support</option>
+              <option value="Tech pack review and development">Tech pack review and development</option>
+              <option value="Artwork and decoration review">Artwork and decoration review</option>
+              <option value="Fabric selection and performance testing">Fabric selection and performance testing</option>
+              <option value="Packaging and label handoff">Packaging and label handoff</option>
+              <option value="Quality and inspection planning">Quality and inspection planning</option>
+              <option value="Yoga wear">Yoga wear</option>
+              <option value="Yoga leggings">Yoga leggings</option>
+              <option value="Seamless activewear">Seamless activewear</option>
+              <option value="Pilates activewear">Pilates activewear</option>
+              <option value="Athleisure">Athleisure</option>
+              <option value="Training wear">Training wear</option>
+              <option value="Basketball wear">Basketball wear</option>
+              <option value="Football kits">Football kits</option>
+              <option value="Soccer uniforms">Soccer uniforms</option>
+              <option value="Custom futsal uniforms">Custom futsal uniforms</option>
+              <option value="Flag football uniforms">Flag football uniforms</option>
+              <option value="Custom team polo shirts">Custom team polo shirts</option>
+              <option value="Custom beach volleyball uniforms">Custom beach volleyball uniforms</option>
+              <option value="Custom referee uniforms">Custom referee uniforms</option>
+              <option value="Running wear">Running wear</option>
+              <option value="Custom running shorts">Custom running shorts</option>
+              <option value="Custom rowing uniforms">Custom rowing uniforms</option>
+              <option value="Custom cycling skinsuits">Custom cycling skinsuits</option>
+              <option value="Custom triathlon suits">Custom triathlon suits</option>
+              <option value="Custom motocross jerseys">Custom motocross jerseys</option>
+              <option value="Custom fishing apparel">Custom fishing apparel</option>
+              <option value="Tennis and pickleball apparel">Tennis and pickleball apparel</option>
+              <option value="Custom table tennis uniforms">Custom table tennis uniforms</option>
+              <option value="Badminton uniforms">Badminton uniforms</option>
+              <option value="Custom padel apparel">Custom padel apparel</option>
+              <option value="Private label gym leggings">Private label gym leggings</option>
+              <option value="Custom boxing apparel">Custom boxing apparel</option>
+              <option value="Custom handball uniforms">Custom handball uniforms</option>
+              <option value="Custom bowling shirts">Custom bowling shirts</option>
+              <option value="Custom darts shirts">Custom darts shirts</option>
+              <option value="Custom ultimate jerseys">Custom ultimate jerseys</option>
+              <option value="Custom weightlifting singlets">Custom weightlifting singlets</option>
+              <option value="Golf apparel">Golf apparel</option>
+              <option value="Baseball and softball teamwear">Baseball and softball teamwear</option>
+              <option value="Baseball uniforms">Baseball uniforms</option>
+              <option value="Softball uniforms">Softball uniforms</option>
+              <option value="Rugby uniforms">Rugby uniforms</option>
+              <option value="Field hockey uniforms">Field hockey uniforms</option>
+              <option value="Swimwear and water sports">Swimwear and water sports</option>
+              <option value="Combat sports apparel">Combat sports apparel</option>
+              <option value="Accessories">Accessories</option>
+              <option value="Packaging and one-stop service">Packaging and one-stop service</option>
+              <option value="Other custom sportswear">Other custom sportswear</option>
             </select>
           </label>
           <div class="quote-form-grid quote-order-grid">
@@ -976,19 +978,19 @@
                 Preferred Contact
                 <select name="preferredContact">
                   <option value="">No preference</option>
-                  <option>Email</option>
-                  <option>WhatsApp</option>
-                  <option>Phone call</option>
-                  <option>Video call</option>
+                  <option value="Email">Email</option>
+                  <option value="WhatsApp">WhatsApp</option>
+                  <option value="Phone call">Phone call</option>
+                  <option value="Video call">Video call</option>
                 </select>
               </label>
               <label>
                 Call Request
                 <select name="callRequest">
                   <option value="">No call requested</option>
-                  <option>Request a 15-minute introduction</option>
-                  <option>Request a 30-minute project review</option>
-                  <option>Request a factory or evidence video call</option>
+                  <option value="Request a 15-minute introduction">Request a 15-minute introduction</option>
+                  <option value="Request a 30-minute project review">Request a 30-minute project review</option>
+                  <option value="Request a factory or evidence video call">Request a factory or evidence video call</option>
                 </select>
               </label>
             </div>
@@ -1082,7 +1084,7 @@
             "url": "https://glorystarwears.com/",
             "name": "GloryStarWear",
             "inLanguage": "en",
-            "dateModified": "2026-10-29",
+            "dateModified": "2026-10-30",
             "publisher": {
               "@id": "https://glorystarwears.com/#organization"
             }
