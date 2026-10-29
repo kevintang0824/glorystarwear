@@ -216,6 +216,8 @@ The site already includes:
 
 The site does not include placeholder Google verification or analytics IDs. Add only IDs from the real production accounts.
 
+Company schema on the homepage and company page shares one Organization definition, including the public city, contact details and links to the two service programs. Service channels point to the corresponding inquiry prefill. `scripts/test_locale_schema.py` checks this relationship and protects the GloryStarWear spelling in language editions. Update public HTML and structured facts together; add only verified company details.
+
 ### Google Search Console
 
 1. Verify `https://glorystarwears.com/` in the production Search Console property.

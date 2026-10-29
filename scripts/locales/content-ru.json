@@ -1234,7 +1234,7 @@
   "Full-Color Artwork": "Полноцветное произведение искусства",
   "GRS Evidence Guide": "Руководство по доказательствам GRS",
   "Garment validation": "Проверка одежды",
-  "GloryStarWear home": "GloryStar вернётся домой",
+  "GloryStarWear home": "Главная GloryStarWear",
   "Goalkeeper version": "Версия для вратарей",
   "Golf Apparel Range": "Golf Apparel Range",
   "Heat Transfer Logo": "Логотип теплопередачи",
@@ -14503,5 +14503,16 @@
   "Work backward from the required arrival date, allowing for sampling, artwork and roster approval, production, inspection, freight, and customs. Confirm the delivery country, quantities by size, and whether partial shipments are acceptable. Ask for a written schedule tied to defined approvals before committing to an event deadline.": "Планируйте в обратном порядке от нужной даты прибытия, учитывая образцы, утверждение макетов и списков игроков, производство, инспекцию, перевозку и таможню. Уточните страну доставки, количество по размерам и допустимость частичных отправок. Прежде чем согласовать срок к мероприятию, запросите письменный график с определёнными этапами утверждения.",
   "What should a team confirm before ordering replacement uniforms?": "Что команде уточнить перед заказом формы на замену?",
   "Keep the approved artwork version, player-name and number format, size chart, fabric specification, color reference, and packing rules. Confirm replacement quantities, minimums, price, material availability, and delivery timing for the new order. Recheck color and fit against the approved reference because fabric lots and production conditions can change.": "Сохраните утверждённую версию макета, формат имён и номеров, размерную таблицу, характеристики ткани, эталон цвета и правила упаковки. Для нового заказа подтвердите количество, минимумы, цену, наличие материалов и срок доставки. Повторно сверьте цвет и посадку с утверждённым эталоном: партии ткани и условия производства могут меняться.",
-  "October 30, 2026": "30 октября 2026 г."
+  "October 30, 2026": "30 октября 2026 г.",
+  "Choose a sourcing program": "Выберите программу поставки",
+  "Which sportswear program fits your order?": "Какая программа спортивной одежды подходит вашему заказу?",
+  "Choose by the product and buyer requirements. Both programs use a project-specific review of samples, commercial terms, and delivery.": "Выбирайте по товару и требованиям покупателя. Обе программы предусматривают индивидуальное согласование образцов, коммерческих условий и доставки.",
+  "Sportswear program comparison": "Сравнение программ спортивной одежды",
+  "Buyer focus": "Для каких покупателей",
+  "First useful inputs": "Первые полезные данные",
+  "Next step": "Следующий шаг",
+  "Brands, gyms, studios, and ecommerce sellers": "Бренды, спортзалы, студии и интернет-продавцы",
+  "Style list, fabric and fit references, size range, branding, and target quantity.": "Список моделей, примеры ткани и посадки, размерный ряд, символика и целевое количество.",
+  "Clubs, schools, teams, and distributors": "Клубы, школы, команды и дистрибьюторы",
+  "Sport, garment list, sizes, club artwork, player customization, and arrival date.": "Вид спорта, список изделий, размеры, символика клуба, персонализация игроков и дата прибытия."
 }

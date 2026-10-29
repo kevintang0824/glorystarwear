@@ -1234,7 +1234,7 @@
   "Full-Color Artwork": "Obras de Arte de color completo",
   "GRS Evidence Guide": "GRS Evidence Guide",
   "Garment validation": "Validación de los precios",
-  "GloryStarWear home": "GloryStarWear home",
+  "GloryStarWear home": "Inicio de GloryStarWear",
   "Goalkeeper version": "Versión de los encargados de la ejecución",
   "Golf Apparel Range": "Golf de la gama de ropa",
   "Heat Transfer Logo": "Logo Transferencia de calor",
@@ -14503,5 +14503,16 @@
   "Work backward from the required arrival date, allowing for sampling, artwork and roster approval, production, inspection, freight, and customs. Confirm the delivery country, quantities by size, and whether partial shipments are acceptable. Ask for a written schedule tied to defined approvals before committing to an event deadline.": "Planifique hacia atrás desde la fecha de llegada necesaria, reservando tiempo para muestras, aprobación de diseños y listas de jugadores, producción, inspección, transporte y aduanas. Confirme el país de entrega, las cantidades por talla y si se aceptan envíos parciales. Solicite un calendario escrito vinculado a aprobaciones definidas antes de comprometerse con una fecha.",
   "What should a team confirm before ordering replacement uniforms?": "¿Qué debe confirmar un equipo antes de pedir uniformes de reposición?",
   "Keep the approved artwork version, player-name and number format, size chart, fabric specification, color reference, and packing rules. Confirm replacement quantities, minimums, price, material availability, and delivery timing for the new order. Recheck color and fit against the approved reference because fabric lots and production conditions can change.": "Conserve la versión aprobada del diseño, el formato de nombres y números, la tabla de tallas, las especificaciones del tejido, la referencia de color y las reglas de embalaje. Confirme cantidades, mínimos, precio, disponibilidad de materiales y plazo para el nuevo pedido. Vuelva a comprobar el color y el ajuste frente a la referencia aprobada, ya que los lotes y las condiciones de producción pueden cambiar.",
-  "October 30, 2026": "30 de octubre de 2026"
+  "October 30, 2026": "30 de octubre de 2026",
+  "Choose a sourcing program": "Elegir un programa de suministro",
+  "Which sportswear program fits your order?": "¿Qué programa de ropa deportiva se adapta a su pedido?",
+  "Choose by the product and buyer requirements. Both programs use a project-specific review of samples, commercial terms, and delivery.": "Elija según el producto y las necesidades del comprador. Ambos programas incluyen una revisión específica de muestras, condiciones comerciales y entrega para cada proyecto.",
+  "Sportswear program comparison": "Comparación de programas de ropa deportiva",
+  "Buyer focus": "Compradores destinatarios",
+  "First useful inputs": "Primeros datos útiles",
+  "Next step": "Siguiente paso",
+  "Brands, gyms, studios, and ecommerce sellers": "Marcas, gimnasios, estudios y vendedores en línea",
+  "Style list, fabric and fit references, size range, branding, and target quantity.": "Lista de modelos, referencias de tejido y ajuste, rango de tallas, personalización y cantidad objetivo.",
+  "Clubs, schools, teams, and distributors": "Clubes, escuelas, equipos y distribuidores",
+  "Sport, garment list, sizes, club artwork, player customization, and arrival date.": "Deporte, lista de prendas, tallas, diseño del club, personalización de jugadores y fecha de llegada."
 }

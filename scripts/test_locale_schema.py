@@ -37,6 +37,40 @@ def strings(value):
 
 
 class LocaleSchemaTests(unittest.TestCase):
+    def test_localized_company_name_keeps_the_public_brand(self):
+        for locale in locales.LOCALE_ORDER:
+            content = locales.load_content(locale)
+            self.assertFalse(any(re.search(r"\bGloryStarWar\b", text) for text in content.values()))
+            for key in ("index", "about-factory"):
+                rendered = locales.replace_html(locales.source_for(key).read_text(), key, locale, content)
+                with self.subTest(locale=locale, page=key):
+                    self.assertIn("© 2026 GloryStarWear", rendered)
+                    self.assertIn(content["GloryStarWear home"], rendered)
+
+    def test_company_identity_and_program_routes_stay_connected(self):
+        origin = locales.ORIGIN
+        definitions = []
+        for page in ("index", "about-factory"):
+            markup = locales.source_for(page).read_text()
+            company = next(n for b in schema_blocks(markup) for n in nodes(b)
+                           if n.get("@type") == "Organization")
+            definitions.append(company)
+            self.assertIn(company["legalName"], markup)
+            self.assertIn(company["email"], markup)
+            self.assertIn(company["address"]["addressLocality"], markup)
+        self.assertEqual(definitions[0], definitions[1])
+        references = definitions[0]["hasOfferCatalog"]["itemListElement"]
+        self.assertEqual(len(references), 2)
+        for offer in references:
+            service_id = offer["itemOffered"]["@id"]
+            page = service_id.removeprefix(origin + "/").split(".html#")[0]
+            markup = locales.source_for(page).read_text()
+            service = next(n for b in schema_blocks(markup) for n in nodes(b)
+                           if n.get("@id") == service_id and n.get("@type") == "Service")
+            self.assertEqual(service["provider"]["@id"], definitions[0]["@id"])
+            channel = service["availableChannel"]["serviceUrl"]
+            self.assertIn(channel.removeprefix(origin + "/"), markup)
+
     def test_public_legal_name_is_not_replaced_by_a_translation(self):
         for locale in locales.LOCALE_ORDER:
             source = locales.source_for("about-factory").read_text()
