@@ -116,7 +116,7 @@ resources/apparel-purchase-order-checklist|commercial|Vérifier le bon de comman
 resources/custom-sportswear-cost-lead-time|commercial|Coûts et délais de fabrication|Costes y plazos de fabricación|Custos e prazos de produção|Стоимость и сроки производства|定制运动服装成本与交期
 resources/custom-sportswear-tech-pack|construction|Préparer un dossier technique|Prepara una ficha técnica|Preparar uma ficha técnica|Подготовка технического пакета|服装工艺单与技术资料准备
 resources/grs-recycled-activewear-certification-evidence-guide|certification|Vérifier les preuves GRS et les matières recyclées|Verifica las pruebas GRS y los materiales reciclados|Verificar evidências GRS e materiais reciclados|Проверка GRS и переработанных материалов|GRS 与再生材料证据核查
-resources/oem-vs-odm-sportswear|manufacturing|Choisir entre OEM et ODM|Elige entre OEM y ODM|Escolher entre OEM e ODM|Выбор между OEM и ODM|OEM 与 ODM 制造方式比较
+resources/oem-vs-odm-sportswear|manufacturing|OEM ou ODM pour vêtements de sport : choisir la méthode|OEM u ODM en ropa deportiva: cómo elegir|OEM ou ODM em roupa desportiva: como escolher|OEM или ODM для спортивной одежды: выбор подхода|运动服 OEM 与 ODM：如何选择开发方式
 resources/private-label-activewear-moq|commercial|Comprendre les quantités minimales|Comprende las cantidades mínimas|Compreender as quantidades mínimas|Минимальные объёмы заказа|自有品牌运动服装起订量
 resources/sportswear-aql-inspection-checklist|qc|Inspection AQL avant expédition|Inspección AQL antes del envío|Inspeção AQL antes da expedição|Приёмочный контроль AQL перед отгрузкой|AQL 抽检与出货前检验
 resources/sportswear-logo-artwork-preparation-guide|artwork|Fichiers de logo et d’impression|Archivos de logotipo e impresión|Ficheiros de logótipo e impressão|Файлы логотипов и печати|标志与印花文件准备

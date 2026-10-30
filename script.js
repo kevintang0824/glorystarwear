@@ -1047,6 +1047,32 @@ const applyInquiryPrefill = (form) => {
 
 quoteForms.forEach(applyInquiryPrefill);
 
+const setupInquiryRouteForms = () => {
+  document.querySelectorAll("[data-inquiry-route-form]").forEach((form) => {
+    form.addEventListener("submit", () => {
+      const product = form.elements.namedItem("product")?.value || "";
+      const development = form.elements.namedItem("development")?.value || "";
+      if (!Object.hasOwn(inquiryPrefillOptions.product, product)
+        || !Object.hasOwn(inquiryPrefillOptions.development, development)) return;
+      try {
+        sessionStorage.removeItem(productDirectionStorageKey);
+        sessionStorage.setItem(inquirySourceKey, JSON.stringify({
+          title: document.title,
+          path: window.location.pathname,
+          savedAt: Date.now(),
+        }));
+      } catch {
+        // The native GET form remains usable without browser storage.
+      }
+      trackEvent("inquiry_route_selected", {
+        product_interest: inquiryPrefillOptions.product[product],
+        development_route: inquiryPrefillOptions.development[development],
+      });
+    });
+  });
+};
+setupInquiryRouteForms();
+
 if (inquiryPrefill.hasValues) {
   trackEvent("buyer_quote_prefill", {
     prefill_source: inquiryPrefill.source,
@@ -1156,6 +1182,7 @@ const renderInquiryContextSummary = () => {
     storedInquirySource ? getShortPageTitle(storedInquirySource.title) : "",
     prefillLabel("buyerType", inquiryPrefill.values.buyer),
     prefillLabel("product", inquiryPrefill.values.product),
+    prefillLabel("developmentRoute", inquiryPrefill.values.development),
     storedProductDirection?.label || "",
     storedProductShortlist.length ? `${storedProductShortlist.length} product direction${storedProductShortlist.length === 1 ? "" : "s"} shortlisted` : "",
     storedFabricShortlist.length ? `${storedFabricShortlist.length} fabric direction${storedFabricShortlist.length === 1 ? "" : "s"} shortlisted` : "",

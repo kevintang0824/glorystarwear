@@ -234,6 +234,7 @@ Company schema on the homepage and company page shares one Organization definiti
 - `lead_submit_success` and the GA4 `generate_lead` event after server confirmation
 - `contact_click`
 - `quote_start`
+- `inquiry_route_selected` for the guide's product/development selector; this records intent, not a received lead
 - `quote_submit_email`
 - `quote_submit_whatsapp`
 - `quote_copy_brief`

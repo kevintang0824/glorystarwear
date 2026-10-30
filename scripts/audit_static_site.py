@@ -19,7 +19,7 @@ from site_chrome import site_footer_markup, site_header_markup
 
 ROOT = Path(__file__).resolve().parent.parent
 PRODUCTION_ORIGIN = "https://glorystarwears.com"
-EXPECTED_SCRIPT_VERSION = "20261030-1"
+EXPECTED_SCRIPT_VERSION = "20261030-2"
 EXPECTED_FORM_STYLE_VERSION = "20261030-1"
 CATALOG_PATH = ROOT / "scripts" / "product_expansion_catalog.json"
 CATALOG_ITEMS = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))

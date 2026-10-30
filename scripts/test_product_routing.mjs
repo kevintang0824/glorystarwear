@@ -149,4 +149,61 @@ for (const locale of ["", "fr/", "es/", "pt/", "ru/", "zh-cn/"]) {
   assert.deepEqual([...combinations].sort(), ["private_label:odm", "private_label:oem", "teamwear:odm", "teamwear:oem"]);
 }
 
+// Compose the native guide form's real options with the contact prefill parser.
+for (const locale of ["", "fr/", "es/", "pt/", "ru/", "zh-cn/"]) {
+  const file = "resources/oem-vs-odm-sportswear.html";
+  const page = await readFile(new URL(`../${locale}${file}`, import.meta.url), "utf8");
+  const form = page.match(/<form\b([^>]*data-inquiry-route-form[^>]*)>([\s\S]*?)<\/form>/);
+  assert.ok(form, `${locale}${file}`);
+  assert.match(form[1], /method="get"/);
+  const action = form[1].match(/action="([^"]+)"/)[1];
+  const destination = new URL(action, `https://glorystarwears.com/${locale}${file}`);
+  assert.equal(destination.pathname, `/${locale}contact.html`);
+  assert.equal(destination.hash, "#quote-form");
+  const options = (name) => [...form[2].match(new RegExp(`<select name="${name}"[^>]*>([\\s\\S]*?)<\\/select>`))[1].matchAll(/value="([^"]+)"/g)].map((m) => m[1]);
+  assert.deepEqual(options("product"), ["private_label", "teamwear"]);
+  assert.deepEqual(options("development"), ["oem", "odm", "light_custom"]);
+  for (const product of options("product")) {
+    for (const development of options("development")) {
+      const prefill = routing(`?${new URLSearchParams({ product, development })}`).inquiryPrefill;
+      assert.ok(productOptions.some((option) => option.value === prefill.values.product));
+      assert.ok(prefill.values.development);
+    }
+  }
+}
+
+const setupStart = source.indexOf("const setupInquiryRouteForms =");
+const setupEnd = source.indexOf("setupInquiryRouteForms();", setupStart) + "setupInquiryRouteForms();".length;
+const setupSource = source.slice(setupStart, setupEnd);
+function routeSubmit({ product = "private_label", development = "odm", blocked = false } = {}) {
+  let submit;
+  const values = new Map([["direction", "Previous product direction"], ["attribution", "original campaign"]]);
+  const events = [];
+  const context = vm.createContext({
+    window: { location: { pathname: "/fr/resources/oem-vs-odm-sportswear.html" } },
+    document: { title: "OEM / ODM guide", querySelectorAll: () => [{
+      elements: { namedItem: (name) => ({ value: name === "product" ? product : development }) },
+      addEventListener: (name, handler) => { assert.equal(name, "submit"); submit = handler; },
+    }] },
+    sessionStorage: {
+      removeItem: (key) => { if (blocked) throw Error("Storage unavailable"); values.delete(key); },
+      setItem: (key, value) => { if (blocked) throw Error("Storage unavailable"); values.set(key, value); },
+    },
+    inquirySourceKey: "source", productDirectionStorageKey: "direction", URLSearchParams,
+    trackEvent: (name, payload) => events.push({ name, payload }),
+  });
+  vm.runInContext(`${definitions}\n${setupSource}`, context);
+  submit();
+  return { values, events };
+}
+const selected = routeSubmit();
+assert.equal(JSON.parse(selected.values.get("source")).path, "/fr/resources/oem-vs-odm-sportswear.html");
+assert.equal(selected.values.has("direction"), false);
+assert.equal(selected.values.get("attribution"), "original campaign");
+assert.equal(selected.events[0].name, "inquiry_route_selected");
+assert.equal(selected.events[0].payload.product_interest, "Private label activewear program");
+assert.equal(routeSubmit({ blocked: true }).events.length, 1, "Native navigation must survive blocked storage");
+assert.equal(routeSubmit({ product: "invalid" }).events.length, 0, "Ignore unrecognized telemetry values");
+assert.equal(routeSubmit({ product: "constructor" }).events.length, 0);
+
 console.log("Product and guide routing, including tech-pack readiness, passed for all six language paths.");
