@@ -104,4 +104,28 @@ for (const [slug, token, label] of productCases) {
   }
 }
 
-console.log("Product routing checks passed for both product lines and all six language paths.");
+// A guide's real link must land in the same language and select a supported
+// category. Compose generated markup with the production prefill parser.
+for (const locale of ["", "fr/", "es/", "pt/", "ru/", "zh-cn/"]) {
+  for (const [file, expectedTokens] of [
+    ["resources/custom-sportswear-cost-lead-time.html", ["private_label", "teamwear"]],
+    ["low-moq-sportswear-manufacturer.html", ["low_moq"]],
+    ["resources/private-label-activewear-moq.html", ["private_label"]],
+  ]) {
+    const page = await readFile(new URL(`../${locale}${file}`, import.meta.url), "utf8");
+    const main = page.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)[1];
+    const seen = new Set();
+    for (const match of main.matchAll(/href="([^"]*contact\.html\?[^"]*)"/g)) {
+      const url = new URL(match[1].replaceAll("&amp;", "&"), `https://glorystarwears.com/${locale}${file}`);
+      assert.equal(url.pathname, `/${locale}contact.html`);
+      assert.equal(url.hash, "#quote-form");
+      const prefill = routing(url.search).inquiryPrefill;
+      assert.ok(productOptions.some((option) => option.value === prefill.values.product));
+      assert.equal(prefill.source, "product_quote_link");
+      seen.add(url.searchParams.get("product"));
+    }
+    assert.deepEqual([...seen].sort(), [...expectedTokens].sort(), `${locale}${file}`);
+  }
+}
+
+console.log("Product and sourcing-guide routing checks passed for all six language paths.");
