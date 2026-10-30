@@ -223,7 +223,7 @@ Company schema on the homepage and company page shares one Organization definiti
 1. Verify `https://glorystarwears.com/` in the production Search Console property.
 2. Submit `https://glorystarwears.com/sitemap.xml`.
 3. Inspect the homepage and newly published guide URLs after deployment.
-4. Use Search Console performance reports to review queries, pages, countries, and indexing. Google AI-feature traffic is included in Web search performance; do not report it as a separately measured AI recommendation count.
+4. Use Search Console performance reports to review queries, pages, countries, and indexing. Record the report, date range and metric name shown in the account. Where a dedicated Google generative-AI report is available, distinguish its impressions from Web clicks, recommendations and received inquiries.
 
 ### Analytics Hook
 

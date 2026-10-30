@@ -342,6 +342,9 @@ def replace_tag(tag: str, current_key: str, locale: str, content: dict[str, str]
 
     def attr(match):
         attr_name, quote, value = match.groups()
+        # Work with DOM values, then escape once when serializing the attribute.
+        # Otherwise an existing &amp; becomes &amp;amp; and splits query keys.
+        value = unescape(value)
         if attr_name.lower() == "content" and name == "meta":
             meta_key = re.search(r'\b(?:name|property)=["\']([^"\']+)', tag, re.I)
             meta_key = meta_key.group(1).lower() if meta_key else ""
@@ -360,14 +363,14 @@ def replace_tag(tag: str, current_key: str, locale: str, content: dict[str, str]
     if name == "a":
         tag = re.sub(
             r"(\bhref=)(['\"])(.*?)\2",
-            lambda m: f"{m.group(1)}{m.group(2)}{localized_href(current_key, m.group(3), locale)}{m.group(2)}",
+            lambda m: f"{m.group(1)}{m.group(2)}{escape(localized_href(current_key, unescape(m.group(3)), locale), quote=True)}{m.group(2)}",
             tag,
             flags=re.I | re.S,
         )
     else:
         tag = re.sub(
             r"(\b(?:href|src)=)(['\"])(.*?)\2",
-            lambda m: f"{m.group(1)}{m.group(2)}{localized_asset_url(current_key, m.group(3))}{m.group(2)}",
+            lambda m: f"{m.group(1)}{m.group(2)}{escape(localized_asset_url(current_key, unescape(m.group(3))), quote=True)}{m.group(2)}",
             tag,
             flags=re.I | re.S,
         )

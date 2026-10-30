@@ -1420,7 +1420,7 @@ def main():
                 'data-resource-download="sportswear-tech-pack-intake-template"': "tech pack download tracking",
                 '"@type":"DigitalDocument"': "tech pack document schema",
                 '"isAccessibleForFree":true': "free template disclosure in schema",
-                '"dateModified":"2026-08-25"': "current tech pack modification date",
+                '"dateModified":"2026-10-30"': "current tech pack modification date",
                 "us-clothing-label-requirements-private-label.html": "U.S. clothing-label article link",
                 "What it is not:": "visible template scope disclosure",
                 "Send Tech Pack for Review": "tech-pack conversion bridge",

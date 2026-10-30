@@ -14525,5 +14525,16 @@
   "Custom teamwear cost review": "Расчёт командной формы на заказ",
   "Share the sport, quantities by size, logo method, names and numbers, roster packing, and required arrival date. Ask the quote to separate garments, personalization, packing, freight, and deadline assumptions.": "Укажите вид спорта, количество по размерам, способ нанесения логотипа, имена и номера, упаковку по игрокам и нужную дату прибытия. Попросите отдельно указать изделия, персонализацию, упаковку, перевозку и условия соблюдения сроков.",
   "Review teamwear order planning": "Посмотреть планирование заказа командной формы",
-  "Request a teamwear cost review": "Запросить расчёт командной формы"
+  "Request a teamwear cost review": "Запросить расчёт командной формы",
+  "Choose your starting point": "Выберите исходную ситуацию",
+  "Turn your tech pack or references into a production discussion": "Перейдите от технического задания или референсов к обсуждению производства",
+  "Use the route that matches what you have today. Your inquiry will keep the product program and development route selected here.": "Выберите вариант по имеющимся материалам. В запросе сохранятся выбранные здесь товарная программа и вариант разработки.",
+  "I have a tech pack to review": "У меня есть техническое задание для проверки",
+  "Share a view-only file link and its revision, style list, sizes, target quantities, and delivery country. Flag missing measurements, materials, artwork, or approvals so the review starts with clear open questions.": "Предоставьте ссылку только для чтения, версию файла, список моделей, размеры, целевые количества и страну доставки. Укажите недостающие измерения, материалы, макеты и согласования, чтобы определить открытые вопросы.",
+  "Review an activewear tech pack": "Обсудить техническое задание на спортивную одежду",
+  "Review a teamwear tech pack": "Обсудить техническое задание на командную форму",
+  "I have references, but no complete tech pack": "Есть референсы, но нет полного технического задания",
+  "Start with garment references, intended use, fit direction, logo files, quantity, and target market. Mark the missing specifications; confirm the development work and sample approvals before requesting a production-ready quote.": "Начните с референсов изделий, назначения, посадки, логотипов, количества и целевого рынка. Отметьте недостающие спецификации; согласуйте разработку и утверждение образцов перед запросом расчёта для производства.",
+  "Develop an activewear brief": "Подготовить требования к спортивной одежде",
+  "Develop a teamwear brief": "Подготовить требования к командной форме"
 }

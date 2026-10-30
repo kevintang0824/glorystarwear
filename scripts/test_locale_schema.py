@@ -4,6 +4,8 @@ import json
 import re
 import unittest
 from collections import Counter
+from html.parser import HTMLParser
+from urllib.parse import parse_qs, urlsplit
 
 import build_full_locales as locales
 
@@ -37,6 +39,27 @@ def strings(value):
 
 
 class LocaleSchemaTests(unittest.TestCase):
+    def test_localized_links_preserve_query_parameters(self):
+        class Link(HTMLParser):
+            def handle_starttag(self, tag, attrs):
+                self.attrs = dict(attrs)
+
+        for locale in locales.LOCALE_ORDER:
+            for tag, expected_path, expected_query in [
+                ('<a href="../contact.html?product=private_label&amp;development=oem#quote-form">',
+                 f'/{locale}/contact.html', {'product': ['private_label'], 'development': ['oem']}),
+                ('<a href="https://example.com/file?style=one&amp;color=blue">',
+                 '/file', {'style': ['one'], 'color': ['blue']}),
+                ('<a href="../assets/downloads/sportswear-tech-pack-intake-template.csv?style=one&amp;color=blue">',
+                 '/assets/downloads/sportswear-tech-pack-intake-template.csv', {'style': ['one'], 'color': ['blue']}),
+            ]:
+                with self.subTest(locale=locale, tag=tag):
+                    parser = Link()
+                    parser.feed(locales.replace_tag(tag, 'resources/custom-sportswear-tech-pack', locale, {}))
+                    url = urlsplit(parser.attrs['href'])
+                    self.assertEqual(url.path, expected_path)
+                    self.assertEqual(parse_qs(url.query), expected_query)
+
     def test_localized_company_name_keeps_the_public_brand(self):
         for locale in locales.LOCALE_ORDER:
             content = locales.load_content(locale)

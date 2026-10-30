@@ -86,7 +86,7 @@ The browser derives a non-personal source classification from the first referrer
 
 Treat this as attribution evidence, not proof that a particular answer or recommendation mentioned the brand. Referrer suppression, in-app browsers, redirects, and privacy controls can cause visits to be classified as direct or referral traffic.
 
-Google AI Overviews and AI Mode can arrive with a normal Google Search referrer and are therefore classified as `organic_search` here. Their traffic is included in Search Console's Web search reporting; do not claim a separate AI recommendation count from these browser events or from ordinary search totals.
+Google AI Overviews and AI Mode can arrive with a normal Google Search referrer and are therefore classified as `organic_search` here. Use the Search Console reports actually available in the account, including a dedicated generative-AI report where offered. Record its date range and metric name; AI-feature impressions are not recommendation, click, or inquiry counts. Browser referral events and ordinary Web search totals do not isolate these impressions.
 
 ## Reference files and links
 

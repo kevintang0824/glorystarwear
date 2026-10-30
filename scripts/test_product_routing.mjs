@@ -128,4 +128,25 @@ for (const locale of ["", "fr/", "es/", "pt/", "ru/", "zh-cn/"]) {
   }
 }
 
-console.log("Product and sourcing-guide routing checks passed for all six language paths.");
+for (const locale of ["", "fr/", "es/", "pt/", "ru/", "zh-cn/"]) {
+  const file = "resources/custom-sportswear-tech-pack.html";
+  const page = await readFile(new URL(`../${locale}${file}`, import.meta.url), "utf8");
+  const main = page.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)[1];
+  const combinations = new Set();
+  for (const match of main.matchAll(/href="([^"]*contact\.html\?[^"]*)"/g)) {
+    const url = new URL(match[1].replaceAll("&amp;", "&"), `https://glorystarwears.com/${locale}${file}`);
+    const product = url.searchParams.get("product");
+    const development = url.searchParams.get("development");
+    const prefill = routing(url.search).inquiryPrefill;
+    assert.equal(url.pathname, `/${locale}contact.html`);
+    assert.equal(url.hash, "#quote-form");
+    assert.ok(productOptions.some((option) => option.value === prefill.values.product));
+    assert.equal(prefill.values.development, development === "oem"
+      ? "OEM from our tech pack" : "ODM from references and requirements");
+    assert.equal(prefill.values.buyer, undefined);
+    combinations.add(`${product}:${development}`);
+  }
+  assert.deepEqual([...combinations].sort(), ["private_label:odm", "private_label:oem", "teamwear:odm", "teamwear:oem"]);
+}
+
+console.log("Product and guide routing, including tech-pack readiness, passed for all six language paths.");
